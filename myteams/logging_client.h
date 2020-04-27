@@ -115,5 +115,10 @@ int client_error_unknown_thread(char const *thread_id);
 */
 int client_error_unknown_user(char const *user_id);
 
+//! Handler called when the user want to perform an action that is unauthorized (not login/subscribed)
+/*!
+	\return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
+*/
+int client_error_unauthorized(void);
 
 #endif /* __LOGGING_CLIENT_H__ */
