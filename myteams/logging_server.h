@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2019
+** my_teams
+** File description:
+** LOGGING SERVER
+*/
+
 #ifndef __LOGGING_SERVER_H__
 #define __LOGGING_SERVER_H__
 
