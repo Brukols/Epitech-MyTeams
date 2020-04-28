@@ -12,6 +12,8 @@ SRCS	=	src/main.c		\
 			src/help/help.c	\
 			src/server/init_server.c	\
 			src/server/launch_server.c		\
+			src/signal/sig_handler.c		\
+			src/signal/terminate.c			\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/my_list/include
 

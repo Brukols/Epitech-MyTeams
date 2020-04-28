@@ -20,6 +20,8 @@
 #define FAILURE -1
 #define SUCCESS 0
 
+#include <stdbool.h>
+
 /**************************************
 ** STRUCT
 **************************************/
@@ -32,5 +34,9 @@ int my_teams(int ac, char **av);
 /* HELP */
 int display_help();
 int teams_verif_arg(int ac, char **av);
+
+/* SIGNAL */
+bool terminate(bool value);
+void sig_handler(int signo);
 
 #endif //NWP_MYTEAMS_2019_MY_TEAMS_H

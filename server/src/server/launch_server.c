@@ -10,6 +10,7 @@
 #include "client.h"
 #include "user.h"
 #include <unistd.h>
+#include <sys/signal.h>
 
 static void init_fds_client(list_t it_client, fd_set *readfs, fd_set *writefs)
 {
@@ -38,10 +39,15 @@ int launch_server(server_t *server)
 {
     fd_set writefs;
     fd_set readfs;
+    int rvalue;
 
-    while (1) {
+    signal(SIGINT, sig_handler);
+    while (terminate(false) == false) {
         init_fds(server, &readfs, &writefs);
-        if (select(FD_SETSIZE, &readfs, &writefs, NULL, NULL) < 0)
+        rvalue = select(FD_SETSIZE, &readfs, &writefs, NULL, NULL);
+        if (terminate(false) == true)
+            break;
+        if (rvalue < 0)
             return (FAILURE);
         // if (translate_select(server, &readfs, &writefs) < 0)
         //     return (FAILURE);
