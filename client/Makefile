@@ -8,6 +8,7 @@
 NAME	= 	myteams_cli
 
 SRCS	=	src/main.c 		\
+			src/client.c	\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include
 
