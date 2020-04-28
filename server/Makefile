@@ -13,7 +13,7 @@ SRCS	=	src/main.c		\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/
 
-LDFLAGS +=  -l my_list -L ./../lib/ \
+LDFLAGS +=  -l my_list -L ./../lib/
 
 OBJS	=	$(SRCS:.c=.o)
 

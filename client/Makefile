@@ -9,8 +9,12 @@ NAME	= 	myteams_cli
 
 SRCS	=	src/main.c 		\
 			src/client.c	\
+			src/help/help.c	\
+			src/init/init_client.c	\
+			src/init/connect_client.c	\
+			src/clean/close_client.c	\
 
-CFLAGS += 	-W -Wall -Wextra -Wshadow -I include
+CFLAGS += 	-W -Wall -Wextra -Wshadow -Werror -Iinclude/
 
 LDFLAGS +=  \
 

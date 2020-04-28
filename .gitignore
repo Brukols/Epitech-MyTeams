@@ -1,6 +1,8 @@
 # Created by https://www.gitignore.io/api/c,code,clion,emacs,clion+iml,clion+all
 # Edit at https://www.gitignore.io/?templates=c,code,clion,emacs,clion+iml,clion+all
 
+./myteams/
+
 ### C ###
 # Prerequisites
 *.d
