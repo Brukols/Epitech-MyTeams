@@ -29,6 +29,6 @@ int my_teams(int ac, char **av);
 
 /* HELP */
 int display_help();
-int teams_verif_arg(int ac, char **av);
+int teams_check_arg(int ac, char **av);
 
 #endif //NWP_MYTEAMS_2019_MY_TEAMS_H

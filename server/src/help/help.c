@@ -17,7 +17,7 @@ int display_help()
     return (TEAMS_SUCCESS);
 }
 
-int teams_verif_arg(int ac, char **av)
+int teams_check_arg(int ac, char **av)
 {
     if (ac != 2)
         return (TEAMS_ERROR);
