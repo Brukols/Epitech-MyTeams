@@ -9,6 +9,7 @@ NAME	= 	myteams_server
 
 SRCS	=	src/main.c		\
 			src/my_teams.c	\
+			src/help/help.c	\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/
 
