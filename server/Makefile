@@ -8,10 +8,11 @@
 NAME	= 	myteams_server
 
 SRCS	=	src/main.c		\
+			src/my_teams.c	\
 
-CFLAGS += 	-W -Wall -Wextra -Wshadow -I include
+CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/
 
-LDFLAGS +=  \
+LDFLAGS +=  -l my_list -L ./../lib/ \
 
 OBJS	=	$(SRCS:.c=.o)
 

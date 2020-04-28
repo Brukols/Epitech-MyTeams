@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2019
+** my_teams
+** File description:
+** LOGGING CLIENT
+*/
+
 #ifndef __LOGGING_CLIENT_H__
 #define __LOGGING_CLIENT_H__
 
