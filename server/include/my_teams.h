@@ -17,6 +17,8 @@
 **************************************/
 #define TEAMS_ERROR 84
 #define TEAMS_SUCCESS 0
+#define FAILURE -1
+#define SUCCESS 0
 
 /**************************************
 ** STRUCT

@@ -22,4 +22,7 @@ typedef struct
     list_t client;
 } server_t;
 
+server_t *init_server(char **av);
+int launch_server(server_t *server);
+
 #endif /* !SERVER_H_ */

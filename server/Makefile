@@ -10,8 +10,10 @@ NAME	= 	myteams_server
 SRCS	=	src/main.c		\
 			src/my_teams.c	\
 			src/help/help.c	\
+			src/server/init_server.c	\
+			src/server/launch_server.c		\
 
-CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/
+CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/my_list/include
 
 LDFLAGS +=  -l my_list -L ./../lib/ \
 
