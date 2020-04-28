@@ -9,5 +9,7 @@
 
 int my_teams(int ac, char **av)
 {
-    return (0);
+    if (teams_verif_arg(ac, av) == TEAMS_ERROR)
+        return (display_help());
+    return (TEAMS_SUCCESS);
 }
