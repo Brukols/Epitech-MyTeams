@@ -14,6 +14,8 @@ SRCS	=	src/main.c		\
 			src/server/launch_server.c		\
 			src/server/translate_select.c	\
 			src/server/new_connection.c		\
+			src/server/read_data_client.c	\
+			src/server/write_data_client.c	\
 			src/signal/sig_handler.c		\
 			src/signal/terminate.c			\
 			src/client/create_client.c		\
