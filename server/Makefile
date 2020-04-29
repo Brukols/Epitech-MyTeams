@@ -19,6 +19,8 @@ SRCS	=	src/main.c		\
 			src/signal/sig_handler.c		\
 			src/signal/terminate.c			\
 			src/client/create_client.c		\
+			src/buffer/concat_buffer.c		\
+			src/buffer/erase_buffer.c		\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/my_list/include
 

@@ -44,7 +44,11 @@ void sig_handler(int signo);
 /* SERVER */
 int translate_select(server_t *server, fd_set *readfs, fd_set *writefs);
 int new_connection(server_t *server);
-int read_data_client(client_t *client);
+int read_data_client(server_t *server, client_t *client);
 int write_data_client(client_t *client);
+
+/* BUFFER */
+char *concat_buffer(char *dest, char *src);
+char *erase_buffer(char *buffer, long pos);
 
 #endif //NWP_MYTEAMS_2019_MY_TEAMS_H
