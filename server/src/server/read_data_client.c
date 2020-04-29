@@ -55,6 +55,7 @@ int read_data_client(server_t *server, client_t *client)
     if (!message)
         return (FAILURE);
     smart_buffer_get_data(client->read_buf, message, reply->message_size);
+    if (translate_data_client(server, client, reply, message))
     free(reply);
     free(message);
     return (0);

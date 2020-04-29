@@ -9,6 +9,7 @@
 #define REPLY_CODE_H_
 
 enum reply_code_e {
+    UNKNOWN,
     HELP,
     LOGIN,
     LOGOUT,
