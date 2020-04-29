@@ -5,26 +5,32 @@
 ## A simple Makefile to compile my lib list
 ##
 
+TEST_NAME	=	unit_tests
+
 NAME	=	libutils.a
 
-SRC	=	src/list_add_elem_at_back.c	\
-		src/list_add_elem_at_front.c	\
-		src/list_add_elem_at_position.c	\
-		src/list_clear.c	\
-		src/list_create_node.c	\
-		src/list_del_elem_at_back.c	\
-		src/list_del_elem_at_front.c	\
-		src/list_del_elem_at_position.c	\
-		src/list_del_elem_at_value.c	\
-		src/list_delete_node.c	\
-		src/list_dump.c	\
-		src/list_get_elem_at_back.c	\
-		src/list_get_elem_at_front.c	\
-		src/list_get_elem_at_position.c	\
-		src/list_get_first_node_with_value.c	\
-		src/list_get_size.c	\
-		src/list_is_empty.c	\
-		src/smart_buffer.c	\
+SRC	=\
+		src/my_list/list_dump.c	\
+		src/my_list/list_clear.c	\
+		src/my_list/list_add_elem_at_position.c	\
+		src/my_list/list_del_elem_at_position.c	\
+		src/my_list/list_add_elem_at_front.c	\
+		src/my_list/list_del_elem_at_front.c	\
+		src/my_list/list_del_elem_at_value.c	\
+		src/my_list/list_delete_node.c	\
+		src/my_list/list_get_elem_at_front.c	\
+		src/my_list/list_get_size.c	\
+		src/my_list/list_get_first_node_with_value.c	\
+		src/my_list/list_add_elem_at_back.c	\
+		src/my_list/list_is_empty.c	\
+		src/my_list/list_del_elem_at_back.c	\
+		src/my_list/list_get_elem_at_position.c	\
+		src/my_list/list_create_node.c	\
+		src/my_list/list_get_elem_at_back.c	\
+		src/smart_buffer/smart_buffer_data.c	\
+	    src/smart_buffer/smart_buffer_read_write.c	\
+	    src/smart_buffer/smart_buffer_utils.c	\
+
 
 TEST_SRC	=	\
 				tests/redirect_all_std.c	\
@@ -42,15 +48,16 @@ all:	$(OBJ)
 	ar rc $(NAME) $(OBJ)
 
 clean:
-		$(RM) $(OBJ)
+		$(RM) $(OBJ) *.gc*
 
 fclean: clean
-		$(RM) $(NAME)
+		$(RM) $(NAME) $(TEST_NAME)
 
 re: fclean all
 
 tests_run:
-
-
+			$(CC) -o $(TEST_NAME) $(CFLAGS) $(SRC) $(TEST_SRC) -lcriterion --coverage
+			./$(TEST_NAME)
+			gcovr -etests
 
 .PHONY: all clean fclean re
