@@ -19,6 +19,10 @@ int client(int ac, char **av)
         close_client(info);
         return (CLIENT_ERROR);
     }
+    if (run_client(info) == CLIENT_ERROR) {
+        close_client(info);
+        return (CLIENT_ERROR);
+    }
     close_client(info);
     return (CLIENT_SUCCESS);
 }
