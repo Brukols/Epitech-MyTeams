@@ -17,7 +17,7 @@ int translate_data_client(server_t *server, client_t *client, client_request_t *
 {
     for (size_t i = 0; commands[i].code != UNKNOWN; i++) {
         if (commands[i].code == reply->command)
-            commands[i].fct(server, client, reply, data);
+            return (commands[i].fct(server, client, reply, data));
     }
     return (FAILURE);
 }
