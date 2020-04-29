@@ -12,6 +12,7 @@
 
 static const char *response = "disconnection";
 
+// For Disconnection
 static int add_response(client_t *client)
 {
     header_t header = {231, strlen(response)};
@@ -33,7 +34,8 @@ int read_data_client(server_t *server, client_t *client)
     ssize_t len = read(client->fd, buffer, 255);
 
     if (len == 0) {
-        add_response(client);
+        client->close = true;
+        return (0);
     }
     smart_buffer_add_string(client->read_buf, buffer);
     (void)server;
