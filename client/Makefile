@@ -26,7 +26,7 @@ SRCS	=	src/main.c	\
 			src/user_message/user_receive_message.c	\
 			src/user_message/user_send_message.c	\
 
-CFLAGS += 	-W -Wall -Wextra -Wshadow -Werror -Iinclude/
+CFLAGS += 	-W -Wall -Wextra -Wshadow -Werror -I include/ -I ../lib/include -I ../include
 
 LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/
 

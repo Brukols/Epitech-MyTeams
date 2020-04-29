@@ -20,7 +20,9 @@ client_t *init_client()
     }
     client->user_in = user_new_message();
     client->user_out = user_new_message();
-    if (!client->user_in || !client->user_out) {
+    client->server_in = smart_buffer_create();
+    client->server_out = smart_buffer_create();
+    if (!client->user_in || !client->user_out || !client->server_in || !client->server_out) {
         fprintf(stdout, "./myteams_cli: initialisation failed\n");
         return (NULL);
     }

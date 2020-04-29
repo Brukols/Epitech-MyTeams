@@ -31,12 +31,10 @@ static int handle_reads_activities(client_t *info)
         if (user_receive_message(0, info->user_in) == CLIENT_ERROR)
             info->close = true;
     }
-    /*
     if (FD_ISSET(info->socket, &info->reads)) {
-        if (tcp_receive_message(info->socket, info->server_io) == CLIENT_ERROR)
+        if (smart_buffer_read(info->server_in, info->socket) == 0)
             info->close = true;
     }
-     */
     return (CLIENT_SUCCESS);
 }
 
@@ -48,14 +46,12 @@ static int handle_writes_activities(client_t *info)
             return (CLIENT_ERROR);
         }
     }
-    /*
     if (FD_ISSET(info->socket, &info->writes)) {
-        if (tcp_send_message(info->socket, info->server_io) == CLIENT_ERROR) {
+        if (smart_buffer_write(info->server_in, info->socket) == -1) {
             fprintf(stdout, "./myteams_cli: critical error with socket.\n");
             return (CLIENT_ERROR);
         }
     }
-     */
     return (CLIENT_SUCCESS);
 }
 

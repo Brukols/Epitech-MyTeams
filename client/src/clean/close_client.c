@@ -13,6 +13,8 @@ void close_client(client_t *info)
 {
     free(info->user_in);
     free(info->user_out);
+    smart_buffer_destroy(info->server_in);
+    smart_buffer_destroy(info->server_out);
     close(info->socket);
     free(info);
 }
