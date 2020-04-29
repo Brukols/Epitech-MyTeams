@@ -5,9 +5,9 @@
 ** TODO: add description
 */
 
-#include "message_t.h"
+#include "user_message.h"
 
-int tcp_send_message(int socket, message_t *message)
+int user_send_message(int socket, user_message_t *message)
 {
     int sending_byte = 0;
 
@@ -19,7 +19,7 @@ int tcp_send_message(int socket, message_t *message)
 
         bzero(&message->buff[message->read_pos], sending_byte);
         message->read_pos += sending_byte;
-        if (message->read_pos >= TCP_MSGBUFF_SIZE)
+        if (message->read_pos >= USER_MESSAGE_SIZE)
             message->read_pos = 0;
         if (message->buff[message->read_pos] == 0)
             break;

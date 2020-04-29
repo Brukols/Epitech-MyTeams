@@ -5,8 +5,8 @@
 ** client
 */
 
-#ifndef MESSAGE_T_H_
-#define MESSAGE_T_H_
+#ifndef USER_MESSAGE_H_
+#define USER_MESSAGE_H_
 
 /**************************************
 ** INCLUDE DEFINITION
@@ -22,8 +22,8 @@
 ** DEFINE DEFINITION
 **************************************/
 
-#define TCP_MSGBUFF_SIZE 10000
-#define TCP_READ_SIZE 100
+#define USER_MESSAGE_SIZE 10000
+#define USER_MESSAGE_READ_SIZE 100
 #define CLIENT_ERROR 84
 #define CLIENT_SUCCESS 0
 
@@ -31,24 +31,24 @@
 ** STRUCTURE DEFINITION
 **************************************/
 
-typedef struct message_s
+typedef struct
 {
-    char buff[TCP_MSGBUFF_SIZE + 1];
+    char buff[USER_MESSAGE_SIZE + 1];
     int write_pos;
     int read_pos;
-} message_t;
+} user_message_t;
 
 /**************************************
 ** FUNCTIONS DEFINITION
 **************************************/
 
-message_t *tcp_new_message(void);
-int tcp_add_to_message(message_t *message, char *str);
-int tcp_send_message(int socket, message_t *message);
-bool tcp_is_waiting_message(message_t *message);
-int tcp_receive_message(int socket, message_t *receive);
-char *tcp_get_message2(char *line, char *buffer, int i, int j);
-char *tcp_get_message(int socket);
-char *tcp_getline_receive(message_t *receive);
+user_message_t *user_new_message(void);
+int user_add_to_message(user_message_t *message, char *str);
+int user_send_message(int socket, user_message_t *message);
+bool user_is_waiting_message(user_message_t *message);
+int user_receive_message(int socket, user_message_t *receive);
+char *user_get_message2(char *line, char *buffer, int i, int j);
+char *user_get_message(int socket);
+char *user_getline_receive(user_message_t *receive);
 
 #endif

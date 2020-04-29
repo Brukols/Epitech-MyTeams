@@ -18,9 +18,9 @@ client_t *init_client()
         fprintf(stdout, "./myteams_cli: initialisation failed\n");
         return (NULL);
     }
-    client->server_io = tcp_new_message();
-    client->client_io = tcp_new_message();
-    if (!client->server_io || !client->client_io) {
+    client->user_in = user_new_message();
+    client->user_out = user_new_message();
+    if (!client->user_in || !client->user_out) {
         fprintf(stdout, "./myteams_cli: initialisation failed\n");
         return (NULL);
     }

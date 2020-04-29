@@ -14,7 +14,7 @@
 
 #include <netinet/in.h>
 #include <stdbool.h>
-#include "message_t.h"
+#include "user_message.h"
 
 /**************************************
 ** DEFINE
@@ -32,8 +32,8 @@ typedef struct
     bool close;
     int socket;
     struct sockaddr_in server_infos;
-    message_t *client_io;
-    message_t *server_io;
+    user_message_t *user_in;
+    user_message_t *user_out;
     fd_set reads;
     fd_set writes;
     fd_set excepts;
@@ -59,5 +59,8 @@ void close_client(client_t *info);
 int run_client(client_t *info);
 int select_activities(client_t *info);
 int handle_io_activities(client_t *info);
+
+/* CLIENT */
+int handle_client_activities(client_t *info);
 
 #endif /* !CLIENT_H_ */
