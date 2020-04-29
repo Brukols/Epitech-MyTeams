@@ -11,7 +11,21 @@
 #include "client.h"
 #include <string.h>
 
-static const char *response = "welcome\n";
+static const char *response = "welcome";
+
+int add_response(client_t *client)
+{
+    header_t header = {200, strlen(response)};
+    bool ret;
+
+    ret = smart_buffer_add_data(client->write_buf, &header, sizeof(header_t));
+    if (!ret)
+        return (FAILURE);
+    ret = smart_buffer_add_string(client->write_buf, response);
+    if (!ret)
+        return (FAILURE);
+    return (SUCCESS);
+}
 
 int new_connection(server_t *server)
 {
@@ -29,10 +43,7 @@ ntohs(addr.sin_port));
         return (FAILURE);
     if (list_add_elem_at_back(&server->client, client) == false)
         return (FAILURE);
-    client->write_buf = concat_buffer(client->write_buf, \
-&(header_t){200, strlen(response)});
-    client->write_buf = concat_buffer(client->write_buf, response);
-    if (!client->write_buf)
+    if (add_response(client) < 0)
         return (FAILURE);
     return (0);
 }

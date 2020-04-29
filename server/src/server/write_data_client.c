@@ -12,13 +12,7 @@
 
 int write_data_client(client_t *client)
 {
-    ssize_t len = write(client->fd, client->write_buf, \
-strlen(client->write_buf));
+    ssize_t len = smart_buffer_write(client->write_buf, client->fd);
 
-    if (len < 0)
-        return (FAILURE);
-    client->write_buf = erase_buffer(client->write_buf, len);
-    if (!client->write_buf)
-        return (FAILURE);
-    return (0);
+    return (len);
 }
