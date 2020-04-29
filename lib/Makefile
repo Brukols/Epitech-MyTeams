@@ -35,6 +35,7 @@ SRC	=\
 TEST_SRC	=	\
 				tests/redirect_all_std.c	\
 				tests/test_generic_list.c	\
+				tests/test_smart_buffer.c	\
 
 CFLAGS = 	-Iinclude -W -Wall -Wshadow -Wextra -Werror
 
@@ -55,7 +56,7 @@ fclean: clean
 
 re: fclean all
 
-tests_run:
+tests_run:	clean
 			$(CC) -o $(TEST_NAME) $(CFLAGS) $(SRC) $(TEST_SRC) -lcriterion --coverage
 			./$(TEST_NAME)
 			gcovr -etests
