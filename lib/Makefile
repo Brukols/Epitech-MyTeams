@@ -26,6 +26,10 @@ SRC	=	src/list_add_elem_at_back.c	\
 		src/list_is_empty.c	\
 		src/smart_buffer.c	\
 
+TEST_SRC	=	\
+				tests/redirect_all_std.c	\
+				tests/test_generic_list.c	\
+
 CFLAGS = 	-Iinclude -W -Wall -Wshadow -Wextra -Werror
 
 CC	=	gcc

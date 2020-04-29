@@ -29,10 +29,13 @@ bool smart_buffer_add_string(smart_buffer_t *buffer, const char *str);
 bool smart_buffer_add_data(smart_buffer_t *buff, const void *data, size_t size);
 
 bool smart_buffer_get_data(smart_buffer_t *buffer, void *var, size_t size);
+bool smart_buffer_get_data_if(
+    smart_buffer_t *buffer, void *var, size_t size, bool (*fct)(void *));
 
 size_t smart_buffer_get_size(const smart_buffer_t *buffer);
 void smart_buffer_empty(smart_buffer_t *buff);
 
+ssize_t smart_buffer_read(smart_buffer_t *buffer, int fd);
 ssize_t smart_buffer_write(smart_buffer_t *buffer, int fd);
 
 #endif /* !SMART_BUFFER_H */

@@ -49,6 +49,27 @@ size_t smart_buffer_get_size(const smart_buffer_t *buffer)
     return (size);
 }
 
+bool smart_buffer_get_data_if(
+    smart_buffer_t *buff, void *var, size_t size, bool (*fct)(void *))
+{
+    size_t pos = buff->start;
+
+    if (size > smart_buffer_get_size(buff))
+        return (false);
+    for (size_t i = 0; i < size; i++) {
+        (char *){var}[i] = buff->buffer[pos];
+        pos++;
+        if (pos == SMART_BUFFER_SIZE)
+            pos = 0;
+    }
+    if (!fct(var))
+        return (false);
+    buff->start += size;
+    if (buff->start >= SMART_BUFFER_SIZE)
+        buff->start -= SMART_BUFFER_SIZE;
+    return (true);
+}
+
 bool smart_buffer_get_data(smart_buffer_t *buff, void *var, size_t size)
 {
     if (size > smart_buffer_get_size(buff))
@@ -93,5 +114,16 @@ ssize_t smart_buffer_write(smart_buffer_t *buffer, int fd)
         if (buffer->start >= SMART_BUFFER_SIZE)
             buffer->start -= SMART_BUFFER_SIZE;
     }
+    return (ret);
+}
+
+ssize_t smart_buffer_read(smart_buffer_t *buffer, int fd)
+{
+    static char read_buffer[SMART_BUFFER_SIZE];
+    size_t size = SMART_BUFFER_SIZE - smart_buffer_get_size(buffer);
+    ssize_t ret = read(fd, read_buffer, size);
+
+    if (ret > 0)
+        smart_buffer_add_data(buffer, read_buffer, ret);
     return (ret);
 }
