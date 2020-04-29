@@ -19,7 +19,6 @@ smart_buffer_t *smart_buffer_create(void)
 
 void smart_buffer_destroy(smart_buffer_t *smart_buffer)
 {
-    free(smart_buffer->buffer);
     free(smart_buffer);
 }
 
