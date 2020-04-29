@@ -5,9 +5,9 @@
 ** main
 */
 
-#include "my_teams.h"
+#include "server.h"
 
 int main(int ac, char **av)
 {
-    return (my_teams(ac, av));
+    return (my_teams_server(ac, av));
 }

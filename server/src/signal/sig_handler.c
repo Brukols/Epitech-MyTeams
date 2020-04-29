@@ -7,7 +7,7 @@
 
 #include <signal.h>
 #include <stdbool.h>
-#include "my_teams.h"
+#include "server.h"
 
 void sig_handler(int signo)
 {

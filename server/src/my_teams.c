@@ -5,10 +5,9 @@
 ** TODO: add description
 */
 
-#include "my_teams.h"
 #include "server.h"
 
-int my_teams(int ac, char **av)
+int my_teams_server(int ac, char **av)
 {
     server_t *server;
 

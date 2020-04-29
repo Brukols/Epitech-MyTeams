@@ -6,7 +6,6 @@
 */
 
 #include "server.h"
-#include "my_teams.h"
 #include <stdio.h>
 #include <arpa/inet.h>
 #include "client.h"

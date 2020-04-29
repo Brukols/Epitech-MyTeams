@@ -9,8 +9,15 @@
 #define SERVER_H_
 
 #include <netinet/ip.h>
-#include "generic_list.h"
 #include <uuid/uuid.h>
+
+#include "generic_list.h"
+#include "client.h"
+
+#define TEAMS_ERROR 84
+#define TEAMS_SUCCESS 0
+#define FAILURE -1
+#define SUCCESS 0
 
 typedef struct __attribute__((packed))
 {
@@ -28,8 +35,27 @@ typedef struct
     list_t client;
 } server_t;
 
+int my_teams_server(int ac, char **av);
+
+/* HELP */
+int display_help(void);
+int teams_check_arg(int ac, char **av);
+
+/* SIGNAL */
+bool terminate(bool value);
+void sig_handler(int signo);
+
+/* SERVER */
 server_t *init_server(char **av);
-int launch_server(server_t *server);
 void delete_server(server_t *server);
+int launch_server(server_t *server);
+int translate_select(server_t *server, fd_set *readfs, fd_set *writefs);
+int new_connection(server_t *server);
+int read_data_client(server_t *server, client_t *client);
+int write_data_client(client_t *client);
+
+/* BUFFER */
+void *concat_buffer(void *dest, const void *src);
+char *erase_buffer(char *buffer, long pos);
 
 #endif /* !SERVER_H_ */

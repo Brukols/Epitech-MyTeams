@@ -9,7 +9,6 @@
 #include <unistd.h>
 #include "server.h"
 #include <string.h>
-#include "my_teams.h"
 
 static const char *response = "disconnection\n";
 

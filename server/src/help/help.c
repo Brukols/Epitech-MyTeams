@@ -8,9 +8,9 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdio.h>
-#include "my_teams.h"
+#include "server.h"
 
-int display_help()
+int display_help(void)
 {
     printf("USAGE: ./myteams_server port\n\n");
     printf("\tport  is the number on which the server socket listens.\n");

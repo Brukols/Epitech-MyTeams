@@ -6,7 +6,6 @@
 */
 
 #include "server.h"
-#include "my_teams.h"
 #include "client.h"
 #include "user.h"
 #include <unistd.h>

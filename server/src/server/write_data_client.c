@@ -7,7 +7,7 @@
 
 #include "client.h"
 #include <unistd.h>
-#include "my_teams.h"
+#include "server.h"
 #include <string.h>
 
 int write_data_client(client_t *client)
