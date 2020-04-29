@@ -8,15 +8,17 @@
 #ifndef SMART_BUFFER_H
 #define SMART_BUFFER_H
 
-#define INITIAL_SIZE 1024
+#define SMART_BUFFER_SIZE 16384
+#define SMART_BUFFER_MAX_WRITE 512
 
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 typedef struct smart_buffer {
-    char *buffer;
-    size_t size;
+    char buffer[SMART_BUFFER_SIZE];
+    size_t start;
     size_t end;
 } smart_buffer_t;
 
@@ -28,7 +30,9 @@ bool smart_buffer_add_data(smart_buffer_t *buff, const void *data, size_t size);
 
 bool smart_buffer_get_data(smart_buffer_t *buffer, void *var, size_t size);
 
+size_t smart_buffer_get_size(const smart_buffer_t *buffer);
 void smart_buffer_empty(smart_buffer_t *buff);
 
+ssize_t smart_buffer_write(smart_buffer_t *buffer, int fd);
 
 #endif /* !SMART_BUFFER_H */
