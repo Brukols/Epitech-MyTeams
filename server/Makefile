@@ -26,7 +26,7 @@ SRCS	=	src/main.c		\
 			src/buffer/concat_buffer.c		\
 			src/buffer/erase_buffer.c		\
 
-CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include
+CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 
 LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/
 

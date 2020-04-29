@@ -23,7 +23,13 @@ typedef struct __attribute__((packed))
 {
     unsigned short reply;
     int message_size;
-} header_t;
+} server_reply_t;
+
+typedef struct __attribute__((packed))
+{
+    unsigned char command;
+    int message_size;
+} client_request_t;
 
 typedef struct
 {
