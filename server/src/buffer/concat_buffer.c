@@ -15,10 +15,11 @@ char *concat_buffer(char *dest, char *src)
     if (dest && !tmp)
         return (NULL);
     free(dest);
-    dest = (char *)(calloc(1, strlen(dest) + strlen(src) + 1));
+    dest = calloc(1, (tmp ? strlen(tmp) : 0) + strlen(src) + 1);
     if (!dest)
         return (NULL);
-    strcat(dest, tmp);
+    if (tmp)
+        strcat(dest, tmp);
     strcat(dest, src);
     return (dest);
 }

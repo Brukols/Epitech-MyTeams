@@ -13,15 +13,22 @@
 
 int new_connection(server_t *server)
 {
-    struct sockaddr_in client;
-    int fd = accept(server->fd, (struct sockaddr *)&client, \
-&(socklen_t){sizeof(client)});
+    struct sockaddr_in addr;
+    int fd = accept(server->fd, (struct sockaddr *)&addr, \
+&(socklen_t){sizeof(addr)});
+    client_t *client;
 
     if (fd < 0)
         return (FAILURE);
-    printf("Connection from %s in port %d\n", inet_ntoa(client.sin_addr), \
-ntohs(client.sin_port));
-    if (list_add_elem_at_back(&server->client, create_client(fd)) == false)
+    printf("Connection from %s in port %d\n", inet_ntoa(addr.sin_addr), \
+ntohs(addr.sin_port));
+    client = create_client(fd);
+    if (!client)
+        return (FAILURE);
+    if (list_add_elem_at_back(&server->client, client) == false)
+        return (FAILURE);
+    client->write_buf = concat_buffer(client->write_buf, "200 WELCOME\n");
+    if (!client->write_buf)
         return (FAILURE);
     return (0);
 }
