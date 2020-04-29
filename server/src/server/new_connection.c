@@ -10,6 +10,9 @@
 #include <stdio.h>
 #include <arpa/inet.h>
 #include "client.h"
+#include <string.h>
+
+const char *response = "welcome\n";
 
 int new_connection(server_t *server)
 {
@@ -27,7 +30,9 @@ ntohs(addr.sin_port));
         return (FAILURE);
     if (list_add_elem_at_back(&server->client, client) == false)
         return (FAILURE);
-    client->write_buf = concat_buffer(client->write_buf, "200 WELCOME\n");
+    client->write_buf = concat_buffer(client->write_buf, \
+&(header_t){200, strlen(response)});
+    client->write_buf = concat_buffer(client->write_buf, response);
     if (!client->write_buf)
         return (FAILURE);
     return (0);

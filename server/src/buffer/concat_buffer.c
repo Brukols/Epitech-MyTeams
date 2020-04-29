@@ -8,18 +8,18 @@
 #include <string.h>
 #include <stdlib.h>
 
-char *concat_buffer(char *dest, char *src)
+void *concat_buffer(void *dest, const void *src)
 {
-    char *tmp = dest ? strdup(dest) : NULL;
+    char *tmp = dest ? strdup((char *)dest) : NULL;
 
     if (dest && !tmp)
         return (NULL);
     free(dest);
-    dest = calloc(1, (tmp ? strlen(tmp) : 0) + strlen(src) + 1);
+    dest = calloc(1, (tmp ? strlen(tmp) : 0) + strlen((char *)src) + 1);
     if (!dest)
         return (NULL);
     if (tmp)
-        strcat(dest, tmp);
-    strcat(dest, src);
+        strcat((char *)dest, tmp);
+    strcat((char *)dest, (char *)src);
     return (dest);
 }

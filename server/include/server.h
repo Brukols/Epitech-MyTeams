@@ -12,6 +12,12 @@
 #include "generic_list.h"
 #include <uuid/uuid.h>
 
+typedef struct __attribute__((packed))
+{
+    unsigned short reply;
+    int message_size;
+} header_t;
+
 typedef struct
 {
     int fd;
