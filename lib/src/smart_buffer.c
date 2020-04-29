@@ -50,7 +50,8 @@ size_t smart_buffer_get_size(const smart_buffer_t *buffer)
 }
 
 bool smart_buffer_get_data_if(
-    smart_buffer_t *buff, void *var, size_t size, bool (*fct)(void *))
+    smart_buffer_t *buff, void *var, size_t size,
+    bool (*fct)(smart_buffer_t *, void *))
 {
     size_t pos = buff->start;
 
@@ -62,7 +63,7 @@ bool smart_buffer_get_data_if(
         if (pos == SMART_BUFFER_SIZE)
             pos = 0;
     }
-    if (!fct(var))
+    if (!fct(buff, var))
         return (false);
     buff->start += size;
     if (buff->start >= SMART_BUFFER_SIZE)
