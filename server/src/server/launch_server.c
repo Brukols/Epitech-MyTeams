@@ -11,12 +11,13 @@
 #include "user.h"
 #include <unistd.h>
 #include <sys/signal.h>
+#include <string.h>
 
 static void init_fds_client(list_t it_client, fd_set *readfs, fd_set *writefs)
 {
     for (; it_client; it_client = it_client->next) {
         client_t *client = ((client_t *)(it_client->value));
-        if (client->write_buf != NULL)
+        if (strlen(client->write_buf) != 0)
             FD_SET(client->fd, writefs);
         FD_SET(client->fd, readfs);
     }

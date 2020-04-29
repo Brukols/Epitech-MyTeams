@@ -10,16 +10,15 @@
 
 void *concat_buffer(void *dest, const void *src)
 {
-    char *tmp = dest ? strdup((char *)dest) : NULL;
+    char *tmp = strdup((char *)dest);
 
     if (dest && !tmp)
         return (NULL);
     free(dest);
-    dest = calloc(1, (tmp ? strlen(tmp) : 0) + strlen((char *)src) + 1);
+    dest = calloc(1, strlen(tmp) + strlen((char *)src) + 1);
     if (!dest)
         return (NULL);
-    if (tmp)
-        strcat((char *)dest, tmp);
+    strcat((char *)dest, tmp);
     strcat((char *)dest, (char *)src);
     return (dest);
 }

@@ -17,8 +17,8 @@ client_t *create_client(int fd)
         return (NULL);
     client->fd = fd;
     client->close = false;
-    client->write_buf = NULL;
-    client->read_buf = NULL;
+    client->write_buf = strdup("");
+    client->read_buf = strdup("");
     client->path = NULL;
     return (client);
 }
