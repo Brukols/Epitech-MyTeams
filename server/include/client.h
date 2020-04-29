@@ -23,4 +23,6 @@ typedef struct
     char *path;
 } client_t;
 
+client_t *create_client(int fd);
+
 #endif //NWP_MYTEAMS_2019_CLIENT_H

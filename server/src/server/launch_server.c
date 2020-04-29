@@ -49,8 +49,8 @@ int launch_server(server_t *server)
             break;
         if (rvalue < 0)
             return (FAILURE);
-        // if (translate_select(server, &readfs, &writefs) < 0)
-        //     return (FAILURE);
+        if (translate_select(server, &readfs, &writefs) < 0)
+            return (FAILURE);
     }
     close(server->fd);
     return (0);

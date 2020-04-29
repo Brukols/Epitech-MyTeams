@@ -21,6 +21,7 @@
 #define SUCCESS 0
 
 #include <stdbool.h>
+#include "server.h"
 
 /**************************************
 ** STRUCT
@@ -38,5 +39,9 @@ int teams_verif_arg(int ac, char **av);
 /* SIGNAL */
 bool terminate(bool value);
 void sig_handler(int signo);
+
+/* SERVER */
+int translate_select(server_t *server, fd_set *readfs, fd_set *writefs);
+int new_connection(server_t *server);
 
 #endif //NWP_MYTEAMS_2019_MY_TEAMS_H
