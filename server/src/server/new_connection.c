@@ -12,7 +12,7 @@
 #include "client.h"
 #include <string.h>
 
-const char *response = "welcome\n";
+static const char *response = "welcome\n";
 
 int new_connection(server_t *server)
 {

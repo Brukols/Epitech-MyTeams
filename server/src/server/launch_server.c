@@ -13,14 +13,28 @@
 #include <sys/signal.h>
 #include <string.h>
 
-static void init_fds_client(list_t it_client, fd_set *readfs, fd_set *writefs)
+static bool init_fds_client(list_t *client, fd_set *readfs, fd_set *writefs)
 {
-    for (; it_client; it_client = it_client->next) {
-        client_t *client = ((client_t *)(it_client->value));
-        if (strlen(client->write_buf) != 0)
-            FD_SET(client->fd, writefs);
-        FD_SET(client->fd, readfs);
+    list_t it = *client;
+    bool fs = true;
+
+    while (it) {
+        client_t *tmp = ((client_t *)(it->value));
+
+        if (strlen(tmp->write_buf) == 0 && tmp->close) {
+            list_del_elem_at_front(&it, &delete_client);
+            if (fs)
+                *client = it;
+            continue;
+        }
+        if (strlen(tmp->write_buf) != 0)
+            FD_SET(tmp->fd, writefs);
+        if (!tmp->close)
+            FD_SET(tmp->fd, readfs);
+        it = it->next;
+        fs = false;
     }
+    return (true);
 }
 
 static void init_fds(server_t *server, fd_set *readfs, fd_set *writefs)
@@ -29,10 +43,10 @@ static void init_fds(server_t *server, fd_set *readfs, fd_set *writefs)
     FD_ZERO(writefs);
     FD_SET(server->fd, readfs);
 
-    init_fds_client(server->client, readfs, writefs);
+    init_fds_client(&server->client, readfs, writefs);
     list_t it_user = server->users;
     for (; it_user; it_user = it_user->next) {
-        init_fds_client(((user_t *)(it_user->value))->client, readfs, writefs);
+        init_fds_client(&((user_t *)(it_user->value))->client, readfs, writefs);
     }
 }
 
@@ -53,6 +67,6 @@ int launch_server(server_t *server)
         if (translate_select(server, &readfs, &writefs) < 0)
             return (FAILURE);
     }
-    close(server->fd);
+    delete_server(server);
     return (0);
 }

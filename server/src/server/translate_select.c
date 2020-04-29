@@ -13,7 +13,7 @@
 static int translate_select_client(server_t *server, list_t list, fd_set *readfs, \
 fd_set *writefs)
 {
-    int ret;
+    int ret = 0;
 
     for (; list; list = list->next) {
         client_t *client = ((client_t *)list->value);

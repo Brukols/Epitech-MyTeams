@@ -20,5 +20,6 @@ void *concat_buffer(void *dest, const void *src)
         return (NULL);
     strcat((char *)dest, tmp);
     strcat((char *)dest, (char *)src);
+    free(tmp);
     return (dest);
 }

@@ -30,5 +30,6 @@ typedef struct
 
 server_t *init_server(char **av);
 int launch_server(server_t *server);
+void delete_server(server_t *server);
 
 #endif /* !SERVER_H_ */
