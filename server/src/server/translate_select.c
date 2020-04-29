@@ -9,8 +9,8 @@
 #include "client.h"
 #include "user.h"
 
-static int translate_select_client(server_t *server, list_t list, fd_set *readfs, \
-fd_set *writefs)
+static int translate_select_client(server_t *server, list_t list, \
+fd_set *readfs, fd_set *writefs)
 {
     int ret = 0;
 

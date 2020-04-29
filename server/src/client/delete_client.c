@@ -5,7 +5,7 @@
 ** delete_client
 */
 
-#include "client.h"
+#include "server.h"
 #include <stdlib.h>
 #include <unistd.h>
 
