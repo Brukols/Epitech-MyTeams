@@ -19,14 +19,16 @@ SRCS	=	src/main.c		\
 			src/server/read_data_client.c	\
 			src/server/write_data_client.c	\
 			src/server/delete_server.c		\
+			src/server/translate_data_client.c		\
 			src/signal/sig_handler.c		\
 			src/signal/terminate.c			\
 			src/client/create_client.c		\
 			src/client/delete_client.c		\
 			src/buffer/concat_buffer.c		\
 			src/buffer/erase_buffer.c		\
+			src/server/commands/command_help.c	\
 
-CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include
+CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 
 LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/
 
