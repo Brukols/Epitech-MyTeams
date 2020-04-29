@@ -20,13 +20,13 @@ static bool init_fds_client(list_t *client, fd_set *readfs, fd_set *writefs)
     while (it) {
         client_t *tmp = ((client_t *)(it->value));
 
-        if (strlen(tmp->write_buf) == 0 && tmp->close) {
+        if (strlen(tmp->write_buf->buffer) == 0 && tmp->close) {
             list_del_elem_at_front(&it, &delete_client);
             if (fs)
                 *client = it;
             continue;
         }
-        if (strlen(tmp->write_buf) != 0)
+        if (strlen(tmp->write_buf->buffer) != 0)
             FD_SET(tmp->fd, writefs);
         if (!tmp->close)
             FD_SET(tmp->fd, readfs);

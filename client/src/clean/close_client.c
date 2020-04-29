@@ -11,10 +11,8 @@
 
 void close_client(client_t *info)
 {
-    if (info->client_io)
-        free(info->client_io);
-    if (info->server_io)
-        free(info->server_io);
+    free(info->user_in);
+    free(info->user_out);
     close(info->socket);
     free(info);
 }

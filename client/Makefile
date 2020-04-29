@@ -16,12 +16,13 @@ SRCS	=	src/main.c 		\
 			src/process/run_client.c	\
 			src/process/select_activities.c	\
 			src/process/handle_io_activities.c	\
-			src/message_t/tcp_add_to_message.c	\
-			src/message_t/tcp_get_message.c	\
-			src/message_t/tcp_is_waiting_message.c	\
-			src/message_t/tcp_new_message.c	\
-			src/message_t/tcp_receive_message.c	\
-			src/message_t/tcp_send_message.c	\
+			src/process/client/handle_client_activities.c	\
+			src/user_message/user_add_to_message.c	\
+			src/user_message/user_get_message.c	\
+			src/user_message/user_is_waiting_message.c	\
+			src/user_message/user_new_message.c	\
+			src/user_message/user_receive_message.c	\
+			src/user_message/user_send_message.c	\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -Werror -Iinclude/
 

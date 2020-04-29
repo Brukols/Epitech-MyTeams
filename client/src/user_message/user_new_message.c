@@ -5,15 +5,15 @@
 ** TODO: add description
 */
 
-#include "message_t.h"
+#include "user_message.h"
 
-message_t *tcp_new_message(void)
+user_message_t *user_new_message(void)
 {
-    message_t *message = malloc(sizeof(message_t));
+    user_message_t *message = malloc(sizeof(user_message_t));
 
     if (!message)
         return (NULL);
-    bzero(message->buff, TCP_MSGBUFF_SIZE + 1);
+    bzero(message->buff, USER_MESSAGE_SIZE + 1);
     message->write_pos = 0;
     message->read_pos = 0;
     return (message);

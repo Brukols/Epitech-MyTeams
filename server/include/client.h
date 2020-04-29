@@ -9,6 +9,7 @@
 #define NWP_MYTEAMS_2019_CLIENT_H
 
 #include <stdbool.h>
+#include "smart_buffer.h"
 
 /**************************************
 ** STRUCT
@@ -18,8 +19,8 @@ typedef struct
 {
     int fd;
     bool close;
-    char *write_buf;
-    char *read_buf;
+    smart_buffer_t *write_buf;
+    smart_buffer_t *read_buf;
     char *path;
 } client_t;
 

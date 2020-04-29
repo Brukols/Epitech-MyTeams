@@ -17,10 +17,10 @@ static void set_fd_set(client_t *info)
     FD_SET(0, &info->reads);
     FD_SET(info->socket, &info->reads);
 
-    //if (message à écrire sur à serveur)
+    //if (tcp_is_waiting_message(info->server_io))
     //    FD_SET(info->socket, &info->writes);
-    //if (message à écrire sur stdout)
-    //    FD_SET(1, &info->writes);
+    if (user_is_waiting_message(info->user_out))
+        FD_SET(1, &info->writes);
 
     FD_SET(0, &info->excepts);
     FD_SET(1, &info->excepts);
