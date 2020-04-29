@@ -12,6 +12,12 @@
 #include "generic_list.h"
 #include <uuid/uuid.h>
 
+typedef struct __attribute__((packed))
+{
+    unsigned short reply;
+    int message_size;
+} header_t;
+
 typedef struct
 {
     int fd;
@@ -21,5 +27,9 @@ typedef struct
     list_t teams;
     list_t client;
 } server_t;
+
+server_t *init_server(char **av);
+int launch_server(server_t *server);
+void delete_server(server_t *server);
 
 #endif /* !SERVER_H_ */

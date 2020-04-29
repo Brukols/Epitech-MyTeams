@@ -17,6 +17,12 @@
 **************************************/
 #define TEAMS_ERROR 84
 #define TEAMS_SUCCESS 0
+#define FAILURE -1
+#define SUCCESS 0
+
+#include <stdbool.h>
+#include "server.h"
+#include "client.h"
 
 /**************************************
 ** STRUCT
@@ -30,5 +36,19 @@ int my_teams(int ac, char **av);
 /* HELP */
 int display_help();
 int teams_check_arg(int ac, char **av);
+
+/* SIGNAL */
+bool terminate(bool value);
+void sig_handler(int signo);
+
+/* SERVER */
+int translate_select(server_t *server, fd_set *readfs, fd_set *writefs);
+int new_connection(server_t *server);
+int read_data_client(server_t *server, client_t *client);
+int write_data_client(client_t *client);
+
+/* BUFFER */
+void *concat_buffer(void *dest, const void *src);
+char *erase_buffer(char *buffer, long pos);
 
 #endif //NWP_MYTEAMS_2019_MY_TEAMS_H
