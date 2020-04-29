@@ -7,6 +7,8 @@
 
 NAME	= 	myteams_server
 
+LIB_NAME	=	utils
+
 SRCS	=	src/main.c		\
 			src/my_teams.c	\
 			src/help/help.c	\
@@ -24,9 +26,9 @@ SRCS	=	src/main.c		\
 			src/buffer/concat_buffer.c		\
 			src/buffer/erase_buffer.c		\
 
-CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/my_list/include
+CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include
 
-LDFLAGS +=  -l my_list -L ./../lib/
+LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/
 
 OBJS	=	$(SRCS:.c=.o)
 

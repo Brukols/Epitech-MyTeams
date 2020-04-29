@@ -43,7 +43,7 @@ bool smart_buffer_add_data(smart_buffer_t *buff, const void *data, size_t size)
 
 size_t smart_buffer_get_size(const smart_buffer_t *buffer)
 {
-    size_t size = buffer->end - buffer->start;
+    ssize_t size = buffer->end - buffer->start;
 
     if (size < 0)
         size += SMART_BUFFER_SIZE;

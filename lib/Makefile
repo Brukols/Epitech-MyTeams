@@ -5,7 +5,7 @@
 ## A simple Makefile to compile my lib list
 ##
 
-NAME	=	libmy_list.a
+NAME	=	libutils.a
 
 SRC	=	src/list_add_elem_at_back.c	\
 		src/list_add_elem_at_front.c	\
@@ -24,6 +24,7 @@ SRC	=	src/list_add_elem_at_back.c	\
 		src/list_get_first_node_with_value.c	\
 		src/list_get_size.c	\
 		src/list_is_empty.c	\
+		src/smart_buffer.c	\
 
 CFLAGS = 	-Iinclude -W -Wall -Wshadow -Wextra -Werror
 
@@ -31,16 +32,21 @@ CC	=	gcc
 
 OBJ	=	$(SRC:.c=.o)
 
+RM	=	rm -f
+
 all:	$(OBJ)
 	ar rc $(NAME) $(OBJ)
-	mv $(NAME) ./../
 
 clean:
-	rm -rf $(OBJ)
+		$(RM) $(OBJ)
 
 fclean: clean
-	rm -rf ./../$(NAME)
+		$(RM) $(NAME)
 
 re: fclean all
+
+tests_run:
+
+
 
 .PHONY: all clean fclean re

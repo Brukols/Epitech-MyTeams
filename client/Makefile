@@ -7,7 +7,7 @@
 
 NAME	= 	myteams_cli
 
-SRCS	=	src/main.c 		\
+SRCS	=	src/main.c	\
 			src/client.c	\
 			src/help/help.c	\
 			src/init/init_client.c	\
