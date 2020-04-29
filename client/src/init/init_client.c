@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "client.h"
+#include "myteams_client.h"
 
 client_t *init_client()
 {

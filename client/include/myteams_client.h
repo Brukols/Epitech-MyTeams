@@ -5,8 +5,8 @@
 ** client
 */
 
-#ifndef CLIENT_H_
-#define CLIENT_H_
+#ifndef MYTEAMS_CLIENT_H_
+#define MYTEAMS_CLIENT_H_
 
 /**************************************
 ** INCLUDE

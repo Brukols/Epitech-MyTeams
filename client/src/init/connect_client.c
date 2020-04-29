@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
-#include "client.h"
+#include "myteams_client.h"
 
 int connect_client(client_t *info, char *ip, char *port)
 {

@@ -5,7 +5,7 @@
 ** TODO: add description
 */
 
-#include "client.h"
+#include "myteams_client.h"
 
 int run_client(client_t *info)
 {

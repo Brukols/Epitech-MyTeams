@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include "client.h"
+#include "myteams_client.h"
 
 void display_help(char *path)
 {

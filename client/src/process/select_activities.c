@@ -7,7 +7,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "client.h"
+#include "myteams_client.h"
 
 static void set_fd_set(client_t *info)
 {

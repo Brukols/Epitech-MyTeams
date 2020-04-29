@@ -6,7 +6,7 @@
 */
 
 #include <stdio.h>
-#include "client.h"
+#include "myteams_client.h"
 
 static int handle_excepts_activities(client_t *info)
 {

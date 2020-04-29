@@ -5,7 +5,7 @@
 ** TODO: add description
 */
 
-#include "client.h"
+#include "myteams_client.h"
 
 int handle_client_activities(client_t *info)
 {

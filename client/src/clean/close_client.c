@@ -7,7 +7,7 @@
 
 #include <stdlib.h>
 #include <zconf.h>
-#include "client.h"
+#include "myteams_client.h"
 
 void close_client(client_t *info)
 {

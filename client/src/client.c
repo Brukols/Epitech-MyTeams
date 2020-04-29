@@ -5,7 +5,7 @@
 ** client
 */
 
-#include "client.h"
+#include "myteams_client.h"
 #include <stddef.h>
 
 int client(int ac, char **av)
