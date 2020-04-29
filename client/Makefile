@@ -7,6 +7,8 @@
 
 NAME	= 	myteams_cli
 
+LIB_NAME	=	utils
+
 SRCS	=	src/main.c	\
 			src/client.c	\
 			src/help/help.c	\
@@ -26,7 +28,7 @@ SRCS	=	src/main.c	\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -Werror -Iinclude/
 
-LDFLAGS +=  \
+LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/
 
 OBJS	=	$(SRCS:.c=.o)
 
