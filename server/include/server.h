@@ -13,23 +13,12 @@
 
 #include "generic_list.h"
 #include "client.h"
+#include "requests.h"
 
 #define TEAMS_ERROR 84
 #define TEAMS_SUCCESS 0
 #define FAILURE -1
 #define SUCCESS 0
-
-typedef struct __attribute__((packed))
-{
-    unsigned short reply;
-    int message_size;
-} server_reply_t;
-
-typedef struct __attribute__((packed))
-{
-    unsigned char command;
-    int message_size;
-} client_request_t;
 
 typedef struct
 {
