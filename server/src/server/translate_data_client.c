@@ -11,6 +11,7 @@
 const commands_t commands[] = {
     {HELP, &command_help},
     {LOGIN, &command_login},
+    {LOGOUT, &command_logout},
     {UNKNOWN, NULL}
 };
 
