@@ -7,6 +7,7 @@
 
 #include "server.h"
 #include "user.h"
+#include "logging_server.h"
 
 static int if_user_equal(void *user, void *username)
 {
@@ -35,6 +36,7 @@ static user_t *get_user(server_t *server, client_t *client, char *username)
         return (NULL);
     if (!list_del_elem_at_value(&server->client, client, NULL))
         return (NULL);
+    // server_event_user_created(user->uuid, user->username);
     return (user);
 }
 
