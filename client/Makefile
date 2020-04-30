@@ -33,6 +33,8 @@ SRCS	=	src/main.c	\
 			src/process/client/commands/use_cmd.c	\
 			src/process/client/commands/user_cmd.c	\
 			src/process/client/commands/users_cmd.c	\
+			src/process/server/handle_server_activities.c	\
+			src/process/server/replies/reply_200.c	\
 			src/user_message/user_add_to_message.c	\
 			src/user_message/user_get_message.c	\
 			src/user_message/user_is_waiting_message.c	\

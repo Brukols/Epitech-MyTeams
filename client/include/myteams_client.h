@@ -52,6 +52,12 @@ typedef struct
     int (*ft)(client_t *client, char *cmd);
 } commands_dictionnary_t;
 
+typedef struct
+{
+    unsigned short reply;
+    int (*ft)(client_t *client, void *header);
+} reply_codes_dictionnary_t;
+
 /**************************************
 ** FUNCTIONS
 **************************************/
@@ -91,5 +97,11 @@ int use_cmd(client_t *info, char *cmd);
 int create_cmd(client_t *info, char *cmd);
 int list_cmd(client_t *info, char *cmd);
 int info_cmd(client_t *info, char *cmd);
+
+/* SERVER */
+int handle_server_activities(client_t *info);
+
+/* REPLIES */
+int reply_200(client_t *info, void *data);
 
 #endif /* !CLIENT_H_ */

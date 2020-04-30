@@ -14,8 +14,8 @@ int run_client(client_t *info)
             return (CLIENT_ERROR);
         if (handle_client_activities(info) == CLIENT_ERROR)
             return (CLIENT_ERROR);
-        //if (handle_server_activities(info) == CLIENT_ERROR)
-        //    return (CLIENT_ERROR);
+        if (handle_server_activities(info) == CLIENT_ERROR)
+            return (CLIENT_ERROR);
     }
     return (CLIENT_SUCCESS);
 }
