@@ -14,6 +14,10 @@
 
 #include <netinet/in.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stddef.h>
+#include <unistd.h>
 #include "user_message.h"
 #include "smart_buffer.h"
 
