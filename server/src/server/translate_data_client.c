@@ -21,8 +21,6 @@ int translate_data_client(server_t *server, client_t *client, client_request_t *
             continue;
         if (commands[i].fct(server, client, reply, data) < 0)
             return (FAILURE);
-        free(data);
-        free(reply);
         return (SUCCESS);
     }
     return (FAILURE);
