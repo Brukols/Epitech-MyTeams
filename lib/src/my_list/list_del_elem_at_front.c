@@ -13,7 +13,8 @@ bool list_del_elem_at_front(list_t *front_ptr, void (*del)(void* data))
     if (list_is_empty(*front_ptr)) return (false);
 
     *front_ptr = to_delete->next;
-    del(to_delete->value);
+    if (del)
+        del(to_delete->value);
     free(to_delete);
     return (true);
 }

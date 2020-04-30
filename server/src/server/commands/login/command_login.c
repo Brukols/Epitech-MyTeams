@@ -20,7 +20,7 @@ static user_t *get_user(server_t *server, client_t *client, char *username)
     user_t *user = (user_t *)list_get_first_node_with_value(server->users, username, &if_user_equal);
 
     if (user) {
-        if (!list_add_elem_at_back(&server->client, client))
+        if (!list_add_elem_at_back(&user->client, client))
             return (NULL);
         if (!list_del_elem_at_value(&server->client, client, NULL))
             return (NULL);
@@ -31,8 +31,9 @@ static user_t *get_user(server_t *server, client_t *client, char *username)
         return (NULL);
     if (!list_add_elem_at_back(&server->users, user))
         return (NULL);
-    if (!list_add_elem_at_back(&server->client, client))
+    if (!list_add_elem_at_back(&user->client, client))
         return (NULL);
+    printf("%d\n", ((client_t *)(server->client->value))->fd);
     if (!list_del_elem_at_value(&server->client, client, NULL))
         return (NULL);
     return (user);

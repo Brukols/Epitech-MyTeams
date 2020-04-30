@@ -18,9 +18,7 @@ fd_set *readfs, fd_set *writefs)
         client_t *client = ((client_t *)list->value);
 
         if (FD_ISSET(client->fd, readfs))
-            ret = read_data_client(server, client);
-        if (ret < 0)
-            return (FAILURE);
+            return (read_data_client(server, client));
         if (FD_ISSET(client->fd, writefs))
             ret = write_data_client(client);
         if (ret < 0)
@@ -35,13 +33,13 @@ int translate_select(server_t *server, fd_set *readfs, fd_set *writefs)
         if (new_connection(server) < 0)
             return (FAILURE);
     }
-    if (translate_select_client(server, server->client, readfs, writefs) < 0)
-        return (FAILURE);
     for (list_t list = server->users; list; list = list->next) {
         user_t *user = ((user_t *)list->value);
 
         if (translate_select_client(server, user->client, readfs, writefs) < 0)
             return (FAILURE);
     }
+    if (translate_select_client(server, server->client, readfs, writefs) < 0)
+        return (FAILURE);
     return (SUCCESS);
 }
