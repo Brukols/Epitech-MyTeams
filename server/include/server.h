@@ -68,6 +68,7 @@ char *erase_buffer(char *buffer, long pos);
 /* COMMANDS */
 int command_help(server_t *server, client_t *client, client_request_t *req, char *data);
 int command_login(server_t *server, client_t *client, client_request_t *req, char *data);
+int command_logout(server_t *server, client_t *client, client_request_t *req, char *data);
 
 /* UTILS */
 int send_header_reply(unsigned short code, int size, client_t *client);
