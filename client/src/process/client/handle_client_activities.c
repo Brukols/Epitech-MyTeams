@@ -14,7 +14,7 @@ int handle_client_activities(client_t *info)
     char *command = NULL;
     char **cmd_tab = NULL;
     int ret = CLIENT_ERROR;
-    if ((command = user_getline_receive(info->user_in)) == NULL)
+    if ((command = user_getline_receive(info->user_out)) == NULL)
         return (CLIENT_SUCCESS);
     if ((cmd_tab = my_strtok(command, ' ')) == NULL) {
         free(command);
