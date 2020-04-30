@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <unistd.h>
+#include "requests.h"
 #include "user_message.h"
 #include "smart_buffer.h"
 
@@ -54,8 +55,8 @@ typedef struct
 
 typedef struct
 {
-    unsigned short reply;
-    int (*ft)(client_t *client, void *header);
+    unsigned short code;
+    int (*ft)(client_t *client, server_reply_t *header);
 } reply_codes_dictionnary_t;
 
 /**************************************
@@ -102,6 +103,6 @@ int info_cmd(client_t *info, char *cmd);
 int handle_server_activities(client_t *info);
 
 /* REPLIES */
-int reply_200(client_t *info, void *data);
+int reply_200(client_t *info, server_reply_t *header);
 
 #endif /* !CLIENT_H_ */
