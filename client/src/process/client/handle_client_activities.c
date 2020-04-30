@@ -10,6 +10,7 @@
 int handle_client_activities(client_t *info)
 {
     char *command = NULL;
+    char **cmd_tab = NULL;
     if ((command = user_getline_receive(info->user_in)) == NULL)
         return (CLIENT_SUCCESS);
     return (CLIENT_SUCCESS);

@@ -30,6 +30,9 @@ SRC	=\
 		src/smart_buffer/smart_buffer_data.c	\
 	    src/smart_buffer/smart_buffer_read_write.c	\
 	    src/smart_buffer/smart_buffer_utils.c	\
+	    src/my_array/free_array.c	\
+	    src/my_array/get_size_array.c	\
+	    src/my_array/my_strtok.c	\
 
 
 TEST_SRC	=	\
