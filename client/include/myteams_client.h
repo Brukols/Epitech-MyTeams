@@ -15,6 +15,7 @@
 #include <netinet/in.h>
 #include <stdbool.h>
 #include "user_message.h"
+#include "smart_buffer.h"
 
 /**************************************
 ** DEFINE
@@ -34,6 +35,8 @@ typedef struct
     struct sockaddr_in server_infos;
     user_message_t *user_in;
     user_message_t *user_out;
+    smart_buffer_t *server_in;
+    smart_buffer_t *server_out;
     fd_set reads;
     fd_set writes;
     fd_set excepts;
