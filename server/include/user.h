@@ -19,4 +19,6 @@ typedef struct
     list_t messages;
 } user_t;
 
+user_t *create_user(char *username);
+
 #endif /* !USER_H_ */

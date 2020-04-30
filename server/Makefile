@@ -26,11 +26,14 @@ SRCS	=	src/main.c		\
 			src/client/delete_client.c		\
 			src/buffer/concat_buffer.c		\
 			src/buffer/erase_buffer.c		\
+			src/utils/send_response.c		\
+			src/user/create_user.c			\
 			src/server/commands/command_help.c	\
+			src/server/commands/command_login/command_login.c	\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 
-LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/
+LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/ -luuid
 
 OBJS	=	$(SRCS:.c=.o)
 

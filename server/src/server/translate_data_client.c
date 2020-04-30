@@ -10,14 +10,20 @@
 
 const commands_t commands[] = {
     {HELP, &command_help},
+    {LOGIN, &command_login},
     {UNKNOWN, NULL}
 };
 
 int translate_data_client(server_t *server, client_t *client, client_request_t *reply, char *data)
 {
     for (size_t i = 0; commands[i].code != UNKNOWN; i++) {
-        if (commands[i].code == reply->command)
-            return (commands[i].fct(server, client, reply, data));
+        if (commands[i].code != reply->command)
+            continue;
+        if (commands[i].fct(server, client, reply, data) < 0)
+            return (FAILURE);
+        free(data);
+        free(reply);
+        return (SUCCESS);
     }
     return (FAILURE);
 }

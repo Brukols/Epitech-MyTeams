@@ -16,13 +16,10 @@ static const char *response = "welcome";
 int add_response(client_t *client)
 {
     server_reply_t header = {200, strlen(response)};
-    bool ret;
 
-    ret = smart_buffer_add_data(client->write_buf, &header, sizeof(server_reply_t));
-    if (!ret)
+    if (!smart_buffer_add_data(client->write_buf, &header, sizeof(server_reply_t)))
         return (FAILURE);
-    ret = smart_buffer_add_string(client->write_buf, response);
-    if (!ret)
+    if (!smart_buffer_add_string(client->write_buf, response))
         return (FAILURE);
     return (SUCCESS);
 }

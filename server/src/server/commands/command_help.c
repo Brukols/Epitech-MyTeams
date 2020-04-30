@@ -35,5 +35,9 @@ int command_help(server_t *server, client_t *client, client_request_t *req, char
     ret = smart_buffer_add_string(client->write_buf, response);
     if (!ret)
         return (FAILURE);
+    (void)server;
+    (void)client;
+    (void)req;
+    (void)data;
     return (SUCCESS);
 }

@@ -9,7 +9,7 @@
 
 bool list_delete_node(node_t *node, void (*del)(void* data))
 {
-    if (!node) return (true);
+    if (!node || !del) return (true);
     del(node->value);
     free(node);
     return (true);
