@@ -40,24 +40,21 @@ static bool if_good_reply(smart_buffer_t *buffer, void *data)
 int read_data_client(server_t *server, client_t *client)
 {
     ssize_t len = smart_buffer_read(client->read_buf, client->fd);
-    client_request_t *reply = malloc(sizeof(client_request_t));
+    client_request_t reply = {0};
     char *message;
 
-    if (!reply)
-        return (FAILURE);
     if (len == 0) {
         client->close = true;
         return (0);
     }
-    if (smart_buffer_get_data_if(client->read_buf, reply, sizeof(client_request_t), &if_good_reply) == false)
+    if (smart_buffer_get_data_if(client->read_buf, &reply, sizeof(client_request_t), &if_good_reply) == false)
         return (SUCCESS);
-    message = malloc(reply->message_size);
+    message = malloc(reply.message_size);
     if (!message)
         return (FAILURE);
-    smart_buffer_get_data(client->read_buf, message, reply->message_size);
-    if (translate_data_client(server, client, reply, message) < 0)
+    smart_buffer_get_data(client->read_buf, message, reply.message_size);
+    if (translate_data_client(server, client, &reply, message) < 0)
         return (FAILURE);
-    free(reply);
     free(message);
     return (0);
 }

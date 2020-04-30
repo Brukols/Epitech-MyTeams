@@ -54,6 +54,7 @@ $(NAME): $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
+	$(RM) $(OBJS_TESTS)
 
 fclean: clean
 	$(RM) ../$(NAME)
