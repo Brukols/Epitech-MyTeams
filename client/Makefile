@@ -19,6 +19,21 @@ SRCS	=	src/main.c	\
 			src/process/select_activities.c	\
 			src/process/handle_io_activities.c	\
 			src/process/client/handle_client_activities.c	\
+			src/process/client/commands/commands_client.c	\
+			src/process/client/commands/create_cmd.c	\
+			src/process/client/commands/help_cmd.c	\
+			src/process/client/commands/info_cmd.c	\
+			src/process/client/commands/list_cmd.c	\
+			src/process/client/commands/login_cmd.c	\
+			src/process/client/commands/logout_cmd.c	\
+			src/process/client/commands/messages_cmd.c	\
+			src/process/client/commands/send_cmd.c	\
+			src/process/client/commands/subscribe_cmd.c	\
+			src/process/client/commands/subscribed_cmd.c	\
+			src/process/client/commands/unsubscribe_cmd.c	\
+			src/process/client/commands/use_cmd.c	\
+			src/process/client/commands/user_cmd.c	\
+			src/process/client/commands/users_cmd.c	\
 			src/user_message/user_add_to_message.c	\
 			src/user_message/user_get_message.c	\
 			src/user_message/user_is_waiting_message.c	\
@@ -26,7 +41,7 @@ SRCS	=	src/main.c	\
 			src/user_message/user_receive_message.c	\
 			src/user_message/user_send_message.c	\
 
-CFLAGS += 	-W -Wall -Wextra -Wshadow -Werror -I include/ -I ../lib/include -I ../include
+CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 
 LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/
 

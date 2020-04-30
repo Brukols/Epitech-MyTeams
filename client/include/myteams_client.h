@@ -42,6 +42,12 @@ typedef struct
     fd_set excepts;
 } client_t;
 
+typedef struct
+{
+    char *name;
+    int (*ft)(client_t *client, char *cmd);
+} commands_dictionnary_t;
+
 /**************************************
 ** FUNCTIONS
 **************************************/
@@ -65,5 +71,21 @@ int handle_io_activities(client_t *info);
 
 /* CLIENT */
 int handle_client_activities(client_t *info);
+
+/* COMMANDS */
+int help_cmd(client_t *info, char *cmd);
+int login_cmd(client_t *info, char *cmd);
+int logout_cmd(client_t *info, char *cmd);
+int users_cmd(client_t *info, char *cmd);
+int user_cmd(client_t *info, char *cmd);
+int send_cmd(client_t *info, char *cmd);
+int messages_cmd(client_t *info, char *cmd);
+int subscribe_cmd(client_t *info, char *cmd);
+int subscribed_cmd(client_t *info, char *cmd);
+int unsubscribe_cmd(client_t *info, char *cmd);
+int use_cmd(client_t *info, char *cmd);
+int create_cmd(client_t *info, char *cmd);
+int list_cmd(client_t *info, char *cmd);
+int info_cmd(client_t *info, char *cmd);
 
 #endif /* !CLIENT_H_ */
