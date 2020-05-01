@@ -15,11 +15,14 @@
 
 typedef struct
 {
-    char name[DEFAULT_NAME_LENGTH];
-    char description[DEFAULT_NAME_LENGTH];
+    char title[DEFAULT_NAME_LENGTH];
+    char message[DEFAULT_BODY_LENGTH];
     uuid_t uuid;
+    user_t *user;
     time_t time;
     list_t replies;
 } thread_t;
+
+thread_t *create_thread(char *title, char *message);
 
 #endif /* !THREAD_H_ */
