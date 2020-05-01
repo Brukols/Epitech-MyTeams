@@ -27,16 +27,12 @@ static const char *response =
 int command_help(server_t *server, client_t *client, client_request_t *req, char *data)
 {
     server_reply_t header = {COMMAND_OK, strlen(response)};
-    bool ret;
 
-    ret = smart_buffer_add_data(client->write_buf, &header, sizeof(server_reply_t));
-    if (!ret)
+    if (!smart_buffer_add_data(client->write_buf, &header, sizeof(server_reply_t)))
         return (FAILURE);
-    ret = smart_buffer_add_string(client->write_buf, response);
-    if (!ret)
+    if (!smart_buffer_add_string(client->write_buf, response))
         return (FAILURE);
     (void)server;
-    (void)client;
     (void)req;
     (void)data;
     return (SUCCESS);

@@ -15,6 +15,7 @@
 #include "client.h"
 #include "requests.h"
 #include "reply_code.h"
+#include "requests.h"
 
 #define TEAMS_ERROR 84
 #define TEAMS_SUCCESS 0
