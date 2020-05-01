@@ -20,4 +20,6 @@ typedef struct
     list_t threads;
 } channel_t;
 
+channel_t *create_channel(char *name, char *description);
+
 #endif /* !CHANNEL_H_ */

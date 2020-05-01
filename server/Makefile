@@ -33,6 +33,7 @@ SRCS	=	src/main.c										\
 			src/user/create_user.c							\
 			src/uuid/get_uuid.c								\
 			src/team/create_team.c							\
+			src/channel/create_channel.c					\
 			src/server/commands/help/command_help.c			\
 			src/server/commands/login/command_login.c		\
 			src/server/commands/logout/command_logout.c		\
