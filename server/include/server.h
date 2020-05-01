@@ -62,4 +62,7 @@ int command_logout(server_t *server, client_t *client, client_request_t *req, ch
 /* UTILS */
 int send_header_reply(unsigned short code, int size, client_t *client);
 
+/* UUID */
+char *get_uuid(uuid_t uuid);
+
 #endif /* !SERVER_H_ */

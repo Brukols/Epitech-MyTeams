@@ -10,24 +10,6 @@
 #include "server.h"
 #include <string.h>
 
-static const char *response = "disconnection";
-
-// For Disconnection
-static int add_response(client_t *client)
-{
-    server_reply_t header = {231, strlen(response)};
-    bool ret;
-
-    client->close = true;
-    ret = smart_buffer_add_data(client->write_buf, &header, sizeof(server_reply_t));
-    if (!ret)
-        return (FAILURE);
-    ret = smart_buffer_add_string(client->write_buf, response);
-    if (!ret)
-        return (FAILURE);
-    return (SUCCESS);
-}
-
 static bool if_good_reply(smart_buffer_t *buffer, void *data)
 {
     client_request_t *reply = data;

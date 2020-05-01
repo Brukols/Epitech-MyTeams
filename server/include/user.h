@@ -15,6 +15,7 @@ typedef struct
 {
     char *username;
     uuid_t uuid;
+    int status;
     list_t client;
     list_t messages;
 } user_t;

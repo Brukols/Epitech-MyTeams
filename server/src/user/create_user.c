@@ -9,6 +9,8 @@
 #include <uuid/uuid.h>
 #include <string.h>
 
+#include "server.h"
+
 user_t *create_user(char *username)
 {
     user_t *user = malloc(sizeof(user_t));
@@ -18,6 +20,7 @@ user_t *create_user(char *username)
     user->username = strdup(username);
     user->messages = NULL;
     user->client = NULL;
+    user->status = 0;
     uuid_generate(user->uuid);
     return (user);
 }
