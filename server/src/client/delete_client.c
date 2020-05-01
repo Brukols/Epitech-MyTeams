@@ -16,7 +16,5 @@ void delete_client(void *data)
     close(client->fd);
     smart_buffer_destroy(client->write_buf);
     smart_buffer_destroy(client->read_buf);
-    if (client->path)
-        free(client->path);
     free(data);
 }

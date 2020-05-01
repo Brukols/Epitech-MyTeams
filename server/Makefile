@@ -37,6 +37,11 @@ SRCS	=	src/main.c										\
 			src/server/commands/user/command_user.c			\
 			src/server/commands/users/command_users.c		\
 			src/server/commands/messages/command_messages.c	\
+			src/server/commands/create/command_create.c		\
+			src/server/commands/create/command_create_team.c		\
+			src/server/commands/create/command_create_channel.c		\
+			src/server/commands/create/command_create_thread.c		\
+			src/server/commands/create/command_create_reply.c		\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 

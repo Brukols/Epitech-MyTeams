@@ -20,6 +20,8 @@ client_t *create_client(int fd)
     client->write_buf = smart_buffer_create();
     client->read_buf = smart_buffer_create();
     client->user = NULL;
-    client->path = NULL;
+    client->team = NULL;
+    client->channel = NULL;
+    client->thread = NULL;
     return (client);
 }

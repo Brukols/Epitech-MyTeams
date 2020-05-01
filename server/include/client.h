@@ -11,6 +11,9 @@
 #include <stdbool.h>
 #include "smart_buffer.h"
 #include "user.h"
+#include "team.h"
+#include "channel.h"
+#include "thread.h"
 
 /**************************************
 ** STRUCT
@@ -22,7 +25,9 @@ typedef struct
     bool close;
     smart_buffer_t *write_buf;
     smart_buffer_t *read_buf;
-    char *path;
+    team_t *team;
+    channel_t *channel;
+    thread_t *thread;
     user_t *user;
 } client_t;
 
