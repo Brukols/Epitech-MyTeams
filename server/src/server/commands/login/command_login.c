@@ -16,25 +16,17 @@ static int if_user_equal(void *user, void *username)
     return (1);
 }
 
-static user_t *get_user(server_t *server, client_t *client, char *username)
+static user_t *get_user(server_t *server, char *username)
 {
-    user_t *user = (user_t *)list_get_first_node_with_value(server->users, username, &if_user_equal);
+    list_t list = list_get_first_node_with_value(server->users, username, &if_user_equal);
+    user_t *user;
 
-    if (user) {
-        if (!list_add_elem_at_back(&user->client, client))
-            return (NULL);
-        if (!list_del_elem_at_value(&server->client, client, NULL))
-            return (NULL);
-        return (user);
-    }
+    if (list)
+        return ((user_t *)(list->value));
     user = create_user(username);
     if (!user)
         return (NULL);
     if (!list_add_elem_at_back(&server->users, user))
-        return (NULL);
-    if (!list_add_elem_at_back(&user->client, client))
-        return (NULL);
-    if (!list_del_elem_at_value(&server->client, client, NULL))
         return (NULL);
     // server_event_user_created(user->uuid, user->username);
     return (user);
@@ -43,10 +35,13 @@ static user_t *get_user(server_t *server, client_t *client, char *username)
 int command_login(server_t *server, client_t *client, client_request_t *req, char *data)
 {
     char *username = data;
-    user_t *user = get_user(server, client, username);
+    user_t *user = get_user(server, username);
 
     if (!user)
         return (FAILURE);
+    if (list_del_elem_at_value(&server->client, client, NULL))
+        if (!list_add_elem_at_back(&user->client, client))
+            return (FAILURE);
     if (send_header_reply(300, DEFAULT_NAME_LENGTH + 16, client) < 0)
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, user->username, DEFAULT_NAME_LENGTH))

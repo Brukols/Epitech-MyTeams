@@ -12,6 +12,8 @@
 #include <sys/signal.h>
 #include <string.h>
 
+#include <stdio.h>
+
 static bool init_fds_client(list_t *client, fd_set *readfs, fd_set *writefs)
 {
     list_t it = *client;
