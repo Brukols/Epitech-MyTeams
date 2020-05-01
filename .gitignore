@@ -3,6 +3,9 @@
 
 /myteams/
 
+myteams_cli
+myteams_server
+
 ### C ###
 # Prerequisites
 *.d
