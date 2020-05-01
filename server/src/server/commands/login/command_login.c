@@ -58,7 +58,7 @@ int command_login(server_t *server, client_t *client, client_request_t *req, cha
     if (req->message_size != DEFAULT_NAME_LENGTH)
         return (send_error_arguments(client, "Invalid length name"));
     if (client->user)
-        return (send_response(server, client->user->username, uuid));
+        return (send_response(server, client->user->username, client->user->uuid));
     user = get_user(server, username);
     if (!user)
         return (FAILURE);
