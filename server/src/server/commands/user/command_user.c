@@ -45,7 +45,7 @@ int command_user(server_t *server, client_t *client, client_request_t *req, char
 
     if (req->message_size != 16)
         return (send_not_found_response(client, "wrong syntax"));
-    user = (user_t *)list_get_first_node_with_value(server->users, uuid, &is_user_equal);
+    user = (user_t *)(list_get_first_node_with_value(server->users, uuid, &is_user_equal)->value);
     if (!user)
         return (send_not_found_response(client, "unable to found the user"));
     return (send_user_info(client, user));
