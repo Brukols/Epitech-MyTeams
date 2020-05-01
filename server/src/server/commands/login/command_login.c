@@ -20,6 +20,7 @@ static user_t *get_user(server_t *server, char *username)
 {
     list_t list = list_get_first_node_with_value(server->users, username, &if_user_equal);
     user_t *user;
+    char uuid[37] = {0};
 
     if (list)
         return ((user_t *)(list->value));
@@ -28,25 +29,43 @@ static user_t *get_user(server_t *server, char *username)
         return (NULL);
     if (!list_add_elem_at_back(&server->users, user))
         return (NULL);
-    // server_event_user_created(user->uuid, user->username);
+    uuid_unparse(user->uuid, uuid);
+    server_event_user_created(uuid, user->username);
     return (user);
+}
+
+static int send_response(server_t *server, char *username, char *uuid)
+{
+    for (list_t clients = server->client; clients; clients = clients->next) {
+        client_t *client = (client_t *)clients->value;
+
+        if (send_header_reply(EVENT_LOGGED_IN, DEFAULT_NAME_LENGTH + 16, client) < 0)
+            return (FAILURE);
+        if (!smart_buffer_add_data(client->write_buf, username, DEFAULT_NAME_LENGTH))
+            return (FAILURE);
+        if (!smart_buffer_add_data(client->write_buf, uuid, 16))
+            return (FAILURE);
+    }
+    return (SUCCESS);
 }
 
 int command_login(server_t *server, client_t *client, client_request_t *req, char *data)
 {
     char *username = data;
     user_t *user = get_user(server, username);
+    char uuid[37];
 
+    if (client->user)
+        return (send_response(server, client->user->username, uuid));
+    user = get_user(server, username);
     if (!user)
         return (FAILURE);
     user->status = 1;
     client->user = user;
-    if (send_header_reply(EVENT_LOGGED_IN, DEFAULT_NAME_LENGTH + 16, client) < 0)
-        return (FAILURE);
-    if (!smart_buffer_add_data(client->write_buf, user->username, DEFAULT_NAME_LENGTH))
-        return (FAILURE);
-    if (!smart_buffer_add_data(client->write_buf, user->uuid, 16))
-        return (FAILURE);
+    uuid_unparse(user->uuid, uuid);
+    if (user->nb_clients == 0)
+        server_event_user_logged_in(uuid);
+    user->nb_clients++;
     (void)req;
-    return (SUCCESS);
+    return (send_response(server, user->username, uuid));
 }
