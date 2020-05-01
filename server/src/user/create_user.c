@@ -17,7 +17,8 @@ user_t *create_user(char *username)
 
     if (!user)
         return (NULL);
-    user->username = strdup(username);
+    memset(user->username, 0, DEFAULT_NAME_LENGTH);
+    strcpy(user->username, username);
     user->messages = NULL;
     user->client = NULL;
     user->status = 0;

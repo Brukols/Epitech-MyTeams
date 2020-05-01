@@ -47,9 +47,9 @@ int command_login(server_t *server, client_t *client, client_request_t *req, cha
 
     if (!user)
         return (FAILURE);
-    if (send_header_reply(300, strlen(user->username) + 16, client) < 0)
+    if (send_header_reply(300, DEFAULT_NAME_LENGTH + 16, client) < 0)
         return (FAILURE);
-    if (!smart_buffer_add_string(client->write_buf, user->username))
+    if (!smart_buffer_add_data(client->write_buf, user->username, DEFAULT_NAME_LENGTH))
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, user->uuid, 16))
         return (FAILURE);

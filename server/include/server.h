@@ -14,6 +14,7 @@
 #include "generic_list.h"
 #include "client.h"
 #include "requests.h"
+#include "reply_code.h"
 
 #define TEAMS_ERROR 84
 #define TEAMS_SUCCESS 0

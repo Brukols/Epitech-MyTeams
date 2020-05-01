@@ -31,7 +31,7 @@ static int send_user_info(client_t *client, user_t *user)
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, user->uuid, 16))
         return (FAILURE);
-    if (!smart_buffer_add_data(client->write_buf, user->username, 32))
+    if (!smart_buffer_add_data(client->write_buf, user->username, DEFAULT_NAME_LENGTH))
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, &(char){user->status}, 1))
         return (FAILURE);
