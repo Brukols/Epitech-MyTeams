@@ -20,13 +20,13 @@ int handle_client_activities(client_t *info)
         free(command);
         return (CLIENT_ERROR);
     }
-    for (int i = 0; commands[i].name != NULL; i++) {
+    for (int i = 0; commands[i].name != NULL && cmd_tab[0]; i++) {
         if (strcmp(cmd_tab[0], commands[i].name) == 0) {
             ret = commands[i].ft(info, command);
             break;
         }
     }
-    if (ret == CLIENT_ERROR)
+    if (ret == CLIENT_ERROR && cmd_tab[0])
         fprintf(stdout, "invalid command: %s", command);
     free_array(cmd_tab);
     free(command);
