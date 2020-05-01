@@ -9,14 +9,15 @@
 #define NWP_MYTEAMS_2019_MYTEAMS_REPLY_H
 
 #include "myteams_client.h"
+#include "reply_code.h"
 
 static const reply_codes_dictionnary_t replies[] =
     {
-        {200, &reply_200},
-        {300, &reply_300},
-        {301, &reply_301},
-        {319, &reply_319},
-        {501, &reply_501},
+        {COMMAND_OK, &reply_200},
+        {PRINT_USER, &reply_201},
+        {EVENT_LOGGED_IN, &reply_330},
+        {EVENT_LOGGED_OUT, &reply_331},
+        {SYNTAX_ERROR_ARGS, &reply_501},
         {0, NULL},
     };
 

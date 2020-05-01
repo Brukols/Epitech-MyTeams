@@ -9,7 +9,7 @@
 #include "myteams_client.h"
 #include "logging_client.h"
 
-int reply_300(client_t *info, server_reply_t *header)
+int reply_330(client_t *info, server_reply_t *header)
 {
     char username[32 + 1] = {0};
     unsigned char uuid[16 + 1] = {0};
