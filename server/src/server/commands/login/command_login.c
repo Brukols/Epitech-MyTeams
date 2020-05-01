@@ -52,9 +52,11 @@ static int send_response(server_t *server, char *username, char *uuid)
 int command_login(server_t *server, client_t *client, client_request_t *req, char *data)
 {
     char *username = data;
-    user_t *user = get_user(server, username);
+    user_t *user;
     char uuid[37];
 
+    if (req->message_size != DEFAULT_NAME_LENGTH)
+        return (send_error_arguments(client, "Invalid length name"));
     if (client->user)
         return (send_response(server, client->user->username, uuid));
     user = get_user(server, username);

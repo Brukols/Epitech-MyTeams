@@ -66,6 +66,7 @@ int command_messages(server_t *, client_t *, client_request_t *, char *);
 
 /* UTILS */
 int send_header_reply(unsigned short code, int size, client_t *client);
+int send_error_arguments(client_t *client, const char *message);
 
 /* UUID */
 char *get_uuid(uuid_t uuid);

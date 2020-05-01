@@ -28,6 +28,7 @@ SRCS	=	src/main.c										\
 			src/buffer/concat_buffer.c						\
 			src/buffer/erase_buffer.c						\
 			src/utils/send_response.c						\
+			src/utils/send_error_arguments.c				\
 			src/user/create_user.c							\
 			src/uuid/get_uuid.c								\
 			src/server/commands/help/command_help.c			\
