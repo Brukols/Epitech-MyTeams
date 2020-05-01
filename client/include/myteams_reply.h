@@ -15,6 +15,7 @@ static const reply_codes_dictionnary_t replies[] =
         {200, &reply_200},
         {300, &reply_300},
         {301, &reply_301},
+        {319, &reply_319},
         {501, &reply_501},
         {0, NULL},
     };
