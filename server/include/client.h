@@ -10,6 +10,7 @@
 
 #include <stdbool.h>
 #include "smart_buffer.h"
+#include "user.h"
 
 /**************************************
 ** STRUCT
@@ -22,6 +23,7 @@ typedef struct
     smart_buffer_t *write_buf;
     smart_buffer_t *read_buf;
     char *path;
+    user_t *user;
 } client_t;
 
 client_t *create_client(int fd);

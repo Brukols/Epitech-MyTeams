@@ -19,6 +19,7 @@ client_t *create_client(int fd)
     client->close = false;
     client->write_buf = smart_buffer_create();
     client->read_buf = smart_buffer_create();
+    client->user = NULL;
     client->path = NULL;
     return (client);
 }

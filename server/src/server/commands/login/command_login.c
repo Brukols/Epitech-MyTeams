@@ -39,9 +39,8 @@ int command_login(server_t *server, client_t *client, client_request_t *req, cha
 
     if (!user)
         return (FAILURE);
-    if (list_del_elem_at_value(&server->client, client, NULL))
-        if (!list_add_elem_at_back(&user->client, client))
-            return (FAILURE);
+    user->status = 1;
+    client->user = user;
     if (send_header_reply(300, DEFAULT_NAME_LENGTH + 16, client) < 0)
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, user->username, DEFAULT_NAME_LENGTH))

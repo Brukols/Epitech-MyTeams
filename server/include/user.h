@@ -17,7 +17,7 @@ typedef struct
     char username[DEFAULT_NAME_LENGTH];
     uuid_t uuid;
     int status;
-    list_t client;
+    int nb_clients;
     list_t messages;
 } user_t;
 

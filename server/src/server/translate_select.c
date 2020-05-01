@@ -33,12 +33,6 @@ int translate_select(server_t *server, fd_set *readfs, fd_set *writefs)
         if (new_connection(server) < 0)
             return (FAILURE);
     }
-    for (list_t list = server->users; list; list = list->next) {
-        user_t *user = ((user_t *)list->value);
-
-        if (translate_select_client(server, user->client, readfs, writefs) < 0)
-            return (FAILURE);
-    }
     if (translate_select_client(server, server->client, readfs, writefs) < 0)
         return (FAILURE);
     return (SUCCESS);

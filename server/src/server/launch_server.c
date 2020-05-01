@@ -45,10 +45,6 @@ static void init_fds(server_t *server, fd_set *readfs, fd_set *writefs)
     FD_SET(server->fd, readfs);
 
     init_fds_client(&server->client, readfs, writefs);
-    list_t it_user = server->users;
-    for (; it_user; it_user = it_user->next) {
-        init_fds_client(&((user_t *)(it_user->value))->client, readfs, writefs);
-    }
 }
 
 int launch_server(server_t *server)
