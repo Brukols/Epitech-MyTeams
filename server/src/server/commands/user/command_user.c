@@ -27,7 +27,7 @@ static int send_not_found_response(client_t *client, const char *msg)
 
 static int send_user_info(client_t *client, user_t *user)
 {
-    if (send_header_reply(501, 49, client) < 0)
+    if (send_header_reply(319, 49, client) < 0)
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, user->uuid, 16))
         return (FAILURE);
