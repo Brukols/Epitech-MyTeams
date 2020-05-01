@@ -10,11 +10,13 @@
 
 #include <uuid/uuid.h>
 #include "generic_list.h"
+#include "reply_code.h"
 
 typedef struct
 {
-    char *username;
+    char username[DEFAULT_NAME_LENGTH];
     uuid_t uuid;
+    int status;
     list_t client;
     list_t messages;
 } user_t;

@@ -14,6 +14,7 @@
 #include "generic_list.h"
 #include "client.h"
 #include "requests.h"
+#include "reply_code.h"
 
 #define TEAMS_ERROR 84
 #define TEAMS_SUCCESS 0
@@ -61,5 +62,8 @@ int command_logout(server_t *server, client_t *client, client_request_t *req, ch
 
 /* UTILS */
 int send_header_reply(unsigned short code, int size, client_t *client);
+
+/* UUID */
+char *get_uuid(uuid_t uuid);
 
 #endif /* !SERVER_H_ */

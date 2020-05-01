@@ -10,12 +10,13 @@
 
 #include "generic_list.h"
 #include <uuid/uuid.h>
+#include "reply_code.h"
 
 typedef struct
 {
     uuid_t user_uuid;
     time_t time;
-    char *message;
+    char message[DEFAULT_BODY_LENGTH];
 } message_t;
 
 #endif /* !MESSAGE_H_ */

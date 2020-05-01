@@ -28,9 +28,11 @@ SRCS	=	src/main.c		\
 			src/buffer/erase_buffer.c		\
 			src/utils/send_response.c		\
 			src/user/create_user.c			\
+			src/uuid/get_uuid.c				\
 			src/server/commands/help/command_help.c	\
 			src/server/commands/login/command_login.c	\
 			src/server/commands/logout/command_logout.c	\
+			src/server/commands/user/command_user.c	\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 

@@ -10,11 +10,12 @@
 
 #include "generic_list.h"
 #include <uuid/uuid.h>
+#include "reply_code.h"
 
 typedef struct
 {
-    char *name;
-    char *description;
+    char name[DEFAULT_NAME_LENGTH];
+    char description[DEFAULT_DESCRIPTION_LENGTH];
     uuid_t uuid;
     list_t threads;
 } channel_t;

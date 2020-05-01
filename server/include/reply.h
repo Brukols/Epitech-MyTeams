@@ -9,10 +9,11 @@
 #define REPLY_H_
 
 #include <uuid/uuid.h>
+#include "reply_code.h"
 
 typedef struct
 {
-    char *message;
+    char message[DEFAULT_BODY_LENGTH];
     time_t time;
     uuid_t user_uuid;
 } reply_t;

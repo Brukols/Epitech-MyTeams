@@ -8,6 +8,10 @@
 #ifndef REPLY_CODE_H_
 #define REPLY_CODE_H_
 
+#define DEFAULT_NAME_LENGTH 32
+#define DEFAULT_DESCRIPTION_LENGTH 255
+#define DEFAULT_BODY_LENGTH 512
+
 enum reply_code_e {
     UNKNOWN,
     HELP,
