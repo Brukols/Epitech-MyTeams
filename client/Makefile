@@ -36,6 +36,9 @@ SRCS	=	src/main.c	\
 			src/process/client/commands/users_cmd.c	\
 			src/process/server/handle_server_activities.c	\
 			src/process/server/replies/reply_200.c	\
+			src/process/server/replies/reply_300.c	\
+			src/process/server/replies/reply_301.c	\
+			src/process/server/replies/reply_501.c	\
 			src/user_message/user_add_to_message.c	\
 			src/user_message/user_get_message.c	\
 			src/user_message/user_is_waiting_message.c	\
@@ -45,7 +48,7 @@ SRCS	=	src/main.c	\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 
-LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/
+LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/ -lmyteams -L ../ -luuid
 
 OBJS	=	$(SRCS:.c=.o)
 
