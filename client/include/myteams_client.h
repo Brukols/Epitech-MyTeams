@@ -105,9 +105,9 @@ int handle_server_activities(client_t *info);
 
 /* REPLIES */
 int reply_200(client_t *info, server_reply_t *header);
-int reply_300(client_t *info, server_reply_t *header);
-int reply_301(client_t *info, server_reply_t *header);
-int reply_319(client_t *info, server_reply_t *header);
+int reply_201(client_t *info, server_reply_t *header);
+int reply_330(client_t *info, server_reply_t *header);
+int reply_331(client_t *info, server_reply_t *header);
 int reply_501(client_t *info, server_reply_t *header);
 
 #endif /* !CLIENT_H_ */
