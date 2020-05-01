@@ -15,7 +15,9 @@ typedef struct
 {
     char message[DEFAULT_BODY_LENGTH];
     time_t time;
-    uuid_t user_uuid;
+    user_t *user;
 } reply_t;
+
+reply_t *create_reply(char *message);
 
 #endif /* !REPLY_H_ */

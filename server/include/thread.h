@@ -12,6 +12,7 @@
 #include <time.h>
 #include <uuid/uuid.h>
 #include "generic_list.h"
+#include "reply.h"
 
 typedef struct
 {
