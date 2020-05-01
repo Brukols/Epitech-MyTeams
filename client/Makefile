@@ -19,6 +19,7 @@ SRCS	=	src/main.c	\
 			src/process/select_activities.c	\
 			src/process/handle_io_activities.c	\
 			src/process/client/handle_client_activities.c	\
+			src/process/client/get_arg.c	\
 			src/process/client/commands/create_cmd.c	\
 			src/process/client/commands/help_cmd.c	\
 			src/process/client/commands/info_cmd.c	\
