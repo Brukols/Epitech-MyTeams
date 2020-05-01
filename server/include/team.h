@@ -20,4 +20,6 @@ typedef struct
     list_t channels;
 } team_t;
 
+team_t *create_team(char *name, char *description);
+
 #endif /* !TEAM_H_ */

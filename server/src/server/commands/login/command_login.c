@@ -34,7 +34,7 @@ static user_t *get_user(server_t *server, char *username)
     return (user);
 }
 
-static int send_response(server_t *server, char *username, char *uuid)
+static int send_response(server_t *server, char *username, uuid_t uuid)
 {
     for (list_t clients = server->client; clients; clients = clients->next) {
         client_t *client = (client_t *)clients->value;
@@ -69,5 +69,5 @@ int command_login(server_t *server, client_t *client, client_request_t *req, cha
         server_event_user_logged_in(uuid);
     user->nb_clients++;
     (void)req;
-    return (send_response(server, user->username, uuid));
+    return (send_response(server, user->username, user->uuid));
 }

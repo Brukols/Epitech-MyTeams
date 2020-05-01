@@ -29,8 +29,10 @@ SRCS	=	src/main.c										\
 			src/buffer/erase_buffer.c						\
 			src/utils/send_response.c						\
 			src/utils/send_error_arguments.c				\
+			src/utils/send_error_already_exist.c			\
 			src/user/create_user.c							\
 			src/uuid/get_uuid.c								\
+			src/team/create_team.c							\
 			src/server/commands/help/command_help.c			\
 			src/server/commands/login/command_login.c		\
 			src/server/commands/logout/command_logout.c		\

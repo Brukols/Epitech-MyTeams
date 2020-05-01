@@ -74,6 +74,7 @@ int send_header_reply(unsigned short code, int size, client_t *client);
 int send_error_arguments(client_t *client, const char *message);
 int send_reply(client_t *client, enum reply_code_e error, const char *message);
 int send_unknown(client_t *client, enum reply_code_e error, uuid_t uuid);
+int send_error_already_exist(client_t *client);
 
 /* UUID */
 char *get_uuid(uuid_t uuid);
