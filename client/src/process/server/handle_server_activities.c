@@ -19,14 +19,17 @@ static bool if_good_reply(smart_buffer_t *buffer, void *data)
 int handle_server_activities(client_t *info)
 {
     server_reply_t reply = {0};
+    int ret = CLIENT_SUCCESS;
 
     if (smart_buffer_get_data_if(info->server_out, &reply, sizeof(server_reply_t), &if_good_reply) == false)
         return (CLIENT_SUCCESS);
     for (int i = 0; replies[i].code; i++) {
         if (reply.reply == replies[i].code) {
-            return (replies[i].ft(info, &reply));
+            ret = (replies[i].ft(info, &reply));
         }
     }
     //Display defaut return code
+    if (ret == CLIENT_ERROR)
+        fprintf(stdout, "Invalid response from server : %hu\n", reply.reply);
     return (CLIENT_SUCCESS);
 }

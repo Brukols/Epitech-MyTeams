@@ -33,6 +33,7 @@ SRCS	=	src/main.c		\
 			src/server/commands/login/command_login.c	\
 			src/server/commands/logout/command_logout.c	\
 			src/server/commands/user/command_user.c	\
+			src/server/commands/users/command_users.c	\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 
