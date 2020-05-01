@@ -7,7 +7,7 @@
 
 #include "server.h"
 
-static const char *response = 
+static const char *response =
 "[HELP]\n"
 "\t/help : show help\n"
 "\t/login [\"username\"] : set the username used by client\n"
@@ -20,13 +20,13 @@ static const char *response =
 "\t/subscribed ?[\"team_uuid\"] : list all subscribed teams or list all users subscribed to a team\n"
 "\t/unsubscribe [\"team_uuid\"] : unsubscribe from a team\n"
 "\t/use ?[\"team_uuid\"] ?[\"channel_uuid\"] ?[\"thread_uuid\"] : use specify a context team/channel/thread\n"
-"\t/create : based on what is being used create the sub resource (see below)\n"
-"\t/list : based on what is being used list all the sub resources (see below)\n"
-"\t/info : based on what is being used list the current (see below)\n";
+"\t/create : based on what is being used create the sub resource\n"
+"\t/list : based on what is being used list all the sub resources\n"
+"\t/info : based on what is being used list the current\n";
 
 int command_help(server_t *server, client_t *client, client_request_t *req, char *data)
 {
-    server_reply_t header = {200, strlen(response)};
+    server_reply_t header = {COMMAND_OK, strlen(response)};
     bool ret;
 
     ret = smart_buffer_add_data(client->write_buf, &header, sizeof(server_reply_t));

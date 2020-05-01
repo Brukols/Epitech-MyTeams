@@ -29,4 +29,6 @@ typedef struct
 client_t *create_client(int fd);
 void delete_client(void *data);
 
+bool client_is_logged_in(const client_t *client);
+
 #endif //NWP_MYTEAMS_2019_CLIENT_H

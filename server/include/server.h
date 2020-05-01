@@ -49,18 +49,19 @@ int translate_select(server_t *server, fd_set *readfs, fd_set *writefs);
 int new_connection(server_t *server);
 int read_data_client(server_t *server, client_t *client);
 int write_data_client(client_t *client);
-int translate_data_client(server_t *server, client_t *client, client_request_t *reply, char *data);
+int translate_data_client(server_t *, client_t *, client_request_t *, char *);
 
 /* BUFFER */
 void *concat_buffer(void *dest, const void *src);
 char *erase_buffer(char *buffer, long pos);
 
 /* COMMANDS */
-int command_help(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_login(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_logout(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_user(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_users(server_t *server, client_t *client, client_request_t *req, char *data);
+int command_help(server_t *, client_t *, client_request_t *, char *);
+int command_login(server_t *, client_t *, client_request_t *, char *);
+int command_logout(server_t *, client_t *, client_request_t *, char *);
+int command_user(server_t *, client_t *, client_request_t *, char *);
+int command_users(server_t *, client_t *, client_request_t *, char *);
+int command_messages(server_t *, client_t *, client_request_t *, char *);
 
 /* UTILS */
 int send_header_reply(unsigned short code, int size, client_t *client);

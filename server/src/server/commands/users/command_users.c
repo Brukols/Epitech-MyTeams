@@ -13,7 +13,7 @@ int command_users(server_t *server, client_t *client, client_request_t *req, cha
     for (list_t users = server->users; users; users = users->next) {
         user_t *user = (user_t *)users->value;
 
-        if (send_header_reply(319, 49, client) < 0)
+        if (send_header_reply(PRINT_USERS, 49, client) < 0)
             return (FAILURE);
         if (!smart_buffer_add_data(client->write_buf, user->uuid, 16))
             return (FAILURE);
