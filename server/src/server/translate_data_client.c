@@ -18,6 +18,7 @@ const commands_t not_logged_in_commands[] = {
 const commands_t commands[] = {
     {USER, &command_user},
     {USERS, &command_users},
+    {MESSAGES, &command_messages},
     {UNKNOWN, NULL}
 };
 
