@@ -11,9 +11,8 @@
 static int is_user_equal(void *value, void *to_compare)
 {
     user_t *user = (user_t *)value;
-    char *uuid = to_compare;
 
-    return (strncmp((char *)(user->uuid), uuid, 16));
+    return (uuid_compare(user->uuid, to_compare));
 }
 
 static int send_not_found_response(client_t *client, const char *msg)

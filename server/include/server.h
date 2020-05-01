@@ -63,10 +63,17 @@ int command_logout(server_t *, client_t *, client_request_t *, char *);
 int command_user(server_t *, client_t *, client_request_t *, char *);
 int command_users(server_t *, client_t *, client_request_t *, char *);
 int command_messages(server_t *, client_t *, client_request_t *, char *);
+int command_create(server_t *server, client_t *client, client_request_t *req, char *data);
+int command_create_team(server_t *server, client_t *client, client_request_t *req, char *data);
+int command_create_channel(server_t *server, client_t *client, client_request_t *req, char *data);
+int command_create_thread(server_t *server, client_t *client, client_request_t *req, char *data);
+int command_create_reply(server_t *server, client_t *client, client_request_t *req, char *data);
 
 /* UTILS */
 int send_header_reply(unsigned short code, int size, client_t *client);
 int send_error_arguments(client_t *client, const char *message);
+int send_reply(client_t *client, enum reply_code_e error, const char *message);
+int send_unknown(client_t *client, enum reply_code_e error, uuid_t uuid);
 
 /* UUID */
 char *get_uuid(uuid_t uuid);
