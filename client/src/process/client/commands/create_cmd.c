@@ -12,7 +12,7 @@ static int create_cmd_others(client_t *info, const char *cmd)
 {
     client_request_t header = {CREATE, 0};
     int size1 = get_arg_size(cmd, 0);
-    int size2 = get_arg_size(cmd, 0);
+    int size2 = get_arg_size(cmd, 1);
     char comment1[size1 + 1];
     char comment2[size2 + 1];
     bool ret;
