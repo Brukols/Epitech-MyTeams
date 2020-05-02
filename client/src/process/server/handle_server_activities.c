@@ -26,6 +26,7 @@ int handle_server_activities(client_t *info)
     for (int i = 0; replies[i].code; i++) {
         if (reply.reply == replies[i].code) {
             ret = replies[i].ft(info, &reply);
+            break;
         }
     }
     //Display defaut return code
