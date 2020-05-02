@@ -27,6 +27,8 @@ static const reply_codes_dictionnary_t replies[] =
         {PRINT_SUBSCRIBED, &reply_240},
         {PRINT_TEAM_CREATED, &reply_250},
         {PRINT_CHANNEL_CREATED, &reply_251},
+        {PRINT_THREAD_CREATED, &reply_252},
+        {PRINT_REPLY_CREATED, &reply_253},
         {EVENT_LOGGED_IN, &reply_330},
         {EVENT_LOGGED_OUT, &reply_331},
         {SYNTAX_ERROR_ARGS, &reply_501},
