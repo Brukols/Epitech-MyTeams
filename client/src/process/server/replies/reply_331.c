@@ -14,6 +14,7 @@ int reply_331(client_t *info, server_reply_t *header)
     char username[32 + 1] = {0};
     unsigned char uuid[16 + 1] = {0};
     char unparse_uuid[36 + 1] = {0};
+    (void)header;
 
     if (!smart_buffer_get_data(info->server_out, &username, 32))
         return (CLIENT_ERROR);
