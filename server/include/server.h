@@ -81,6 +81,7 @@ int get_args_name_description(char *name, char *description, \
 client_request_t *req, char *data);
 int get_args_title_message(char *title, char *message, \
 client_request_t *req, char *data);
+int get_args_comment(char *commment, client_request_t *req, char *data);
 
 /* UUID */
 char *get_uuid(uuid_t uuid);

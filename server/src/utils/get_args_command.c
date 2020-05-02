@@ -38,3 +38,13 @@ client_request_t *req, char *data)
     strncpy(description, data + size_name + 1, size_description);
     return (SUCCESS);
 }
+
+int get_args_comment(char *commment, client_request_t *req, char *data)
+{
+    int size_comment = strnlen(data, req->message_size);
+
+    if (size_comment == 0 || size_comment >= DEFAULT_BODY_LENGTH)
+        return (FAILURE);
+    strncpy(commment, data, size_comment);
+    return (SUCCESS);
+}
