@@ -63,3 +63,19 @@ Test(smart_buffer, write, .init = redirect_all_std)
     cr_expect_stdout_eq_str(hello);
     smart_buffer_destroy(buffer);
 }
+
+Test(smart_buffer, a_lot_of_data)
+{
+    smart_buffer_t *buffer = smart_buffer_create();
+    char sent[10000] = {100};
+    char received[10000] = {0};
+
+    cr_assert(buffer);
+    cr_expect(smart_buffer_get_size(buffer) == 0);
+    cr_expect(smart_buffer_add_data(buffer, sent, sizeof(sent)));
+    cr_expect(smart_buffer_get_size(buffer) == 10000);
+    cr_expect(smart_buffer_get_data(buffer, received, sizeof(sent)));
+    cr_expect(memcmp(sent, received, 10000) == 0);
+    cr_expect(smart_buffer_get_size(buffer) == 0);
+    smart_buffer_destroy(buffer);
+}
