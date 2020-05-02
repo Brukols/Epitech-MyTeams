@@ -126,6 +126,8 @@ int reply_253(client_t *info, server_reply_t *header);
 int reply_311(client_t *info, server_reply_t *header);
 int reply_312(client_t *info, server_reply_t *header);
 int reply_313(client_t *info, server_reply_t *header);
+int reply_320(client_t *info, server_reply_t *header);
+int reply_321(client_t *info, server_reply_t *header);
 int reply_330(client_t *info, server_reply_t *header);
 int reply_331(client_t *info, server_reply_t *header);
 int reply_501(client_t *info, server_reply_t *header);
