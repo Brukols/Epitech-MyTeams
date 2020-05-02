@@ -16,6 +16,7 @@ static const reply_codes_dictionnary_t replies[] =
         {COMMAND_OK, &reply_200},
         {PRINT_USER, &reply_201},
         {PRINT_USERS, &reply_202},
+        {PRINT_TEAM, &reply_210},
         {EVENT_LOGGED_IN, &reply_330},
         {EVENT_LOGGED_OUT, &reply_331},
         {SYNTAX_ERROR_ARGS, &reply_501},
