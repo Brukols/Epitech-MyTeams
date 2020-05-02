@@ -37,7 +37,11 @@ static const reply_codes_dictionnary_t replies[] =
         {EVENT_PRIVATE_MESSAGE_RECEIVED, &reply_321},
         {EVENT_LOGGED_IN, &reply_330},
         {EVENT_LOGGED_OUT, &reply_331},
+        {SYNTAX_ERROR, &reply_500},
         {SYNTAX_ERROR_ARGS, &reply_501},
+        {NOT_IMPLEMENTED, &reply_502},
+        {BAD_SEQUENCE, &reply_503},
+        {NOT_IMPLEMENTED_ARG, &reply_504},
         {0, NULL},
     };
 

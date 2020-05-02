@@ -59,7 +59,11 @@ SRCS	=	src/main.c	\
 			src/process/server/replies/reply_321.c	\
 			src/process/server/replies/reply_330.c	\
 			src/process/server/replies/reply_331.c	\
+			src/process/server/replies/reply_500.c	\
 			src/process/server/replies/reply_501.c	\
+			src/process/server/replies/reply_502.c	\
+			src/process/server/replies/reply_503.c	\
+			src/process/server/replies/reply_504.c	\
 			src/user_message/user_add_to_message.c	\
 			src/user_message/user_get_message.c	\
 			src/user_message/user_is_waiting_message.c	\

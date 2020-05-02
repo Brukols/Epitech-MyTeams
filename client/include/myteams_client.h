@@ -130,6 +130,10 @@ int reply_320(client_t *info, server_reply_t *header);
 int reply_321(client_t *info, server_reply_t *header);
 int reply_330(client_t *info, server_reply_t *header);
 int reply_331(client_t *info, server_reply_t *header);
+int reply_500(client_t *info, server_reply_t *header);
 int reply_501(client_t *info, server_reply_t *header);
+int reply_502(client_t *info, server_reply_t *header);
+int reply_503(client_t *info, server_reply_t *header);
+int reply_504(client_t *info, server_reply_t *header);
 
 #endif /* !CLIENT_H_ */
