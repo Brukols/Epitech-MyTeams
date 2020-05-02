@@ -110,6 +110,7 @@ int reply_200(client_t *info, server_reply_t *header);
 int reply_201(client_t *info, server_reply_t *header);
 int reply_202(client_t *info, server_reply_t *header);
 int reply_210(client_t *info, server_reply_t *header);
+int reply_211(client_t *info, server_reply_t *header);
 int reply_330(client_t *info, server_reply_t *header);
 int reply_331(client_t *info, server_reply_t *header);
 int reply_501(client_t *info, server_reply_t *header);
