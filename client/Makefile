@@ -48,6 +48,10 @@ SRCS	=	src/main.c	\
 			src/process/server/replies/reply_233.c	\
 			src/process/server/replies/reply_240.c	\
 			src/process/server/replies/reply_241.c	\
+			src/process/server/replies/reply_250.c	\
+			src/process/server/replies/reply_251.c	\
+			src/process/server/replies/reply_252.c	\
+			src/process/server/replies/reply_253.c	\
 			src/process/server/replies/reply_330.c	\
 			src/process/server/replies/reply_331.c	\
 			src/process/server/replies/reply_501.c	\
