@@ -21,13 +21,16 @@ static void find_in_thread(channel_t *channel, client_t *client, uuid_t uuid)
 
 static void find_in_channel(team_t *team, client_t *client, uuid_t uuid)
 {
-    for (list_t channels = team->channels; channels; channels = channels->next) {
+    for (list_t channels = team->channels; channels; \
+channels = channels->next) {
         channel_t *channel = (channel_t *)(channels->value);
 
         client->channel = channel;
         if (!uuid_compare(channel->uuid, uuid))
             return;
         find_in_thread(channel, client, uuid);
+        if (client->thread)
+            return;
     }
     client->channel = NULL;
 }

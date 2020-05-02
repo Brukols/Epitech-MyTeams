@@ -18,6 +18,7 @@ typedef struct
     char description[DEFAULT_NAME_LENGTH];
     uuid_t uuid;
     list_t channels;
+    list_t subscribers;
 } team_t;
 
 team_t *create_team(char *name, char *description);
