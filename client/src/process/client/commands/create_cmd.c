@@ -8,65 +8,43 @@
 #include "myteams_client.h"
 #include "reply_code.h"
 
-static int create_cmd_team_channel(client_t *info, char *name, char *description)
-{
-    //printf("Team-Channel\n");
-    client_request_t header = {CREATE, 32 + 255};
-    bool ret;
-
-    //printf("%s - %s\n", name, description);
-    ret = smart_buffer_add_data(info->server_in, &header, sizeof(client_request_t));
-    if (!ret) return (CLIENT_ERROR);
-    ret = smart_buffer_add_data(info->server_in, &name, 32);
-    if (!ret) return (CLIENT_ERROR);
-    ret = smart_buffer_add_data(info->server_in, &description, 255);
-    if (!ret) return (CLIENT_ERROR);
-    return (CLIENT_SUCCESS);
-}
-
-static int create_cmd_thread(client_t *info, char *name, char *message)
-{
-    //printf("Thread-Channel\n");
-    client_request_t header = {CREATE, 32 + 512};
-    bool ret;
-
-    //printf("%s - %s\n", name, message);
-    ret = smart_buffer_add_data(info->server_in, &header, sizeof(client_request_t));
-    if (!ret) return (CLIENT_ERROR);
-    ret = smart_buffer_add_data(info->server_in, &name, 32);
-    if (!ret) return (CLIENT_ERROR);
-    ret = smart_buffer_add_data(info->server_in, &message, 512);
-    if (!ret) return (CLIENT_ERROR);
-    return (CLIENT_SUCCESS);
-}
-
 static int create_cmd_others(client_t *info, const char *cmd)
 {
-    char name[32 + 1] = {0};
-    char description[255 + 1] = {0};
-    char message[512 + 1] = {0};
+    client_request_t header = {CREATE, 0};
+    int size1 = get_arg_size(cmd, 0);
+    int size2 = get_arg_size(cmd, 0);
+    char comment1[size1 + 1];
+    char comment2[size2 + 1];
+    bool ret;
 
-    if (!get_arg(cmd, name, 32, 0))
+    bzero(&comment1, size1 + 1);
+    bzero(&comment2, size2 + 1);
+    if (!get_arg(cmd, comment1, size1, 0) || !get_arg(cmd, comment2, size2, 1))
         return (CLIENT_ERROR);
-    if (get_arg(cmd, description, 255, 1))
-        return (create_cmd_team_channel(info, name, description));
-    if (get_arg(cmd, message, 512, 1))
-        return (create_cmd_thread(info, name, message));
-    return (CLIENT_ERROR);
+    header.message_size = size1 + 1 + size2 + 1;
+    ret = smart_buffer_add_data(info->server_in, &header, sizeof(client_request_t));
+    if (!ret) return (CLIENT_ERROR);
+    ret = smart_buffer_add_data(info->server_in, &comment1, size1 + 1);
+    if (!ret) return (CLIENT_ERROR);
+    ret = smart_buffer_add_data(info->server_in, &comment2, size2 + 1);
+    if (!ret) return (CLIENT_ERROR);
+    return (CLIENT_SUCCESS);
 }
 
 static int create_cmd_comment_only(client_t *info, const char *cmd)
 {
-    //printf("Comment\n");
-    client_request_t header = {CREATE, 512};
-    char comment[512 + 1] = {0};
+    client_request_t header = {CREATE, 0};
+    int size = get_arg_size(cmd, 0);
+    char comment[size + 1];
     bool ret;
 
-    if (!get_arg(cmd, comment, 512, 0))
+    bzero(&comment, size + 1);
+    if (!get_arg(cmd, comment, size, 0))
         return (CLIENT_ERROR);
+    header.message_size = size + 1;
     ret = smart_buffer_add_data(info->server_in, &header, sizeof(client_request_t));
     if (!ret) return (CLIENT_ERROR);
-    ret = smart_buffer_add_data(info->server_in, &comment, 512);
+    ret = smart_buffer_add_data(info->server_in, &comment, size + 1);
     if (!ret) return (CLIENT_ERROR);
     return (CLIENT_SUCCESS);
 }
