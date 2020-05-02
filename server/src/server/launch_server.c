@@ -17,15 +17,14 @@
 static bool init_fds_client(list_t *client, fd_set *readfs, fd_set *writefs)
 {
     list_t it = *client;
-    bool fs = true;
 
+    int i = 0;
     while (it) {
         client_t *tmp = ((client_t *)(it->value));
 
         if (smart_buffer_get_size(tmp->write_buf) == 0 && tmp->close) {
-            list_del_elem_at_front(&it, &delete_client);
-            if (fs)
-                *client = it;
+            it = it->next;
+            list_del_elem_at_position(client, i, &delete_client);
             continue;
         }
         if (smart_buffer_get_size(tmp->write_buf) != 0)
@@ -33,7 +32,7 @@ static bool init_fds_client(list_t *client, fd_set *readfs, fd_set *writefs)
         if (!tmp->close)
             FD_SET(tmp->fd, readfs);
         it = it->next;
-        fs = false;
+        i++;
     }
     return (true);
 }

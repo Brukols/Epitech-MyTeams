@@ -19,4 +19,6 @@ typedef struct
     char message[DEFAULT_BODY_LENGTH];
 } message_t;
 
+message_t *message_create(const char *msg, const uuid_t from, time_t time);
+
 #endif /* !MESSAGE_H_ */

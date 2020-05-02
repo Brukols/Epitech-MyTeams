@@ -13,6 +13,9 @@ const commands_t not_logged_in_commands[] = {
     {LOGIN, &command_login},
     {LOGOUT, &command_logout},
     {CREATE, &command_create},
+    {USE, &command_use},
+    {SUBSCRIBE, &command_subscribe},
+    {UNSUBSCRIBE, &command_unsubscribe},
     {UNKNOWN, NULL}
 };
 
@@ -20,13 +23,13 @@ const commands_t commands[] = {
     {USER, &command_user},
     {USERS, &command_users},
     {MESSAGES, &command_messages},
+    {SEND, &command_send},
     {UNKNOWN, NULL}
 };
 
 int translate_data_client(
     server_t *server, client_t *client, client_request_t *reply, char *data)
 {
-    write(1, "a\n", 2);
     for (size_t i = 0; not_logged_in_commands[i].code != UNKNOWN; i++) {
         if (not_logged_in_commands[i].code != reply->command)
             continue;
@@ -41,5 +44,5 @@ int translate_data_client(
             return (FAILURE);
         return (SUCCESS);
     }
-    return (FAILURE);
+    return (send_reply(client, UNKNOWN_COMMAND, "Unknown command, use /help"));
 }

@@ -9,17 +9,6 @@
 #include "server.h"
 #include "message.h"
 
-user_t *get_user_by_uuid(list_t users, uuid_t uuid)
-{
-    for (; users; users = users->next) {
-        user_t *user = users->value;
-
-        if (!uuid_compare(user->uuid, uuid))
-            return (user);
-    }
-    return (NULL);
-}
-
 static int send_messages(client_t *client, uuid_t data, bool *sent)
 {
     for (list_t msg = client->user->messages; msg; msg = msg->next) {
@@ -29,7 +18,10 @@ static int send_messages(client_t *client, uuid_t data, bool *sent)
         *sent = true;
         if (send_header_reply(
                 PRINT_PRIVATE_MESSAGES,
-                sizeof(time_t) + DEFAULT_BODY_LENGTH, client))
+                sizeof(uuid_t) + sizeof(time_t) + DEFAULT_BODY_LENGTH, client))
+            return (FAILURE);
+        if (!smart_buffer_add_data(
+                client->write_buf, &message->user_uuid, sizeof(uuid_t)))
             return (FAILURE);
         if (!smart_buffer_add_data(
                 client->write_buf, &message->time, sizeof(time_t)))
@@ -49,7 +41,7 @@ int command_messages(
 
     if (req->message_size != 16)
         return (send_error_arguments(client, "Invalid argument size"));
-    if (!get_user_by_uuid(server->users, (unsigned char *)data))
+    if (!user_get_by_uuid(server->users, (unsigned char *)data))
         return (send_unknown(client, UNKNOWN_USER, (unsigned char *)data));
     if (send_messages(client, (unsigned char *)data, &sent) == FAILURE)
         return (FAILURE);

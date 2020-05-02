@@ -10,7 +10,8 @@
 
 static bool name_already_exist(char *name, client_t *client)
 {
-    for (list_t channels = client->team->channels; channels; channels = channels->next) {
+    for (list_t channels = client->team->channels; channels; \
+channels = channels->next) {
         channel_t *channel = (channel_t *)(channels->value);
 
         if (!strcmp(channel->name, name))
@@ -19,26 +20,45 @@ static bool name_already_exist(char *name, client_t *client)
     return (false);
 }
 
-static int broadcast_channel_created(server_t *server, channel_t *channel)
+static int add_data_in_client(client_t *client, channel_t *channel, \
+enum reply_code_e code)
 {
+    if (send_header_reply(code, 16 + DEFAULT_NAME_LENGTH + \
+DEFAULT_DESCRIPTION_LENGTH, client) < 0)
+        return (FAILURE);
+    if (!smart_buffer_add_data(client->write_buf, channel->uuid, 16))
+        return (FAILURE);
+    if (!smart_buffer_add_data(client->write_buf, channel->name, \
+DEFAULT_NAME_LENGTH))
+        return (FAILURE);
+    if (!smart_buffer_add_data(client->write_buf, channel->description, \
+DEFAULT_DESCRIPTION_LENGTH))
+        return (FAILURE);
+    return (SUCCESS);
+}
+
+static int broadcast_channel_created(server_t *server, channel_t *channel, \
+client_t *actual_client)
+{
+    int ret;
+
     for (list_t clients = server->client; clients; clients = clients->next) {
         client_t *client = (client_t *)(clients->value);
 
         if (!client->user)
             continue;
-        if (send_header_reply(EVENT_CHANNEL_CREATED, 16 + DEFAULT_NAME_LENGTH + DEFAULT_DESCRIPTION_LENGTH, client) < 0)
-            return (FAILURE);
-        if (!smart_buffer_add_data(client->write_buf, channel->uuid, 16))
-            return (FAILURE);
-        if (!smart_buffer_add_data(client->write_buf, channel->name, DEFAULT_NAME_LENGTH))
-            return (FAILURE);
-        if (!smart_buffer_add_data(client->write_buf, channel->description, DEFAULT_DESCRIPTION_LENGTH))
+        if (client == actual_client)
+            ret = add_data_in_client(client, channel, PRINT_CHANNEL_CREATED);
+        else
+            ret = add_data_in_client(client, channel, EVENT_CHANNEL_CREATED);
+        if (ret < 0)
             return (FAILURE);
     }
     return (SUCCESS);
 }
 
-int command_create_channel(server_t *server, client_t *client, client_request_t *req, char *data)
+int command_create_channel(server_t *server, client_t *client, \
+client_request_t *req, char *data)
 {
     char name[DEFAULT_NAME_LENGTH] = {0};
     char description[DEFAULT_DESCRIPTION_LENGTH] = {0};
@@ -46,17 +66,18 @@ int command_create_channel(server_t *server, client_t *client, client_request_t 
     char uuid_team[37];
     char uuid_channel[37];
 
-    if (req->message_size != DEFAULT_NAME_LENGTH + DEFAULT_DESCRIPTION_LENGTH)
-        return (send_error_arguments(client, "Wrong arguments"));
+    if (get_args_name_description(name, description, req, data) == FAILURE)
+        return (send_error_arguments(client, \
+"{SERVER} /create wrong arguments"));
     if (name_already_exist(name, client))
         return (send_error_already_exist(client));
-    memcpy(name, data, DEFAULT_NAME_LENGTH);
-    memcpy(description, data + DEFAULT_NAME_LENGTH, DEFAULT_DESCRIPTION_LENGTH);
     channel = create_channel(name, description);
+    if (!channel)
+        return (FAILURE);
     if (!list_add_elem_at_back(&client->team->channels, channel))
         return (FAILURE);
     uuid_unparse(client->team->uuid, uuid_team);
     uuid_unparse(channel->uuid, uuid_channel);
     server_event_channel_created(uuid_team, uuid_channel, channel->name);
-    return (broadcast_channel_created(server, channel));
+    return (broadcast_channel_created(server, channel, client));
 }

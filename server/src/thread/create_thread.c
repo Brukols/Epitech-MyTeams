@@ -13,6 +13,8 @@ thread_t *create_thread(char *title, char *message)
 
     if (!thread)
         return (NULL);
+    memset(thread->title, 0, DEFAULT_NAME_LENGTH);
+    memset(thread->message, 0, DEFAULT_BODY_LENGTH);
     strcpy(thread->title, title);
     strcpy(thread->message, message);
     uuid_generate(thread->uuid);

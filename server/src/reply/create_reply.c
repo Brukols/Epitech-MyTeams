@@ -13,6 +13,7 @@ reply_t *create_reply(char *message)
 
     if (!reply)
         return (NULL);
+    memset(reply->message, 0, DEFAULT_BODY_LENGTH);
     strcpy(reply->message, message);
     reply->time = time(NULL);
     reply->user = NULL;

@@ -63,11 +63,15 @@ int command_logout(server_t *, client_t *, client_request_t *, char *);
 int command_user(server_t *, client_t *, client_request_t *, char *);
 int command_users(server_t *, client_t *, client_request_t *, char *);
 int command_messages(server_t *, client_t *, client_request_t *, char *);
-int command_create(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_create_team(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_create_channel(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_create_thread(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_create_reply(server_t *server, client_t *client, client_request_t *req, char *data);
+int command_create(server_t *, client_t *, client_request_t *, char *);
+int command_create_team(server_t *, client_t *, client_request_t *, char *);
+int command_create_channel(server_t *, client_t *, client_request_t *, char *);
+int command_create_thread(server_t *, client_t *, client_request_t *, char *);
+int command_create_reply(server_t *, client_t *, client_request_t *, char *);
+int command_use(server_t *, client_t *, client_request_t *, char *);
+int command_send(server_t *, client_t *, client_request_t *, char *);
+int command_subscribe(server_t *, client_t *, client_request_t *, char *);
+int command_unsubscribe(server_t *, client_t *, client_request_t *, char *);
 
 /* UTILS */
 int send_header_reply(unsigned short code, int size, client_t *client);
@@ -75,8 +79,16 @@ int send_error_arguments(client_t *client, const char *message);
 int send_reply(client_t *client, enum reply_code_e error, const char *message);
 int send_unknown(client_t *client, enum reply_code_e error, uuid_t uuid);
 int send_error_already_exist(client_t *client);
+int get_args_name_description(char *name, char *description, \
+client_request_t *req, char *data);
+int get_args_title_message(char *title, char *message, \
+client_request_t *req, char *data);
+int get_args_comment(char *commment, client_request_t *req, char *data);
 
 /* UUID */
 char *get_uuid(uuid_t uuid);
+
+/* TEAM */
+bool user_is_in_team(client_t *client, team_t *team);;
 
 #endif /* !SERVER_H_ */
