@@ -26,6 +26,7 @@ const commands_t commands[] = {
     {SUBSCRIBED, &command_subscribed},
     {UNSUBSCRIBE, &command_unsubscribe},
     {INFO, &command_info},
+    {LIST, &command_list},
     {UNKNOWN, NULL}
 };
 
