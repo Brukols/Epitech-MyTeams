@@ -9,7 +9,7 @@
 #include "myteams_client.h"
 #include "logging_client.h"
 
-int reply_201(client_t *info, server_reply_t *header)
+int reply_202(client_t *info, server_reply_t *header)
 {
     char username[32 + 1] = {0};
     unsigned char uuid[16 + 1] = {0};
@@ -24,6 +24,6 @@ int reply_201(client_t *info, server_reply_t *header)
     uuid_unparse(uuid, unparse_uuid);
     if (!smart_buffer_get_data(info->server_out, &status, 1))
         return (CLIENT_ERROR);
-    client_print_user(unparse_uuid, username, status);
+    client_print_users(unparse_uuid, username, status);
     return (CLIENT_SUCCESS);
 }

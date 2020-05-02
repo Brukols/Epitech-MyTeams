@@ -9,7 +9,7 @@
 #include "myteams_client.h"
 #include "reply_code.h"
 
-int send_cmd(client_t *info, char *cmd)
+int send_cmd(client_t *info, const char *cmd)
 {
     client_request_t header = {SEND, 16 + DEFAULT_BODY_LENGTH};
     char uuid[36 + 1] = {0};
