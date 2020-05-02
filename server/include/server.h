@@ -74,6 +74,8 @@ int command_subscribe(server_t *server, client_t *client, \
 client_request_t *req, char *data);
 int command_unsubscribe(server_t *server, client_t *client, \
 client_request_t *req, char *data);
+int command_subscribed(server_t *server, client_t *client, \
+client_request_t *req, char *data);
 
 /* UTILS */
 int send_header_reply(unsigned short code, int size, client_t *client);

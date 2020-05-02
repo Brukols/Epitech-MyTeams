@@ -53,7 +53,8 @@ SRCS	=	src/main.c												\
 			src/server/commands/send/command_send.c					\
 			src/server/commands/use/command_use.c					\
 			src/server/commands/subscribe/command_subscribe.c		\
-			src/server/commands/unsubscribe/command_unsubscribe.c		\
+			src/server/commands/unsubscribe/command_unsubscribe.c	\
+			src/server/commands/subscribed/command_subscribed.c		\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 
