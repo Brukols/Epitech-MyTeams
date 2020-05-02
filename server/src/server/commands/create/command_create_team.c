@@ -51,7 +51,9 @@ int command_create_team(server_t *server, client_t *client, client_request_t *re
     if (name_already_exist(name, server))
         return (send_error_already_exist(client));
     memcpy(name, data, DEFAULT_NAME_LENGTH);
+    printf("Name : %s\n", name);
     memcpy(description, data + DEFAULT_NAME_LENGTH, DEFAULT_DESCRIPTION_LENGTH);
+    printf("Description : %s\n", description);
     team = create_team(name, description);
     if (!list_add_elem_at_back(&server->teams, team))
         return (FAILURE);
