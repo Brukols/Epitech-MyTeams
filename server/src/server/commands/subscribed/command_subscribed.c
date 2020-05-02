@@ -56,7 +56,7 @@ client) < 0)
         if (!smart_buffer_add_data(client->write_buf, user->username, \
 DEFAULT_NAME_LENGTH))
             return (FAILURE);
-        if (!smart_buffer_add_data(client->write_buf, &(char){user->status}, \
+        if (!smart_buffer_add_data(client->write_buf, &(char){user->nb_clients != 0}, \
 1))
             return (FAILURE);
     }

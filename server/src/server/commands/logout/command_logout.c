@@ -36,8 +36,7 @@ int command_logout(server_t *server, client_t *client, client_request_t *req, ch
     client->close = true;
     if (client->user) {
         uuid_unparse(client->user->uuid, uuid);
-        client->user->nb_clients--;
-        if (client->user->nb_clients == 0) {
+        if (client->user->nb_clients - 1 == 0) {
             server_event_user_logged_out(uuid);
             send_response(server, client->user);
         }
