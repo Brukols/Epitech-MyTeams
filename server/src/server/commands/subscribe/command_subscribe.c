@@ -29,6 +29,7 @@ int command_subscribe(server_t *server, client_t *client, \
 client_request_t *req, char *data)
 {
     uuid_t uuid;
+
     if (req->message_size != 16)
         return (send_error_arguments(client, "{SERVER} Wrong arguments"));
     memcpy(uuid, data, 16);
@@ -38,6 +39,5 @@ client_request_t *req, char *data)
         if (!uuid_compare(uuid, team->uuid))
             return (subscribe_user_to_team(client, team));
     }
-    // Send error unknown team
-    return (SUCCESS);
+    return (send_reply(client, BAD_SEQUENCE, "{SERVER} Unable to found uuid"));
 }
