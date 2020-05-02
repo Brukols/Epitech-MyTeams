@@ -25,7 +25,6 @@ const commands_t commands[] = {
 int translate_data_client(
     server_t *server, client_t *client, client_request_t *reply, char *data)
 {
-    write(1, "a\n", 2);
     for (size_t i = 0; not_logged_in_commands[i].code != UNKNOWN; i++) {
         if (not_logged_in_commands[i].code != reply->command)
             continue;
