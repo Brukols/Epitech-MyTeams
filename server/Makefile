@@ -30,7 +30,7 @@ SRCS	=	src/main.c												\
 			src/utils/send_response.c								\
 			src/utils/send_error_arguments.c						\
 			src/utils/send_error_already_exist.c					\
-			src/utils/get_args_name_description.c					\
+			src/utils/get_args_command.c							\
 			src/user/create_user.c									\
 			src/uuid/get_uuid.c										\
 			src/team/create_team.c									\
