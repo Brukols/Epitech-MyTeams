@@ -44,10 +44,10 @@ static int create_cmd_others(client_t *info, const char *cmd)
 
     if (!get_arg(cmd, name, 32, 0))
         return (CLIENT_ERROR);
-    if (get_arg(cmd, message, 512, 1))
-        return (create_cmd_thread(info, name, message));
     if (get_arg(cmd, description, 255, 1))
         return (create_cmd_team_channel(info, name, message));
+    if (get_arg(cmd, message, 512, 1))
+        return (create_cmd_thread(info, name, message));
     return (CLIENT_ERROR);
 }
 
