@@ -68,6 +68,8 @@ int command_create_team(server_t *server, client_t *client, client_request_t *re
 int command_create_channel(server_t *server, client_t *client, client_request_t *req, char *data);
 int command_create_thread(server_t *server, client_t *client, client_request_t *req, char *data);
 int command_create_reply(server_t *server, client_t *client, client_request_t *req, char *data);
+int command_use(server_t *server, client_t *client, client_request_t *req, \
+char *data);
 
 /* UTILS */
 int send_header_reply(unsigned short code, int size, client_t *client);
@@ -75,6 +77,10 @@ int send_error_arguments(client_t *client, const char *message);
 int send_reply(client_t *client, enum reply_code_e error, const char *message);
 int send_unknown(client_t *client, enum reply_code_e error, uuid_t uuid);
 int send_error_already_exist(client_t *client);
+int get_args_name_description(char *name, char *description, \
+client_request_t *req, char *data);
+int get_args_title_message(char *title, char *message, \
+client_request_t *req, char *data);
 
 /* UUID */
 char *get_uuid(uuid_t uuid);

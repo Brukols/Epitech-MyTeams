@@ -9,7 +9,7 @@
 #include "myteams_client.h"
 #include "reply_code.h"
 
-int subscribe_cmd(client_t *info, char *cmd)
+int subscribe_cmd(client_t *info, const char *cmd)
 {
     client_request_t header = {SUBSCRIBE, 16};
     char uuid[36 + 1] = {0};

@@ -32,6 +32,7 @@ SRCS	=	src/main.c												\
 			src/utils/send_error_already_exist.c					\
 			src/user/create_user.c									\
 			src/user/user_utils.c									\
+			src/utils/get_args_command.c							\
 			src/uuid/get_uuid.c										\
 			src/team/create_team.c									\
 			src/channel/create_channel.c							\
@@ -49,6 +50,8 @@ SRCS	=	src/main.c												\
 			src/server/commands/create/command_create_thread.c		\
 			src/server/commands/create/command_create_reply.c		\
 			src/server/commands/send/command_send.c					\
+			src/server/commands/use/command_use.c					\
+			src/server/commands/subscribe/command_subscribe.c		\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 

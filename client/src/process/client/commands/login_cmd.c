@@ -10,7 +10,7 @@
 #include "reply_code.h"
 #include "requests.h"
 
-int login_cmd(client_t *info, char *cmd)
+int login_cmd(client_t *info, const char *cmd)
 {
     client_request_t header = {LOGIN, 32};
     char username[32 + 1] = {0};

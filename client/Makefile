@@ -37,6 +37,17 @@ SRCS	=	src/main.c	\
 			src/process/server/handle_server_activities.c	\
 			src/process/server/replies/reply_200.c	\
 			src/process/server/replies/reply_201.c	\
+			src/process/server/replies/reply_202.c	\
+			src/process/server/replies/reply_210.c	\
+			src/process/server/replies/reply_211.c	\
+			src/process/server/replies/reply_212.c	\
+			src/process/server/replies/reply_220.c	\
+			src/process/server/replies/reply_230.c	\
+			src/process/server/replies/reply_231.c	\
+			src/process/server/replies/reply_232.c	\
+			src/process/server/replies/reply_233.c	\
+			src/process/server/replies/reply_240.c	\
+			src/process/server/replies/reply_241.c	\
 			src/process/server/replies/reply_330.c	\
 			src/process/server/replies/reply_331.c	\
 			src/process/server/replies/reply_501.c	\

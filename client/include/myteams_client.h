@@ -50,7 +50,7 @@ typedef struct
 typedef struct
 {
     char *name;
-    int (*ft)(client_t *client, char *cmd);
+    int (*ft)(client_t *client, const char *cmd);
 } commands_dictionnary_t;
 
 typedef struct
@@ -83,22 +83,24 @@ int handle_io_activities(client_t *info);
 /* CLIENT */
 int handle_client_activities(client_t *info);
 bool get_arg(const char *command, char *buf, int size, int arg_no);
+int get_arg_nb(const char *command);
+int get_arg_size(const char *command, int arg_no);
 
 /* COMMANDS */
-int help_cmd(client_t *info, char *cmd);
-int login_cmd(client_t *info, char *cmd);
-int logout_cmd(client_t *info, char *cmd);
-int users_cmd(client_t *info, char *cmd);
-int user_cmd(client_t *info, char *cmd);
-int send_cmd(client_t *info, char *cmd);
-int messages_cmd(client_t *info, char *cmd);
-int subscribe_cmd(client_t *info, char *cmd);
-int subscribed_cmd(client_t *info, char *cmd);
-int unsubscribe_cmd(client_t *info, char *cmd);
-int use_cmd(client_t *info, char *cmd);
-int create_cmd(client_t *info, char *cmd);
-int list_cmd(client_t *info, char *cmd);
-int info_cmd(client_t *info, char *cmd);
+int help_cmd(client_t *info, const char *cmd);
+int login_cmd(client_t *info, const char *cmd);
+int logout_cmd(client_t *info, const char *cmd);
+int users_cmd(client_t *info, const char *cmd);
+int user_cmd(client_t *info, const char *cmd);
+int send_cmd(client_t *info, const char *cmd);
+int messages_cmd(client_t *info, const char *cmd);
+int subscribe_cmd(client_t *info, const char *cmd);
+int subscribed_cmd(client_t *info, const char *cmd);
+int unsubscribe_cmd(client_t *info, const char *cmd);
+int use_cmd(client_t *info, const char *cmd);
+int create_cmd(client_t *info, const char *cmd);
+int list_cmd(client_t *info, const char *cmd);
+int info_cmd(client_t *info, const char *cmd);
 
 /* SERVER */
 int handle_server_activities(client_t *info);
@@ -106,6 +108,17 @@ int handle_server_activities(client_t *info);
 /* REPLIES */
 int reply_200(client_t *info, server_reply_t *header);
 int reply_201(client_t *info, server_reply_t *header);
+int reply_202(client_t *info, server_reply_t *header);
+int reply_210(client_t *info, server_reply_t *header);
+int reply_211(client_t *info, server_reply_t *header);
+int reply_212(client_t *info, server_reply_t *header);
+int reply_220(client_t *info, server_reply_t *header);
+int reply_230(client_t *info, server_reply_t *header);
+int reply_231(client_t *info, server_reply_t *header);
+int reply_232(client_t *info, server_reply_t *header);
+int reply_233(client_t *info, server_reply_t *header);
+int reply_240(client_t *info, server_reply_t *header);
+int reply_241(client_t *info, server_reply_t *header);
 int reply_330(client_t *info, server_reply_t *header);
 int reply_331(client_t *info, server_reply_t *header);
 int reply_501(client_t *info, server_reply_t *header);
