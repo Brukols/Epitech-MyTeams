@@ -18,7 +18,10 @@ static int send_messages(client_t *client, uuid_t data, bool *sent)
         *sent = true;
         if (send_header_reply(
                 PRINT_PRIVATE_MESSAGES,
-                sizeof(time_t) + DEFAULT_BODY_LENGTH, client))
+                sizeof(uuid_t) + sizeof(time_t) + DEFAULT_BODY_LENGTH, client))
+            return (FAILURE);
+        if (!smart_buffer_add_data(
+                client->write_buf, &message->user_uuid, sizeof(uuid_t)))
             return (FAILURE);
         if (!smart_buffer_add_data(
                 client->write_buf, &message->time, sizeof(time_t)))

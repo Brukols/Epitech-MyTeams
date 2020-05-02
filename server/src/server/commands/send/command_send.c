@@ -53,7 +53,7 @@ static int user_add_message(user_t *to, uuid_t from, char *message)
         return (FAILURE);
     uuid_unparse(from, sender);
     uuid_unparse(to->uuid, receiver);
-    if (server_event_private_message_sended(sender, receiver, message))
+    if (server_event_private_message_sended(sender, receiver, message) < 0)
         return (FAILURE);
     return (SUCCESS);
 }
