@@ -53,12 +53,13 @@ char *data)
         team_t *team = (team_t *)(teams->value);
 
         client->team = team;
-        if (!uuid_compare(uuid, teams->value))
-            return (SUCCESS);
+        if (!uuid_compare(uuid, team->uuid))
+            return (send_reply(client, COMMAND_OK, "{SERVER} Command /use ok"));
         find_in_channel(team, client, uuid);
         if (client->channel)
-            return (SUCCESS);
+            return (send_reply(client, COMMAND_OK, "{SERVER} Command /use ok"));
     }
     client->team = NULL;
-    return (SUCCESS);
+    printf("{SERVER} No matching uuid found");
+    return (send_reply(client, BAD_SEQUENCE, "{SERVER} Unable to found to matchin uuid"));
 }
