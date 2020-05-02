@@ -13,6 +13,7 @@ const commands_t not_logged_in_commands[] = {
     {LOGIN, &command_login},
     {LOGOUT, &command_logout},
     {CREATE, &command_create},
+    {USE, &command_use},
     {UNKNOWN, NULL}
 };
 

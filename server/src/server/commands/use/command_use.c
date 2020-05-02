@@ -40,6 +40,12 @@ char *data)
 {
     uuid_t uuid;
 
+    if (req->message_size == 0) {
+        client->team = NULL;
+        client->channel = NULL;
+        client->thread = NULL;
+        return (send_reply(client, COMMAND_OK, "{SERVER} /use command succeed"));
+    }
     if (req->message_size != 16)
         return (send_error_arguments(client, "{SERVER} Wrong arguments"));
     memcpy(uuid, data, 16);
