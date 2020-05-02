@@ -22,6 +22,7 @@ SRCS	=	src/main.c												\
 			src/server/translate_data_client.c						\
 			src/signal/sig_handler.c								\
 			src/signal/terminate.c									\
+			src/message/message_create.c							\
 			src/client/create_client.c								\
 			src/client/delete_client.c								\
 			src/client/client_utils.c								\

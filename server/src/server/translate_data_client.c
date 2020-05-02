@@ -21,6 +21,7 @@ const commands_t commands[] = {
     {USER, &command_user},
     {USERS, &command_users},
     {MESSAGES, &command_messages},
+    {SEND, &command_send},
     {UNKNOWN, NULL}
 };
 
@@ -41,5 +42,5 @@ int translate_data_client(
             return (FAILURE);
         return (SUCCESS);
     }
-    return (FAILURE);
+    return (send_reply(client, UNKNOWN_COMMAND, "Unknown command, use /help"));
 }

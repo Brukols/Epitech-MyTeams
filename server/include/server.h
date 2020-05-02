@@ -63,13 +63,13 @@ int command_logout(server_t *, client_t *, client_request_t *, char *);
 int command_user(server_t *, client_t *, client_request_t *, char *);
 int command_users(server_t *, client_t *, client_request_t *, char *);
 int command_messages(server_t *, client_t *, client_request_t *, char *);
-int command_create(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_create_team(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_create_channel(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_create_thread(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_create_reply(server_t *server, client_t *client, client_request_t *req, char *data);
-int command_use(server_t *server, client_t *client, client_request_t *req, \
-char *data);
+int command_create(server_t *, client_t *, client_request_t *, char *);
+int command_create_team(server_t *, client_t *, client_request_t *, char *);
+int command_create_channel(server_t *, client_t *, client_request_t *, char *);
+int command_create_thread(server_t *, client_t *, client_request_t *, char *);
+int command_create_reply(server_t *, client_t *, client_request_t *, char *);
+int command_use(server_t *, client_t *, client_request_t *, char *);
+int command_send(server_t *, client_t *, client_request_t *, char *);
 
 /* UTILS */
 int send_header_reply(unsigned short code, int size, client_t *client);
