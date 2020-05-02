@@ -62,7 +62,6 @@ int command_login(server_t *server, client_t *client, client_request_t *req, cha
     user = get_user(server, username);
     if (!user)
         return (FAILURE);
-    user->status = 1;
     client->user = user;
     uuid_unparse(user->uuid, uuid);
     if (user->nb_clients == 0)

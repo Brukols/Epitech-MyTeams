@@ -20,7 +20,6 @@ user_t *create_user(char *username)
     memset(user->username, 0, DEFAULT_NAME_LENGTH);
     strcpy(user->username, username);
     user->messages = NULL;
-    user->status = 0;
     user->nb_clients = 0;
     uuid_generate(user->uuid);
     return (user);

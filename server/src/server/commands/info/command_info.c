@@ -72,7 +72,7 @@ static int command_info_user(client_t *client)
 DEFAULT_NAME_LENGTH))
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, \
-&(char){client->user->status}, 1))
+&(char){client->user->nb_clients != 0}, 1))
         return (FAILURE);
     return (SUCCESS);
 }

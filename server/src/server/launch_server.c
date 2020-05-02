@@ -24,6 +24,8 @@ static bool init_fds_client(list_t *client, fd_set *readfs, fd_set *writefs)
 
         if (smart_buffer_get_size(tmp->write_buf) == 0 && tmp->close) {
             it = it->next;
+            if (tmp->user)
+                tmp->user->nb_clients--;
             list_del_elem_at_position(client, i, &delete_client);
             continue;
         }
