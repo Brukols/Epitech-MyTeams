@@ -48,7 +48,7 @@ client_t *actual_client)
         if (!client->user)
             continue;
         if (client == actual_client)
-            rvalue = add_data_in_client(client, team, PRINT_TEAM_CREATE);
+            rvalue = add_data_in_client(client, team, PRINT_TEAM_CREATED);
         else
             rvalue = add_data_in_client(client, team, EVENT_TEAM_CREATED);
         if (rvalue < 0)
