@@ -9,7 +9,7 @@
 #include "reply_code.h"
 #include "requests.h"
 
-int help_cmd(client_t *info, char *cmd)
+int help_cmd(client_t *info, const char *cmd)
 {
     client_request_t header = {HELP, 0};
     bool ret;

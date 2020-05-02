@@ -8,7 +8,7 @@
 #include "myteams_client.h"
 #include "reply_code.h"
 
-int users_cmd(client_t *info, char *cmd)
+int users_cmd(client_t *info, const char *cmd)
 {
     client_request_t header = {USERS, 0};
     bool ret;

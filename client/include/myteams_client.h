@@ -50,7 +50,7 @@ typedef struct
 typedef struct
 {
     char *name;
-    int (*ft)(client_t *client, char *cmd);
+    int (*ft)(client_t *client, const char *cmd);
 } commands_dictionnary_t;
 
 typedef struct
@@ -87,20 +87,20 @@ int get_arg_nb(const char *command);
 int get_arg_size(const char *command, int arg_no);
 
 /* COMMANDS */
-int help_cmd(client_t *info, char *cmd);
-int login_cmd(client_t *info, char *cmd);
-int logout_cmd(client_t *info, char *cmd);
-int users_cmd(client_t *info, char *cmd);
-int user_cmd(client_t *info, char *cmd);
-int send_cmd(client_t *info, char *cmd);
-int messages_cmd(client_t *info, char *cmd);
-int subscribe_cmd(client_t *info, char *cmd);
-int subscribed_cmd(client_t *info, char *cmd);
-int unsubscribe_cmd(client_t *info, char *cmd);
-int use_cmd(client_t *info, char *cmd);
-int create_cmd(client_t *info, char *cmd);
-int list_cmd(client_t *info, char *cmd);
-int info_cmd(client_t *info, char *cmd);
+int help_cmd(client_t *info, const char *cmd);
+int login_cmd(client_t *info, const char *cmd);
+int logout_cmd(client_t *info, const char *cmd);
+int users_cmd(client_t *info, const char *cmd);
+int user_cmd(client_t *info, const char *cmd);
+int send_cmd(client_t *info, const char *cmd);
+int messages_cmd(client_t *info, const char *cmd);
+int subscribe_cmd(client_t *info, const char *cmd);
+int subscribed_cmd(client_t *info, const char *cmd);
+int unsubscribe_cmd(client_t *info, const char *cmd);
+int use_cmd(client_t *info, const char *cmd);
+int create_cmd(client_t *info, const char *cmd);
+int list_cmd(client_t *info, const char *cmd);
+int info_cmd(client_t *info, const char *cmd);
 
 /* SERVER */
 int handle_server_activities(client_t *info);

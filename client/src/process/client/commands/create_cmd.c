@@ -49,11 +49,12 @@ static int create_cmd_comment_only(client_t *info, const char *cmd)
     return (CLIENT_SUCCESS);
 }
 
-int create_cmd(client_t *info, char *cmd)
+int create_cmd(client_t *info, const char *cmd)
 {
-    if (get_arg_nb(cmd) > 2 || get_arg_nb(cmd) == -1)
+    int arg_nb = get_arg_nb(cmd);
+    if (arg_nb > 2 || arg_nb < 1)
         return (CLIENT_ERROR);
-    if (get_arg_nb(cmd) == 1)
+    if (arg_nb == 1)
         return (create_cmd_comment_only(info, cmd));
     return (create_cmd_others(info, cmd));
 }
