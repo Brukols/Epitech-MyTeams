@@ -35,6 +35,7 @@ SRCS	=	src/main.c												\
 			src/utils/get_args_command.c							\
 			src/uuid/get_uuid.c										\
 			src/team/create_team.c									\
+			src/team/user_is_in_team.c								\
 			src/channel/create_channel.c							\
 			src/thread/create_thread.c								\
 			src/reply/create_reply.c								\
@@ -52,6 +53,7 @@ SRCS	=	src/main.c												\
 			src/server/commands/send/command_send.c					\
 			src/server/commands/use/command_use.c					\
 			src/server/commands/subscribe/command_subscribe.c		\
+			src/server/commands/unsubscribe/command_unsubscribe.c		\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 

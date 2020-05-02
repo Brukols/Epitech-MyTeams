@@ -15,6 +15,7 @@ const commands_t not_logged_in_commands[] = {
     {CREATE, &command_create},
     {USE, &command_use},
     {SUBSCRIBE, &command_subscribe},
+    {UNSUBSCRIBE, &command_unsubscribe},
     {UNKNOWN, NULL}
 };
 
