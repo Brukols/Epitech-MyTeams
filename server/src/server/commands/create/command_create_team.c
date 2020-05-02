@@ -23,8 +23,8 @@ static bool name_already_exist(char *name, server_t *server)
 static int add_data_in_client(client_t *client, team_t *team, \
 enum reply_code_e code)
 {
-    if (!send_header_reply(code, 16 + \
-DEFAULT_NAME_LENGTH + DEFAULT_DESCRIPTION_LENGTH, client))
+    if (send_header_reply(code, 16 + \
+DEFAULT_NAME_LENGTH + DEFAULT_DESCRIPTION_LENGTH, client) < 0)
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, team->uuid, 16))
         return (FAILURE);
@@ -40,32 +40,20 @@ DEFAULT_DESCRIPTION_LENGTH))
 static int broadcast_team_created(server_t *server, team_t *team, \
 client_t *actual_client)
 {
+    int rvalue;
+
     for (list_t clients = server->client; clients; clients = clients->next) {
         client_t *client = (client_t *)(clients->value);
 
         if (!client->user)
             continue;
         if (client == actual_client)
-            add_data_in_client(client, team, PRINT_TEAM_CREATE);
+            rvalue = add_data_in_client(client, team, PRINT_TEAM_CREATE);
         else
-            add_data_in_client(client, team, EVENT_TEAM_CREATED);
+            rvalue = add_data_in_client(client, team, EVENT_TEAM_CREATED);
+        if (rvalue < 0)
+            return (FAILURE);
     }
-    return (SUCCESS);
-}
-
-static int get_args(char *name, char *description, client_request_t *req, \
-char *data)
-{
-    int size_name = strnlen(data, req->message_size);
-    int size_description;
-
-    if (size_name == 0 || size_name >= DEFAULT_NAME_LENGTH)
-        return (FAILURE);
-    strncpy(name, data, size_name);
-    size_description = strnlen(data + size_name + 1, req->message_size);
-    if (size_description >= DEFAULT_DESCRIPTION_LENGTH)
-        return (FAILURE);
-    strncpy(description, data + size_name + 1, size_description);
     return (SUCCESS);
 }
 
@@ -78,7 +66,7 @@ client_request_t *req, char *data)
     char uuid_team[37];
     char uuid_user[37];
 
-    if (get_args(name, description, req, data) == FAILURE)
+    if (get_args_name_description(name, description, req, data) == FAILURE)
         return (send_error_arguments(client, \
 "{SERVER} /create command : Wrong arguments"));
     if (name_already_exist(name, server))

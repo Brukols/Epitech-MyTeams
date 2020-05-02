@@ -77,6 +77,8 @@ int send_error_arguments(client_t *client, const char *message);
 int send_reply(client_t *client, enum reply_code_e error, const char *message);
 int send_unknown(client_t *client, enum reply_code_e error, uuid_t uuid);
 int send_error_already_exist(client_t *client);
+int get_args_name_description(char *name, char *description, \
+client_request_t *req, char *data);
 
 /* UUID */
 char *get_uuid(uuid_t uuid);

@@ -60,6 +60,5 @@ char *data)
             return (send_reply(client, COMMAND_OK, "{SERVER} Command /use ok"));
     }
     client->team = NULL;
-    printf("{SERVER} No matching uuid found");
     return (send_reply(client, BAD_SEQUENCE, "{SERVER} Unable to found to matchin uuid"));
 }
