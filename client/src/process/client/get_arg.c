@@ -7,6 +7,17 @@
 
 #include "myteams_client.h"
 
+int get_arg_nb(const char *command)
+{
+    int nb = 0;
+
+    for (int i = 0; command[i]; i++) {
+        if (command[i] == '"')
+            nb++;
+    }
+    return (nb / 2);
+}
+
 bool get_arg(const char *command, char *buf, int size, int arg_no)
 {
     int begin = 1 + arg_no * 2;

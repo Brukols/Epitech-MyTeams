@@ -83,6 +83,7 @@ int handle_io_activities(client_t *info);
 /* CLIENT */
 int handle_client_activities(client_t *info);
 bool get_arg(const char *command, char *buf, int size, int arg_no);
+int get_arg_nb(const char *command);
 
 /* COMMANDS */
 int help_cmd(client_t *info, char *cmd);
