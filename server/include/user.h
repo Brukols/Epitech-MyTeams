@@ -22,5 +22,6 @@ typedef struct
 } user_t;
 
 user_t *create_user(char *username);
+user_t *user_get_by_uuid(list_t users, uuid_t uuid);
 
 #endif /* !USER_H_ */

@@ -9,17 +9,6 @@
 #include "server.h"
 #include "message.h"
 
-user_t *get_user_by_uuid(list_t users, uuid_t uuid)
-{
-    for (; users; users = users->next) {
-        user_t *user = users->value;
-
-        if (!uuid_compare(user->uuid, uuid))
-            return (user);
-    }
-    return (NULL);
-}
-
 static int send_messages(client_t *client, uuid_t data, bool *sent)
 {
     for (list_t msg = client->user->messages; msg; msg = msg->next) {
@@ -49,7 +38,7 @@ int command_messages(
 
     if (req->message_size != 16)
         return (send_error_arguments(client, "Invalid argument size"));
-    if (!get_user_by_uuid(server->users, (unsigned char *)data))
+    if (!user_get_by_uuid(server->users, (unsigned char *)data))
         return (send_unknown(client, UNKNOWN_USER, (unsigned char *)data));
     if (send_messages(client, (unsigned char *)data, &sent) == FAILURE)
         return (FAILURE);
