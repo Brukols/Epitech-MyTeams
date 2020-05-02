@@ -6,6 +6,7 @@
 */
 
 #include "server.h"
+#include "logging_server.h"
 
 static bool user_is_in_team(client_t *client, team_t *team)
 {
@@ -18,10 +19,22 @@ static bool user_is_in_team(client_t *client, team_t *team)
 
 static int subscribe_user_to_team(client_t *client, team_t *team)
 {
+    char uuid_team[37];
+    char uuid_user[37];
+
     if (user_is_in_team(client, team))
-        return (SUCCESS);
+        return (send_reply(client, COMMAND_OK, "{SERVER} User already in the team"));
     if (!list_add_elem_at_back(&team->subscribers, client->user))
-        return (false);
+        return (FAILURE);
+    uuid_unparse(client->user->uuid, uuid_user);
+    uuid_unparse(team->uuid, uuid_team);
+    server_event_user_join_a_team(uuid_team, uuid_user);
+    if (send_header_reply(PRINT_SUBSCRIBED, 16 + 16, client) < 0)
+        return (FAILURE);
+    if (!smart_buffer_add_data(client->write_buf, client->user->uuid, 16))
+        return (FAILURE);
+    if (!smart_buffer_add_data(client->write_buf, team->uuid, 16))
+        return (FAILURE);
     return (SUCCESS);
 }
 
