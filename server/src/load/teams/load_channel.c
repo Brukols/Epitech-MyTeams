@@ -27,7 +27,8 @@ channel_t *load_channel_data(char *path)
         close(fd);
         return (NULL);
     }
-    if ((create_channel(name, description)) == NULL) return (false);
+    if ((new_channel = create_channel(name, description)) == NULL)
+        return (false);
     uuid_copy(new_channel->uuid, uuid);
     close(fd);
     return (new_channel);
