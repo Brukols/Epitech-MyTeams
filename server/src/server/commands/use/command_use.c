@@ -35,6 +35,25 @@ channels = channels->next) {
     client->channel = NULL;
 }
 
+static int find_in_team(server_t *server, client_t *client, uuid_t uuid)
+{
+    for (list_t teams = server->teams; teams; teams = teams->next) {
+        team_t *team = (team_t *)(teams->value);
+
+        client->team = team;
+        if (!uuid_compare(uuid, team->uuid))
+            return (send_reply(client, COMMAND_OK, \
+"{SERVER} Command /use ok"));
+        find_in_channel(team, client, uuid);
+        if (client->channel)
+            return (send_reply(client, COMMAND_OK, \
+"{SERVER} Command /use ok"));
+    }
+    client->team = NULL;
+    return (send_reply(client, BAD_SEQUENCE, \
+"{SERVER} Unable to found to matchin uuid"));
+}
+
 int command_use(server_t *server, client_t *client, client_request_t *req, \
 char *data)
 {
@@ -44,21 +63,11 @@ char *data)
         client->team = NULL;
         client->channel = NULL;
         client->thread = NULL;
-        return (send_reply(client, COMMAND_OK, "{SERVER} /use command succeed"));
+        return (send_reply(client, COMMAND_OK, \
+"{SERVER} /use command succeed"));
     }
     if (req->message_size != 16)
         return (send_error_arguments(client, "{SERVER} Wrong arguments"));
     memcpy(uuid, data, 16);
-    for (list_t teams = server->teams; teams; teams = teams->next) {
-        team_t *team = (team_t *)(teams->value);
-
-        client->team = team;
-        if (!uuid_compare(uuid, team->uuid))
-            return (send_reply(client, COMMAND_OK, "{SERVER} Command /use ok"));
-        find_in_channel(team, client, uuid);
-        if (client->channel)
-            return (send_reply(client, COMMAND_OK, "{SERVER} Command /use ok"));
-    }
-    client->team = NULL;
-    return (send_reply(client, BAD_SEQUENCE, "{SERVER} Unable to found to matchin uuid"));
+    return (find_in_team(server, client, uuid));
 }

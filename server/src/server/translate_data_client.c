@@ -41,8 +41,10 @@ int translate_data_client(
         return (SUCCESS);
     }
     for (size_t i = 0; commands[i].code != UNKNOWN; i++) {
-        if (!client_is_logged_in(client) || commands[i].code != reply->command)
+        if (commands[i].code != reply->command)
             continue;
+        if (!client_is_logged_in(client))
+            return (send_reply(client, UNAUTHORIZED, NULL));
         if (commands[i].fct(server, client, reply, data) < 0)
             return (FAILURE);
         return (SUCCESS);

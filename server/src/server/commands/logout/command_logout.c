@@ -13,23 +13,25 @@ static const char *response = "Goodbye";
 
 static int send_response(server_t *server, user_t *user)
 {
-    char uuid[37];
-
-    uuid_unparse(user->uuid, uuid);
     for (list_t clients = server->client; clients; clients = clients->next) {
         client_t *client = (client_t *)clients->value;
 
-        if (send_header_reply(EVENT_LOGGED_OUT, DEFAULT_NAME_LENGTH + 16, client) < 0)
+        if (!client->user)
+            continue;
+        if (send_header_reply(EVENT_LOGGED_OUT, DEFAULT_NAME_LENGTH + 16, \
+client) < 0)
             return (FAILURE);
-        if (!smart_buffer_add_data(client->write_buf, user->username, DEFAULT_NAME_LENGTH))
+        if (!smart_buffer_add_data(client->write_buf, user->username, \
+DEFAULT_NAME_LENGTH))
             return (FAILURE);
-        if (!smart_buffer_add_data(client->write_buf, uuid, 16))
+        if (!smart_buffer_add_data(client->write_buf, user->uuid, 16))
             return (FAILURE);
     }
     return (SUCCESS);
 }
 
-int command_logout(server_t *server, client_t *client, client_request_t *req, char *data)
+int command_logout(server_t *server, client_t *client, client_request_t *req, \
+char *data)
 {
     char uuid[37];
 

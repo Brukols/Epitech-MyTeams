@@ -11,7 +11,7 @@
 static int add_event_thread_message_received(client_t *client, \
 reply_t *reply, client_t *actual_client)
 {
-    if (send_header_reply(EVENT_TEAM_CREATED, 16 + 16 + 16 + \
+    if (send_header_reply(EVENT_THREAD_MESSAGE_RECEIVED, 16 + 16 + 16 + \
 DEFAULT_BODY_LENGTH, client) < 0)
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, actual_client->team->uuid, \
@@ -30,7 +30,7 @@ DEFAULT_BODY_LENGTH))
 
 static int add_print_reply_created(client_t *client, reply_t *reply)
 {
-    if (send_header_reply(EVENT_TEAM_CREATED, 16 + 16 + sizeof(time_t) + \
+    if (send_header_reply(PRINT_REPLY_CREATED, 16 + 16 + sizeof(time_t) + \
 DEFAULT_BODY_LENGTH, client) < 0)
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, client->thread->uuid, 16))
