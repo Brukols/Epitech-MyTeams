@@ -30,22 +30,27 @@ static int send_user_info(client_t *client, user_t *user)
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, user->uuid, 16))
         return (FAILURE);
-    if (!smart_buffer_add_data(client->write_buf, user->username, DEFAULT_NAME_LENGTH))
+    if (!smart_buffer_add_data(client->write_buf, user->username, \
+DEFAULT_NAME_LENGTH))
         return (FAILURE);
-    if (!smart_buffer_add_data(client->write_buf, &(char){(user->nb_clients != 0)}, 1))
+    if (!smart_buffer_add_data(client->write_buf, \
+&(char){(user->nb_clients != 0)}, 1))
         return (FAILURE);
     return (SUCCESS);
 }
 
-int command_user(server_t *server, client_t *client, client_request_t *req, char *data)
+int command_user(server_t *server, client_t *client, client_request_t *req, \
+char *data)
 {
     char *uuid = data;
     user_t *user;
 
     if (req->message_size != 16)
-        return (send_not_found_response(client, "wrong syntax"));
-    user = (user_t *)(list_get_first_node_with_value(server->users, uuid, &is_user_equal)->value);
+        return (send_reply(client, SYNTAX_ERROR_ARGS,"{SERVER} Wrong syntax"));
+    user = (user_t *)(list_get_first_node_with_value(server->users, uuid, \
+&is_user_equal)->value);
     if (!user)
-        return (send_not_found_response(client, "unable to find the user"));
+        return (send_reply(client, BAD_SEQUENCE, \
+"{SERVER} Unable to found the user"));
     return (send_user_info(client, user));
 }

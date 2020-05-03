@@ -18,7 +18,8 @@ static int if_user_equal(void *user, void *username)
 
 static user_t *get_user(server_t *server, char *username)
 {
-    list_t list = list_get_first_node_with_value(server->users, username, &if_user_equal);
+    list_t list = list_get_first_node_with_value(server->users, username, \
+&if_user_equal);
     user_t *user;
     char uuid[37] = {0};
 
@@ -41,9 +42,11 @@ static int send_response(server_t *server, char *username, uuid_t uuid)
 
         if (!client->user)
             continue;
-        if (send_header_reply(EVENT_LOGGED_IN, DEFAULT_NAME_LENGTH + 16, client) < 0)
+        if (send_header_reply(EVENT_LOGGED_IN, DEFAULT_NAME_LENGTH + 16, \
+client) < 0)
             return (FAILURE);
-        if (!smart_buffer_add_data(client->write_buf, username, DEFAULT_NAME_LENGTH))
+        if (!smart_buffer_add_data(client->write_buf, username, \
+DEFAULT_NAME_LENGTH))
             return (FAILURE);
         if (!smart_buffer_add_data(client->write_buf, uuid, 16))
             return (FAILURE);
@@ -51,7 +54,8 @@ static int send_response(server_t *server, char *username, uuid_t uuid)
     return (SUCCESS);
 }
 
-int command_login(server_t *server, client_t *client, client_request_t *req, char *data)
+int command_login(server_t *server, client_t *client, client_request_t *req, \
+char *data)
 {
     char *username = data;
     user_t *user;
@@ -60,7 +64,8 @@ int command_login(server_t *server, client_t *client, client_request_t *req, cha
     if (req->message_size != DEFAULT_NAME_LENGTH)
         return (send_error_arguments(client, "Invalid length name"));
     if (client->user)
-        return (send_response(server, client->user->username, client->user->uuid));
+        return (send_response(server, client->user->username, \
+client->user->uuid));
     user = get_user(server, username);
     if (!user)
         return (FAILURE);
