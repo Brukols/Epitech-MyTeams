@@ -39,6 +39,8 @@ static int send_response(server_t *server, char *username, uuid_t uuid)
     for (list_t clients = server->client; clients; clients = clients->next) {
         client_t *client = (client_t *)clients->value;
 
+        if (!client->user)
+            continue;
         if (send_header_reply(EVENT_LOGGED_IN, DEFAULT_NAME_LENGTH + 16, client) < 0)
             return (FAILURE);
         if (!smart_buffer_add_data(client->write_buf, username, DEFAULT_NAME_LENGTH))
