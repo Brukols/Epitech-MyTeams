@@ -135,6 +135,7 @@ int reply_501(client_t *info, server_reply_t *header);
 int reply_502(client_t *info, server_reply_t *header);
 int reply_503(client_t *info, server_reply_t *header);
 int reply_504(client_t *info, server_reply_t *header);
+int reply_530(client_t *info, server_reply_t *header);
 int reply_540(client_t *info, server_reply_t *header);
 int reply_550(client_t *info, server_reply_t *header);
 int reply_551(client_t *info, server_reply_t *header);

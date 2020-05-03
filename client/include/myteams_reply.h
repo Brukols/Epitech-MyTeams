@@ -42,6 +42,7 @@ static const reply_codes_dictionnary_t replies[] =
         {NOT_IMPLEMENTED, &reply_502},
         {BAD_SEQUENCE, &reply_503},
         {NOT_IMPLEMENTED_ARG, &reply_504},
+        {NOT_LOGGED_IN, &reply_530},
         {CLIENT_ALREADY_EXISTS, &reply_540},
         {UNKNOWN_COMMAND, &reply_550},
         {UNKNOWN_TEAM, &reply_551},
