@@ -23,7 +23,8 @@ int send_cmd(client_t *info, const char *cmd)
         return (CLIENT_ERROR);
     if (uuid_parse(uuid, parse_uuid) == -1)
         return (CLIENT_ERROR);
-    ret = smart_buffer_add_data(info->server_in, &header, sizeof(client_request_t));
+    ret = smart_buffer_add_data(info->server_in, &header, sizeof
+    (client_request_t));
     if (!ret) return (CLIENT_ERROR);
     ret = smart_buffer_add_data(info->server_in, &parse_uuid, 16);
     if (!ret) return (CLIENT_ERROR);

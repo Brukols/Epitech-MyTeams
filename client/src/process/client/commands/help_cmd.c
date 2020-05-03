@@ -15,7 +15,8 @@ int help_cmd(client_t *info, const char *cmd)
     bool ret;
     (void)cmd;
 
-    ret = smart_buffer_add_data(info->server_in, &header, sizeof(client_request_t));
+    ret = smart_buffer_add_data(info->server_in, &header, sizeof
+    (client_request_t));
     if (!ret) return (CLIENT_ERROR);
     return (CLIENT_SUCCESS);
 }

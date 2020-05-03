@@ -69,7 +69,7 @@ void display_help(char *path);
 int client_check_arg(int ac, char **av);
 
 /* INIT */
-client_t *init_client();
+client_t *init_client(void);
 int connect_client(client_t *info, char *ip, char *port);
 
 /* CLEAN */
@@ -130,6 +130,18 @@ int reply_320(client_t *info, server_reply_t *header);
 int reply_321(client_t *info, server_reply_t *header);
 int reply_330(client_t *info, server_reply_t *header);
 int reply_331(client_t *info, server_reply_t *header);
+int reply_500(client_t *info, server_reply_t *header);
 int reply_501(client_t *info, server_reply_t *header);
+int reply_502(client_t *info, server_reply_t *header);
+int reply_503(client_t *info, server_reply_t *header);
+int reply_504(client_t *info, server_reply_t *header);
+int reply_530(client_t *info, server_reply_t *header);
+int reply_540(client_t *info, server_reply_t *header);
+int reply_550(client_t *info, server_reply_t *header);
+int reply_551(client_t *info, server_reply_t *header);
+int reply_552(client_t *info, server_reply_t *header);
+int reply_553(client_t *info, server_reply_t *header);
+int reply_554(client_t *info, server_reply_t *header);
+int reply_560(client_t *info, server_reply_t *header);
 
 #endif /* !CLIENT_H_ */
