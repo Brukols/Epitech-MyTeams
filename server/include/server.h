@@ -94,4 +94,8 @@ char *get_uuid(uuid_t uuid);
 /* TEAM */
 bool user_is_in_team(client_t *client, team_t *team);
 
+/* LOAD */
+int load_users(server_t *server);
+int load_teams(server_t *server);
+
 #endif /* !SERVER_H_ */
