@@ -32,15 +32,16 @@ static bool save_thread_data(void *item, int fd)
 static bool save_thread_meta(void *item, int fd)
 {
     thread_t *thread = item;
-    char buffer[573];
+    char buffer[589];
     unsigned int size = list_get_size(thread->replies);
 
     buffer[0] = META_THREAD;
     memcpy(buffer + 1, thread->uuid, 16);
-    memcpy(buffer + 17, thread->title, 32);
-    memcpy(buffer + 49, thread->message, 512);
-    memcpy(buffer + 561, &thread->time, 8);
-    memcpy(buffer + 569, &size, 4);
+    memcpy(buffer + 17, thread->user->uuid, 16);
+    memcpy(buffer + 33, thread->title, 32);
+    memcpy(buffer + 65, thread->message, 512);
+    memcpy(buffer + 577, &thread->time, 8);
+    memcpy(buffer + 585, &size, 4);
     return (write_buffer(fd, buffer, sizeof(buffer)));
 }
 
