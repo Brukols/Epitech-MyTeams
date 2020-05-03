@@ -21,6 +21,7 @@ static int handle_server_reply(client_t *info, server_reply_t header)
 {
     int ret = CLIENT_ERROR;
 
+    // vérifier condition d'arrêt et coe inexistant
     for (int i = 0; replies[i].code; i++) {
         if (header.reply == replies[i].code) {
             ret = replies[i].ft(info, &header);

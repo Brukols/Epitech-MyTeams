@@ -24,7 +24,7 @@ int subscribed_cmd(client_t *info, const char *cmd)
         if (!ret) return (CLIENT_ERROR);
         ret = smart_buffer_add_data(info->server_in, &parse_uuid, 16);
         if (!ret) return (CLIENT_ERROR);
-        return (CLIENT_ERROR);
+        return (CLIENT_SUCCESS);
     }
     if (uuid[0] != 0)
         return (CLIENT_ERROR);
