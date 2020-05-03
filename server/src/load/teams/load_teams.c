@@ -11,6 +11,27 @@
 #include "file_types.h"
 #include "server.h"
 
+void load_team_subscriptions(list_t users, team_t *new_team, char *path)
+{
+    int fd = -1;
+    char type;
+    uuid_t uuid;
+    user_t *user = NULL;
+
+    if ((fd = open(path, O_RDONLY)) == -1) return;
+    if (read(fd, &type, 1) != 1 || type != META_TEAM) {
+        close(fd);
+        return;
+    }
+    while (read(fd, &uuid, 16) == 16) {
+        user = user_get_by_uuid(users, uuid);
+        if (user == NULL)
+            continue;
+        list_add_elem_at_back(&new_team->subscribers, user);
+    }
+    close(fd);
+}
+
 team_t *load_team_metadata(char *path)
 {
     int fd = -1;
@@ -33,7 +54,7 @@ team_t *load_team_metadata(char *path)
     return (new_team);
 }
 
-team_t *load_team_data(list_t *users, char *path_team)
+team_t *load_team_data(list_t users, char *path_team)
 {
     team_t *new_team = NULL;
     char meta_file[PATH_MAX] = {0};
@@ -44,11 +65,11 @@ team_t *load_team_data(list_t *users, char *path_team)
         return (NULL);
     if ((new_team = load_team_metadata(meta_file)) == NULL)
         return (NULL);
-    //load_team_subscriptions(users, new_team, data_file);
+    load_team_subscriptions(users, new_team, data_file);
     return (new_team);
 }
 
-team_t *load_team(list_t *users, struct dirent *dp)
+team_t *load_team(list_t users, struct dirent *dp)
 {
     team_t *new_team = NULL;
     char path_team[PATH_MAX] = {0};
@@ -60,10 +81,15 @@ team_t *load_team(list_t *users, struct dirent *dp)
         return (NULL);
     if ((new_team = load_team_data(users, path_team)) == NULL)
         return (NULL);
-    /*
     if ((dfd = opendir(path_team)) == NULL)
         return (NULL);
-*/
+    while ((sub_dp = readdir(dfd)) != NULL) {
+        if (sub_dp->d_type != DT_DIR || strcmp(sub_dp->d_name, ".") == 0
+            || strcmp(sub_dp->d_name, "..") == 0)
+            continue;
+        //load_channel(new_team, path_team, sub_dp);
+    }
+    closedir(dfd);
     return (new_team);
 }
 
@@ -78,9 +104,10 @@ int load_teams(server_t *server)
     if ((dfd = opendir(teams_save_path)) == NULL)
         return (SUCCESS);
     while ((dp = readdir(dfd)) != NULL) {
-        if (dp->d_type != DT_DIR)
+        if (dp->d_type != DT_DIR || strcmp(dp->d_name, ".") == 0
+        || strcmp(dp->d_name, "..") == 0)
             continue;
-        new_team = load_team(&server->users, dp);
+        new_team = load_team(server->users, dp);
         if (new_team != NULL) {
             list_add_elem_at_back(&server->teams, new_team);
             new_team = NULL;
