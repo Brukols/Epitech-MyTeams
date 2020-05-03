@@ -7,7 +7,7 @@
 
 #include "server.h"
 
-thread_t *create_thread(char *title, char *message)
+thread_t *create_thread(char *title, char *message, user_t *user)
 {
     thread_t *thread = malloc(sizeof(thread_t));
 
@@ -18,7 +18,7 @@ thread_t *create_thread(char *title, char *message)
     strcpy(thread->title, title);
     strcpy(thread->message, message);
     uuid_generate(thread->uuid);
-    thread->user = NULL;
+    thread->user = user;
     thread->replies = NULL;
     thread->time = time(NULL);
     return (thread);

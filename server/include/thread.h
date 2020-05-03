@@ -24,6 +24,6 @@ typedef struct
     list_t replies;
 } thread_t;
 
-thread_t *create_thread(char *title, char *message);
+thread_t *create_thread(char *title, char *message, user_t *user);
 
 #endif /* !THREAD_H_ */

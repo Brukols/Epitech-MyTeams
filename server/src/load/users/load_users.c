@@ -53,11 +53,9 @@ static int load_user(server_t *server, char *name)
     memset(user->username, 0, DEFAULT_NAME_LENGTH);
     user->nb_clients = 0;
     add_string(path_file, name, "/.meta", path_size);
-    printf("Read meta : %s\n", path_file);
     if (read_meta(path_file, user, &nb_messages) == FAILURE)
         return (SUCCESS);
     add_string(path_file, name, "/.data", path_size);
-    printf("Read data : %s\n", path_file);
     if (read_data(path_file, user, nb_messages) == FAILURE)
         return (SUCCESS);
     if (!list_add_elem_at_back(&server->users, user))
@@ -78,7 +76,6 @@ int load_users(server_t *server)
     while ((entry = readdir(folder))) {
         if (entry->d_name[0] == '.')
             continue;
-        printf("Load %s\n", entry->d_name);
         load_user(server, entry->d_name);
     }
     closedir(folder);

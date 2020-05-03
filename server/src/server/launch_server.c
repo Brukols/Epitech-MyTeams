@@ -14,19 +14,25 @@
 #include "saving.h"
 #include <stdio.h>
 
+static void del_it_at_position(list_t *client, list_t *it, client_t *tmp, \
+int i)
+{
+    *it = (*it)->next;
+    if (tmp->user)
+        tmp->user->nb_clients--;
+    list_del_elem_at_position(client, i, &delete_client);
+}
+
 static bool init_fds_client(list_t *client, fd_set *readfs, fd_set *writefs)
 {
     list_t it = *client;
-
     int i = 0;
+
     while (it) {
         client_t *tmp = ((client_t *)(it->value));
 
         if (smart_buffer_get_size(tmp->write_buf) == 0 && tmp->close) {
-            it = it->next;
-            if (tmp->user)
-                tmp->user->nb_clients--;
-            list_del_elem_at_position(client, i, &delete_client);
+            del_it_at_position(client, &it, tmp, i);
             continue;
         }
         if (smart_buffer_get_size(tmp->write_buf) != 0)

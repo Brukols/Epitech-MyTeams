@@ -73,8 +73,7 @@ client_request_t *req, char *data)
 "{SERVER} /create wrong arguments"));
     if (name_already_exist(name, client))
         return (send_error_already_exist(client));
-    channel = create_channel(name, description);
-    if (!channel)
+    if (!(channel = create_channel(name, description)))
         return (FAILURE);
     if (!list_add_elem_at_back(&client->team->channels, channel))
         return (FAILURE);

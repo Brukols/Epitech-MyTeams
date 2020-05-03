@@ -30,8 +30,8 @@ const commands_t commands[] = {
     {UNKNOWN, NULL}
 };
 
-int translate_data_client(
-    server_t *server, client_t *client, client_request_t *reply, char *data)
+int translate_data_client(server_t *server, client_t *client, \
+client_request_t *reply, char *data)
 {
     for (size_t i = 0; not_logged_in_commands[i].code != UNKNOWN; i++) {
         if (not_logged_in_commands[i].code != reply->command)
