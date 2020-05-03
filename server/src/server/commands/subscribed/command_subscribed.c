@@ -12,6 +12,8 @@ static int list_all_teams(server_t *server, client_t *client)
     for (list_t teams = server->teams; teams; teams = teams->next) {
         team_t *team = (team_t *)(teams->value);
 
+        if (!user_is_in_team(client, team))
+            continue;
         if (send_header_reply(PRINT_TEAMS, 16 + DEFAULT_NAME_LENGTH + \
 DEFAULT_DESCRIPTION_LENGTH, client) < 0)
             return (FAILURE);
