@@ -32,9 +32,8 @@ bool smart_buffer_add_data(smart_buffer_t *buff, const void *data, size_t size)
     return (true);
 }
 
-bool smart_buffer_get_data_if(
-    smart_buffer_t *buff, void *var, size_t size,
-    bool (*fct)(smart_buffer_t *, void *))
+bool smart_buffer_get_data_if(smart_buffer_t *buff, void *var, size_t size,
+bool (*fct)(smart_buffer_t *, void *))
 {
     if (size > smart_buffer_get_size(buff))
         return (false);
