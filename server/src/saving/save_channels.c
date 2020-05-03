@@ -14,7 +14,7 @@ static bool save_channel_meta(void *item, int fd)
     channel_t *channel = item;
     char buffer[304];
 
-    buffer[0] = META_TEAM;
+    buffer[0] = META_CHANNEL;
     memcpy(buffer + 1, channel->uuid, 16);
     memcpy(buffer + 17, channel->name, 32);
     memcpy(buffer + 49, channel->description, 255);
