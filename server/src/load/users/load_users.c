@@ -43,7 +43,7 @@ static int read_meta(char *path, user_t *user, int *nb_messages)
 
 static int load_user(server_t *server, char *name)
 {
-    int path_size = strlen(name) + strlen(".data/users/") + strlen("/.meta");
+    int path_size = strlen(name) + strlen(".save/users/") + strlen("/.meta");
     char path_file[path_size];
     int nb_messages;
     user_t *user = malloc(sizeof(user_t));
@@ -63,7 +63,7 @@ static int load_user(server_t *server, char *name)
 
 int load_users(server_t *server)
 {
-    DIR *folder = opendir(".data/users");
+    DIR *folder = opendir(".save/users");
     struct dirent *entry;
 
     if (!folder) {
