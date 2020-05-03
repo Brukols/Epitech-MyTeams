@@ -314,3 +314,4 @@ flycheck_*.el
 
 tmp/*
 *.gc*
+.save/*
