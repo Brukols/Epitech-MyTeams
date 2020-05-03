@@ -55,8 +55,8 @@ bool save_teams(list_t teams)
         if (!check_and_create_directory(dir) ||
             !save_single_item(team, dir, save_team_meta, save_team_data))
             printf("Could not save team %s\n", uuid);
-        /* else */
-        /*     save_channels(team->channels, dir); */
+        else
+            save_channels(team->channels, dir);
     }
     return (true);
 }
