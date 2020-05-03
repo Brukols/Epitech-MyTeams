@@ -33,4 +33,7 @@ void load_team_subscriptions(list_t users, team_t *new_team, char *path);
 team_t *load_team_metadata(char *path);
 team_t *load_team_data(list_t users, char *path_team);
 
+channel_t *load_channel_data(char *path);
+void load_channel(team_t *new_team, char *path, char *name_chan);
+
 #endif /* !SERVER_SAVING_UTILS_H_ */

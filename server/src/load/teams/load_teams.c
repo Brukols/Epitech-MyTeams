@@ -10,7 +10,7 @@
 #include "server.h"
 #include "saving_utils.h"
 
-team_t *load_team(list_t users, struct dirent *dp)
+static team_t *load_team(list_t users, struct dirent *dp)
 {
     team_t *new_team = NULL;
     char path_team[PATH_MAX] = {0};
@@ -28,7 +28,7 @@ team_t *load_team(list_t users, struct dirent *dp)
         if (sub_dp->d_type != DT_DIR || strcmp(sub_dp->d_name, ".") == 0
             || strcmp(sub_dp->d_name, "..") == 0)
             continue;
-        //load_channel(new_team, path_team, sub_dp);
+        load_channel(new_team, path_team, sub_dp->d_name);
     }
     closedir(dfd);
     return (new_team);
