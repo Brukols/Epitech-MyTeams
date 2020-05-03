@@ -10,8 +10,9 @@
 #include "message.h"
 #include <errno.h>
 
-static bool save_single_user_meta(user_t *user, int fd)
+static bool save_user_meta(void *item, int fd)
 {
+    user_t *user = item;
     char buffer[53];
     unsigned int size = list_get_size(user->messages);
 
@@ -22,8 +23,9 @@ static bool save_single_user_meta(user_t *user, int fd)
     return (write_buffer(fd, buffer, sizeof(buffer)));
 }
 
-static bool save_single_user_data(user_t *user, int fd)
+static bool save_user_data(void *item, int fd)
 {
+    user_t *user = item;
     char type = DATA_USER;
     char buffer[536];
     message_t *msg;
@@ -41,38 +43,21 @@ static bool save_single_user_data(user_t *user, int fd)
     return (true);
 }
 
-static bool save_single_user(user_t *usr, const char *dir)
-{
-    int metafd = get_meta_fd(dir);
-    int datafd = get_data_fd(dir);
-
-    if (metafd == -1 || datafd == -1) {
-        metafd != -1 ? close(metafd) : 0;
-        datafd != -1 ? close(datafd) : 0;
-        return (false);
-    }
-    if (!save_single_user_meta(usr, metafd))
-        return (false);
-    if (!save_single_user_data(usr, datafd))
-        return (false);
-    close(metafd);
-    close(datafd);
-    return (true);
-}
-
 bool save_users(list_t users)
 {
     user_t *user;
-    char dir[128] = ".save/users/";
+    char dir[128];
     char uuid[37] = {0};
 
     for (; users; users = users->next) {
         user = users->value;
         uuid_unparse(user->uuid, uuid);
+        strcpy(dir, ".save/users/");
         strcat(dir, uuid);
         strcat(dir, "/");
-        if (!check_and_create_directory(dir) || !save_single_user(user, dir))
-            printf("Could not save user %s: %s\n", uuid, strerror(errno));
+        if (!check_and_create_directory(dir) ||
+            !save_single_item(user, dir, save_user_meta, save_user_data))
+            printf("Could not save user %s\n", uuid);
     }
     return (true);
 }

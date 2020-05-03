@@ -20,8 +20,13 @@ int get_meta_fd(const char *dir);
 int get_data_fd(const char *dir);
 
 bool save_teams(list_t teams);
-bool save_threads(list_t teams);
-bool save_channels(list_t teams);
+bool save_threads(list_t threads, const char *dir);
+bool save_channels(list_t channels, const char *dir);
 bool save_users(list_t users);
+
+bool save_single_item(
+    void *item, const char *dir,
+    bool (*save_meta)(void *, int),
+    bool (*save_data)(void *, int));
 
 #endif /* !SERVER_SAVING_UTILS_H_ */

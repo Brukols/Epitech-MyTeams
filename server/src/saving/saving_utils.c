@@ -52,3 +52,25 @@ bool check_and_create_directory(const char *dir)
     }
     return (S_ISDIR(s.st_mode));
 }
+
+bool save_single_item(
+    void *item, const char *dir,
+    bool (*save_meta)(void *, int),
+    bool (*save_data)(void *, int))
+{
+    int metafd = save_meta ? get_meta_fd(dir) : 0;
+    int datafd = save_data ? get_data_fd(dir) : 0;
+
+    if (metafd == -1 || datafd == -1) {
+        metafd != -1 ? close(metafd) : 0;
+        datafd != -1 ? close(datafd) : 0;
+        return (false);
+    }
+    if (save_meta && !save_meta(item, metafd))
+        return (false);
+    if (save_data && !save_data(item, datafd))
+        return (false);
+    save_meta ? close(metafd) : 0;
+    save_data ? close(datafd) : 0;
+    return (true);
+}
