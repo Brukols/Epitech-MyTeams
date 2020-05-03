@@ -15,15 +15,6 @@ static int is_user_equal(void *value, void *to_compare)
     return (uuid_compare(user->uuid, to_compare));
 }
 
-static int send_not_found_response(client_t *client, const char *msg)
-{
-    if (send_header_reply(UNKNOWN_USER, strlen(msg), client) < 0)
-        return (FAILURE);
-    if (!smart_buffer_add_string(client->write_buf, msg))
-        return (FAILURE);
-    return (SUCCESS);
-}
-
 static int send_user_info(client_t *client, user_t *user)
 {
     if (send_header_reply(PRINT_USER, 49, client) < 0)
@@ -43,14 +34,13 @@ int command_user(server_t *server, client_t *client, client_request_t *req, \
 char *data)
 {
     char *uuid = data;
-    user_t *user;
+    list_t user;
 
     if (req->message_size != 16)
-        return (send_reply(client, SYNTAX_ERROR_ARGS,"{SERVER} Wrong syntax"));
-    user = (user_t *)(list_get_first_node_with_value(server->users, uuid, \
-&is_user_equal)->value);
+        return (send_reply(client, SYNTAX_ERROR_ARGS, "{SERVER} Wrong syntax"));
+    user = list_get_first_node_with_value(server->users, uuid, &is_user_equal);
     if (!user)
         return (send_reply(client, BAD_SEQUENCE, \
 "{SERVER} Unable to found the user"));
-    return (send_user_info(client, user));
+    return (send_user_info(client, (user_t *)(user->value)));
 }
