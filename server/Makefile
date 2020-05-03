@@ -59,6 +59,7 @@ SRCS	=	src/main.c												\
 			src/server/commands/info/command_info.c					\
 			src/server/commands/list/command_list.c					\
 			src/load/users/load_users.c								\
+			src/load/users/read_user_data.c							\
 			src/load/teams/load_teams.c								\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
