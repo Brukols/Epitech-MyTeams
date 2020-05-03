@@ -9,7 +9,7 @@
 
 int run_client(client_t *info)
 {
-    while (!info->close) {
+    while (!terminate(false) && !info->close) {
         if (select_activities(info) == CLIENT_ERROR)
             return (CLIENT_ERROR);
         if (handle_client_activities(info) == CLIENT_ERROR)
