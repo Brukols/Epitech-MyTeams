@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include "server.h"
+#include "saving_utils.h"
 
 channel_t *load_channel_data(char *path)
 {
@@ -40,7 +41,7 @@ void load_channel(team_t *new_team, char *path, char *name_chan)
     DIR *dfd;
     channel_t *new_channel = NULL;
     if (snprintf(meta_file, PATH_MAX, "%s/%s/.meta", path, name_chan)
-        >= PATH_MAX || snprintf(meta_file, PATH_MAX, "%s/%s/", path,
+        >= PATH_MAX || snprintf(channel_path, PATH_MAX, "%s/%s/", path,
             name_chan) >= PATH_MAX)
         return;
     if ((new_channel = load_channel_data(meta_file)) == NULL) return;
@@ -51,7 +52,7 @@ void load_channel(team_t *new_team, char *path, char *name_chan)
         if (sub_dp->d_type != DT_DIR || strcmp(sub_dp->d_name, ".") == 0
             || strcmp(sub_dp->d_name, "..") == 0)
             continue;
-        //load_thead();
+        load_thread(new_channel, channel_path, sub_dp->d_name);
     }
     closedir(dfd);
 }

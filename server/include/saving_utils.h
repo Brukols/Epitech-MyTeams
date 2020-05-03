@@ -36,4 +36,6 @@ team_t *load_team_data(list_t users, char *path_team);
 channel_t *load_channel_data(char *path);
 void load_channel(team_t *new_team, char *path, char *name_chan);
 
+void load_thread(channel_t *channel, char *path, char *thread_name);
+
 #endif /* !SERVER_SAVING_UTILS_H_ */
