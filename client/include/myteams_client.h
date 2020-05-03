@@ -69,7 +69,7 @@ void display_help(char *path);
 int client_check_arg(int ac, char **av);
 
 /* INIT */
-client_t *init_client();
+client_t *init_client(void);
 int connect_client(client_t *info, char *ip, char *port);
 
 /* CLEAN */

@@ -22,7 +22,8 @@ static int create_cmd_others(client_t *info, const char *cmd)
     if (!get_arg(cmd, comment1, size1, 0) || !get_arg(cmd, comment2, size2, 1))
         return (CLIENT_ERROR);
     header.message_size = size1 + 1 + size2 + 1;
-    ret = smart_buffer_add_data(info->server_in, &header, sizeof(client_request_t));
+    ret = smart_buffer_add_data(info->server_in, &header, sizeof
+    (client_request_t));
     if (!ret) return (CLIENT_ERROR);
     ret = smart_buffer_add_data(info->server_in, &comment1, size1 + 1);
     if (!ret) return (CLIENT_ERROR);
@@ -42,7 +43,8 @@ static int create_cmd_comment_only(client_t *info, const char *cmd)
     if (!get_arg(cmd, comment, size, 0))
         return (CLIENT_ERROR);
     header.message_size = size + 1;
-    ret = smart_buffer_add_data(info->server_in, &header, sizeof(client_request_t));
+    ret = smart_buffer_add_data(info->server_in, &header, sizeof
+    (client_request_t));
     if (!ret) return (CLIENT_ERROR);
     ret = smart_buffer_add_data(info->server_in, &comment, size + 1);
     if (!ret) return (CLIENT_ERROR);

@@ -20,14 +20,14 @@ int reply_320(client_t *info, server_reply_t *header)
     char message[512 + 1] = {0};
     (void)header;
     if (!smart_buffer_get_data(info->server_out, &team_uuid, 16)
-    || !smart_buffer_get_data(info->server_out, &thread_uuid, 16)
-    || !smart_buffer_get_data(info->server_out, &user_uuid, 16)
-    || !smart_buffer_get_data(info->server_out, &message, 512))
+        || !smart_buffer_get_data(info->server_out, &thread_uuid, 16)
+        || !smart_buffer_get_data(info->server_out, &user_uuid, 16)
+        || !smart_buffer_get_data(info->server_out, &message, 512))
         return (CLIENT_ERROR);
     uuid_unparse(team_uuid, team_unparse_uuid);
     uuid_unparse(thread_uuid, thread_unparse_uuid);
     uuid_unparse(user_uuid, user_unparse_uuid);
     client_event_thread_message_received(team_unparse_uuid, thread_unparse_uuid,
-        user_unparse_uuid, message);
+    user_unparse_uuid, message);
     return (CLIENT_SUCCESS);
 }

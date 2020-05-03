@@ -21,12 +21,13 @@ int reply_233(client_t *info, server_reply_t *header)
 
     if (!smart_buffer_get_data(info->server_out, &thread_uuid, 16)
         || !smart_buffer_get_data(info->server_out, &user_uuid, 16)
-        || !smart_buffer_get_data(info->server_out, &reply_timestamp, sizeof(time_t))
+        || !smart_buffer_get_data(info->server_out, &reply_timestamp, sizeof
+        (time_t))
         || !smart_buffer_get_data(info->server_out, &reply_body, 512))
         return (CLIENT_ERROR);
     uuid_unparse(thread_uuid, thread_unparse_uuid);
     uuid_unparse(user_uuid, user_unparse_uuid);
     client_thread_print_replies(thread_unparse_uuid, user_unparse_uuid,
-                        reply_timestamp, reply_body);
+    reply_timestamp, reply_body);
     return (CLIENT_SUCCESS);
 }

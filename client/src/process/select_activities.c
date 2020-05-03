@@ -30,7 +30,8 @@ static void set_fd_set(client_t *info)
 int select_activities(client_t *info)
 {
     set_fd_set(info);
-    if (select(FD_SETSIZE, &info->reads, &info->writes, &info->excepts, NULL) == -1) {
+    if (select(FD_SETSIZE, &info->reads, &info->writes, &info->excepts, NULL)
+    == -1) {
         fprintf(stdout, "./myteams_cli: Critic error\n");
         return (CLIENT_ERROR);
     }

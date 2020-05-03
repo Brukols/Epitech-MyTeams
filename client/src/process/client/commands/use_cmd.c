@@ -21,7 +21,8 @@ int use_cmd(client_t *info, const char *cmd)
         if (get_arg_size(cmd, i) != 36) return (CLIENT_ERROR);
     }
     header.message_size = nb_arg * 16;
-    ret = smart_buffer_add_data(info->server_in, &header, sizeof(client_request_t));
+    ret = smart_buffer_add_data(info->server_in, &header, sizeof
+    (client_request_t));
     if (!ret) return (CLIENT_ERROR);
     for (int i = 0; i < nb_arg; i++) {
         if (!get_arg(cmd, uuid, 36, i)) return (CLIENT_ERROR);

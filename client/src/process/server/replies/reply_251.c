@@ -24,6 +24,7 @@ int reply_251(client_t *info, server_reply_t *header)
     if (!smart_buffer_get_data(info->server_out, &channel_description, 255))
         return (CLIENT_ERROR);
     uuid_unparse(channel_uuid, channel_unparse_uuid);
-    client_print_channel_created(channel_unparse_uuid, channel_name, channel_description);
+    client_print_channel_created(channel_unparse_uuid, channel_name,
+    channel_description);
     return (CLIENT_SUCCESS);
 }
