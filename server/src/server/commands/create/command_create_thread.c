@@ -18,7 +18,7 @@ DEFAULT_NAME_LENGTH + DEFAULT_BODY_LENGTH, client) < 0)
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, thread->user->uuid, 16))
         return (FAILURE);
-    if (!smart_buffer_add_data(client->write_buf, &thread->time, sizeof(long)))
+    if (!smart_buffer_add_data(client->write_buf, &thread->time, sizeof(time_t)))
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, thread->title, \
 DEFAULT_NAME_LENGTH))
