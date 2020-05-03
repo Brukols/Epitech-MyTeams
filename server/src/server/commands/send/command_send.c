@@ -10,7 +10,6 @@
 #include "user.h"
 #include "logging_server.h"
 
-#include <stdio.h>
 static bool get_arguments(
     client_request_t *req, char *data, uuid_t uuid, char *message)
 {
