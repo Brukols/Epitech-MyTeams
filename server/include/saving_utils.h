@@ -29,4 +29,8 @@ bool save_single_item(
     bool (*save_meta)(void *, int),
     bool (*save_data)(void *, int));
 
+void load_team_subscriptions(list_t users, team_t *new_team, char *path);
+team_t *load_team_metadata(char *path);
+team_t *load_team_data(list_t users, char *path_team);
+
 #endif /* !SERVER_SAVING_UTILS_H_ */

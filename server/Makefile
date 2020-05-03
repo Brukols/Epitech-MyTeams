@@ -61,6 +61,7 @@ SRCS	=	src/main.c												\
 			src/load/users/load_users.c								\
 			src/load/users/read_user_data.c							\
 			src/load/teams/load_teams.c								\
+			src/load/teams/load_team_data.c							\
 			src/saving/saving_utils.c								\
 			src/saving/save_users.c									\
 			src/saving/save_server.c								\
