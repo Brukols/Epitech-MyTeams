@@ -66,6 +66,8 @@ SRCS	=	src/main.c												\
 			src/saving/save_server.c								\
 			src/saving/prepare_saving_directory.c					\
 			src/saving/save_teams.c									\
+			src/saving/save_channels.c								\
+			src/saving/save_threads.c								\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 
