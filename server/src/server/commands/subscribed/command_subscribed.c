@@ -43,8 +43,13 @@ uuid_t data)
 {
     team_t *team = get_team(server, data);
 
-    if (!team)
-        return (send_reply(client, BAD_SEQUENCE, "{SERVER} Wrong arguments"));
+    if (!team) {
+        if (send_header_reply(UNKNOWN_TEAM, 16, client) < 0)
+            return (FAILURE);
+        if (!smart_buffer_add_data(client->write_buf, data, 16))
+            return (FAILURE);
+        return (SUCCESS);
+    }
     for (list_t users = team->subscribers; users; users = users->next) {
         user_t *user = (user_t *)(users->value);
 
@@ -73,5 +78,5 @@ client_request_t *req, char *data)
     memcpy(uuid, data, 16);
     if (req->message_size == 16)
         return (list_all_user_subscribe(server, client, uuid));
-    return (send_reply(client, SYNTAX_ERROR_ARGS, "{SERVER} Wrong arguments"));
+    return (send_reply(client, BAD_SEQUENCE, "{SERVER} Wrong arguments"));
 }
