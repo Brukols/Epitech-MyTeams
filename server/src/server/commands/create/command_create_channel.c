@@ -45,7 +45,7 @@ client_t *actual_client)
     for (list_t clients = server->client; clients; clients = clients->next) {
         client_t *client = (client_t *)(clients->value);
 
-        if (!client->user)
+        if (!client->user || !user_is_in_team(client, actual_client->team))
             continue;
         if (client == actual_client)
             ret = add_data_in_client(client, channel, PRINT_CHANNEL_CREATED);
@@ -66,6 +66,8 @@ client_request_t *req, char *data)
     char uuid_team[37];
     char uuid_channel[37];
 
+    if (!user_is_in_team(client, client->team))
+        return (send_reply(client, UNAUTHORIZED, NULL));
     if (get_args_name_description(name, description, req, data) == FAILURE)
         return (send_error_arguments(client, \
 "{SERVER} /create wrong arguments"));

@@ -37,7 +37,7 @@ client_t *actual_client)
     for (list_t clients = server->client; clients; clients = clients->next) {
         client_t *client = (client_t *)(clients->value);
 
-        if (!client->user)
+        if (!client->user || !user_is_in_team(client, actual_client->team))
             continue;
         if (client == actual_client)
             ret = add_data_in_client(client, thread, PRINT_THREAD_CREATED);
@@ -59,6 +59,8 @@ client_request_t *req, char *data)
     char uuid_thread[37];
     char uuid_user[37];
 
+    if (!user_is_in_team(client, client->team))
+        return (send_reply(client, UNAUTHORIZED, NULL));
     if (get_args_title_message(title, message, req, data) < 0)
         return (send_error_arguments(client, \
 "{SERVER} /create wrong arguments"));

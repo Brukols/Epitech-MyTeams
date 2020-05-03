@@ -92,6 +92,6 @@ int get_args_comment(char *commment, client_request_t *req, char *data);
 char *get_uuid(uuid_t uuid);
 
 /* TEAM */
-bool user_is_in_team(client_t *client, team_t *team);;
+bool user_is_in_team(client_t *client, team_t *team);
 
 #endif /* !SERVER_H_ */
