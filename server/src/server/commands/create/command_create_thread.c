@@ -68,9 +68,8 @@ client_request_t *req, char *data)
     if (!list_add_elem_at_back(&client->channel->threads, thread))
         return (FAILURE);
     thread->user = client->user;
-    client->thread = thread;
     uuid_unparse(client->channel->uuid, uuid_channel);
-    uuid_unparse(client->thread->uuid, uuid_thread);
+    uuid_unparse(thread->uuid, uuid_thread);
     uuid_unparse(client->user->uuid, uuid_user);
     server_event_thread_created(uuid_channel, uuid_thread, uuid_user, message);
     return (broadcast_thread_created(server, thread, client));
