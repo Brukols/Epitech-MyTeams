@@ -11,7 +11,7 @@
 #include <unistd.h>
 #include <sys/signal.h>
 #include <string.h>
-
+#include "saving.h"
 #include <stdio.h>
 
 static bool init_fds_client(list_t *client, fd_set *readfs, fd_set *writefs)
@@ -65,6 +65,7 @@ int launch_server(server_t *server)
         if (translate_select(server, &readfs, &writefs) < 0)
             return (FAILURE);
     }
+    save_server(server);
     delete_server(server);
     return (0);
 }
