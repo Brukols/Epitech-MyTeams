@@ -12,6 +12,7 @@
 
 int fill_user_messages(int fd, user_t *user, int nb_messages)
 {
+    user->messages = NULL;
     for (int i = 0; i < nb_messages; i++) {
         message_t *message = malloc(sizeof(message_t));
 

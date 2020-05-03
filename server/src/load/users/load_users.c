@@ -50,6 +50,8 @@ static int load_user(server_t *server, char *name)
 
     if (!user)
         return (SUCCESS);
+    memset(user->username, 0, DEFAULT_NAME_LENGTH);
+    user->nb_clients = 0;
     add_string(path_file, name, "/.meta", path_size);
     printf("Read meta : %s\n", path_file);
     if (read_meta(path_file, user, &nb_messages) == FAILURE)
@@ -72,6 +74,7 @@ int load_users(server_t *server)
         printf("Unable to read users\n");
         return (SUCCESS);
     }
+    server->users = NULL;
     while ((entry = readdir(folder))) {
         if (entry->d_name[0] == '.')
             continue;
