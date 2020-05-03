@@ -18,7 +18,8 @@ DEFAULT_NAME_LENGTH + DEFAULT_BODY_LENGTH, client) < 0)
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, thread->user->uuid, 16))
         return (FAILURE);
-    if (!smart_buffer_add_data(client->write_buf, &thread->time, sizeof(time_t)))
+    if (!smart_buffer_add_data(client->write_buf, &thread->time, \
+sizeof(time_t)))
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, thread->title, \
 DEFAULT_NAME_LENGTH))
@@ -64,12 +65,10 @@ client_request_t *req, char *data)
     if (get_args_title_message(title, message, req, data) < 0)
         return (send_error_arguments(client, \
 "{SERVER} /create wrong arguments"));
-    thread = create_thread(title, message);
-    if (!thread)
+    if (!(thread = create_thread(title, message, client->user)))
         return (FAILURE);
     if (!list_add_elem_at_back(&client->channel->threads, thread))
         return (FAILURE);
-    thread->user = client->user;
     uuid_unparse(client->channel->uuid, uuid_channel);
     uuid_unparse(thread->uuid, uuid_thread);
     uuid_unparse(client->user->uuid, uuid_user);

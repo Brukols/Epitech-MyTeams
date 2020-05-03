@@ -14,7 +14,8 @@ static bool if_good_reply(smart_buffer_t *buffer, void *data)
 {
     client_request_t *reply = data;
 
-    if (smart_buffer_get_size(buffer) >= reply->message_size + sizeof(client_request_t))
+    if (smart_buffer_get_size(buffer) >= reply->message_size + \
+sizeof(client_request_t))
         return (true);
     return (false);
 }
@@ -29,7 +30,8 @@ int read_data_client(server_t *server, client_t *client)
         client->close = true;
         return (0);
     }
-    if (smart_buffer_get_data_if(client->read_buf, &reply, sizeof(client_request_t), &if_good_reply) == false)
+    if (smart_buffer_get_data_if(client->read_buf, &reply, \
+sizeof(client_request_t), &if_good_reply) == false)
         return (SUCCESS);
     message = malloc(reply.message_size);
     if (!message)

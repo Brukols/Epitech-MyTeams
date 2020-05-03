@@ -17,7 +17,8 @@ int add_response(client_t *client)
 {
     server_reply_t header = {200, strlen(response)};
 
-    if (!smart_buffer_add_data(client->write_buf, &header, sizeof(server_reply_t)))
+    if (!smart_buffer_add_data(client->write_buf, &header, \
+sizeof(server_reply_t)))
         return (FAILURE);
     if (!smart_buffer_add_string(client->write_buf, response))
         return (FAILURE);

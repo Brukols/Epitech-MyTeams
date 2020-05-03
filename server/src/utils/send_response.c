@@ -11,7 +11,8 @@ int send_header_reply(unsigned short code, int size, client_t *client)
 {
     server_reply_t header = {code, size};
 
-    if (!smart_buffer_add_data(client->write_buf, &header, sizeof(server_reply_t)))
+    if (!smart_buffer_add_data(client->write_buf, &header, \
+sizeof(server_reply_t)))
         return (FAILURE);
     return (SUCCESS);
 }

@@ -9,19 +9,23 @@
 
 static int command_list_replies(client_t *client)
 {
-    for (list_t replies = client->thread->replies; replies; replies = replies->next) {
+    for (list_t replies = client->thread->replies; replies; \
+replies = replies->next) {
         reply_t *reply = (reply_t *)(replies->value);
 
         if (send_header_reply(PRINT_REPLIES, 16 + 16 + sizeof(time_t) + \
 DEFAULT_BODY_LENGTH, client) < 0)
             return (FAILURE);
-        if (!smart_buffer_add_data(client->write_buf, client->thread->uuid, 16))
+        if (!smart_buffer_add_data(client->write_buf, client->thread->uuid, \
+16))
             return (FAILURE);
         if (!smart_buffer_add_data(client->write_buf, reply->user->uuid, 16))
             return (FAILURE);
-        if (!smart_buffer_add_data(client->write_buf, &reply->time, sizeof(time_t)))
+        if (!smart_buffer_add_data(client->write_buf, &reply->time, \
+sizeof(time_t)))
             return (FAILURE);
-        if (!smart_buffer_add_data(client->write_buf, reply->message, DEFAULT_BODY_LENGTH))
+        if (!smart_buffer_add_data(client->write_buf, reply->message, \
+DEFAULT_BODY_LENGTH))
             return (FAILURE);
     }
     return (SUCCESS);
@@ -44,10 +48,8 @@ thread->user->uuid, 16))
         if (!smart_buffer_add_data(client->write_buf, &thread->time, \
 sizeof(time_t)))
             return (FAILURE);
-        if (!smart_buffer_add_data(client->write_buf, \
-thread->title, DEFAULT_NAME_LENGTH))
-            return (FAILURE);
-        if (!smart_buffer_add_data(client->write_buf, \
+        if (!smart_buffer_add_data(client->write_buf, thread->title, \
+DEFAULT_NAME_LENGTH) || !smart_buffer_add_data(client->write_buf, \
 thread->message, DEFAULT_BODY_LENGTH))
             return (FAILURE);
     }

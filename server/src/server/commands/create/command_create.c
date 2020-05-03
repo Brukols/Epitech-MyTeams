@@ -7,7 +7,8 @@
 
 #include "server.h"
 
-int command_create(server_t *server, client_t *client, client_request_t *req, char *data)
+int command_create(server_t *server, client_t *client, client_request_t *req, \
+char *data)
 {
     if (client->thread)
         return (command_create_reply(server, client, req, data));
