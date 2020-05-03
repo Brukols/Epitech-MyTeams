@@ -27,14 +27,14 @@ channel_t *load_channel_data(char *path)
         close(fd);
         return (NULL);
     }
-    if ((new_channel = create_channel(name, description)) == NULL)
+    close(fd);
+    if (type != META_CHANNEL || (new_channel = create_channel(name, description)) == NULL)
         return (false);
     uuid_copy(new_channel->uuid, uuid);
-    close(fd);
     return (new_channel);
 }
 
-void load_channel(team_t *new_team, char *path, char *name_chan)
+void load_channel(list_t users, team_t *new_team, char *path, char *name_chan)
 {
     char meta_file[PATH_MAX] = {0};
     char channel_path[PATH_MAX] = {0};
@@ -53,7 +53,7 @@ void load_channel(team_t *new_team, char *path, char *name_chan)
         if (sub_dp->d_type != DT_DIR || strcmp(sub_dp->d_name, ".") == 0
             || strcmp(sub_dp->d_name, "..") == 0)
             continue;
-        load_thread(new_channel, channel_path, sub_dp->d_name);
+        load_thread(users, new_channel, channel_path, sub_dp->d_name);
     }
     closedir(dfd);
 }

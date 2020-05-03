@@ -48,8 +48,8 @@ team_t *load_team_metadata(char *path)
         return (NULL);
     }
     close(fd);
-    if (type != META_TEAM || (new_team = create_team(name, description)) ==
-                             NULL) return (NULL);
+    if (type != META_TEAM || (new_team = create_team(name, description)) == NULL)
+        return (NULL);
     uuid_copy(new_team->uuid, uuid);
     return (new_team);
 }
