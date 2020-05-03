@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <signal.h>
 #include "requests.h"
 #include "user_message.h"
 #include "smart_buffer.h"
@@ -79,6 +80,8 @@ void close_client(client_t *info);
 int run_client(client_t *info);
 int select_activities(client_t *info);
 int handle_io_activities(client_t *info);
+bool terminate(bool value);
+void sig_handler(int signo);
 
 /* CLIENT */
 int handle_client_activities(client_t *info);

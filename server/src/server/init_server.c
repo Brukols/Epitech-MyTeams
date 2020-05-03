@@ -45,8 +45,10 @@ server_t *init_server(char **av)
     server->addr = init_addr(server->port);
     if (prepare_server(server) < 0)
         return (NULL);
-    server->users = NULL;
-    server->teams = NULL;
+    if (load_users(server) < 0)
+        return (NULL);
+    if (load_teams(server) < 0)
+        return (NULL);
     server->client = NULL;
     return (server);
 }

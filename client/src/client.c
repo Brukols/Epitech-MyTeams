@@ -11,6 +11,8 @@
 int client(int ac, char **av)
 {
     client_t *info = NULL;
+
+    signal(SIGINT, &sig_handler);
     if (client_check_arg(ac, av) == CLIENT_ERROR)
         return (CLIENT_SUCCESS);
     if ((info = init_client()) == NULL)
