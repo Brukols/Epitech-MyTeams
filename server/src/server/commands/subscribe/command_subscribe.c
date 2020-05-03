@@ -14,7 +14,8 @@ static int subscribe_user_to_team(client_t *client, team_t *team)
     char uuid_user[37];
 
     if (user_is_in_team(client, team))
-        return (send_reply(client, COMMAND_OK, "{SERVER} User already in the team"));
+        return (send_reply(client, COMMAND_OK, \
+"{SERVER} User already in the team"));
     if (!list_add_elem_at_back(&team->subscribers, client->user))
         return (FAILURE);
     uuid_unparse(client->user->uuid, uuid_user);
@@ -43,5 +44,9 @@ client_request_t *req, char *data)
         if (!uuid_compare(uuid, team->uuid))
             return (subscribe_user_to_team(client, team));
     }
-    return (send_reply(client, BAD_SEQUENCE, "{SERVER} Unable to found uuid"));
+    if (send_header_reply(UNKNOWN_TEAM, 16, client) < 0)
+        return (FAILURE);
+    if (!smart_buffer_add_data(client->write_buf, uuid, 16))
+        return (FAILURE);
+    return (SUCCESS);
 }
