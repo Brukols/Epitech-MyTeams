@@ -65,6 +65,6 @@ tests_run:	clean
 			gcovr -etests
 
 debug: CFLAGS += -g
-debug: re
+debug: all
 
 .PHONY: all clean fclean re

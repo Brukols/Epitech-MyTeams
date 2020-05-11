@@ -105,7 +105,7 @@ tests_run: re
 			./tests/tests.sh
 
 debug: CFLAGS += -g
-debug: re
+debug: all
 
 re: fclean all
 
