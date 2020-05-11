@@ -10,6 +10,7 @@
 
 #include <netinet/ip.h>
 #include <uuid/uuid.h>
+#include <dirent.h>
 
 #include "generic_list.h"
 #include "client.h"
