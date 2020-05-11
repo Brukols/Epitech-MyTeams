@@ -19,7 +19,7 @@ void load_team_subscriptions(list_t users, team_t *new_team, char *path)
     user_t *user = NULL;
 
     if ((fd = open(path, O_RDONLY)) == -1) return;
-    if (read(fd, &type, 1) != 1 || type != META_TEAM) {
+    if (read(fd, &type, 1) != 1 || type != DATA_TEAM) {
         close(fd);
         return;
     }
