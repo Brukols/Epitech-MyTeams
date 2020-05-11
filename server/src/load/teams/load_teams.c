@@ -25,9 +25,7 @@ static team_t *load_team(list_t users, struct dirent *dp)
     if ((dfd = opendir(path_team)) == NULL)
         return (NULL);
     while ((sub_dp = readdir(dfd)) != NULL) {
-        if (sub_dp->d_type != DT_DIR || strcmp(sub_dp->d_name, ".") == 0
-            || strcmp(sub_dp->d_name, "..") == 0)
-            continue;
+        if (ignore_directory(sub_dp)) continue;
         load_channel(users, new_team, path_team, sub_dp->d_name);
     }
     closedir(dfd);
@@ -36,24 +34,24 @@ static team_t *load_team(list_t users, struct dirent *dp)
 
 int load_teams(server_t *server)
 {
+    fprintf(stdout, "[SERVER] Loading Teams, Channels and Threads...\n");
     server->teams = NULL;
     team_t *new_team = NULL;
     char *teams_save_path = "./.save/teams";
     struct dirent *dp;
     DIR *dfd;
 
-    if ((dfd = opendir(teams_save_path)) == NULL)
-        return (SUCCESS);
+    if ((dfd = opendir(teams_save_path)) == NULL) return (SUCCESS);
     while ((dp = readdir(dfd)) != NULL) {
-        if (dp->d_type != DT_DIR || strcmp(dp->d_name, ".") == 0
-        || strcmp(dp->d_name, "..") == 0)
-            continue;
+        if (ignore_directory(dp)) continue;
         new_team = load_team(server->users, dp);
         if (new_team != NULL) {
             list_add_elem_at_back(&server->teams, new_team);
             new_team = NULL;
+            printf("[SERVER] Teams %s successfully loading...\n\n", dp->d_name);
         }
     }
     closedir(dfd);
+    fprintf(stdout, "[SERVER] Teams, Channels and Threads successfully loading...\n");
     return (SUCCESS);
 }

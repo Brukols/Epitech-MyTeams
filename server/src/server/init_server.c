@@ -8,6 +8,7 @@
 #include "server.h"
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <stdio.h>
 
 static struct sockaddr_in init_addr(int port)
 {
@@ -36,6 +37,7 @@ server_t *init_server(char **av)
 {
     server_t *server = malloc(sizeof(server_t));
 
+    fprintf(stdout, "[SERVER] Initialisation start...\n");
     if (!server)
         return (NULL);
     server->port = atoi(av[1]);
@@ -50,5 +52,6 @@ server_t *init_server(char **av)
     if (load_teams(server) < 0)
         return (NULL);
     server->client = NULL;
+    fprintf(stdout, "[SERVER] Initialisation finish...\n");
     return (server);
 }

@@ -59,6 +59,7 @@ static void load_thread_data(list_t users, thread_t *thread, char *path)
         }
         reply->time = time;
         list_add_elem_at_back(&thread->replies, reply);
+        printf("\t\t\t[SERVER] Reply successfully loading...\n");
     }
     close(fd);
 }
@@ -79,4 +80,5 @@ void load_thread(list_t users, channel_t *channel, char *path, char *thread_name
         return;
     load_thread_data(users, new_thread, data_file);
     list_add_elem_at_back(&channel->threads, new_thread);
+    printf("\t\t[SERVER] Thread %s successfully loading...\n", thread_name);
 }

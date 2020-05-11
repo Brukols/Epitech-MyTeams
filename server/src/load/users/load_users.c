@@ -65,6 +65,7 @@ static int load_user(server_t *server, char *name)
 
 int load_users(server_t *server)
 {
+    fprintf(stdout, "[SERVER] Loading Users...\n");
     DIR *folder = opendir(".save/users");
     struct dirent *entry;
 
@@ -79,5 +80,6 @@ int load_users(server_t *server)
         load_user(server, entry->d_name);
     }
     closedir(folder);
+    fprintf(stdout, "[SERVER] Users succesfully loading...\n");
     return (SUCCESS);
 }

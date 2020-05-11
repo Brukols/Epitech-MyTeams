@@ -47,12 +47,11 @@ void load_channel(list_t users, team_t *new_team, char *path, char *name_chan)
         return;
     if ((new_channel = load_channel_data(meta_file)) == NULL) return;
     list_add_elem_at_back(&new_team->channels, new_channel);
+    printf("\t[SERVER] Channel %s successfully loading...\n", name_chan);
     if ((dfd = opendir(channel_path)) == NULL)
         return;
     while ((sub_dp = readdir(dfd)) != NULL) {
-        if (sub_dp->d_type != DT_DIR || strcmp(sub_dp->d_name, ".") == 0
-            || strcmp(sub_dp->d_name, "..") == 0)
-            continue;
+        if (ignore_directory(sub_dp)) continue;
         load_thread(users, new_channel, channel_path, sub_dp->d_name);
     }
     closedir(dfd);
