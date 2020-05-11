@@ -35,7 +35,7 @@ void load_team_subscriptions(list_t users, team_t *new_team, char *path)
 team_t *load_team_metadata(char *path)
 {
     int fd = -1;
-    team_t *new_team = NULL;
+    team_t *nteam = NULL;
     char type;
     uuid_t uuid;
     char name[32] = {0};
@@ -43,15 +43,16 @@ team_t *load_team_metadata(char *path)
 
     if ((fd = open(path, O_RDONLY)) == -1) return (NULL);
     if (read(fd, &type, 1) != 1 || read(fd, &uuid, 16) != 16
-        || read(fd, &name, 32) != 32 || read(fd, &description, 255) != 255) {
+    || read(fd, &name, 32) != 32
+    || read(fd, &description, 255) != 255) {
         close(fd);
         return (NULL);
     }
     close(fd);
-    if (type != META_TEAM || (new_team = create_team(name, description)) == NULL)
+    if (type != META_TEAM || (nteam = create_team(name, description)) == NULL)
         return (NULL);
-    uuid_copy(new_team->uuid, uuid);
-    return (new_team);
+    uuid_copy(nteam->uuid, uuid);
+    return (nteam);
 }
 
 team_t *load_team_data(list_t users, char *path_team)

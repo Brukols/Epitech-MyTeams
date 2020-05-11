@@ -31,7 +31,7 @@ int select_activities(client_t *info)
 {
     set_fd_set(info);
     if (select(FD_SETSIZE, &info->reads, &info->writes, &info->excepts, NULL)
-    == -1)
+        == -1)
         return (CLIENT_SUCCESS);
     if (handle_io_activities(info) == CLIENT_ERROR)
         return (CLIENT_ERROR);

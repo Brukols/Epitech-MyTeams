@@ -27,10 +27,8 @@ static thread_t *load_thread_meta(list_t users, char *path)
     || read(fd, &user_uuid, 16) != 16 || read(fd, &name, 32) != 32
     || read(fd, &message, 512) != 512 || read(fd, &time, 8) != 8
     || type != META_THREAD || ((user = user_get_by_uuid(users, user_uuid)) ==
-    NULL)) {
-        close(fd);
+    NULL))
         return (NULL);
-    }
     close(fd);
     if ((thread = create_thread(name, message, user)) == NULL) return (NULL);
     uuid_copy(thread->uuid, uuid);
@@ -45,11 +43,8 @@ static void load_thread_data(list_t users, thread_t *thread, char *path)
     time_t time;
     char message[512] = {0};
     reply_t *reply = NULL;
-    if ((fd = open(path, O_RDONLY)) == -1) return;
-    if (read(fd, &type, 1) != 1 || type != DATA_THREAD) {
-        close(fd);
-        return;
-    }
+    if ((fd = open(path, O_RDONLY)) == -1 || read(fd, &type, 1) != 1
+    || type != DATA_THREAD) return;
     while (read(fd, &uuid, 16) == 16 && read(fd, &time, 8) == 8
     && read(fd, &message, 512) == 512) {
         if ((reply = create_reply(message)) == NULL) continue;
@@ -64,17 +59,18 @@ static void load_thread_data(list_t users, thread_t *thread, char *path)
     close(fd);
 }
 
-void load_thread(list_t users, channel_t *channel, char *path, char *thread_name)
+void load_thread(list_t users, channel_t *channel, char *path,
+char *thread_name)
 {
     char meta_file[PATH_MAX] = {0};
     char data_file[PATH_MAX] = {0};
     thread_t *new_thread = NULL;
 
     if (snprintf(meta_file, PATH_MAX, "%s%s/%s", path, thread_name, ".meta")
-    >= PATH_MAX)
+        >= PATH_MAX)
         return;
     if (snprintf(data_file, PATH_MAX, "%s%s/%s", path, thread_name, ".data")
-    >= PATH_MAX)
+        >= PATH_MAX)
         return;
     if ((new_thread = load_thread_meta(users, meta_file)) == NULL)
         return;

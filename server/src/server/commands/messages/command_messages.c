@@ -16,25 +16,24 @@ static int send_messages(client_t *client, uuid_t data, bool *sent)
         if (uuid_compare((unsigned char *)data, message->user_uuid))
             continue;
         *sent = true;
-        if (send_header_reply(
-                PRINT_PRIVATE_MESSAGES,
-                sizeof(uuid_t) + sizeof(time_t) + DEFAULT_BODY_LENGTH, client))
+        if (send_header_reply(PRINT_PRIVATE_MESSAGES,
+            sizeof(uuid_t) + sizeof(time_t) + DEFAULT_BODY_LENGTH, client))
             return (FAILURE);
-        if (!smart_buffer_add_data(
-                client->write_buf, &message->user_uuid, sizeof(uuid_t)))
+        if (!smart_buffer_add_data(client->write_buf,
+            &message->user_uuid, sizeof(uuid_t)))
             return (FAILURE);
-        if (!smart_buffer_add_data(
-                client->write_buf, &message->time, sizeof(time_t)))
+        if (!smart_buffer_add_data(client->write_buf,
+            &message->time, sizeof(time_t)))
             return (FAILURE);
-        if (!smart_buffer_add_data(
-                client->write_buf, &message->message, DEFAULT_BODY_LENGTH))
+        if (!smart_buffer_add_data(client->write_buf,
+            &message->message, DEFAULT_BODY_LENGTH))
             return (FAILURE);
     }
     return (SUCCESS);
 }
 
-int command_messages(
-    server_t *server, client_t *client, client_request_t *req, char *data)
+int command_messages(server_t *server, client_t *client, client_request_t *req,
+char *data)
 {
     bool sent = false;
     char *not_found = "No messages found";

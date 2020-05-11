@@ -53,10 +53,8 @@ bool check_and_create_directory(const char *dir)
     return (S_ISDIR(s.st_mode));
 }
 
-bool save_single_item(
-    void *item, const char *dir,
-    bool (*save_meta)(void *, int),
-    bool (*save_data)(void *, int))
+bool save_single_item(void *item, const char *dir,
+bool (*save_meta)(void *, int), bool (*save_data)(void *, int))
 {
     int metafd = save_meta ? get_meta_fd(dir) : 0;
     int datafd = save_data ? get_data_fd(dir) : 0;

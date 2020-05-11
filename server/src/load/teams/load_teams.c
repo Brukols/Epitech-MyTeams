@@ -18,7 +18,7 @@ static team_t *load_team(list_t users, struct dirent *dp)
     DIR *dfd;
 
     if (snprintf(path_team, PATH_MAX, "%s%s", "./.save/teams/", dp->d_name)
-    >= PATH_MAX)
+        >= PATH_MAX)
         return (NULL);
     if ((new_team = load_team_data(users, path_team)) == NULL)
         return (NULL);
@@ -52,6 +52,6 @@ int load_teams(server_t *server)
         }
     }
     closedir(dfd);
-    fprintf(stdout, "[SERVER] Teams, Channels and Threads successfully loading...\n");
+    printf("[SERVER] Teams, Channels and Threads successfully loading...\n");
     return (SUCCESS);
 }

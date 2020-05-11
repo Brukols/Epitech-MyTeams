@@ -10,8 +10,8 @@
 #include "user.h"
 #include "logging_server.h"
 
-static bool get_arguments(
-    client_request_t *req, char *data, uuid_t uuid, char *message)
+static bool get_arguments(client_request_t *req, char *data, uuid_t uuid,
+char *message)
 {
     if (req->message_size != sizeof(uuid_t) + DEFAULT_BODY_LENGTH)
         return (false);
@@ -20,8 +20,8 @@ static bool get_arguments(
     return (true);
 }
 
-static int broadcast_message_to_clients(
-    list_t clients, uuid_t from, uuid_t to, char *msg)
+static int broadcast_message_to_clients(list_t clients, uuid_t from, uuid_t to,
+char *msg)
 {
     int size = sizeof(uuid_t) + DEFAULT_BODY_LENGTH;
     client_t *client = NULL;
@@ -57,8 +57,8 @@ static int user_add_message(user_t *to, uuid_t from, char *message)
     return (SUCCESS);
 }
 
-int command_send(
-    server_t *server, client_t *client, client_request_t *req, char *data)
+int command_send(server_t *server, client_t *client, client_request_t *req,
+char *data)
 {
     uuid_t uuid;
     char message[512];
@@ -69,8 +69,8 @@ int command_send(
     user = user_get_by_uuid(server->users, uuid);
     if (!user)
         return (send_unknown(client, UNKNOWN_USER, uuid));
-    if (broadcast_message_to_clients(
-            server->client, client->user->uuid, uuid, message) < 0)
+    if (broadcast_message_to_clients(server->client, client->user->uuid,
+        uuid, message) < 0)
         return (FAILURE);
     return (user_add_message(user, client->user->uuid, message));
 }
