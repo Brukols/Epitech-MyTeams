@@ -64,7 +64,7 @@ client_request_t *req, char *data)
         return (send_reply(client, UNAUTHORIZED, NULL));
     if (get_args_title_message(title, message, req, data) < 0)
         return (send_error_arguments(client, \
-"{SERVER} /create wrong arguments"));
+"[SERVER] /create: wrong arguments"));
     if (!(thread = create_thread(title, message, client->user)))
         return (FAILURE);
     if (!list_add_elem_at_back(&client->channel->threads, thread))

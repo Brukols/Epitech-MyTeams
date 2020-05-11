@@ -78,7 +78,7 @@ client_request_t *req, char *data)
         return (send_reply(client, UNAUTHORIZED, NULL));
     if (get_args_comment(comment, req, data) == FAILURE)
         return (send_error_arguments(client, \
-"{SERVER} /create Wrong arguments"));
+"[SERVER] /create: wrong arguments"));
     reply = create_reply(comment);
     if (!reply)
         return (FAILURE);

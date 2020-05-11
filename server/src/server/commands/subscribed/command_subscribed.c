@@ -75,5 +75,5 @@ client_request_t *req, char *data)
     memcpy(uuid, data, 16);
     if (req->message_size == 16)
         return (list_all_user_subscribe(server, client, uuid));
-    return (send_reply(client, BAD_SEQUENCE, "{SERVER} Wrong arguments"));
+    return (send_reply(client, BAD_SEQUENCE, "[SERVER] Wrong arguments"));
 }

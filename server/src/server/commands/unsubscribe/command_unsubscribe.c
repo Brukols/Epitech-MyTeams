@@ -15,7 +15,7 @@ static int unsubscribe_user_to_team(client_t *client, team_t *team)
 
     if (!user_is_in_team(client, team))
         return (send_reply(client, COMMAND_OK, \
-"{SERVER} User is not in the team"));
+"[SERVER] User is not in the team"));
     if (!list_del_elem_at_value(&team->subscribers, client->user, NULL))
         return (FAILURE);
     uuid_unparse(client->user->uuid, uuid_user);
@@ -36,7 +36,7 @@ client_request_t *req, char *data)
     uuid_t uuid;
 
     if (req->message_size != 16)
-        return (send_error_arguments(client, "{SERVER} Wrong arguments"));
+        return (send_error_arguments(client, "[SERVER] Wrong arguments"));
     memcpy(uuid, data, 16);
     for (list_t teams = server->teams; teams; teams = teams->next) {
         team_t *team = (team_t *)(teams->value);

@@ -68,7 +68,7 @@ client_request_t *req, char *data)
 
     if (get_args_name_description(name, description, req, data) == FAILURE)
         return (send_error_arguments(client, \
-"{SERVER} /create command : Wrong arguments"));
+"[SERVER] /create: wrong arguments"));
     if (name_already_exist(name, server))
         return (send_error_already_exist(client));
     team = create_team(name, description);

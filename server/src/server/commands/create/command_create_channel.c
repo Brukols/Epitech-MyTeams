@@ -70,7 +70,7 @@ client_request_t *req, char *data)
         return (send_reply(client, UNAUTHORIZED, NULL));
     if (get_args_name_description(name, description, req, data) == FAILURE)
         return (send_error_arguments(client, \
-"{SERVER} /create wrong arguments"));
+"[SERVER] /create: wrong arguments"));
     if (name_already_exist(name, client))
         return (send_error_already_exist(client));
     if (!(channel = create_channel(name, description)))

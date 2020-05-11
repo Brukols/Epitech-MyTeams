@@ -11,7 +11,7 @@
 #include "client.h"
 #include <string.h>
 
-static const char *response = "welcome";
+static const char *response = "[SERVER] Welcome on My_Teams.";
 
 int add_response(client_t *client)
 {

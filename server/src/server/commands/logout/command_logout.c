@@ -9,7 +9,7 @@
 #include "user.h"
 #include "logging_server.h"
 
-static const char *response = "Goodbye";
+static const char *response = "[SERVER] Goodbye ! See you soon.";
 
 static int send_response(server_t *server, user_t *user)
 {
