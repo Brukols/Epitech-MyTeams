@@ -21,14 +21,14 @@ fclean:
 	make fclean -C client/
 
 tests_run:
+	make tests_run -C lib/
 	make tests_run -C server/
 	make tests_run -C client/
-	make tests_run -C lib/
 
 debug:
+	make debug -C lib/
 	make debug -C server/
 	make debug -C client/
-	make debug -C lib/
 
 lib:
 	make -C lib/
