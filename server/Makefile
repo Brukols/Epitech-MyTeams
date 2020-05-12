@@ -75,7 +75,7 @@ SRCS	=	src/main.c												\
 
 CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
 
-LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/ -luuid -Wl,-rpath=./ -lmyteams -L ./../
+LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/ -luuid -lmyteams -L ./../
 
 OBJS	=	$(SRCS:.c=.o)
 
