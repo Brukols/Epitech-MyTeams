@@ -71,8 +71,7 @@ client->user->uuid));
         return (FAILURE);
     client->user = user;
     uuid_unparse(user->uuid, uuid);
-    if (user->nb_clients == 0)
-        server_event_user_logged_in(uuid);
+    server_event_user_logged_in(uuid);
     user->nb_clients++;
     (void)req;
     return (send_response(server, user->username, user->uuid));
