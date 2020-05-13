@@ -73,7 +73,7 @@ SRCS	=	src/main.c												\
 			src/saving/save_channels.c								\
 			src/saving/save_threads.c								\
 
-CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
+CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include -I ./../libs/myteams/
 
 LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/ -luuid -lmyteams -L ./../libs/myteams
 

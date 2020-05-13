@@ -81,7 +81,7 @@ SRCS	=	src/main.c	\
 			src/user_message/user_receive_message.c	\
 			src/user_message/user_send_message.c	\
 
-CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include
+CFLAGS += 	-W -Wall -Wextra -Wshadow -I include/ -I ../lib/include -I ../include -I ./../libs/myteams/
 
 LDFLAGS +=  -l $(LIB_NAME) -L ./../lib/ -luuid -lmyteams -L ./../libs/myteams
 
