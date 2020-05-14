@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['main',['main',['../client_2src_2main_8c.html#a0c99d968a34e803d378692bde2e3f18f',1,'main(int ac, char **av):&#160;main.c'],['../server_2src_2main_8c.html#a0c99d968a34e803d378692bde2e3f18f',1,'main(int ac, char **av):&#160;main.c']]],
+  ['main_2ec',['main.c',['../client_2src_2main_8c.html',1,'(Global Namespace)'],['../server_2src_2main_8c.html',1,'(Global Namespace)']]],
+  ['message',['message',['../structmessage__t.html#adbdbc8994b9ec9497b1ca4b3db92cda4',1,'message_t::message()'],['../structreply__t.html#adbdbc8994b9ec9497b1ca4b3db92cda4',1,'reply_t::message()'],['../structthread__t.html#adbdbc8994b9ec9497b1ca4b3db92cda4',1,'thread_t::message()']]],
+  ['message_2eh',['message.h',['../message_8h.html',1,'']]],
+  ['message_5fcreate',['message_create',['../message_8h.html#a62146f363ef41062cb8ec59e12b3e8aa',1,'message_create(const char *msg, const uuid_t from, time_t time):&#160;message_create.c'],['../message__create_8c.html#a62146f363ef41062cb8ec59e12b3e8aa',1,'message_create(const char *msg, const uuid_t from, time_t time):&#160;message_create.c']]],
+  ['message_5fcreate_2ec',['message_create.c',['../message__create_8c.html',1,'']]],
+  ['message_5ft',['message_t',['../structmessage__t.html',1,'']]],
+  ['messages',['messages',['../structuser__t.html#ad17e9b73a80bb2ea2b40c8c876ed1b98',1,'user_t::messages()'],['../reply__code_8h.html#a0970b992b82ad0aa9f16af90ead94af7a07d433d6c106440080871b6c73ecacac',1,'MESSAGES():&#160;reply_code.h']]],
+  ['messages_5fcmd',['messages_cmd',['../myteams__client_8h.html#a80e16afb38586ffb93316cb72c1d89ed',1,'messages_cmd(client_t *info, const char *cmd):&#160;messages_cmd.c'],['../messages__cmd_8c.html#a80e16afb38586ffb93316cb72c1d89ed',1,'messages_cmd(client_t *info, const char *cmd):&#160;messages_cmd.c']]],
+  ['messages_5fcmd_2ec',['messages_cmd.c',['../messages__cmd_8c.html',1,'']]],
+  ['meta_5fchannel',['META_CHANNEL',['../file__types_8h.html#aca66d0ced35dbef8a9d4aaf398baff6dae86c170606e86a8df789fa37861b46ce',1,'file_types.h']]],
+  ['meta_5fteam',['META_TEAM',['../file__types_8h.html#aca66d0ced35dbef8a9d4aaf398baff6dae2cbfb985bb49de564188983cf38d7be',1,'file_types.h']]],
+  ['meta_5fthread',['META_THREAD',['../file__types_8h.html#aca66d0ced35dbef8a9d4aaf398baff6da0f0d2da1b5c70a05daabda51cb639b44',1,'file_types.h']]],
+  ['meta_5fuser',['META_USER',['../file__types_8h.html#aca66d0ced35dbef8a9d4aaf398baff6da0b3cbb944a622b31012bb73ab33a077f',1,'file_types.h']]],
+  ['my_5farray_2eh',['my_array.h',['../my__array_8h.html',1,'']]],
+  ['my_5fstrtok',['my_strtok',['../my__array_8h.html#a0f90dd0d62ebea58087902007e3aecc5',1,'my_strtok(char *str, char sep):&#160;my_strtok.c'],['../my__strtok_8c.html#a0f90dd0d62ebea58087902007e3aecc5',1,'my_strtok(char *str, char sep):&#160;my_strtok.c']]],
+  ['my_5fstrtok_2ec',['my_strtok.c',['../my__strtok_8c.html',1,'']]],
+  ['my_5fteams_2ec',['my_teams.c',['../my__teams_8c.html',1,'']]],
+  ['my_5fteams_5fserver',['my_teams_server',['../server_8h.html#ac2f05904cc55e00afe8e2a83c2c71f24',1,'my_teams_server(int ac, char **av):&#160;my_teams.c'],['../my__teams_8c.html#ac2f05904cc55e00afe8e2a83c2c71f24',1,'my_teams_server(int ac, char **av):&#160;my_teams.c']]],
+  ['myteams_5fclient_2eh',['myteams_client.h',['../myteams__client_8h.html',1,'']]],
+  ['myteams_5fcommands_2eh',['myteams_commands.h',['../myteams__commands_8h.html',1,'']]],
+  ['myteams_5freply_2eh',['myteams_reply.h',['../myteams__reply_8h.html',1,'']]]
+];

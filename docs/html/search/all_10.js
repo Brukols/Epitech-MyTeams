@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['team',['team',['../structclient__t.html#a5325fd4025c743c6a254dc0e819ca5c1',1,'client_t']]],
+  ['team_2eh',['team.h',['../team_8h.html',1,'']]],
+  ['team_5ft',['team_t',['../structteam__t.html',1,'']]],
+  ['teams',['teams',['../structserver__t.html#abc5cb9a6c9c97649a55dcce11d2d15f6',1,'server_t']]],
+  ['teams_5fcheck_5farg',['teams_check_arg',['../server_8h.html#ac4db4af1bd67e7be6b7be04be6be2541',1,'teams_check_arg(int ac, char **av):&#160;help.c'],['../server_2src_2help_2help_8c.html#ac4db4af1bd67e7be6b7be04be6be2541',1,'teams_check_arg(int ac, char **av):&#160;help.c']]],
+  ['teams_5ferror',['TEAMS_ERROR',['../server_8h.html#a9550baa01a35bc7d03157bb55bfa0582',1,'server.h']]],
+  ['teams_5fsuccess',['TEAMS_SUCCESS',['../server_8h.html#a74de17d2cbe329688c184acaefb4f203',1,'server.h']]],
+  ['terminate',['terminate',['../myteams__client_8h.html#afe97db057aa2f3148ff7e94259f208c5',1,'terminate(bool value):&#160;catch_signal.c'],['../catch__signal_8c.html#afe97db057aa2f3148ff7e94259f208c5',1,'terminate(bool value):&#160;catch_signal.c'],['../server_8h.html#afe97db057aa2f3148ff7e94259f208c5',1,'terminate(bool value):&#160;catch_signal.c'],['../terminate_8c.html#afe97db057aa2f3148ff7e94259f208c5',1,'terminate(bool value):&#160;terminate.c']]],
+  ['terminate_2ec',['terminate.c',['../terminate_8c.html',1,'']]],
+  ['test',['Test',['../test__generic__list_8c.html#ac3e5da6e2566af062c3cf47ae0d7371f',1,'Test(generic_list, test):&#160;test_generic_list.c'],['../test__generic__list_8c.html#a835d1cd57a1a043689715b1ea8910441',1,'Test(generic_list, test2):&#160;test_generic_list.c'],['../test__generic__list_8c.html#a815955c940fe8f38d79c979380502593',1,'Test(generic_list, test3):&#160;test_generic_list.c'],['../test__smart__buffer_8c.html#a281f8c95d17b498f0bf42c8f410e21c7',1,'Test(smart_buffer, basic_test):&#160;test_smart_buffer.c'],['../test__smart__buffer_8c.html#a35bd4f34b245d9928e3458fab655b0d4',1,'Test(smart_buffer, get_data_if):&#160;test_smart_buffer.c'],['../test__smart__buffer_8c.html#aed799f5e8865160e2a38bd50da860df8',1,'Test(smart_buffer, write,.init=redirect_all_std):&#160;test_smart_buffer.c'],['../test__smart__buffer_8c.html#a02b137d4b6a4ab0fb6cd44cf6ec3386c',1,'Test(smart_buffer, a_lot_of_data):&#160;test_smart_buffer.c']]],
+  ['test_5fgeneric_5flist_2ec',['test_generic_list.c',['../test__generic__list_8c.html',1,'']]],
+  ['test_5fsmart_5fbuffer_2ec',['test_smart_buffer.c',['../test__smart__buffer_8c.html',1,'']]],
+  ['thread',['thread',['../structclient__t.html#a18365787e1ea7094018aee818b5af206',1,'client_t']]],
+  ['thread_2eh',['thread.h',['../thread_8h.html',1,'']]],
+  ['thread_5ft',['thread_t',['../structthread__t.html',1,'']]],
+  ['threads',['threads',['../structchannel__t.html#a7595ccf50f083ec335cf2701faafc094',1,'channel_t']]],
+  ['time',['time',['../structmessage__t.html#ab842bdb7d02be824fb48613032b4ff36',1,'message_t::time()'],['../structreply__t.html#ab842bdb7d02be824fb48613032b4ff36',1,'reply_t::time()'],['../structthread__t.html#ab842bdb7d02be824fb48613032b4ff36',1,'thread_t::time()']]],
+  ['title',['title',['../structthread__t.html#adbc96ace59b010dd3cf82942bb0131e3',1,'thread_t']]],
+  ['translate_5fdata_5fclient',['translate_data_client',['../server_8h.html#a81aa6b7cbc5495e7e2cc0b360233e342',1,'translate_data_client(server_t *, client_t *, client_request_t *, char *):&#160;translate_data_client.c'],['../translate__data__client_8c.html#a3b985d970054f4563f37a06e9dd9410d',1,'translate_data_client(server_t *server, client_t *client, client_request_t *reply, char *data):&#160;translate_data_client.c']]],
+  ['translate_5fdata_5fclient_2ec',['translate_data_client.c',['../translate__data__client_8c.html',1,'']]],
+  ['translate_5fselect',['translate_select',['../server_8h.html#aec0e17c2c97d48feab5c6447acef4b75',1,'translate_select(server_t *server, fd_set *readfs, fd_set *writefs):&#160;translate_select.c'],['../translate__select_8c.html#aec0e17c2c97d48feab5c6447acef4b75',1,'translate_select(server_t *server, fd_set *readfs, fd_set *writefs):&#160;translate_select.c']]],
+  ['translate_5fselect_2ec',['translate_select.c',['../translate__select_8c.html',1,'']]]
+];
