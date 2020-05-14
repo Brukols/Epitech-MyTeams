@@ -27,7 +27,7 @@ int read_data_client(server_t *server, client_t *client)
     char *message;
 
     if (len == 0) {
-        client->close = true;
+        command_logout(server, client, NULL, NULL);
         return (0);
     }
     if (smart_buffer_get_data_if(client->read_buf, &reply, \

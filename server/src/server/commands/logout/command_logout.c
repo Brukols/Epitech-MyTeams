@@ -38,10 +38,8 @@ char *data)
     client->close = true;
     if (client->user) {
         uuid_unparse(client->user->uuid, uuid);
-        if (client->user->nb_clients - 1 == 0) {
-            server_event_user_logged_out(uuid);
-            send_response(server, client->user);
-        }
+        server_event_user_logged_out(uuid);
+        send_response(server, client->user);
     }
     if (send_header_reply(200, strlen(response), client) < 0)
         return (FAILURE);
