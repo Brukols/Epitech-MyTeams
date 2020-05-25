@@ -24,10 +24,10 @@ static thread_t *load_thread_meta(list_t users, char *path)
     user_t *user = NULL;
     if ((fd = open(path, O_RDONLY)) == -1) return (NULL);
     if (read(fd, &type, 1) != 1 || read(fd, &uuid, 16) != 16
-    || read(fd, &user_uuid, 16) != 16 || read(fd, &name, 32) != 32
-    || read(fd, &message, 512) != 512 || read(fd, &time, 8) != 8
-    || type != META_THREAD || ((user = user_get_by_uuid(users, user_uuid)) ==
-    NULL))
+        || read(fd, &user_uuid, 16) != 16 || read(fd, &name, 32) != 32
+        || read(fd, &message, 512) != 512 || read(fd, &time, 8) != 8
+        || type != META_THREAD
+        || ((user = user_get_by_uuid(users, user_uuid)) == NULL))
         return (NULL);
     close(fd);
     if ((thread = create_thread(name, message, user)) == NULL) return (NULL);
@@ -44,7 +44,7 @@ static void load_thread_data(list_t users, thread_t *thread, char *path)
     char message[512] = {0};
     reply_t *reply = NULL;
     if ((fd = open(path, O_RDONLY)) == -1 || read(fd, &type, 1) != 1
-    || type != DATA_THREAD) return;
+        || type != DATA_THREAD) return;
     while (read(fd, &uuid, 16) == 16 && read(fd, &time, 8) == 8
     && read(fd, &message, 512) == 512) {
         if ((reply = create_reply(message)) == NULL) continue;

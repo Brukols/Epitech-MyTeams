@@ -13,7 +13,6 @@ int reply_501(client_t *info, server_reply_t *header)
     bzero(&message, header->message_size + 1);
 
     smart_buffer_get_data(info->server_out, &message, header->message_size);
-    // stdout ou stderr ??
     fprintf(stdout, "%s\n", message);
     return (CLIENT_SUCCESS);
 }

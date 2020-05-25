@@ -9,11 +9,8 @@
 #include "server.h"
 #include "message.h"
 
-static int add_message_to_client_buffer(
-    client_t *client,
-    message_t *msg,
-    bool *sent
-    )
+static int add_message_to_client_buffer(client_t *client, message_t *msg,
+bool *sent)
 {
     if (!msg)
         return (SUCCESS);
@@ -21,8 +18,8 @@ static int add_message_to_client_buffer(
     if (send_header_reply(PRINT_PRIVATE_MESSAGES,
         sizeof(uuid_t) + sizeof(time_t) + DEFAULT_BODY_LENGTH, client))
         return (FAILURE);
-    if (!smart_buffer_add_data(
-        client->write_buf, &msg->user_uuid, sizeof(uuid_t)))
+    if (!smart_buffer_add_data(client->write_buf, &msg->user_uuid,
+        sizeof(uuid_t)))
         return (FAILURE);
     if (!smart_buffer_add_data(client->write_buf, &msg->time, sizeof(time_t)))
         return (FAILURE);
@@ -71,12 +68,8 @@ static int send_messages(client_t *cli, user_t *user2, bool *sent)
     return (SUCCESS);
 }
 
-int command_messages(
-    server_t *server,
-    client_t *client,
-    client_request_t *req,
-    char *data
-    )
+int command_messages(server_t *server, client_t *client, client_request_t *req,
+char *data)
 {
     bool sent = false;
     char *not_found = "No messages found";
