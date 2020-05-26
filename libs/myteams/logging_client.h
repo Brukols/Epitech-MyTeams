@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2020
+** NWP_myteams_2019
+** File description:
+** logging_client
+*/
+
 #ifndef __LOGGING_CLIENT_H__
 #define __LOGGING_CLIENT_H__
 
