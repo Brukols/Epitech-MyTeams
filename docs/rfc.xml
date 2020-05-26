@@ -120,9 +120,6 @@ If this document updates an RFC, specify the RFC in the "updates" attribute
         </section>
 
         <section title="Conventions">
-            <t><cref>[TEMPLATE TODO] This boilerplate should be used if the RFC2119 key words
-                are used in the internet draft. The text in this section has been
-                copied from the official boilerplate, and should not be modified. </cref></t>
 
             <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
                 "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
