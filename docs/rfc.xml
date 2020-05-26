@@ -65,16 +65,6 @@ If this document updates an RFC, specify the RFC in the "updates" attribute
             </address>
         </author>
 
-        <author fullname="Lecomte Amaury" initials="LA" role="editor"
-                surname="Lecomte Amaury">
-            <organization>Epitech</organization>
-
-            <address>
-
-                <email>amaury.lecomte@epitech.eu</email>
-            </address>
-        </author>
-
         <author fullname="Ettel Jamil" initials="EJ" role="editor"
                 surname="Ettel Jamil">
             <organization>Epitech</organization>
@@ -82,6 +72,16 @@ If this document updates an RFC, specify the RFC in the "updates" attribute
             <address>
 
                 <email>jamil.ettel@epitech.eu</email>
+            </address>
+        </author>
+
+        <author fullname="Lecomte Amaury" initials="LA" role="editor"
+                surname="Lecomte Amaury">
+            <organization>Epitech</organization>
+
+            <address>
+
+                <email>amaury.lecomte@epitech.eu</email>
             </address>
         </author>
 
@@ -98,91 +98,6 @@ If this document updates an RFC, specify the RFC in the "updates" attribute
         <keyword>Network Management</keyword>
 
         <keyword>Management Information Base</keyword>
-
-        <keyword>MIB</keyword>
-
-        <keyword>SMIv2</keyword>
-
-        <!--add additional keywords here for IETF website search engine -->
-        <abstract>
-
-            <t> <cref>This template is for authors of IETF specifications containing MIB
-                modules.  This template can be used as a starting point to produce
-                specifications that comply with the Operations &amp; Management Area
-                guidelines for MIB module internet drafts. Throughout the template, the marker "[TEMPLATE TODO]" is used as a placeholder to indicate an
-                element or text that requires replacement or removal. All the places with [TEMPLATE TODO] markers
-                should  be replaced or removed before the document is submitted.</cref></t>
-
-            <t>This memo defines a portion of the Management Information Base (MIB)
-                for use with network management protocols. In particular it defines
-                objects for managing [TEMPLATE TODO].</t>
-
-
-            <t><cref>[TEMPLATE TODO]: describe what functionality will be managed using this MIB
-                module. It can be good to mention the protocol being managed, and
-                whether there is a particular aspect of the protocol to be managed, or a
-                particular goal of the module. But keep it brief. Remember, don't put any citations
-                in the abstract, and expand your  acronyms. </cref></t>
-
-
-        </abstract>
-
-        <note title="Foreword to template users">
-            <t>This template is intended to help authors write the surrounding text needed in a
-                MIB module internet draft, but does not provide a template for writing
-                the MIB module itself.</t>
-
-            <t>Throughout this template, the marker "[TEMPLATE TODO]" is used as a reminder
-                to the template user to indicate an element or text that requires
-                replacement or removal by the template user before submission to the
-                internet draft editor. All [TEMPLATE TODO] markers should be resolved and removed
-                before you submit your document to the internet-draft editor.</t>
-
-            <t>For updated information on MIB module guidelines and templates, see
-                <xref target="RFC4181"></xref> and the OPS Area web page and wiki.</t>
-
-            <t>For information on writing internet drafts or RFCs, see
-                http://www.ietf.org/ietf/1id-guidelines.txt and
-                RFC2223(bis) <xref target="RFC2223"></xref>, and look
-                at http://www.ietf.org/ID-Checklist.html for issues to note when writing
-                drafts.</t>
-
-            <t>This template is not meant to be a complete list of everything
-                needed to write MIB module internet drafts, but to summarize the often-needed
-                basic features to get a document containing a MIB module started. An
-                important purpose of the template is to aid authors in developing an
-                internet draft that is laid out in a manner consistent with other internet
-                drafts containing MIB modules. Internet drafts submitted for advancement
-                to the standards track typically require review by a MIB Doctor. This
-                template standardizes the layout and naming of sections, includes the
-                appropriate boilerplate text, and facilitates the development of tools
-                to automate the checking of MIB module internet drafts, to speed the WG
-                and IESG review processes.</t>
-
-            <t>An XML2RFC template is also available. For information on XML2RFC, see
-                RFC2629 <xref target="RFC2629"></xref>, and documentation available at
-                http://xml.resource.org. The XML2RFC version includes
-                advice describing how to fill in each section of the template. XML2RFC generates the
-                actual internet-draft from your information, and automatically handles getting up-to-date
-                boilerplates, references, and it handles many idnits issues.</t>
-
-            <t>Within the template, there is reference to a SAMPLE-MIB; all references
-                to SAMPLE-MIB should be removed from your internet draft, and should be
-                replaced by references to your MIB module, as appropriate.</t>
-
-            <t>[TEMPLATE TODO] THIS section, the complete section entitled "Note: Foreword to
-                template users" should be removed by the template user from their
-                document before submission.</t>
-
-            <t>[TEMPLATE TODO] Remove all page headings from the template document, and
-                replace them with the appropriate headings for your internet draft.</t>
-        </note>
-
-        <note title="Note to RFC Editor re: [TEMPLATE TODO] markers">
-            <t>Note to RFC Editor: When a document is developed using this template, the editor of the
-                document should replace or remove all the places marked [TEMPLATE TODO] before submitting the document.
-                If there are still [TEMPLATE TODO] markers, please send the document back to the editor.</t>
-        </note>
 
     </front>
 
