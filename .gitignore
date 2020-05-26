@@ -315,3 +315,4 @@ flycheck_*.el
 tmp/*
 *.gc*
 .save/*
+.clang_complete
