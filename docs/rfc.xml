@@ -358,48 +358,91 @@ If this document updates an RFC, specify the RFC in the "updates" attribute
 
             <section title="Send">
 
-                <t><cref>[TEMPLATE TODO]: Citations are not permitted within a MIB module, but any
-                    module mentioned in an IMPORTS clause or document mentioned in a
-                    REFERENCE clause is a Normative reference, and must be cited someplace
-                    within the narrative sections. If there are imported items in the MIB
-                    module, such as Textual Conventions, that are not already cited, they
-                    can be cited in text here. Since relationships to other MIB modules
-                    should be described in the narrative text, this section is typically
-                    used to cite modules from which Textual Conventions are imported. Example: "The following MIB module IMPORTS objects from SNMPv2-SMI [RFC2578],
-                    SNMPv2-TC [RFC2579],
-                    SNMPv2-CONF [RFC2580], and IF-MIB [RFC2863]."</cref></t>
+                <t>
+                The server must send to the client a header to inform the
+                client about the message. In this header, at first, we have an unsigned short
+                int (2 bytes), which represents the reply code to send, these are defined later.
+                And finally, the message size in 4 bytes to tell to the client how many character
+                he must read.
+                </t>
+                <t>
+                After the client reads the header, he is able to know what type of message he reads, please inform you with the reply code sections to know that.
+                </t>
 
             </section>
 
             <section title="Receive">
 
-                <t><cref>[TEMPLATE TODO]: Citations are not permitted within a MIB module, but any
-                    module mentioned in an IMPORTS clause or document mentioned in a
-                    REFERENCE clause is a Normative reference, and must be cited someplace
-                    within the narrative sections. If there are imported items in the MIB
-                    module, such as Textual Conventions, that are not already cited, they
-                    can be cited in text here. Since relationships to other MIB modules
-                    should be described in the narrative text, this section is typically
-                    used to cite modules from which Textual Conventions are imported. Example: "The following MIB module IMPORTS objects from SNMPv2-SMI [RFC2578],
-                    SNMPv2-TC [RFC2579],
-                    SNMPv2-CONF [RFC2580], and IF-MIB [RFC2863]."</cref></t>
+                <t>
+                When a client sends a request, the server must receive a header
+                with an unsigned char (1 byte), representing the command, and an int
+                for the message size. If he hasn't receive a good size, he will not read
+                the message until you send the full message. To know what char to send
+                with a specific command, refer to the commands section later.
+                </t>
 
             </section>
         </section>
 
         <section title="Commands">
-            <t><cref>This section contains the actual MIB module(s).
-                These MIB modules MUST be written in SMIv2 [RFC2578] [RFC2579]
-                [RFC2580]. See Section 4 of RFC 4181 for guidelines on SMIv2 usage.
-                See Appendix C of RFC 4181 for suggested naming conventions.</cref></t>
+            <t>
+            Here is a list of different commands the user can write to the client
+            with his specific byte to send to the server. The byte that the client must
+            send to the server is the number before each command.
+            </t>
+            <t>
+                <list>
+                    <t>1 - /help : Show help</t>
+                    <t>2 - /login ["username"] : set the username used by client</t>
+                    <t>3 - /logout : disconnect the client from the server</t>
+                    <t>4 - /users : get the list of all users that exist on the domain</t>
+                    <t>5 - /user ["user_uuid"] : get information about a user</t>
+                    <t>6 - /send ["user_uuid"] ["message_body"] : send a message to a user</t>
+                    <t>7 - /messages ["user_uuid"] : list all messages exchange with an user</t>
+                    <t>8 - /subscribe ["team_uuid"] : subscribe to the event of a team and its sub directories (enable 
+                        reception of all events from a team)
+                    </t>
+                    <t>9 - /subscribed ?["team_uuid"] : list all subscribed teams or list all users subscribed to a team</t>
+                    <t>10 - /unsubscribe ["team_uuid"] : unsubscribe from a team</t>
+                    <t>11 - /use ?["team_uuid"] ?["channel_uuid"] ?["thread_uuid"] : use specify a context team/channel/thread</t>
+                    <t>12 - /create : based on what is being used create the sub resource</t>
+                    <t><list>
+                        <t>When the context is not defined (/use) :</t>
+                        <t> - /create ["team_name"] ["team_description"] : create a new team</t>
+                        <t>When team_uuid is defined (/use "team_uuid") :</t>
+                        <t> - /create ["channel_name"] ["channel_description"] : create a new channel</t>
+                        <t>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid") :</t>
+                        <t> - /create ["thread_title"] ["thread_message"] : create a new thread</t>
+                        <t>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid") :</t>
+                        <t> - /create ["comment_body"] : create a new reply</t>
+                    </list></t>
+                    <t></t>
+                    <t>13 - /list : based on what is being used list all the sub resources</t>
+                    <t><list>
+                        <t>When the context is not defined (/use) :</t>
+                            <t> - /list : list all existing teams</t>
+                        <t>When team_uuid is defined (/use "team_uuid") :</t>
+                            <t> - /list : list all existing channels</t>
+                        <t>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid") :</t>
+                            <t> - /list : list all existing threads</t>
+                        <t>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid") :</t>
+                            <t> - /list : list all existing replies</t>
+                    </list></t>
+                    <t></t>
+                    <t>14 - /info : based on what is being used list the current</t>
+                    <t><list>
+                        <t>When the context is not defined (/use) :</t>
+                            <t> - /info : display currently logged user infos</t>
+                        <t>When team_uuid is defined (/use "team_uuid") :</t>
+                            <t> - /info : display currently selected team infos</t>
+                        <t>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid") :</t>
+                            <t> - /info : display currently selected channel infos</t>
+                        <t>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid") :</t>
+                            <t> - /info : display currently selected thread infos</t>
+                    </list></t>
+                </list>
+            </t>
 
-            <figure>
-                <artwork><![CDATA[
-[TEMPLATE TODO]: put your valid MIB module here.
-A list of tools that can help automate the process of
-checking MIB definitions can be found at the OPS
-Area web site.]]></artwork>
-            </figure>
         </section>
 
         <section title="Reply Codes">
@@ -605,8 +648,56 @@ Area web site.]]></artwork>
             </section>
 
             <section title="3XX">
-
-
+                <t>Here is the list of reply codes and their arguments used for broadcasting other users :</t>
+                <t>311 : An user has created a team
+                    <list style="symbols">
+                        <t>The uuid of the team : 16 bytes</t>
+                        <t>The name of the team : 32 bytes</t>
+                        <t>The description of the team : 255 bytes</t>
+                    </list>
+                </t>
+                <t>312 : An user has created a channel
+                    <list style="symbols">
+                        <t>The uuid of the channel : 16 bytes</t>
+                        <t>The name of the channel : 32 bytes</t>
+                        <t>The description of the channel : 255 bytes</t>
+                    </list>
+                </t>
+                <t>313 : An user has created a thread
+                    <list style="symbols">
+                        <t>The uuid of the thread : 16 bytes</t>
+                        <t>The uuid of the user who created the team : 16 bytes</t>
+                        <t>The time since the Epoch when the thread has been created : 16 bytes</t>
+                        <t>The title of the thread : 32 bytes</t>
+                        <t>The message body of the thread : 512 bytes</t>
+                    </list>
+                </t>
+                <t>320 : An user has created a message in a thread
+                    <list style="symbols">
+                        <t>The uuid of the team : 16 bytes</t>
+                        <t>The uuid of the thread : 16 bytes</t>
+                        <t>The uuid of the user : 16 bytes</t>
+                        <t>The body of the message : 512 bytes</t>
+                    </list>
+                </t>
+                <t>321 : An user has sended a private message
+                    <list style="symbols">
+                        <t>The uuid of the user : 16 bytes</t>
+                        <t>The body of the message : 512 bytes</t>
+                    </list>
+                </t>
+                <t>330 : An user logged in
+                    <list style="symbols">
+                        <t>The uuid of the user : 16 bytes</t>
+                        <t>The name of the user : 32 bytes</t>
+                    </list>
+                </t>
+                <t>331 : An user logged out
+                    <list style="symbols">
+                        <t>The uuid of the user : 16 bytes</t>
+                        <t>The name of the user : 32 bytes</t>
+                    </list>
+                </t>
             </section>
 
             <section title="5XX">
