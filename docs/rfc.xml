@@ -454,194 +454,211 @@ If this document updates an RFC, specify the RFC in the "updates" attribute
                     all of the success reply codes, and their meaning :
                 </t>
 
-                <t>200 : Command OK.</t>
+                <t>200 : Command OK.
+                    <list style="symbols">
+                        <t>user_id (message_size bytes) : a character pointer
+                            corresponding to the universally unique id
+                            assigned to the user.</t>
+                    </list>
+                </t>
                 <t>201 : when the user ask for a user in particular (/user or /info CLI command).
                     <list style="symbols">
-                        <t>\param user_id a character pointer corresponding to
-                            the universally unique id assigned to the user.</t>
-                        <t>\param user_name a character pointer corresponding
-                            to the user's name.</t>
-                        <t>\param user_status an integer corresponding to the
-                            user status (0 = not connected; 1 = connected).</t>
+                        <t>user_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the user.</t>
+                        <t>user_name : (32 bytes) a character pointer
+                            corresponding to the user's name.</t>
+                        <t>user_status : (1 bytes) an integer corresponding to
+                            the user status (0 = not connected; 1 =
+                            connected).</t>
                     </list>
                 </t>
                 <t>202 : when the user ask for the users list (/list CLI command), used in a loop over each team.
                     <list style="symbols">
-                        <t>\param user_id a character pointer corresponding to
-                            the universally unique id assigned to the user.</t>
-                        <t>\param user_name a character pointer corresponding
-                            to the user's name.</t>
-                        <t>\param user_status an integer corresponding to the
-                            user status (0 = not connected; 1 = connected).</t>
+                        <t>user_id (16 bytes) : a character pointer
+                            corresponding to the universally unique id
+                            assigned to the user.</t>
+                        <t>user_name (32 bytes) : a character pointer
+                            corresponding to the user's name.</t>
+                        <t>user_status (1 bytes) : an integer corresponding to
+                            the user status (0 = not connected; 1 =
+                            connected).</t>
                     </list>
                 </t>
                 <t>210 : when the user ask for a team in particular (/info CLI command).
                     <list style="symbols">
-                        <t>\param team_id a character pointer corresponding to
-                            the universally unique id assigned to the team.</t>
-                        <t>\param team_name a character pointer corresponding
-                            to the team's name.</t>
-                        <t>\param team_description a character pointer
+                        <t>team_id (16 bytes) : a character pointer
+                            corresponding to the universally unique id
+                            assigned to the team.</t>
+                        <t>team_name (32 bytes) : a character pointer
+                            corresponding to the team's name.</t>
+                        <t>team_description (255 bytes) : a character pointer
                             corresponding to the team's description.</t>
                     </list>
                 </t>
                 <t>211 : when the user ask for a channel in particular (/info CLI command).
                     <list style="symbols">
-                        <t>\param channel_id a character pointer corresponding
-                            to the universally unique id assigned to the channel.</t>
-                        <t>\param channel_name a character pointer
+                        <t>channel_id (16 bytes) : a character pointer
+                            corresponding to the universally unique id
+                            assigned to the channel.</t>
+                        <t>channel_name (32 bytes) : a character pointer
                             corresponding to the channel's name.</t>
-                        <t>\param channel_description a character pointer
+                        <t>channel_description (255 bytes) : a character pointer
                             corresponding to the channel's description.</t>
                     </list>
                 </t>
                 <t>212 : when the user ask for a thread in particular (/info CLI command).
                     <list style="symbols">
-                        <t>\param thread_id a character pointer corresponding
-                            to the universally unique id assigned to the thread.</t>
-                        <t>\param user_id a character pointer corresponding to
-                        the universally unique id assigned to the user who
-                            created the thread.</t>
-                        <t>\param thread_timestamp an unsigned integer
-                        corresponding to the timestamp of the thread's
+                        <t>thread_id (16 bytes) : a character pointer
+                            corresponding to the universally unique id
+                            assigned to the thread.</t>
+                        <t>user_id (16 bytes) : a character pointer
+                            corresponding to the universally unique id
+                            assigned to the user who created the thread.</t>
+                        <t>thread_timestamp (16 bytes) : an unsigned integer
+                            corresponding to the timestamp of the thread's
                             creation.</t>
-                        <t>\param thread_title a character pointer
+                        <t>thread_title (32 bytes) : a character pointer
                             corresponding to the thread title.</t>
-                        <t>\param thread_body a character pointer corresponding
-                            to the thread body.</t>
+                        <t>thread_body (512 bytes) : a character pointer
+                            corresponding to the thread body.</t>
                     </list>
                 </t>
                 <t>220 : when the user ask for a specific private discussion (/messages CLI command), used in a loop over each message
                     <list style="symbols">
-                        <t>\param sender_id a character pointer corresponding
-                        to the universally unique id assigned to the user
-                            sending the message</t>
-                        <t>\param timestamp an unsigned integer corresponding
-                            to the timestamp of the message.</t>
-                        <t>\param message a character pointer corresponding to
-                            the message.</t>
+                        <t>sender_id (16 bytes) : a character pointer
+                            corresponding to the universally unique id
+                            assigned to the user sending the message</t>
+                        <t>timestamp (16 bytes) : an unsigned integer
+                            corresponding to the timestamp of the message.</t>
+                        <t>message (512 bytes) : a character pointer
+                            corresponding to the message.</t>
                     </list>
                 </t>
                 <t>230 : when the user ask for a team in particular (/info CLI command)
                     <list style="symbols">
-                        <t>\param team_id a character pointer corresponding to
-                            the universally unique id assigned to the team.</t>
-                        <t>\param team_name a character pointer corresponding
-                            to the team's name.</t>
-                        <t>\param team_description a character pointer
+                        <t>team_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the team.</t>
+                        <t>team_name : (32 bytes) a character pointer
+                            corresponding to the team's name.</t>
+                        <t>team_description : (255 bytes) a character pointer
                             corresponding to the team's description.</t>
                     </list>
                 </t>
                 <t>231 : when the user select a specific team to be in (/list CLI command), used in a loop over each channel
                     <list style="symbols">
-                        <t>\param channel_id a character pointer corresponding
-                        to the universally unique id assigned to the channel
-                            in the team.</t>
-                        <t>\param channel_name a character pointer
+                        <t>channel_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the channel in the team.</t>
+                        <t>channel_name : (32 bytes) a character pointer
                             corresponding to the channel's name.</t>
-                        <t>\param channel_description a character pointer
+                        <t>channel_description : (255 bytes) a character pointer
                             corresponding to the channel's description.</t>
                     </list>
                 </t>
                 <t>232 : when the user select a specific channel to be in (/list CLI command), used in a loop over each thread
                     <list style="symbols">
-                        <t>\param thread_id a character pointer corresponding
-                        to the universally unique id assigned to the thread
-                            in the team.</t>
-                        <t>\param user_id a character pointer corresponding to
-                        the universally unique id assigned to the user who
-                            created the thread.</t>
-                        <t>\param thread_timestamp an unsigned integer
-                        corresponding to the timestamp of the thread's
+                        <t>thread_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the thread in the team.</t>
+                        <t>user_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the user who created the thread.</t>
+                        <t>thread_timestamp : (16 bytes) an unsigned integer
+                            corresponding to the timestamp of the thread's
                             creation.</t>
-                        <t>\param thread_title a character pointer
+                        <t>thread_title : (32 bytes) a character pointer
                             corresponding to the thread title.</t>
-                        <t>\param thread_body a character pointer corresponding
-                            to the thread body.</t>
+                        <t>thread_body : (512 bytes) a character pointer
+                            corresponding to the thread body.</t>
                     </list>
                 </t>
                 <t>233 : when the user ask for a specific thread (/list CLI command), used in a loop over each reply
                     <list style="symbols">
-                        <t>\param thread_id a character pointer corresponding
-                        to the universally unique id assigned to the thread
-                            in the channel.</t>
-                        <t>\param user_id a character pointer corresponding to
-                        the universally unique id assigned to the user who
-                            created the thread.</t>
-                        <t>\param reply_timestamp an unsigned integer
+                        <t>thread_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the thread in the channel.</t>
+                        <t>user_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the user who created the thread.</t>
+                        <t>reply_timestamp : (16 bytes) an unsigned integer
                             corresponding to the timestamp of the reply.</t>
-                        <t>\param reply_body a character pointer corresponding
-                            to the reply.</t>
+                        <t>reply_body : (512 bytes) a character pointer
+                            corresponding to the reply.</t>
                     </list>
                 </t>
                 <t>240 : when the user create a reply (/subscribe CLI command)
                     <list style="symbols">
-                        <t>\param user_id a character pointer corresponding to
-                        the universally unique id assigned to the user who
-                            subscribed;</t>
-                        <t>\param team_id a character pointer corresponding to
-                        the universally unique id assigned to the team the
-                            user subscribed to.</t>
+                        <t>user_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the user who subscribed;</t>
+                        <t>team_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the team the user subscribed to.</t>
                     </list>
                 </t>
                 <t>241 : when the user create a reply (/unsubscribe CLI command)
                     <list style="symbols">
-                        <t>\param user_id a character pointer corresponding to
-                        the universally unique id assigned to the user who
-                            unsubscribed;</t>
-                        <t>\param team_id a character pointer corresponding to
-                        the universally unique id assigned to the team the
-                            user unsubscribed from.</t>
+                        <t>user_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the user who unsubscribed;</t>
+                        <t>team_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the team the user unsubscribed from.</t>
                     </list>
                 </t>
                 <t>250 : when the user create a team (/create CLI command)
                     <list style="symbols">
-                        <t>\param team_id a character pointer corresponding to
-                            the universally unique id assigned to the team.</t>
-                        <t>\param team_name a character pointer corresponding
-                            to the team's name.</t>
-                        <t>\param team_description a character pointer
+                        <t>team_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the team.</t>
+                        <t>team_name : (32 bytes) a character pointer
+                            corresponding to the team's name.</t>
+                        <t>team_description : (255 bytes) a character pointer
                             corresponding to the team's description.</t>
                     </list>
                 </t>
                 <t>251 : when the user create a channel (/create CLI command)
                     <list style="symbols">
-                        <t>\param channel_id a character pointer corresponding
-                            to the universally unique id assigned to the channel.</t>
-                        <t>\param channel_name a character pointer
+                        <t>channel_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the channel.</t>
+                        <t>channel_name : (32 bytes) a character pointer
                             corresponding to the channel's name.</t>
-                        <t>\param channel_description a character pointer
+                        <t>channel_description : (255 bytes) a character pointer
                             corresponding to the channel's description.</t>
                     </list>
                 </t>
                 <t>252 : when the user create a thread (/create CLI command)
                     <list style="symbols">
-                        <t>\param thread_id a character pointer corresponding
-                            to the universally unique id assigned to the thread.</t>
-                        <t>\param user_id a character pointer corresponding to
-                        the universally unique id assigned to the user who
-                            created the thread.</t>
-                        <t>\param thread_timestamp an unsigned integer
-                        corresponding to the timestamp of the thread's
+                        <t>thread_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the thread.</t>
+                        <t>user_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the user who created the thread.</t>
+                        <t>thread_timestamp : (16 bytes) an unsigned integer
+                            corresponding to the timestamp of the thread's
                             creation.</t>
-                        <t>\param thread_title a character pointer
+                        <t>thread_title : (32 bytes) a character pointer
                             corresponding to the thread title.</t>
-                        <t>\param thread_body a character pointer corresponding
-                            to the thread body.</t>
+                        <t>thread_body : (512 bytes) a character pointer
+                            corresponding to the thread body.</t>
                     </list>
                 </t>
                 <t>253 : when the user create a reply (/create CLI command)
                     <list style="symbols">
-                        <t>\param thread_id a character pointer corresponding
-                        to the universally unique id assigned to the thread
-                            in the channel.</t>
-                        <t>\param user_id a character pointer corresponding to
-                        the universally unique id assigned to the user who
-                            created the thread.</t>
-                        <t>\param reply_timestamp an unsigned integer
+                        <t>thread_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the thread in the channel.</t>
+                        <t>user_id : (16 bytes) a character pointer
+                            corresponding to the universally unique id
+                            assigned to the user who created the thread.</t>
+                        <t>reply_timestamp : (16 bytes) an unsigned integer
                             corresponding to the timestamp of the reply.</t>
-                        <t>\param reply_body a character pointer corresponding
-                            to the reply.</t>
+                        <t>reply_body : (512 bytes) a character pointer
+                            corresponding to the reply.</t>
                     </list>
                 </t>
 
