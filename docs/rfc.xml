@@ -843,8 +843,6 @@ version of the specification in question.
 
     &rfc2629;
 
-    &rfc4181;
-
   </references>
 
   <references title="URL References">
@@ -857,29 +855,11 @@ version of the specification in question.
         <date year=""></date>
       </front>
     </reference>
-    <reference anchor="idnits">
-      <front>
-        <title>http://www.ietf.org/ID-Checklist.html</title>
-        <author>
-          <organization>IETF Internet Drafts editor</organization>
-        </author>
-        <date year=""></date>
-      </front>
-    </reference>
     <reference anchor="xml2rfc">
       <front>
         <title>http://xml.resource.org</title>
         <author>
           <organization>XML2RFC tools and documentation</organization>
-        </author>
-        <date year=""></date>
-      </front>
-    </reference>
-    <reference anchor="ops">
-      <front>
-        <title>http://www.ops.ietf.org</title>
-        <author>
-          <organization>the IETF OPS Area</organization>
         </author>
         <date year=""></date>
       </front>
