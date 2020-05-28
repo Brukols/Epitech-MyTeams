@@ -42,8 +42,7 @@ client_t *actual_client)
             continue;
         if (client == actual_client)
             ret = add_data_in_client(client, thread, PRINT_THREAD_CREATED);
-        else
-            ret = add_data_in_client(client, thread, EVENT_THREAD_CREATED);
+        ret = add_data_in_client(client, thread, EVENT_THREAD_CREATED);
         if (ret < 0)
             return (FAILURE);
     }
