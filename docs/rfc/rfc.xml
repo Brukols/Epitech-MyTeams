@@ -421,6 +421,8 @@ Send
         <artwork>
           <![CDATA[
 Receive
+
+- 200
             ]]>
         </artwork>
       </figure>
@@ -440,6 +442,9 @@ Send
         <artwork>
           <![CDATA[
 Receive
+
+- 501
+- 330
             ]]>
         </artwork>
       </figure>
@@ -459,6 +464,8 @@ Send
         <artwork>
           <![CDATA[
 Receive
+
+- 331 and 200
             ]]>
         </artwork>
       </figure>
@@ -478,6 +485,9 @@ Send
         <artwork>
           <![CDATA[
 Receive
+
+- 202
+- 560
             ]]>
         </artwork>
       </figure>
@@ -497,6 +507,11 @@ Send
         <artwork>
           <![CDATA[
 Receive
+
+- 560
+- 501
+- 554
+- 201
             ]]>
         </artwork>
       </figure>
@@ -516,6 +531,11 @@ Send
         <artwork>
           <![CDATA[
 Receive
+
+- 560
+- 501
+- 554
+- 321
             ]]>
         </artwork>
       </figure>
@@ -535,6 +555,11 @@ Send
         <artwork>
           <![CDATA[
 Receive
+
+- 560
+- 501
+- 554
+- 220
             ]]>
         </artwork>
       </figure>
@@ -554,6 +579,12 @@ Send
         <artwork>
           <![CDATA[
 Receive
+
+- 560
+- 501
+- 551
+- 200
+- 240
             ]]>
         </artwork>
       </figure>
@@ -574,6 +605,12 @@ Send
         <artwork>
           <![CDATA[
 Receive
+
+- 560
+- 503
+- 551
+- 202
+- 230
             ]]>
         </artwork>
       </figure>
@@ -593,6 +630,12 @@ Send
         <artwork>
           <![CDATA[
 Receive
+
+- 560
+- 501
+- 551
+- 241
+- 200
             ]]>
         </artwork>
       </figure>
@@ -616,6 +659,13 @@ Send
         <artwork>
           <![CDATA[
 Receive
+
+- 560
+- 200
+- 503
+- 551
+- 552
+- 553
             ]]>
         </artwork>
       </figure>
@@ -649,6 +699,34 @@ When team_uuid, channel_uuid and thread_uuid are defined
         <artwork>
           <![CDATA[
 Receive
+
+When the context is not defined (/use):
+  - 560
+  - 501
+  - 540
+  - 250
+  - 311
+
+When team_uuid is defined (/use "team_uuid"):
+  - 560
+  - 501
+  - 540
+  - 251
+  - 312
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+  - 560
+  - 501
+  - 540
+  - 252
+  - 313
+
+When team_uuid, channel_uuid and thread_uuid are defined
+  - 560
+  - 501
+  - 540
+  - 253
+  - 320
             ]]>
         </artwork>
       </figure>
@@ -679,6 +757,24 @@ When team_uuid, channel_uuid and thread_uuid are defined
         <artwork>
           <![CDATA[
 Receive
+
+For each response, a header is send.
+ 
+When the context is not defined (/use):
+ - 230
+ - 560
+ 
+When team_uuid is defined (/use "team_uuid"):
+ - 231
+ - 560
+ 
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+ - 232
+ - 560
+ 
+When team_uuid, channel_uuid and thread_uuid are defined
+ - 233
+ - 560
             ]]>
         </artwork>
       </figure>
@@ -709,6 +805,22 @@ When team_uuid, channel_uuid and thread_uuid are defined
         <artwork>
           <![CDATA[
 Receive
+
+When the context is not defined (/use):
+ - 201
+ - 560
+ 
+When team_uuid is defined (/use "team_uuid"):
+ - 210
+ - 560
+ 
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+ - 211
+ - 560
+ 
+When team_uuid, channel_uuid and thread_uuid are defined
+ - 212
+ - 560
             ]]>
         </artwork>
       </figure>
