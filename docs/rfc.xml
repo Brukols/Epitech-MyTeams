@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="US-ASCII"?>
 
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-        <!ENTITY rfc2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
-        <!ENTITY rfc2223 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2223.xml">
-        <!ENTITY rfc2578 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2578.xml">
-        <!ENTITY rfc2579 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2579.xml">
-        <!ENTITY rfc2580 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2580.xml">
-        <!ENTITY rfc2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
-        <!ENTITY rfc3410 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3410.xml">
-        <!ENTITY rfc4181 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4181.xml">
-        ]>
+<!ENTITY rfc2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY rfc2223 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2223.xml">
+<!ENTITY rfc2578 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2578.xml">
+<!ENTITY rfc2579 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2579.xml">
+<!ENTITY rfc2580 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2580.xml">
+<!ENTITY rfc2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
+<!ENTITY rfc3410 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3410.xml">
+<!ENTITY rfc4181 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4181.xml">
+]>
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc compact="yes"?>
@@ -29,804 +29,871 @@ the default is to use the base portion of the XML filename.
 
 For Internet-drafts, indicate which intellectual property notice
 to use per the rules of RFC3978. The value (as of this template) can be:
-    trust200902 -
-    noModificationTrust200902 -
-    noDerivativesTrust200902 -
-    pre5378Trust200902 -
+trust200902 -
+noModificationTrust200902 -
+noDerivativesTrust200902 -
+pre5378Trust200902 -
 
- The Intellectual Property section will be generated automatically by
-  XML2RFC, based on the ipr attribute in the rfc element.
+The Intellectual Property section will be generated automatically by
+XML2RFC, based on the ipr attribute in the rfc element.
 
 If this document obsoletes an RFC, specify the RFC in the "obsoletes" attribute
 If this document updates an RFC, specify the RFC in the "updates" attribute
 -->
 <rfc category="historic" docName="RFC - My Teams" ipr="noModificationTrust200902">
-    <front>
-        <!--
+<front>
+<!--
     Enter the full document title and an abbreviated version
-      to use in the page header.
-    -->
+    to use in the page header.
+-->
 
-        <title abbrev="My Teams">My Teams</title>
+<title abbrev="My Teams">My Teams</title>
 
-        <!-- copy the author block as many times as needed, one for each author.-->
+<!-- copy the author block as many times as needed, one for each author.-->
 
-        <!-- If the author is acting as editor, use the <role=editor> attribute-->
+<!-- If the author is acting as editor, use the <role=editor> attribute-->
 
-        <!-- see RFC2223 for guidelines regarding author names -->
+<!-- see RFC2223 for guidelines regarding author names -->
 
-        <author fullname="Bourgeois Benjamin" initials="BB" role="editor"
-                surname="Bourgeois Benjamin">
-            <organization>Epitech</organization>
+<author fullname="Bourgeois Benjamin" initials="BB" role="editor"
+        surname="Bourgeois Benjamin">
+  <organization>Epitech</organization>
 
-            <address>
+  <address>
 
-                <email>benjamin.bourgeois@epitech.eu</email>
-            </address>
-        </author>
+    <email>benjamin.bourgeois@epitech.eu</email>
+  </address>
+</author>
 
-        <author fullname="Ettel Jamil" initials="EJ" role="editor"
-                surname="Ettel Jamil">
-            <organization>Epitech</organization>
+<author fullname="Ettel Jamil" initials="EJ" role="editor"
+        surname="Ettel Jamil">
+  <organization>Epitech</organization>
 
-            <address>
+  <address>
 
-                <email>jamil.ettel@epitech.eu</email>
-            </address>
-        </author>
+    <email>jamil.ettel@epitech.eu</email>
+  </address>
+</author>
 
-        <author fullname="Lecomte Amaury" initials="LA" role="editor"
-                surname="Lecomte Amaury">
-            <organization>Epitech</organization>
+<author fullname="Lecomte Amaury" initials="LA" role="editor"
+        surname="Lecomte Amaury">
+  <organization>Epitech</organization>
 
-            <address>
+  <address>
 
-                <email>amaury.lecomte@epitech.eu</email>
-            </address>
-        </author>
+    <email>amaury.lecomte@epitech.eu</email>
+  </address>
+</author>
 
-        <!-- month and day will be generated automatically by XML2RFC;
-    be sure the year is current.-->
+<!-- month and day will be generated automatically by XML2RFC;
+     be sure the year is current.-->
 
-        <date  year="2020" />
+<date  year="2020" />
 
-        <!--WG name at the upperleft corner of the doc,
+<!--WG name at the upperleft corner of the doc,
     IETF is fine for non-WG IETF submissions -->
 
-        <workgroup>Internet Engineering Task Force</workgroup>
-
-        <keyword>Network Management</keyword>
-
-        <keyword>Management Information Base</keyword>
-
-    </front>
-
-    <middle>
-        <section title="Introduction">
-            <!--You can echo the abstract in the Introduction, providing citations here,
-      but you should provide more than just the abstract. -->
-
-            <t>This memo defines a portion of the Management Information Base (MIB)
-                for use with network management protocols. In particular it defines
-                objects for managing the [TEMPLATE TODO].</t>
-
-            <t><cref>[TEMPLATE TODO]: describe what functionality will be managed using this MIB
-                module. Include citations for protocol specifications, architectures, related MIB modules, and protocol-specific
-                management requirements. Provide an overview of why a MIB module is appropriate for this protocol,  whether there is a
-                particular aspect of the protocol to be managed, and how the module is expected to be used to
-                achieve particular goals. Highlight anything 'different' about the module. For example,
-                a read-only MIB module.</cref></t>
-
-        </section>
-
-        <section title="Conventions">
-
-            <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-                "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-                document are to be interpreted as described in BCP 14, RFC 2119 <xref
-                        target="RFC2119"></xref>.</t>
-
-        </section>
-
-        <!-- ********************************************* -->
-
-        <section title="Overview">
-
-            <t></t>
-
-        </section>
-
-
-        <section title="Client">
-
-            <section title="Overview">
-
-                <t>
-                    The client must be able to connect to one server, to send
-                    multiple command to the server, and to receive reply
-                    from server and display this information.
-                </t>
-                <t>
-                    The client must send command in a specific format describe
-                    later and decode response in a human read format.
-                </t>
-                <t>
-                    You can find commands and reply-codes in Commands
-                    Section(6) and Reply-Codes Section(7)
-                </t>
-                <t></t>
-
-            </section>
-
-            <section title="Send">
-
-                <t>
-                    The client must send command to server in a particular
-                    format. Each command must be send with a specific header
-                    like follow :
-                </t>
-
-                <figure>
-                    <artwork>
-<![CDATA[
-    typedef struct __attribute__((packed))
-    {
-        unsigned char command;
-        int message_size;
-    } client_request_t;
-]]>
-                    </artwork>
-                </figure>
-
-                <t>
-                    command : An unsigned char among this list corresponding to
-                    the command associate with the request. Commands allowed
-                    are :
-                </t>
-
-                <figure>
-                    <artwork>
-                        <![CDATA[
-    enum command_code_e {
-        UNKNOWN,
-        HELP,
-        LOGIN,
-        LOGOUT,
-        USERS,
-        USER,
-        SEND,
-        MESSAGES,
-        SUBSCRIBE,
-        SUBSCRIBED,
-        UNSUBSCRIBE,
-        USE,
-        CREATE,
-        LIST,
-        INFO
-    };
-]]>
-                    </artwork>
-                </figure>
-
-                <t>
-                    message size : The total size in bytes of all arguments
-                    of the associated command after the header.
-                </t>
-
-                <t>
-                    <list style="symbols">
-                        <t>
-                            The client can send information in one time or in
-                            multiple time.
-                        </t>
-                        <t>
-                            The client should verify the correct number and
-                            type of each argument of the associated command.
-                            There is another verification server side.
-                        </t>
-                        <t>
-                            The header is followed by the command's arguments.
-                        </t>
-                    </list>
-                </t>
-
-            </section>
-
-            <section title="Receive">
-
-                <t>
-                    The client receive replies from server in a particular
-                    format. Each reply is preceded by a header in a format
-                    like below :
-                </t>
-
-                <figure>
-                    <artwork>
-                        <![CDATA[
-    typedef struct __attribute__((packed))
-    {
-        unsigned short reply;
-        int message_size;
-    } server_reply_t;
-]]>
-                    </artwork>
-                </figure>
-
-                <t>
-                    reply : An unsigned short among this list corresponding to
-                    the reply-code associate with the response. Reply-code
-                    allowed are :
-                </t>
-
-                <figure>
-                    <artwork>
-                        <![CDATA[
-    enum reply_code_e {
-        COMMAND_OK = 200,
-        PRINT_USER = 201,
-        PRINT_USERS = 202,
-        PRINT_TEAM = 210,
-        PRINT_CHANNEL = 211,
-        PRINT_THREAD = 212,
-        PRINT_PRIVATE_MESSAGES = 220,
-        PRINT_TEAMS = 230,
-        PRINT_CHANNELS = 231,
-        PRINT_THREADS = 232,
-        PRINT_REPLIES = 233,
-        PRINT_SUBSCRIBED = 240,
-        PRINT_UNSUBSCRIBED = 241,
-        PRINT_TEAM_CREATED = 250,
-        PRINT_CHANNEL_CREATED = 251,
-        PRINT_THREAD_CREATED = 252,
-        PRINT_REPLY_CREATED = 253,
-
-        EVENT_TEAM_CREATED = 311,
-        EVENT_CHANNEL_CREATED = 312,
-        EVENT_THREAD_CREATED = 313,
-        EVENT_THREAD_MESSAGE_RECEIVED = 320,
-        EVENT_PRIVATE_MESSAGE_RECEIVED = 321,
-        EVENT_LOGGED_IN = 330,
-        EVENT_LOGGED_OUT = 331,
-
-        SYNTAX_ERROR = 500,
-        SYNTAX_ERROR_ARGS = 501,
-        NOT_IMPLEMENTED = 502,
-        BAD_SEQUENCE = 503,
-        NOT_IMPLEMENTED_ARG = 504,
-        NOT_LOGGED_IN = 530,
-        CLIENT_ALREADY_EXISTS = 540,
-        UNKNOWN_COMMAND = 550,
-        UNKNOWN_TEAM = 551,
-        UNKNOWN_CHANNEL = 552,
-        UNKNOWN_THREAD = 553,
-        UNKNOWN_USER = 554,
-        UNAUTHORIZED = 560,
-    };
-]]>
-                    </artwork>
-                </figure>
-
-                <t>
-                    message_size : The total size in bytes of all arguments
-                    of the associated response after the header.
-                </t>
-
-                <t>
-                    <list style="symbols">
-                        <t>
-                            The server can send information in one time or in
-                            multiple time.
-                        </t>
-                        <t>
-                            The header is followed by the reply's arguments.
-                        </t>
-                    </list>
-                </t>
-
-            </section>
-
-        </section>
-
-        <section title="Server">
-
-            <t><cref>[TEMPLATE TODO]: The narrative part should include a section that specifies the
-                relationship (if any) of the MIB modules contained in this internet drafts to
-                other standards, particularly to standards containing other MIB
-                modules. If the MIB modules defined by the specification import
-                definitions from other MIB modules or are always implemented in
-                conjunction with other MIB modules, then those facts should be noted in
-                the narrataive section, as should any special interpretations of objects
-                in other MIB modules. Note that citations may NOT be put into the MIB
-                module portions of the internet draft, but documents used for Imported items
-                are Normative references, so the citations should exist in the narrative
-                section of the internet draft. The preferred
-                way to fill in a REFERENCE clause in a MIB module is of the form: "Guidelines
-                for Writing an IANA Considerations Section in RFCs", RFC2434, section 2.3.</cref></t>
-
-            <section title="Overview">
-
-                <t><cref>Example: The Interface MIB [RFC2863] requires that any
-                    MIB module which is an adjunct of the Interface MIB clarify specific
-                    areas within the Interface MIB. These areas were intentionally left
-                    vague in the Interface MIB to avoid over-constraining the MIB, thereby
-                    precluding management of certain media-types. Section 4 of [RFC2863] enumerates several
-                    areas which a media-specific MIB must clarify. The implementor is
-                    referred to [RFC2863] in order to understand the
-                    general intent of these areas.</cref></t>
-
-            </section>
-
-            <section title="Send">
-
-                <t>
-                The server must send to the client a header to inform the
-                client about the message. In this header, at first, we have an unsigned short
-                int (2 bytes), which represents the reply code to send, these are defined later.
-                And finally, the message size in 4 bytes to tell to the client how many character
-                he must read.
-                </t>
-                <t>
-                After the client reads the header, he is able to know what type of message he reads, please inform you with the reply code sections to know that.
-                </t>
-
-            </section>
-
-            <section title="Receive">
-
-                <t>
-                When a client sends a request, the server must receive a header
-                with an unsigned char (1 byte), representing the command, and an int
-                for the message size. If he hasn't receive a good size, he will not read
-                the message until you send the full message. To know what char to send
-                with a specific command, refer to the commands section later.
-                </t>
-
-            </section>
-        </section>
-
-        <section title="Commands">
-            <t>
-            Here is a list of different commands the user can write to the client
-            with his specific byte to send to the server. The byte that the client must
-            send to the server is the number before each command.
-            </t>
-            <t>
-                <list>
-                    <t>1 - /help : Show help</t>
-                    <t>2 - /login ["username"] : set the username used by client</t>
-                    <t>3 - /logout : disconnect the client from the server</t>
-                    <t>4 - /users : get the list of all users that exist on the domain</t>
-                    <t>5 - /user ["user_uuid"] : get information about a user</t>
-                    <t>6 - /send ["user_uuid"] ["message_body"] : send a message to a user</t>
-                    <t>7 - /messages ["user_uuid"] : list all messages exchange with an user</t>
-                    <t>8 - /subscribe ["team_uuid"] : subscribe to the event of a team and its sub directories (enable 
-                        reception of all events from a team)
-                    </t>
-                    <t>9 - /subscribed ?["team_uuid"] : list all subscribed teams or list all users subscribed to a team</t>
-                    <t>10 - /unsubscribe ["team_uuid"] : unsubscribe from a team</t>
-                    <t>11 - /use ?["team_uuid"] ?["channel_uuid"] ?["thread_uuid"] : use specify a context team/channel/thread</t>
-                    <t>12 - /create : based on what is being used create the sub resource</t>
-                    <t><list>
-                        <t>When the context is not defined (/use) :</t>
-                        <t> - /create ["team_name"] ["team_description"] : create a new team</t>
-                        <t>When team_uuid is defined (/use "team_uuid") :</t>
-                        <t> - /create ["channel_name"] ["channel_description"] : create a new channel</t>
-                        <t>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid") :</t>
-                        <t> - /create ["thread_title"] ["thread_message"] : create a new thread</t>
-                        <t>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid") :</t>
-                        <t> - /create ["comment_body"] : create a new reply</t>
-                    </list></t>
-                    <t></t>
-                    <t>13 - /list : based on what is being used list all the sub resources</t>
-                    <t><list>
-                        <t>When the context is not defined (/use) :</t>
-                            <t> - /list : list all existing teams</t>
-                        <t>When team_uuid is defined (/use "team_uuid") :</t>
-                            <t> - /list : list all existing channels</t>
-                        <t>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid") :</t>
-                            <t> - /list : list all existing threads</t>
-                        <t>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid") :</t>
-                            <t> - /list : list all existing replies</t>
-                    </list></t>
-                    <t></t>
-                    <t>14 - /info : based on what is being used list the current</t>
-                    <t><list>
-                        <t>When the context is not defined (/use) :</t>
-                            <t> - /info : display currently logged user infos</t>
-                        <t>When team_uuid is defined (/use "team_uuid") :</t>
-                            <t> - /info : display currently selected team infos</t>
-                        <t>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid") :</t>
-                            <t> - /info : display currently selected channel infos</t>
-                        <t>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid") :</t>
-                            <t> - /info : display currently selected thread infos</t>
-                    </list></t>
-                </list>
-            </t>
-
-        </section>
-
-        <section title="Reply Codes">
-
-            <section title="2XX">
-
-                <t>The following reply codes are used for success. They are
-                    sent to the user making the request. Here is a list of
-                    all of the success reply codes, and their meaning :
-                </t>
-
-                <t>200 : Command OK.
-                    <list style="symbols">
-                        <t>user_id (message_size bytes) : a character pointer
-                            corresponding to the universally unique id
-                            assigned to the user.</t>
-                    </list>
-                </t>
-                <t>201 : when the user ask for a user in particular (/user or /info CLI command).
-                    <list style="symbols">
-                        <t>user_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the user.</t>
-                        <t>user_name : (32 bytes) a character pointer
-                            corresponding to the user's name.</t>
-                        <t>user_status : (1 bytes) an integer corresponding to
-                            the user status (0 = not connected; 1 =
-                            connected).</t>
-                    </list>
-                </t>
-                <t>202 : when the user ask for the users list (/list CLI command), used in a loop over each team.
-                    <list style="symbols">
-                        <t>user_id (16 bytes) : a character pointer
-                            corresponding to the universally unique id
-                            assigned to the user.</t>
-                        <t>user_name (32 bytes) : a character pointer
-                            corresponding to the user's name.</t>
-                        <t>user_status (1 bytes) : an integer corresponding to
-                            the user status (0 = not connected; 1 =
-                            connected).</t>
-                    </list>
-                </t>
-                <t>210 : when the user ask for a team in particular (/info CLI command).
-                    <list style="symbols">
-                        <t>team_id (16 bytes) : a character pointer
-                            corresponding to the universally unique id
-                            assigned to the team.</t>
-                        <t>team_name (32 bytes) : a character pointer
-                            corresponding to the team's name.</t>
-                        <t>team_description (255 bytes) : a character pointer
-                            corresponding to the team's description.</t>
-                    </list>
-                </t>
-                <t>211 : when the user ask for a channel in particular (/info CLI command).
-                    <list style="symbols">
-                        <t>channel_id (16 bytes) : a character pointer
-                            corresponding to the universally unique id
-                            assigned to the channel.</t>
-                        <t>channel_name (32 bytes) : a character pointer
-                            corresponding to the channel's name.</t>
-                        <t>channel_description (255 bytes) : a character pointer
-                            corresponding to the channel's description.</t>
-                    </list>
-                </t>
-                <t>212 : when the user ask for a thread in particular (/info CLI command).
-                    <list style="symbols">
-                        <t>thread_id (16 bytes) : a character pointer
-                            corresponding to the universally unique id
-                            assigned to the thread.</t>
-                        <t>user_id (16 bytes) : a character pointer
-                            corresponding to the universally unique id
-                            assigned to the user who created the thread.</t>
-                        <t>thread_timestamp (16 bytes) : an unsigned integer
-                            corresponding to the timestamp of the thread's
-                            creation.</t>
-                        <t>thread_title (32 bytes) : a character pointer
-                            corresponding to the thread title.</t>
-                        <t>thread_body (512 bytes) : a character pointer
-                            corresponding to the thread body.</t>
-                    </list>
-                </t>
-                <t>220 : when the user ask for a specific private discussion (/messages CLI command), used in a loop over each message
-                    <list style="symbols">
-                        <t>sender_id (16 bytes) : a character pointer
-                            corresponding to the universally unique id
-                            assigned to the user sending the message</t>
-                        <t>timestamp (16 bytes) : an unsigned integer
-                            corresponding to the timestamp of the message.</t>
-                        <t>message (512 bytes) : a character pointer
-                            corresponding to the message.</t>
-                    </list>
-                </t>
-                <t>230 : when the user ask for a team in particular (/info CLI command)
-                    <list style="symbols">
-                        <t>team_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the team.</t>
-                        <t>team_name : (32 bytes) a character pointer
-                            corresponding to the team's name.</t>
-                        <t>team_description : (255 bytes) a character pointer
-                            corresponding to the team's description.</t>
-                    </list>
-                </t>
-                <t>231 : when the user select a specific team to be in (/list CLI command), used in a loop over each channel
-                    <list style="symbols">
-                        <t>channel_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the channel in the team.</t>
-                        <t>channel_name : (32 bytes) a character pointer
-                            corresponding to the channel's name.</t>
-                        <t>channel_description : (255 bytes) a character pointer
-                            corresponding to the channel's description.</t>
-                    </list>
-                </t>
-                <t>232 : when the user select a specific channel to be in (/list CLI command), used in a loop over each thread
-                    <list style="symbols">
-                        <t>thread_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the thread in the team.</t>
-                        <t>user_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the user who created the thread.</t>
-                        <t>thread_timestamp : (16 bytes) an unsigned integer
-                            corresponding to the timestamp of the thread's
-                            creation.</t>
-                        <t>thread_title : (32 bytes) a character pointer
-                            corresponding to the thread title.</t>
-                        <t>thread_body : (512 bytes) a character pointer
-                            corresponding to the thread body.</t>
-                    </list>
-                </t>
-                <t>233 : when the user ask for a specific thread (/list CLI command), used in a loop over each reply
-                    <list style="symbols">
-                        <t>thread_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the thread in the channel.</t>
-                        <t>user_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the user who created the thread.</t>
-                        <t>reply_timestamp : (16 bytes) an unsigned integer
-                            corresponding to the timestamp of the reply.</t>
-                        <t>reply_body : (512 bytes) a character pointer
-                            corresponding to the reply.</t>
-                    </list>
-                </t>
-                <t>240 : when the user create a reply (/subscribe CLI command)
-                    <list style="symbols">
-                        <t>user_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the user who subscribed;</t>
-                        <t>team_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the team the user subscribed to.</t>
-                    </list>
-                </t>
-                <t>241 : when the user create a reply (/unsubscribe CLI command)
-                    <list style="symbols">
-                        <t>user_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the user who unsubscribed;</t>
-                        <t>team_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the team the user unsubscribed from.</t>
-                    </list>
-                </t>
-                <t>250 : when the user create a team (/create CLI command)
-                    <list style="symbols">
-                        <t>team_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the team.</t>
-                        <t>team_name : (32 bytes) a character pointer
-                            corresponding to the team's name.</t>
-                        <t>team_description : (255 bytes) a character pointer
-                            corresponding to the team's description.</t>
-                    </list>
-                </t>
-                <t>251 : when the user create a channel (/create CLI command)
-                    <list style="symbols">
-                        <t>channel_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the channel.</t>
-                        <t>channel_name : (32 bytes) a character pointer
-                            corresponding to the channel's name.</t>
-                        <t>channel_description : (255 bytes) a character pointer
-                            corresponding to the channel's description.</t>
-                    </list>
-                </t>
-                <t>252 : when the user create a thread (/create CLI command)
-                    <list style="symbols">
-                        <t>thread_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the thread.</t>
-                        <t>user_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the user who created the thread.</t>
-                        <t>thread_timestamp : (16 bytes) an unsigned integer
-                            corresponding to the timestamp of the thread's
-                            creation.</t>
-                        <t>thread_title : (32 bytes) a character pointer
-                            corresponding to the thread title.</t>
-                        <t>thread_body : (512 bytes) a character pointer
-                            corresponding to the thread body.</t>
-                    </list>
-                </t>
-                <t>253 : when the user create a reply (/create CLI command)
-                    <list style="symbols">
-                        <t>thread_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the thread in the channel.</t>
-                        <t>user_id : (16 bytes) a character pointer
-                            corresponding to the universally unique id
-                            assigned to the user who created the thread.</t>
-                        <t>reply_timestamp : (16 bytes) an unsigned integer
-                            corresponding to the timestamp of the reply.</t>
-                        <t>reply_body : (512 bytes) a character pointer
-                            corresponding to the reply.</t>
-                    </list>
-                </t>
-
-            </section>
-
-            <section title="3XX">
-                <t>Here is the list of reply codes and their arguments used for broadcasting other users :</t>
-                <t>311 : An user has created a team
-                    <list style="symbols">
-                        <t>The uuid of the team : 16 bytes</t>
-                        <t>The name of the team : 32 bytes</t>
-                        <t>The description of the team : 255 bytes</t>
-                    </list>
-                </t>
-                <t>312 : An user has created a channel
-                    <list style="symbols">
-                        <t>The uuid of the channel : 16 bytes</t>
-                        <t>The name of the channel : 32 bytes</t>
-                        <t>The description of the channel : 255 bytes</t>
-                    </list>
-                </t>
-                <t>313 : An user has created a thread
-                    <list style="symbols">
-                        <t>The uuid of the thread : 16 bytes</t>
-                        <t>The uuid of the user who created the team : 16 bytes</t>
-                        <t>The time since the Epoch when the thread has been created : 16 bytes</t>
-                        <t>The title of the thread : 32 bytes</t>
-                        <t>The message body of the thread : 512 bytes</t>
-                    </list>
-                </t>
-                <t>320 : An user has created a message in a thread
-                    <list style="symbols">
-                        <t>The uuid of the team : 16 bytes</t>
-                        <t>The uuid of the thread : 16 bytes</t>
-                        <t>The uuid of the user : 16 bytes</t>
-                        <t>The body of the message : 512 bytes</t>
-                    </list>
-                </t>
-                <t>321 : An user has sended a private message
-                    <list style="symbols">
-                        <t>The uuid of the user : 16 bytes</t>
-                        <t>The body of the message : 512 bytes</t>
-                    </list>
-                </t>
-                <t>330 : An user logged in
-                    <list style="symbols">
-                        <t>The uuid of the user : 16 bytes</t>
-                        <t>The name of the user : 32 bytes</t>
-                    </list>
-                </t>
-                <t>331 : An user logged out
-                    <list style="symbols">
-                        <t>The uuid of the user : 16 bytes</t>
-                        <t>The name of the user : 32 bytes</t>
-                    </list>
-                </t>
-            </section>
-
-            <section title="5XX">
-
-
-            </section>
-
-        </section>
-
-    </middle>
-
-    <back>
-
-        <!-- References Section -->
-
-        <!-- Section 4.7f of [RFC2223bis] specifies the requirements for the
+<workgroup>Internet Engineering Task Force</workgroup>
+
+<keyword>Network Management</keyword>
+
+<keyword>Management Information Base</keyword>
+
+</front>
+
+<middle>
+  <section title="Introduction">
+    <!--You can echo the abstract in the Introduction, providing citations here,
+        but you should provide more than just the abstract. -->
+
+    <t>This memo defines a portion of the Management Information Base (MIB)
+    for use with network management protocols. In particular it defines
+    objects for managing the [TEMPLATE TODO].</t>
+
+    <t><cref>[TEMPLATE TODO]: describe what functionality will be managed using this MIB
+    module. Include citations for protocol specifications, architectures, related MIB modules, and protocol-specific
+    management requirements. Provide an overview of why a MIB module is appropriate for this protocol,  whether there is a
+    particular aspect of the protocol to be managed, and how the module is expected to be used to
+    achieve particular goals. Highlight anything 'different' about the module. For example,
+    a read-only MIB module.</cref></t>
+
+  </section>
+
+  <section title="Conventions">
+
+    <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+    document are to be interpreted as described in BCP 14, RFC 2119 <xref
+    target="RFC2119"></xref>.</t>
+
+  </section>
+
+  <!-- ********************************************* -->
+
+  <section title="Overview">
+
+    <t></t>
+
+  </section>
+
+
+  <section title="Client">
+
+    <section title="Overview">
+
+      <t>
+        The client must be able to connect to one server, to send
+        multiple command to the server, and to receive reply
+        from server and display this information.
+      </t>
+      <t>
+        The client must send command in a specific format describe
+        later and decode response in a human read format.
+      </t>
+      <t>
+        You can find commands and reply-codes in Commands
+        Section(6) and Reply-Codes Section(7)
+      </t>
+      <t></t>
+
+    </section>
+
+    <section title="Send">
+
+      <t>
+        The client must send command to server in a particular
+        format. Each command must be send with a specific header
+        like follow:
+      </t>
+
+      <figure>
+        <artwork>
+          <![CDATA[
+                   typedef struct __attribute__((packed))
+                   {
+                   unsigned char command;
+                   int message_size;
+                   } client_request_t;
+          ]]>
+        </artwork>
+      </figure>
+
+      <t>
+        command: An unsigned char among this list corresponding to
+        the command associate with the request. Commands allowed
+        are:
+      </t>
+
+      <figure>
+        <artwork>
+          <![CDATA[
+                   enum command_code_e {
+                   UNKNOWN,
+                   HELP,
+                   LOGIN,
+                   LOGOUT,
+                   USERS,
+                   USER,
+                   SEND,
+                   MESSAGES,
+                   SUBSCRIBE,
+                   SUBSCRIBED,
+                   UNSUBSCRIBE,
+                   USE,
+                   CREATE,
+                   LIST,
+                   INFO
+                   };
+          ]]>
+        </artwork>
+      </figure>
+
+      <t>
+        message size: The total size in bytes of all arguments
+        of the associated command after the header.
+      </t>
+
+      <t>
+        <list style="symbols">
+          <t>
+            The client can send information in one time or in
+            multiple time.
+          </t>
+          <t>
+            The client should verify the correct number and
+            type of each argument of the associated command.
+            There is another verification server side.
+          </t>
+          <t>
+            The header is followed by the command's arguments.
+          </t>
+        </list>
+      </t>
+
+    </section>
+
+    <section title="Receive">
+
+      <t>
+        The client receive replies from server in a particular
+        format. Each reply is preceded by a header in a format
+        like below:
+      </t>
+
+      <figure>
+        <artwork>
+          <![CDATA[
+                   typedef struct __attribute__((packed))
+                   {
+                   unsigned short reply;
+                   int message_size;
+                   } server_reply_t;
+          ]]>
+        </artwork>
+      </figure>
+
+      <t>
+        reply: An unsigned short among this list corresponding to
+        the reply-code associate with the response. Reply-code
+        allowed are:
+      </t>
+
+      <figure>
+        <artwork>
+          <![CDATA[
+                   enum reply_code_e {
+                   COMMAND_OK = 200,
+                   PRINT_USER = 201,
+                   PRINT_USERS = 202,
+                   PRINT_TEAM = 210,
+                   PRINT_CHANNEL = 211,
+                   PRINT_THREAD = 212,
+                   PRINT_PRIVATE_MESSAGES = 220,
+                   PRINT_TEAMS = 230,
+                   PRINT_CHANNELS = 231,
+                   PRINT_THREADS = 232,
+                   PRINT_REPLIES = 233,
+                   PRINT_SUBSCRIBED = 240,
+                   PRINT_UNSUBSCRIBED = 241,
+                   PRINT_TEAM_CREATED = 250,
+                   PRINT_CHANNEL_CREATED = 251,
+                   PRINT_THREAD_CREATED = 252,
+                   PRINT_REPLY_CREATED = 253,
+
+EVENT_TEAM_CREATED = 311,
+EVENT_CHANNEL_CREATED = 312,
+EVENT_THREAD_CREATED = 313,
+EVENT_THREAD_MESSAGE_RECEIVED = 320,
+EVENT_PRIVATE_MESSAGE_RECEIVED = 321,
+EVENT_LOGGED_IN = 330,
+EVENT_LOGGED_OUT = 331,
+
+SYNTAX_ERROR = 500,
+SYNTAX_ERROR_ARGS = 501,
+NOT_IMPLEMENTED = 502,
+BAD_SEQUENCE = 503,
+NOT_IMPLEMENTED_ARG = 504,
+NOT_LOGGED_IN = 530,
+CLIENT_ALREADY_EXISTS = 540,
+UNKNOWN_COMMAND = 550,
+UNKNOWN_TEAM = 551,
+UNKNOWN_CHANNEL = 552,
+UNKNOWN_THREAD = 553,
+UNKNOWN_USER = 554,
+UNAUTHORIZED = 560,
+};
+          ]]>
+        </artwork>
+      </figure>
+
+      <t>
+        message_size: The total size in bytes of all arguments
+        of the associated response after the header.
+      </t>
+
+      <t>
+        <list style="symbols">
+          <t>
+            The server can send information in one time or in
+            multiple time.
+          </t>
+          <t>
+            The header is followed by the reply's arguments.
+          </t>
+        </list>
+      </t>
+
+    </section>
+
+  </section>
+
+  <section title="Server">
+    <!-- <t></t> -->
+    <section title="Overview">
+
+      <t>
+        The server must be able to accept multiple clients, to send replies to a specific client, and to broadcast a message to multiple clients.
+      </t>
+      <t>
+	    The server must be able to keep data about users, teams, channels and threads. Clients with the right permissions must be able to access that data. The server should store the data so it can be reused after a restart.
+      </t>
+      <t>
+	    Users must be able to create teams, channels, and threads. They also must be able to create replies in threads and private messages to other users. All of this information must be able to be accessed by users if they have the right permissions.
+      </t>
+      <t>
+	    Some events must be broadcasted to multiple connected clients, please refer to the Reply Codes and Commands sections for more information about broadcasted events.
+      </t>
+
+    </section>
+
+    <section title="Send">
+
+      <t>
+        The server must send to the client a header to inform the
+        client about the message. In this header, at first, we have an unsigned short
+        int (2 bytes), which represents the reply code to send, these are defined later.
+        And finally, the message size in 4 bytes to tell to the client how many character
+        he must read.
+      </t>
+      <t>
+        After the client reads the header, he is able to know what type of message he reads, please inform you with the reply code sections to know that.
+      </t>
+
+    </section>
+
+    <section title="Receive">
+
+      <t>
+        When a client sends a request, the server must receive a header
+        with an unsigned char (1 byte), representing the command, and an int
+        for the message size. If he hasn't receive a good size, he will not read
+        the message until you send the full message. To know what char to send
+        with a specific command, refer to the commands section later.
+      </t>
+
+    </section>
+  </section>
+
+  <section title="Commands">
+    <t>
+      Here is a list of different commands the user can write to the client
+      with his specific byte to send to the server. The byte that the client must
+      send to the server is the number before each command.
+    </t>
+    <t>
+      <list>
+        <t>1 - /help: Show help</t>
+        <t>2 - /login ["username"]: set the username used by client</t>
+        <t>3 - /logout: disconnect the client from the server</t>
+        <t>4 - /users: get the list of all users that exist on the domain</t>
+        <t>5 - /user ["user_uuid"]: get information about a user</t>
+        <t>6 - /send ["user_uuid"] ["message_body"]: send a message to a user</t>
+        <t>7 - /messages ["user_uuid"]: list all messages exchange with an user</t>
+        <t>8 - /subscribe ["team_uuid"]: subscribe to the event of a team and its sub directories (enable 
+        reception of all events from a team)
+        </t>
+        <t>9 - /subscribed ?["team_uuid"]: list all subscribed teams or list all users subscribed to a team</t>
+        <t>10 - /unsubscribe ["team_uuid"]: unsubscribe from a team</t>
+        <t>11 - /use ?["team_uuid"] ?["channel_uuid"] ?["thread_uuid"]: use specify a context team/channel/thread</t>
+        <t>12 - /create: based on what is being used create the sub resource</t>
+        <t><list>
+          <t>When the context is not defined (/use):</t>
+          <t> - /create ["team_name"] ["team_description"]: create a new team</t>
+          <t>When team_uuid is defined (/use "team_uuid"):</t>
+          <t> - /create ["channel_name"] ["channel_description"]: create a new channel</t>
+          <t>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):</t>
+          <t> - /create ["thread_title"] ["thread_message"]: create a new thread</t>
+          <t>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid"):</t>
+          <t> - /create ["comment_body"]: create a new reply</t>
+        </list></t>
+        <t></t>
+        <t>13 - /list: based on what is being used list all the sub resources</t>
+        <t><list>
+          <t>When the context is not defined (/use):</t>
+          <t> - /list: list all existing teams</t>
+          <t>When team_uuid is defined (/use "team_uuid"):</t>
+          <t> - /list: list all existing channels</t>
+          <t>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):</t>
+          <t> - /list: list all existing threads</t>
+          <t>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid"):</t>
+          <t> - /list: list all existing replies</t>
+        </list></t>
+        <t></t>
+        <t>14 - /info: based on what is being used list the current</t>
+        <t><list>
+          <t>When the context is not defined (/use):</t>
+          <t> - /info: display currently logged user infos</t>
+          <t>When team_uuid is defined (/use "team_uuid"):</t>
+          <t> - /info: display currently selected team infos</t>
+          <t>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):</t>
+          <t> - /info: display currently selected channel infos</t>
+          <t>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid"):</t>
+          <t> - /info: display currently selected thread infos</t>
+        </list></t>
+      </list>
+    </t>
+
+  </section>
+
+  <section title="Reply Codes">
+
+    <section title="2XX">
+
+      <t>The following reply codes are used for success. They are
+      sent to the user making the request. Here is a list of
+      all of the success reply codes, and their meaning:
+      </t>
+
+      <t>200: Command OK.
+      <list style="symbols">
+        <t>user_id (message_size bytes): a character pointer
+        corresponding to the UUID
+        assigned to the user.</t>
+      </list>
+      </t>
+      <t>201: when the user ask for a user in particular (/user or /info CLI command).
+      <list style="symbols">
+        <t>user_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the user.</t>
+        <t>user_name: (32 bytes) a character pointer
+        corresponding to the user's name.</t>
+        <t>user_status: (1 bytes) an integer corresponding to
+        the user status (0 = not connected; 1 =
+        connected).</t>
+      </list>
+      </t>
+      <t>202: when the user ask for the users list (/list CLI command), used in a loop over each team.
+      <list style="symbols">
+        <t>user_id (16 bytes): a character pointer
+        corresponding to the UUID
+        assigned to the user.</t>
+        <t>user_name (32 bytes): a character pointer
+        corresponding to the user's name.</t>
+        <t>user_status (1 bytes): an integer corresponding to
+        the user status (0 = not connected; 1 =
+        connected).</t>
+      </list>
+      </t>
+      <t>210: when the user ask for a team in particular (/info CLI command).
+      <list style="symbols">
+        <t>team_id (16 bytes): a character pointer
+        corresponding to the UUID
+        assigned to the team.</t>
+        <t>team_name (32 bytes): a character pointer
+        corresponding to the team's name.</t>
+        <t>team_description (255 bytes): a character pointer
+        corresponding to the team's description.</t>
+      </list>
+      </t>
+      <t>211: when the user ask for a channel in particular (/info CLI command).
+      <list style="symbols">
+        <t>channel_id (16 bytes): a character pointer
+        corresponding to the UUID
+        assigned to the channel.</t>
+        <t>channel_name (32 bytes): a character pointer
+        corresponding to the channel's name.</t>
+        <t>channel_description (255 bytes): a character pointer
+        corresponding to the channel's description.</t>
+      </list>
+      </t>
+      <t>212: when the user ask for a thread in particular (/info CLI command).
+      <list style="symbols">
+        <t>thread_id (16 bytes): a character pointer
+        corresponding to the UUID
+        assigned to the thread.</t>
+        <t>user_id (16 bytes): a character pointer
+        corresponding to the UUID
+        assigned to the user who created the thread.</t>
+        <t>thread_timestamp (16 bytes): an unsigned integer
+        corresponding to the timestamp of the thread's
+        creation.</t>
+        <t>thread_title (32 bytes): a character pointer
+        corresponding to the thread title.</t>
+        <t>thread_body (512 bytes): a character pointer
+        corresponding to the thread body.</t>
+      </list>
+      </t>
+      <t>220: when the user ask for a specific private discussion (/messages CLI command), used in a loop over each message
+      <list style="symbols">
+        <t>sender_id (16 bytes): a character pointer
+        corresponding to the UUID
+        assigned to the user sending the message</t>
+        <t>timestamp (16 bytes): an unsigned integer
+        corresponding to the timestamp of the message.</t>
+        <t>message (512 bytes): a character pointer
+        corresponding to the message.</t>
+      </list>
+      </t>
+      <t>230: when the user ask for a team in particular (/info CLI command)
+      <list style="symbols">
+        <t>team_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the team.</t>
+        <t>team_name: (32 bytes) a character pointer
+        corresponding to the team's name.</t>
+        <t>team_description: (255 bytes) a character pointer
+        corresponding to the team's description.</t>
+      </list>
+      </t>
+      <t>231: when the user select a specific team to be in (/list CLI command), used in a loop over each channel
+      <list style="symbols">
+        <t>channel_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the channel in the team.</t>
+        <t>channel_name: (32 bytes) a character pointer
+        corresponding to the channel's name.</t>
+        <t>channel_description: (255 bytes) a character pointer
+        corresponding to the channel's description.</t>
+      </list>
+      </t>
+      <t>232: when the user select a specific channel to be in (/list CLI command), used in a loop over each thread
+      <list style="symbols">
+        <t>thread_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the thread in the team.</t>
+        <t>user_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the user who created the thread.</t>
+        <t>thread_timestamp: (16 bytes) an unsigned integer
+        corresponding to the timestamp of the thread's
+        creation.</t>
+        <t>thread_title: (32 bytes) a character pointer
+        corresponding to the thread title.</t>
+        <t>thread_body: (512 bytes) a character pointer
+        corresponding to the thread body.</t>
+      </list>
+      </t>
+      <t>233: when the user ask for a specific thread (/list CLI command), used in a loop over each reply
+      <list style="symbols">
+        <t>thread_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the thread in the channel.</t>
+        <t>user_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the user who created the thread.</t>
+        <t>reply_timestamp: (16 bytes) an unsigned integer
+        corresponding to the timestamp of the reply.</t>
+        <t>reply_body: (512 bytes) a character pointer
+        corresponding to the reply.</t>
+      </list>
+      </t>
+      <t>240: when the user create a reply (/subscribe CLI command)
+      <list style="symbols">
+        <t>user_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the user who subscribed;</t>
+        <t>team_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the team the user subscribed to.</t>
+      </list>
+      </t>
+      <t>241: when the user create a reply (/unsubscribe CLI command)
+      <list style="symbols">
+        <t>user_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the user who unsubscribed;</t>
+        <t>team_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the team the user unsubscribed from.</t>
+      </list>
+      </t>
+      <t>250: when the user create a team (/create CLI command)
+      <list style="symbols">
+        <t>team_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the team.</t>
+        <t>team_name: (32 bytes) a character pointer
+        corresponding to the team's name.</t>
+        <t>team_description: (255 bytes) a character pointer
+        corresponding to the team's description.</t>
+      </list>
+      </t>
+      <t>251: when the user create a channel (/create CLI command)
+      <list style="symbols">
+        <t>channel_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the channel.</t>
+        <t>channel_name: (32 bytes) a character pointer
+        corresponding to the channel's name.</t>
+        <t>channel_description: (255 bytes) a character pointer
+        corresponding to the channel's description.</t>
+      </list>
+      </t>
+      <t>252: when the user create a thread (/create CLI command)
+      <list style="symbols">
+        <t>thread_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the thread.</t>
+        <t>user_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the user who created the thread.</t>
+        <t>thread_timestamp: (16 bytes) an unsigned integer
+        corresponding to the timestamp of the thread's
+        creation.</t>
+        <t>thread_title: (32 bytes) a character pointer
+        corresponding to the thread title.</t>
+        <t>thread_body: (512 bytes) a character pointer
+        corresponding to the thread body.</t>
+      </list>
+      </t>
+      <t>253: when the user create a reply (/create CLI command)
+      <list style="symbols">
+        <t>thread_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the thread in the channel.</t>
+        <t>user_id: (16 bytes) a character pointer
+        corresponding to the UUID
+        assigned to the user who created the thread.</t>
+        <t>reply_timestamp: (16 bytes) an unsigned integer
+        corresponding to the timestamp of the reply.</t>
+        <t>reply_body: (512 bytes) a character pointer
+        corresponding to the reply.</t>
+      </list>
+      </t>
+
+    </section>
+
+    <section title="3XX">
+      <t>Here is the list of reply codes and their arguments used for broadcasting other users:</t>
+      <t>311: A user has created a team
+      <list style="symbols">
+        <t>The uuid of the team: 16 bytes</t>
+        <t>The name of the team: 32 bytes</t>
+        <t>The description of the team: 255 bytes</t>
+      </list>
+      </t>
+      <t>312: A user has created a channel
+      <list style="symbols">
+        <t>The uuid of the channel: 16 bytes</t>
+        <t>The name of the channel: 32 bytes</t>
+        <t>The description of the channel: 255 bytes</t>
+      </list>
+      </t>
+      <t>313: A user has created a thread
+      <list style="symbols">
+        <t>The uuid of the thread: 16 bytes</t>
+        <t>The uuid of the user who created the team: 16 bytes</t>
+        <t>The time since the Epoch when the thread has been created: 16 bytes</t>
+        <t>The title of the thread: 32 bytes</t>
+        <t>The message body of the thread: 512 bytes</t>
+      </list>
+      </t>
+      <t>320: A user has created a message in a thread
+      <list style="symbols">
+        <t>The uuid of the team: 16 bytes</t>
+        <t>The uuid of the thread: 16 bytes</t>
+        <t>The uuid of the user: 16 bytes</t>
+        <t>The body of the message: 512 bytes</t>
+      </list>
+      </t>
+      <t>321: A user has sended a private message
+      <list style="symbols">
+        <t>The uuid of the user: 16 bytes</t>
+        <t>The body of the message: 512 bytes</t>
+      </list>
+      </t>
+      <t>330: A user logged in
+      <list style="symbols">
+        <t>The uuid of the user: 16 bytes</t>
+        <t>The name of the user: 32 bytes</t>
+      </list>
+      </t>
+      <t>331: A user logged out
+      <list style="symbols">
+        <t>The uuid of the user: 16 bytes</t>
+        <t>The name of the user: 32 bytes</t>
+      </list>
+      </t>
+    </section>
+    <section title="5XX">
+      <t>The following reply codes are used for errors. They are sent to the user making the request. Here is a list of all of the error reply codes, and their meaning:</t>
+      
+      <t>
+        500: Syntax Error.
+        <list style="symbols">
+          <t>The error message: string</t>
+        </list>
+      </t>
+      <t>
+        501: Error in arguments.
+        <list style="symbols">
+          <t>The error message: string</t>
+        </list>
+      </t>
+      <t>
+        502: Command not implemented.
+        <list style="symbols">
+          <t>The error message: string</t>
+        </list>
+      </t>
+      <t>
+        503: Bad sequence of commands.
+        <list style="symbols">
+          <t>The error message: string</t>
+        </list>
+      </t>
+      <t>
+        504: Command not implemented for that parameter.
+        <list style="symbols">
+          <t>The error message: string</t>
+        </list>
+      </t>
+      <t>
+        530: Not logged in.
+        <list style="symbols">
+          <t>The error message: string</t>
+        </list>
+      </t>
+      <t>
+        540: Already exists.
+        <list style="symbols">
+          <t>Nothing should be sent after the header</t>
+        </list>
+      </t>
+      <t>
+        550: Unknown command.
+        <list style="symbols">
+          <t>The error message: string</t>
+        </list>
+      </t>
+      <t>
+        551: Unknown team.
+        <list style="symbols">
+          <t>Unknown team's UUID: 16 bytes</t>
+        </list>
+      </t>
+      <t>
+        552: Unknown channel.
+        <list style="symbols">
+          <t>Unknown channel's UUID: 16 bytes</t>
+        </list>
+      </t>
+      <t>
+        553: Unknown thread.
+        <list style="symbols">
+          <t>Unknown thread's UUID: 16 bytes</t>
+        </list>
+      </t>
+      <t>
+        554: Unknown user.
+        <list style="symbols">
+          <t>Unknown user's UUID: 16 bytes</t>
+        </list>
+      </t>
+      <t>
+        560: Forbidden, access denied.
+        <list style="symbols">
+          <t>Unknown user's UUID: 16 bytes</t>
+        </list>
+      </t>
+    </section>
+
+  </section>
+
+</middle>
+
+<back>
+
+  <!-- References Section -->
+
+  <!-- Section 4.7f of [RFC2223bis] specifies the requirements for the
        references sections.  In particular, there MUST be separate lists of
        normative and informative references, each in a separate section.
        The style SHOULD follow that of recently published RFCs.
 
-       The standard MIB boilerplate available at
-      the OPS Area web site includes lists of
-       normative and informative references that MUST appear in all IETF
-       specifications that contain MIB modules.  If items from other MIB
-       modules appear in an IMPORTS statement in the Definitions section,
-       then the specifications containing those MIB modules MUST be included
-       in the list of normative references.  When items are imported from an
-       IANA-maintained MIB module the corresponding normative reference
-       SHALL reference the on-line version of that MIB module.  It is the
-       policy of the RFC Editor that all references must be cited in the
-       text;  such citations MUST appear in the overview section where
-       documents containing imported definitions (other than those already
-       mentioned in the MIB boilerplate) are required to be mentioned (cf.
-       Section 3.2).
+The standard MIB boilerplate available at
+the OPS Area web site includes lists of
+normative and informative references that MUST appear in all IETF
+specifications that contain MIB modules.  If items from other MIB
+modules appear in an IMPORTS statement in the Definitions section,
+then the specifications containing those MIB modules MUST be included
+in the list of normative references.  When items are imported from an
+IANA-maintained MIB module the corresponding normative reference
+SHALL reference the on-line version of that MIB module.  It is the
+policy of the RFC Editor that all references must be cited in the
+text;  such citations MUST appear in the overview section where
+documents containing imported definitions (other than those already
+mentioned in the MIB boilerplate) are required to be mentioned (cf.
+Section 3.2).
 
-    In general, each normative reference SHOULD reference the most recent
-    version of the specification in question.
-    -->
+In general, each normative reference SHOULD reference the most recent
+version of the specification in question.
+  -->
 
-        <references title="Normative References">
-            <!-- [TEMPLATE TODO] rfc2119, 2578, 2579, and 2580 are required to support MIB
-          module boilerplate text. -->
+  <references title="Normative References">
+    <!-- [TEMPLATE TODO] rfc2119, 2578, 2579, and 2580 are required to support MIB
+         module boilerplate text. -->
 
-            &rfc2119;
+    &rfc2119;
 
-            &rfc2578;
+    &rfc2578;
 
-            &rfc2579;
+    &rfc2579;
 
-            &rfc2580;
+    &rfc2580;
 
-        </references>
+  </references>
 
-        <references title="Informative References">
+  <references title="Informative References">
 
-            <!--  RFC3410 is required to support the boilerplate text.-->
-            &rfc2223;
-            &rfc3410;
+    <!--  RFC3410 is required to support the boilerplate text.-->
+    &rfc2223;
+    &rfc3410;
 
-            &rfc2629;
+    &rfc2629;
 
-            &rfc4181;
+    &rfc4181;
 
-        </references>
+  </references>
 
-        <references title="URL References">
-            <reference anchor="idguidelines">
-                <front>
-                    <title>http://www.ietf.org/ietf/1id-guidelines.txt</title>
-                    <author>
-                        <organization>IETF Internet Drafts editor</organization>
-                    </author>
-                    <date year=""></date>
-                </front>
-            </reference>
-            <reference anchor="idnits">
-                <front>
-                    <title>http://www.ietf.org/ID-Checklist.html</title>
-                    <author>
-                        <organization>IETF Internet Drafts editor</organization>
-                    </author>
-                    <date year=""></date>
-                </front>
-            </reference>
-            <reference anchor="xml2rfc">
-                <front>
-                    <title>http://xml.resource.org</title>
-                    <author>
-                        <organization>XML2RFC tools and documentation</organization>
-                    </author>
-                    <date year=""></date>
-                </front>
-            </reference>
-            <reference anchor="ops">
-                <front>
-                    <title>http://www.ops.ietf.org</title>
-                    <author>
-                        <organization>the IETF OPS Area</organization>
-                    </author>
-                    <date year=""></date>
-                </front>
-            </reference>
-            <reference anchor="ietf">
-                <front>
-                    <title>http://tools.ietf.org</title>
-                    <author>
-                        <organization>IETF Tools Team</organization>
-                    </author>
-                    <date year=""></date>
-                </front>
-            </reference>
+  <references title="URL References">
+    <reference anchor="idguidelines">
+      <front>
+        <title>http://www.ietf.org/ietf/1id-guidelines.txt</title>
+        <author>
+          <organization>IETF Internet Drafts editor</organization>
+        </author>
+        <date year=""></date>
+      </front>
+    </reference>
+    <reference anchor="idnits">
+      <front>
+        <title>http://www.ietf.org/ID-Checklist.html</title>
+        <author>
+          <organization>IETF Internet Drafts editor</organization>
+        </author>
+        <date year=""></date>
+      </front>
+    </reference>
+    <reference anchor="xml2rfc">
+      <front>
+        <title>http://xml.resource.org</title>
+        <author>
+          <organization>XML2RFC tools and documentation</organization>
+        </author>
+        <date year=""></date>
+      </front>
+    </reference>
+    <reference anchor="ops">
+      <front>
+        <title>http://www.ops.ietf.org</title>
+        <author>
+          <organization>the IETF OPS Area</organization>
+        </author>
+        <date year=""></date>
+      </front>
+    </reference>
+    <reference anchor="ietf">
+      <front>
+        <title>http://tools.ietf.org</title>
+        <author>
+          <organization>IETF Tools Team</organization>
+        </author>
+        <date year=""></date>
+      </front>
+    </reference>
 
-        </references>
-    </back>
+  </references>
+</back>
 </rfc>
