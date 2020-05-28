@@ -40,6 +40,6 @@ char *data)
         return (send_reply(client, SYNTAX_ERROR_ARGS, "[SERVER] Wrong syntax"));
     user = list_get_first_node_with_value(server->users, uuid, &is_user_equal);
     if (!user)
-        return (send_unknown(client, UNKNOWN_USER, uuid));
+        return (send_unknown(client, UNKNOWN_USER, (unsigned char *)data));
     return (send_user_info(client, (user_t *)(user->value)));
 }
