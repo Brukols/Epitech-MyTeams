@@ -386,6 +386,20 @@
 <link href="#rfc.section.5.2" rel="Chapter" title="5.2 Send">
 <link href="#rfc.section.5.3" rel="Chapter" title="5.3 Receive">
 <link href="#rfc.section.6" rel="Chapter" title="6 Commands">
+<link href="#rfc.section.6.1" rel="Chapter" title="6.1 Help">
+<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Login">
+<link href="#rfc.section.6.3" rel="Chapter" title="6.3 Logout">
+<link href="#rfc.section.6.4" rel="Chapter" title="6.4 Users">
+<link href="#rfc.section.6.5" rel="Chapter" title="6.5 User">
+<link href="#rfc.section.6.6" rel="Chapter" title="6.6 Send">
+<link href="#rfc.section.6.7" rel="Chapter" title="6.7 Messages">
+<link href="#rfc.section.6.8" rel="Chapter" title="6.8 Subscribe">
+<link href="#rfc.section.6.9" rel="Chapter" title="6.9 Subscribed">
+<link href="#rfc.section.6.10" rel="Chapter" title="6.10 Unsubscribe">
+<link href="#rfc.section.6.11" rel="Chapter" title="6.11 Use">
+<link href="#rfc.section.6.12" rel="Chapter" title="6.12 Create">
+<link href="#rfc.section.6.13" rel="Chapter" title="6.13 List">
+<link href="#rfc.section.6.14" rel="Chapter" title="6.14 Info">
 <link href="#rfc.section.7" rel="Chapter" title="7 Reply Codes">
 <link href="#rfc.section.7.1" rel="Chapter" title="7.1 2XX">
 <link href="#rfc.section.7.2" rel="Chapter" title="7.2 3XX">
@@ -480,7 +494,35 @@
 </li>
 </ul><li>6.   <a href="#rfc.section.6">Commands</a>
 </li>
-<li>7.   <a href="#rfc.section.7">Reply Codes</a>
+<ul><li>6.1.   <a href="#rfc.section.6.1">Help</a>
+</li>
+<li>6.2.   <a href="#rfc.section.6.2">Login</a>
+</li>
+<li>6.3.   <a href="#rfc.section.6.3">Logout</a>
+</li>
+<li>6.4.   <a href="#rfc.section.6.4">Users</a>
+</li>
+<li>6.5.   <a href="#rfc.section.6.5">User</a>
+</li>
+<li>6.6.   <a href="#rfc.section.6.6">Send</a>
+</li>
+<li>6.7.   <a href="#rfc.section.6.7">Messages</a>
+</li>
+<li>6.8.   <a href="#rfc.section.6.8">Subscribe</a>
+</li>
+<li>6.9.   <a href="#rfc.section.6.9">Subscribed</a>
+</li>
+<li>6.10.   <a href="#rfc.section.6.10">Unsubscribe</a>
+</li>
+<li>6.11.   <a href="#rfc.section.6.11">Use</a>
+</li>
+<li>6.12.   <a href="#rfc.section.6.12">Create</a>
+</li>
+<li>6.13.   <a href="#rfc.section.6.13">List</a>
+</li>
+<li>6.14.   <a href="#rfc.section.6.14">Info</a>
+</li>
+</ul><li>7.   <a href="#rfc.section.7">Reply Codes</a>
 </li>
 <ul><li>7.1.   <a href="#rfc.section.7.1">2XX</a>
 </li>
@@ -673,59 +715,355 @@ typedef struct __attribute__((packed))
 <p id="rfc.section.5.3.p.3">The server must wait for the full message to be received before processing the request.  </p>
 <h1 id="rfc.section.6">
 <a href="#rfc.section.6">6.</a> Commands</h1>
-<p id="rfc.section.6.p.1">Here is a list of different commands the user can write to the client.  The byte that the client must send to the server is the number before each command.  </p>
-<p></p>
+<h1 id="rfc.section.6.1">
+<a href="#rfc.section.6.1">6.1.</a> Help</h1>
+<pre>
+          
+Send
 
-<ul class="empty">
-<li>1 - /help: Show help</li>
-<li>2 - /login ["username"]: set the username used by client</li>
-<li>3 - /logout: disconnect the client from the server</li>
-<li>4 - /users: get the list of all users that exist on the domain</li>
-<li>5 - /user ["user_uuid"]: get information about a user</li>
-<li>6 - /send ["user_uuid"] ["message_body"]: send a message to a user</li>
-<li>7 - /messages ["user_uuid"]: list all messages exchange with an user</li>
-<li>8 - /subscribe ["team_uuid"]: subscribe to the event of a team and its sub directories (enable reception of all events from a team) </li>
-<li>9 - /subscribed ?["team_uuid"]: list all subscribed teams or list all users subscribed to a team</li>
-<li>10 - /unsubscribe ["team_uuid"]: unsubscribe from a team</li>
-<li>11 - /use ?["team_uuid"] ?["channel_uuid"] ?["thread_uuid"]: use specify a context team/channel/thread</li>
-<li>12 - /create: based on what is being used create the sub resource</li>
-<li><ul class="empty">
-<li>When the context is not defined (/use):</li>
-<li>- /create ["team_name"] ["team_description"]: create a new team</li>
-<li>When team_uuid is defined (/use "team_uuid"):</li>
-<li>- /create ["channel_name"] ["channel_description"]: create a new channel</li>
-<li>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):</li>
-<li>- /create ["thread_title"] ["thread_message"]: create a new thread</li>
-<li>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid"):</li>
-<li>- /create ["comment_body"]: create a new reply</li>
-</ul></li>
-<li>
-<li>13 - /list: based on what is being used list all the sub resources</li>
-<li><ul class="empty">
-<li>When the context is not defined (/use):</li>
-<li>- /list: list all existing teams</li>
-<li>When team_uuid is defined (/use "team_uuid"):</li>
-<li>- /list: list all existing channels</li>
-<li>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):</li>
-<li>- /list: list all existing threads</li>
-<li>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid"):</li>
-<li>- /list: list all existing replies</li>
-</ul></li>
-<li>
-<li>14 - /info: based on what is being used list the current</li>
-<li><ul class="empty">
-<li>When the context is not defined (/use):</li>
-<li>- /info: display currently logged user infos</li>
-<li>When team_uuid is defined (/use "team_uuid"):</li>
-<li>- /info: display currently selected team infos</li>
-<li>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):</li>
-<li>- /info: display currently selected channel infos</li>
-<li>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid"):</li>
-<li>- /info: display currently selected thread infos</li>
-</ul></li>
-</ul>
+- {Header (client_request_t)};
+            
+        </pre>
+<pre>
+          
+Receive
 
-<p> </p>
+- 200
+            
+        </pre>
+<h1 id="rfc.section.6.2">
+<a href="#rfc.section.6.2">6.2.</a> Login</h1>
+<pre>
+          
+Send
+
+- {Header (client_request_t)} + {username : 32 bytes};
+            
+        </pre>
+<pre>
+          
+Receive
+
+- 501
+- 330
+            
+        </pre>
+<h1 id="rfc.section.6.3">
+<a href="#rfc.section.6.3">6.3.</a> Logout</h1>
+<pre>
+          
+Send
+
+- {Header (client_request_t)};
+            
+        </pre>
+<pre>
+          
+Receive
+
+- 331 and 200
+            
+        </pre>
+<h1 id="rfc.section.6.4">
+<a href="#rfc.section.6.4">6.4.</a> Users</h1>
+<pre>
+          
+Send
+
+- {Header (client_request_t)};
+            
+        </pre>
+<pre>
+          
+Receive
+
+- 202
+- 560
+            
+        </pre>
+<h1 id="rfc.section.6.5">
+<a href="#rfc.section.6.5">6.5.</a> User</h1>
+<pre>
+          
+Send
+
+- {Header (client_request_t)} + {User_uuid : 16 bytes};
+            
+        </pre>
+<pre>
+          
+Receive
+
+- 560
+- 501
+- 554
+- 201
+            
+        </pre>
+<h1 id="rfc.section.6.6">
+<a href="#rfc.section.6.6">6.6.</a> Send</h1>
+<pre>
+          
+Send
+
+- {Header (client_request_t)} + {Recipient_uuid : 16 bytes} + {Message : 512 bytes};
+            
+        </pre>
+<pre>
+          
+Receive
+
+- 560
+- 501
+- 554
+- 321
+            
+        </pre>
+<h1 id="rfc.section.6.7">
+<a href="#rfc.section.6.7">6.7.</a> Messages</h1>
+<pre>
+          
+Send
+
+- {Header (client_request_t)} + {Recipient_uuid : 16 bytes};
+            
+        </pre>
+<pre>
+          
+Receive
+
+- 560
+- 501
+- 554
+- 220
+            
+        </pre>
+<h1 id="rfc.section.6.8">
+<a href="#rfc.section.6.8">6.8.</a> Subscribe</h1>
+<pre>
+          
+Send
+
+- {Header (client_request_t)} + {User_uuid : 16 bytes};
+            
+        </pre>
+<pre>
+          
+Receive
+
+- 560
+- 501
+- 551
+- 200
+- 240
+            
+        </pre>
+<h1 id="rfc.section.6.9">
+<a href="#rfc.section.6.9">6.9.</a> Subscribed</h1>
+<pre>
+          
+Send
+
+- {Header (client_request_t)};
+- {Header (client_request_t)} + {Team_uuid : 16 bytes};
+            
+        </pre>
+<pre>
+          
+Receive
+
+- 560
+- 503
+- 551
+- 202
+- 230
+            
+        </pre>
+<h1 id="rfc.section.6.10">
+<a href="#rfc.section.6.10">6.10.</a> Unsubscribe</h1>
+<pre>
+          
+Send
+
+- {Header (client_request_t)} + {Team_uuid : 16 bytes};
+            
+        </pre>
+<pre>
+          
+Receive
+
+- 560
+- 501
+- 551
+- 241
+- 200
+            
+        </pre>
+<h1 id="rfc.section.6.11">
+<a href="#rfc.section.6.11">6.11.</a> Use</h1>
+<pre>
+          
+Send
+
+- {Header (client_request_t)};
+- {Header (client_request_t)} + {Team_uuid : 16 bytes};
+- {Header (client_request_t)} + {Team_uuid : 16 bytes} + {Channel_uuid : 16 bytes};
+- {Header (client_request_t)} + {Team_uuid : 16 bytes} + {Channel_uuid : 16 bytes}
+   + {Thread_uuid : 16 bytes};
+            
+        </pre>
+<pre>
+          
+Receive
+
+- 560
+- 200
+- 503
+- 551
+- 552
+- 553
+            
+        </pre>
+<h1 id="rfc.section.6.12">
+<a href="#rfc.section.6.12">6.12.</a> Create</h1>
+<pre>
+          
+Send
+
+When the context is not defined (/use):
+- {Header (client_request_t)} + {Team_name : 32 bytes}
+   + {Team_description : 255 bytes};
+
+When team_uuid is defined (/use "team_uuid"):
+- {Header (client_request_t)} + {Channel_name : 32 bytes}
+   + {Channel_description : 255 bytes};
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+- {Header (client_request_t)} + {Thread_title : 32 bytes}
+   + {Thread_message : 512 bytes};
+
+When team_uuid, channel_uuid and thread_uuid are defined
+(/use "team_uuid" "channel_uuid" "thread_uuid"):
+- {Header (client_request_t)} + {Comment_body : 512 bytes};
+            
+        </pre>
+<pre>
+          
+Receive
+
+When the context is not defined (/use):
+  - 560
+  - 501
+  - 540
+  - 250
+  - 311
+
+When team_uuid is defined (/use "team_uuid"):
+  - 560
+  - 501
+  - 540
+  - 251
+  - 312
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+  - 560
+  - 501
+  - 540
+  - 252
+  - 313
+
+When team_uuid, channel_uuid and thread_uuid are defined
+  - 560
+  - 501
+  - 540
+  - 253
+  - 320
+            
+        </pre>
+<h1 id="rfc.section.6.13">
+<a href="#rfc.section.6.13">6.13.</a> List</h1>
+<pre>
+          
+Send
+
+When the context is not defined (/use):
+- {Header (client_request_t)};
+
+When team_uuid is defined (/use "team_uuid"):
+- {Header (client_request_t)};
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+- {Header (client_request_t)};
+
+When team_uuid, channel_uuid and thread_uuid are defined
+(/use "team_uuid" "channel_uuid" "thread_uuid"):
+- {Header (client_request_t)};
+            
+        </pre>
+<pre>
+          
+Receive
+
+For each response, a header is send.
+ 
+When the context is not defined (/use):
+ - 230
+ - 560
+ 
+When team_uuid is defined (/use "team_uuid"):
+ - 231
+ - 560
+ 
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+ - 232
+ - 560
+ 
+When team_uuid, channel_uuid and thread_uuid are defined
+ - 233
+ - 560
+            
+        </pre>
+<h1 id="rfc.section.6.14">
+<a href="#rfc.section.6.14">6.14.</a> Info</h1>
+<pre>
+          
+Send
+
+When the context is not defined (/use):
+- {Header (client_request_t)};
+
+When team_uuid is defined (/use "team_uuid"):
+- {Header (client_request_t)};
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+- {Header (client_request_t)};
+
+When team_uuid, channel_uuid and thread_uuid are defined
+(/use "team_uuid" "channel_uuid" "thread_uuid"):
+- {Header (client_request_t)};
+            
+        </pre>
+<pre>
+          
+Receive
+
+When the context is not defined (/use):
+ - 201
+ - 560
+ 
+When team_uuid is defined (/use "team_uuid"):
+ - 210
+ - 560
+ 
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+ - 211
+ - 560
+ 
+When team_uuid, channel_uuid and thread_uuid are defined
+ - 212
+ - 560
+            
+        </pre>
 <h1 id="rfc.section.7">
 <a href="#rfc.section.7">7.</a> Reply Codes</h1>
 <h1 id="rfc.section.7.1">

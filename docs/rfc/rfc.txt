@@ -1,0 +1,1344 @@
+
+
+
+
+Internet Engineering Task Force              BB. Bourgeois Benjamin, Ed.
+Internet-Draft                                      EJ. Ettel Jamil, Ed.
+Intended status: Historic                        LA. Lecomte Amaury, Ed.
+Expires: November 29, 2020                                       Epitech
+                                                            May 28, 2020
+
+
+                                My Teams
+                             RFC - My Teams
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on November 29, 2020.
+
+Copyright Notice
+
+   Copyright (c) 2020 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (https://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+   This document may not be modified, and derivative works of it may not
+   be created, except to format it for publication as an RFC or to
+   translate it into languages other than English.
+
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020               [Page 1]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Conventions . . . . . . . . . . . . . . . . . . . . . . . . .   2
+   3.  Overview  . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+   4.  Client  . . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     4.1.  Overview  . . . . . . . . . . . . . . . . . . . . . . . .   3
+     4.2.  Send  . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     4.3.  Receive . . . . . . . . . . . . . . . . . . . . . . . . .   4
+   5.  Server  . . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+     5.1.  Overview  . . . . . . . . . . . . . . . . . . . . . . . .   6
+     5.2.  Send  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+     5.3.  Receive . . . . . . . . . . . . . . . . . . . . . . . . .   7
+   6.  Commands  . . . . . . . . . . . . . . . . . . . . . . . . . .   7
+     6.1.  Help  . . . . . . . . . . . . . . . . . . . . . . . . . .   7
+     6.2.  Login . . . . . . . . . . . . . . . . . . . . . . . . . .   7
+     6.3.  Logout  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     6.4.  Users . . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     6.5.  User  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     6.6.  Send  . . . . . . . . . . . . . . . . . . . . . . . . . .   9
+     6.7.  Messages  . . . . . . . . . . . . . . . . . . . . . . . .   9
+     6.8.  Subscribe . . . . . . . . . . . . . . . . . . . . . . . .   9
+     6.9.  Subscribed  . . . . . . . . . . . . . . . . . . . . . . .  10
+     6.10. Unsubscribe . . . . . . . . . . . . . . . . . . . . . . .  10
+     6.11. Use . . . . . . . . . . . . . . . . . . . . . . . . . . .  11
+     6.12. Create  . . . . . . . . . . . . . . . . . . . . . . . . .  11
+     6.13. List  . . . . . . . . . . . . . . . . . . . . . . . . . .  13
+     6.14. Info  . . . . . . . . . . . . . . . . . . . . . . . . . .  14
+   7.  Reply Codes . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     7.1.  2XX . . . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     7.2.  3XX . . . . . . . . . . . . . . . . . . . . . . . . . . .  20
+     7.3.  5XX . . . . . . . . . . . . . . . . . . . . . . . . . . .  21
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  22
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  22
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  23
+     8.3.  URL References  . . . . . . . . . . . . . . . . . . . . .  23
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  23
+
+1.  Introduction
+
+   This memo defines how to use network management protocols in the My
+   Teams project.
+
+2.  Conventions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020               [Page 2]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   document are to be interpreted as described in BCP 14, RFC 2119
+   [RFC2119].
+
+3.  Overview
+
+4.  Client
+
+4.1.  Overview
+
+   The client must be able to connect to a server, to send multiple
+   commands to it, to receive replies from it and to display the
+   information to the user.
+
+   The client must send command in a specific format described later and
+   should display the reply in a human readable format.
+
+   You can find commands and reply-codes in Commands Section(6) and
+   Reply-Codes Section(7)
+
+4.2.  Send
+
+   The client must send commands to server in a particular format.  Each
+   command must be sent with a specific header as follows:
+
+
+
+   typedef struct __attribute__((packed))
+   {
+       unsigned char command;
+       int message_size;
+   } client_request_t;
+
+
+   command: An unsigned char from this list corresponding to the command
+   associated with the request.  Allowed commands are:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020               [Page 3]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   enum command_code_e {
+       UNKNOWN,
+       HELP,
+       LOGIN,
+       LOGOUT,
+       USERS,
+       USER,
+       SEND,
+       MESSAGES,
+       SUBSCRIBE,
+       SUBSCRIBED,
+       UNSUBSCRIBE,
+       USE,
+       CREATE,
+       LIST,
+       INFO
+   };
+
+
+   message_size: The total size in bytes of all arguments of the
+   associated command after the header.
+
+   o  The header has a fixed size (5 bytes).
+
+   o  The client should verify the number and type of each argument of
+      the associated command.  There is another verification server
+      side.
+
+   o  The header is followed by the command's arguments.
+
+4.3.  Receive
+
+   The client receives replies from the server in a particular format.
+   Each reply is preceded by a request header in a specific format as
+   shown below:
+
+
+                      typedef struct __attribute__((packed))
+                      {
+                      unsigned short reply;
+                      int message_size;
+                      } server_reply_t;
+
+
+   reply: An unsigned short from this list corresponding to the reply-
+   code associated with the reply.  Allowed reply codes are:
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020               [Page 4]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   enum reply_code_e {
+       COMMAND_OK = 200,
+       PRINT_USER = 201,
+       PRINT_USERS = 202,
+       PRINT_TEAM = 210,
+       PRINT_CHANNEL = 211,
+       PRINT_THREAD = 212,
+       PRINT_PRIVATE_MESSAGES = 220,
+       PRINT_TEAMS = 230,
+       PRINT_CHANNELS = 231,
+       PRINT_THREADS = 232,
+       PRINT_REPLIES = 233,
+       PRINT_SUBSCRIBED = 240,
+       PRINT_UNSUBSCRIBED = 241,
+       PRINT_TEAM_CREATED = 250,
+       PRINT_CHANNEL_CREATED = 251,
+       PRINT_THREAD_CREATED = 252,
+       PRINT_REPLY_CREATED = 253,
+
+       EVENT_TEAM_CREATED = 311,
+       EVENT_CHANNEL_CREATED = 312,
+       EVENT_THREAD_CREATED = 313,
+       EVENT_THREAD_MESSAGE_RECEIVED = 320,
+       EVENT_PRIVATE_MESSAGE_RECEIVED = 321,
+       EVENT_LOGGED_IN = 330,
+       EVENT_LOGGED_OUT = 331,
+
+       SYNTAX_ERROR = 500,
+       SYNTAX_ERROR_ARGS = 501,
+       NOT_IMPLEMENTED = 502,
+       BAD_SEQUENCE = 503,
+       NOT_IMPLEMENTED_ARG = 504,
+       NOT_LOGGED_IN = 530,
+       CLIENT_ALREADY_EXISTS = 540,
+       UNKNOWN_COMMAND = 550,
+       UNKNOWN_TEAM = 551,
+       UNKNOWN_CHANNEL = 552,
+       UNKNOWN_THREAD = 553,
+       UNKNOWN_USER = 554,
+       UNAUTHORIZED = 560,
+   };
+
+
+   message_size: The total size in bytes of all arguments of the reply
+   after the header.
+
+   o  The header has a fixed size (6 bytes).
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020               [Page 5]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   o  The header is followed by the arguments.
+
+5.  Server
+
+5.1.  Overview
+
+   The server must be able to accept multiple clients, to send replies
+   to a specific client, and to broadcast a message to multiple clients.
+
+   The server must be able to keep data about users, teams, channels and
+   threads.  Clients with the right permissions must be able to access
+   that data.  The server should store the data so it can be reused
+   after a restart.
+
+   Users must be able to create teams, channels, and threads.  They also
+   must be able to create replies in threads and send private messages
+   to other users.  All of this information must be able to be accessed
+   by users if they have the right permissions.
+
+   Some events must be broadcasted to multiple connected clients, please
+   refer to the Reply Codes and Commands sections for more information
+   about broadcasted events.
+
+5.2.  Send
+
+   The server must answer clients' requests with replies.  A reply
+   starts with a header describing the reply (unsigned short: fisrt two
+   bytes) and the size of the arguments (int: last four bytes).  The
+   header is followed by the arguments of the reply.
+
+   You may use the following structure for server replies:
+
+
+
+    typedef struct __attribute__((packed))
+    {
+        unsigned short reply;
+        int message_size;
+    } server_reply_t;
+
+
+   reply represents the reply code.  Please refer to the Reply Code
+   section for more information.
+
+   messaege_size represents the size of the arguments.  Arguments are
+   detailed in the Reply Code section.
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020               [Page 6]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+5.3.  Receive
+
+   When a client sends a request, the server receives a header with an
+   unsigned char (1 byte), representing the command, and an int for the
+   message size.
+
+   You may use the following structure for client replies:
+
+
+
+   typedef struct __attribute__((packed))
+   {
+       unsigned char command;
+       int message_size;
+   } client_request_t;
+
+
+   The server must wait for the full message to be received before
+   processing the request.
+
+6.  Commands
+
+6.1.  Help
+
+
+   Send
+
+   - {Header (client_request_t)};
+
+
+
+   Receive
+
+   - 200
+
+
+6.2.  Login
+
+
+   Send
+
+   - {Header (client_request_t)} + {username : 32 bytes};
+
+
+
+
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020               [Page 7]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   Receive
+
+   - 501
+   - 330
+
+
+6.3.  Logout
+
+
+   Send
+
+   - {Header (client_request_t)};
+
+
+
+   Receive
+
+   - 331 and 200
+
+
+6.4.  Users
+
+
+   Send
+
+   - {Header (client_request_t)};
+
+
+
+   Receive
+
+   - 202
+   - 560
+
+
+6.5.  User
+
+
+   Send
+
+   - {Header (client_request_t)} + {User_uuid : 16 bytes};
+
+
+
+
+
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020               [Page 8]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   Receive
+
+   - 560
+   - 501
+   - 554
+   - 201
+
+
+6.6.  Send
+
+
+Send
+
+- {Header (client_request_t)} + {Recipient_uuid : 16 bytes} + {Message : 512 bytes};
+
+
+
+   Receive
+
+   - 560
+   - 501
+   - 554
+   - 321
+
+
+6.7.  Messages
+
+
+   Send
+
+   - {Header (client_request_t)} + {Recipient_uuid : 16 bytes};
+
+
+
+   Receive
+
+   - 560
+   - 501
+   - 554
+   - 220
+
+
+6.8.  Subscribe
+
+
+
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020               [Page 9]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   Send
+
+   - {Header (client_request_t)} + {User_uuid : 16 bytes};
+
+
+
+   Receive
+
+   - 560
+   - 501
+   - 551
+   - 200
+   - 240
+
+
+6.9.  Subscribed
+
+
+   Send
+
+   - {Header (client_request_t)};
+   - {Header (client_request_t)} + {Team_uuid : 16 bytes};
+
+
+
+   Receive
+
+   - 560
+   - 503
+   - 551
+   - 202
+   - 230
+
+
+6.10.  Unsubscribe
+
+
+   Send
+
+   - {Header (client_request_t)} + {Team_uuid : 16 bytes};
+
+
+
+
+
+
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 10]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   Receive
+
+   - 560
+   - 501
+   - 551
+   - 241
+   - 200
+
+
+6.11.  Use
+
+
+Send
+
+- {Header (client_request_t)};
+- {Header (client_request_t)} + {Team_uuid : 16 bytes};
+- {Header (client_request_t)} + {Team_uuid : 16 bytes} + {Channel_uuid : 16 bytes};
+- {Header (client_request_t)} + {Team_uuid : 16 bytes} + {Channel_uuid : 16 bytes}
+   + {Thread_uuid : 16 bytes};
+
+
+
+   Receive
+
+   - 560
+   - 200
+   - 503
+   - 551
+   - 552
+   - 553
+
+
+6.12.  Create
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 11]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+Send
+
+When the context is not defined (/use):
+- {Header (client_request_t)} + {Team_name : 32 bytes}
+   + {Team_description : 255 bytes};
+
+When team_uuid is defined (/use "team_uuid"):
+- {Header (client_request_t)} + {Channel_name : 32 bytes}
+   + {Channel_description : 255 bytes};
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+- {Header (client_request_t)} + {Thread_title : 32 bytes}
+   + {Thread_message : 512 bytes};
+
+When team_uuid, channel_uuid and thread_uuid are defined
+(/use "team_uuid" "channel_uuid" "thread_uuid"):
+- {Header (client_request_t)} + {Comment_body : 512 bytes};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 12]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+Receive
+
+When the context is not defined (/use):
+  - 560
+  - 501
+  - 540
+  - 250
+  - 311
+
+When team_uuid is defined (/use "team_uuid"):
+  - 560
+  - 501
+  - 540
+  - 251
+  - 312
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+  - 560
+  - 501
+  - 540
+  - 252
+  - 313
+
+When team_uuid, channel_uuid and thread_uuid are defined
+  - 560
+  - 501
+  - 540
+  - 253
+  - 320
+
+
+6.13.  List
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 13]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+Send
+
+When the context is not defined (/use):
+- {Header (client_request_t)};
+
+When team_uuid is defined (/use "team_uuid"):
+- {Header (client_request_t)};
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+- {Header (client_request_t)};
+
+When team_uuid, channel_uuid and thread_uuid are defined
+(/use "team_uuid" "channel_uuid" "thread_uuid"):
+- {Header (client_request_t)};
+
+
+
+Receive
+
+For each response, a header is send.
+
+When the context is not defined (/use):
+ - 230
+ - 560
+
+When team_uuid is defined (/use "team_uuid"):
+ - 231
+ - 560
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+ - 232
+ - 560
+
+When team_uuid, channel_uuid and thread_uuid are defined
+ - 233
+ - 560
+
+
+6.14.  Info
+
+
+
+
+
+
+
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 14]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+Send
+
+When the context is not defined (/use):
+- {Header (client_request_t)};
+
+When team_uuid is defined (/use "team_uuid"):
+- {Header (client_request_t)};
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+- {Header (client_request_t)};
+
+When team_uuid, channel_uuid and thread_uuid are defined
+(/use "team_uuid" "channel_uuid" "thread_uuid"):
+- {Header (client_request_t)};
+
+
+
+Receive
+
+When the context is not defined (/use):
+ - 201
+ - 560
+
+When team_uuid is defined (/use "team_uuid"):
+ - 210
+ - 560
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+ - 211
+ - 560
+
+When team_uuid, channel_uuid and thread_uuid are defined
+ - 212
+ - 560
+
+
+7.  Reply Codes
+
+7.1.  2XX
+
+   The following reply codes are used for success.  They are sent to the
+   user making the request.  Here is a list of all of the success reply
+   codes, and their meaning:
+
+   200: Command OK.
+
+   o  user_id (message_size bytes): a character pointer corresponding to
+      the UUID assigned to the user.
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 15]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   201: when a user asks for another user in particular (/user or /info
+   CLI command).
+
+   o  user_id: (16 bytes) a character pointer corresponding to the UUID
+      assigned to the user.
+
+   o  user_name: (32 bytes) a character pointer corresponding to the
+      user's name.
+
+   o  user_status: (1 bytes) an integer corresponding to the user status
+      (0 = not connected; 1 = connected).
+
+   202: when a user asks for the users list (/list CLI command), used in
+   a loop over each team.
+
+   o  user_id (16 bytes): a character pointer corresponding to the UUID
+      assigned to the user.
+
+   o  user_name (32 bytes): a character pointer corresponding to the
+      user's name.
+
+   o  user_status (1 bytes): an integer corresponding to the user status
+      (0 = not connected; 1 = connected).
+
+   210: when a user asks for a team in particular (/info CLI command).
+
+   o  team_id (16 bytes): a character pointer corresponding to the UUID
+      assigned to the team.
+
+   o  team_name (32 bytes): a character pointer corresponding to the
+      team's name.
+
+   o  team_description (255 bytes): a character pointer corresponding to
+      the team's description.
+
+   211: when a user asks for a channel in particular (/info CLI
+   command).
+
+   o  channel_id (16 bytes): a character pointer corresponding to the
+      UUID assigned to the channel.
+
+   o  channel_name (32 bytes): a character pointer corresponding to the
+      channel's name.
+
+   o  channel_description (255 bytes): a character pointer corresponding
+      to the channel's description.
+
+   212: when a user asks for a thread in particular (/info CLI command).
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 16]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   o  thread_id (16 bytes): a character pointer corresponding to the
+      UUID assigned to the thread.
+
+   o  user_id (16 bytes): a character pointer corresponding to the UUID
+      assigned to the user who created the thread.
+
+   o  thread_timestamp (16 bytes): an unsigned integer corresponding to
+      the timestamp of the thread's creation.
+
+   o  thread_title (32 bytes): a character pointer corresponding to the
+      thread title.
+
+   o  thread_body (512 bytes): a character pointer corresponding to the
+      thread body.
+
+   220: when a user asks for a specific private discussion (/messages
+   CLI command), used in a loop over each message
+
+   o  sender_id (16 bytes): a character pointer corresponding to the
+      UUID assigned to the user sending the message
+
+   o  timestamp (16 bytes): an unsigned integer corresponding to the
+      timestamp of the message.
+
+   o  message (512 bytes): a character pointer corresponding to the
+      message.
+
+   230: when a user asks for a team in particular (/info CLI command)
+
+   o  team_id: (16 bytes) a character pointer corresponding to the UUID
+      assigned to the team.
+
+   o  team_name: (32 bytes) a character pointer corresponding to the
+      team's name.
+
+   o  team_description: (255 bytes) a character pointer corresponding to
+      the team's description.
+
+   231: when the user select a specific team to be in (/list CLI
+   command), used in a loop over each channel
+
+   o  channel_id: (16 bytes) a character pointer corresponding to the
+      UUID assigned to the channel in the team.
+
+   o  channel_name: (32 bytes) a character pointer corresponding to the
+      channel's name.
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 17]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   o  channel_description: (255 bytes) a character pointer corresponding
+      to the channel's description.
+
+   232: when the user select a specific channel to be in (/list CLI
+   command), used in a loop over each thread
+
+   o  thread_id: (16 bytes) a character pointer corresponding to the
+      UUID assigned to the thread in the team.
+
+   o  user_id: (16 bytes) a character pointer corresponding to the UUID
+      assigned to the user who created the thread.
+
+   o  thread_timestamp: (16 bytes) an unsigned integer corresponding to
+      the timestamp of the thread's creation.
+
+   o  thread_title: (32 bytes) a character pointer corresponding to the
+      thread title.
+
+   o  thread_body: (512 bytes) a character pointer corresponding to the
+      thread body.
+
+   233: when a user asks for a specific thread (/list CLI command), used
+   in a loop over each reply
+
+   o  thread_id: (16 bytes) a character pointer corresponding to the
+      UUID assigned to the thread in the channel.
+
+   o  user_id: (16 bytes) a character pointer corresponding to the UUID
+      assigned to the user who created the thread.
+
+   o  reply_timestamp: (16 bytes) an unsigned integer corresponding to
+      the timestamp of the reply.
+
+   o  reply_body: (512 bytes) a character pointer corresponding to the
+      reply.
+
+   240: when the user create a reply (/subscribe CLI command)
+
+   o  user_id: (16 bytes) a character pointer corresponding to the UUID
+      assigned to the user who subscribed;
+
+   o  team_id: (16 bytes) a character pointer corresponding to the UUID
+      assigned to the team the user subscribed to.
+
+   241: when the user create a reply (/unsubscribe CLI command)
+
+   o  user_id: (16 bytes) a character pointer corresponding to the UUID
+      assigned to the user who unsubscribed;
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 18]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   o  team_id: (16 bytes) a character pointer corresponding to the UUID
+      assigned to the team the user unsubscribed from.
+
+   250: when the user create a team (/create CLI command)
+
+   o  team_id: (16 bytes) a character pointer corresponding to the UUID
+      assigned to the team.
+
+   o  team_name: (32 bytes) a character pointer corresponding to the
+      team's name.
+
+   o  team_description: (255 bytes) a character pointer corresponding to
+      the team's description.
+
+   251: when the user create a channel (/create CLI command)
+
+   o  channel_id: (16 bytes) a character pointer corresponding to the
+      UUID assigned to the channel.
+
+   o  channel_name: (32 bytes) a character pointer corresponding to the
+      channel's name.
+
+   o  channel_description: (255 bytes) a character pointer corresponding
+      to the channel's description.
+
+   252: when the user create a thread (/create CLI command)
+
+   o  thread_id: (16 bytes) a character pointer corresponding to the
+      UUID assigned to the thread.
+
+   o  user_id: (16 bytes) a character pointer corresponding to the UUID
+      assigned to the user who created the thread.
+
+   o  thread_timestamp: (16 bytes) an unsigned integer corresponding to
+      the timestamp of the thread's creation.
+
+   o  thread_title: (32 bytes) a character pointer corresponding to the
+      thread title.
+
+   o  thread_body: (512 bytes) a character pointer corresponding to the
+      thread body.
+
+   253: when the user create a reply (/create CLI command)
+
+   o  thread_id: (16 bytes) a character pointer corresponding to the
+      UUID assigned to the thread in the channel.
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 19]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   o  user_id: (16 bytes) a character pointer corresponding to the UUID
+      assigned to the user who created the thread.
+
+   o  reply_timestamp: (16 bytes) an unsigned integer corresponding to
+      the timestamp of the reply.
+
+   o  reply_body: (512 bytes) a character pointer corresponding to the
+      reply.
+
+7.2.  3XX
+
+   Here is the list of reply codes and their arguments used for
+   broadcasting other users:
+
+   311: A user has created a team
+
+   o  The uuid of the team: 16 bytes
+
+   o  The name of the team: 32 bytes
+
+   o  The description of the team: 255 bytes
+
+   312: A user has created a channel
+
+   o  The uuid of the channel: 16 bytes
+
+   o  The name of the channel: 32 bytes
+
+   o  The description of the channel: 255 bytes
+
+   313: A user has created a thread
+
+   o  The uuid of the thread: 16 bytes
+
+   o  The uuid of the user who created the team: 16 bytes
+
+   o  The time since the Epoch when the thread has been created: 16
+      bytes
+
+   o  The title of the thread: 32 bytes
+
+   o  The message body of the thread: 512 bytes
+
+   320: A user has created a message in a thread
+
+   o  The uuid of the team: 16 bytes
+
+   o  The uuid of the thread: 16 bytes
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 20]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   o  The uuid of the user: 16 bytes
+
+   o  The body of the message: 512 bytes
+
+   321: A user has sended a private message
+
+   o  The uuid of the user: 16 bytes
+
+   o  The body of the message: 512 bytes
+
+   330: A user logged in
+
+   o  The uuid of the user: 16 bytes
+
+   o  The name of the user: 32 bytes
+
+   331: A user logged out
+
+   o  The uuid of the user: 16 bytes
+
+   o  The name of the user: 32 bytes
+
+7.3.  5XX
+
+   The following reply codes are used for errors.  They are sent to the
+   user making the request.  Here is a list of all of the error reply
+   codes, and their meaning:
+
+   500: Syntax Error.
+
+   o  The error message: string
+
+   501: Error in arguments.
+
+   o  The error message: string
+
+   502: Command not implemented.
+
+   o  The error message: string
+
+   503: Bad sequence of commands.
+
+   o  The error message: string
+
+   504: Command not implemented for that parameter.
+
+   o  The error message: string
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 21]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   530: Not logged in.
+
+   o  The error message: string
+
+   540: Already exists.
+
+   o  Nothing should be sent after the header
+
+   550: Unknown command.
+
+   o  The error message: string
+
+   551: Unknown team.
+
+   o  Unknown team's UUID: 16 bytes
+
+   552: Unknown channel.
+
+   o  Unknown channel's UUID: 16 bytes
+
+   553: Unknown thread.
+
+   o  Unknown thread's UUID: 16 bytes
+
+   554: Unknown user.
+
+   o  Unknown user's UUID: 16 bytes
+
+   560: Forbidden, access denied.
+
+   o  Unknown user's UUID: 16 bytes
+
+8.  References
+
+8.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC2578]  McCloghrie, K., Ed., Perkins, D., Ed., and J.
+              Schoenwaelder, Ed., "Structure of Management Information
+              Version 2 (SMIv2)", STD 58, RFC 2578,
+              DOI 10.17487/RFC2578, April 1999,
+              <https://www.rfc-editor.org/info/rfc2578>.
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 22]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   [RFC2579]  McCloghrie, K., Ed., Perkins, D., Ed., and J.
+              Schoenwaelder, Ed., "Textual Conventions for SMIv2",
+              STD 58, RFC 2579, DOI 10.17487/RFC2579, April 1999,
+              <https://www.rfc-editor.org/info/rfc2579>.
+
+   [RFC2580]  McCloghrie, K., Ed., Perkins, D., Ed., and J.
+              Schoenwaelder, Ed., "Conformance Statements for SMIv2",
+              STD 58, RFC 2580, DOI 10.17487/RFC2580, April 1999,
+              <https://www.rfc-editor.org/info/rfc2580>.
+
+8.2.  Informative References
+
+   [RFC2223]  Postel, J. and J. Reynolds, "Instructions to RFC Authors",
+              RFC 2223, DOI 10.17487/RFC2223, October 1997,
+              <https://www.rfc-editor.org/info/rfc2223>.
+
+   [RFC2629]  Rose, M., "Writing I-Ds and RFCs using XML", RFC 2629,
+              DOI 10.17487/RFC2629, June 1999,
+              <https://www.rfc-editor.org/info/rfc2629>.
+
+   [RFC3410]  Case, J., Mundy, R., Partain, D., and B. Stewart,
+              "Introduction and Applicability Statements for Internet-
+              Standard Management Framework", RFC 3410,
+              DOI 10.17487/RFC3410, December 2002,
+              <https://www.rfc-editor.org/info/rfc3410>.
+
+8.3.  URL References
+
+   [idguidelines]
+              IETF Internet Drafts editor,
+              "http://www.ietf.org/ietf/1id-guidelines.txt".
+
+   [ietf]     IETF Tools Team, "http://tools.ietf.org".
+
+   [xml2rfc]  XML2RFC tools and documentation,
+              "http://xml.resource.org".
+
+Authors' Addresses
+
+   Bourgeois Benjamin (editor)
+   Epitech
+
+   EMail: benjamin.bourgeois@epitech.eu
+
+
+
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 23]
+
+Internet-Draft                  My Teams                        May 2020
+
+
+   Ettel Jamil (editor)
+   Epitech
+
+   EMail: jamil.ettel@epitech.eu
+
+
+   Lecomte Amaury (editor)
+   Epitech
+
+   EMail: amaury.lecomte@epitech.eu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bourgeois Benjamin, et aExpires November 29, 2020              [Page 24]
