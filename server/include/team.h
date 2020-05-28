@@ -22,5 +22,6 @@ typedef struct
 } team_t;
 
 team_t *create_team(char *name, char *description);
+void delete_team(void *data);
 
 #endif /* !TEAM_H_ */

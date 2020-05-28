@@ -10,6 +10,7 @@
 
 #include <uuid/uuid.h>
 #include "reply_code.h"
+#include "user.h"
 
 typedef struct
 {
@@ -19,5 +20,6 @@ typedef struct
 } reply_t;
 
 reply_t *create_reply(char *message);
+void delete_reply(void *data);
 
 #endif /* !REPLY_H_ */

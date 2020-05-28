@@ -20,5 +20,6 @@ typedef struct
 } message_t;
 
 message_t *message_create(const char *msg, const uuid_t from, time_t time);
+void delete_message(void *data);
 
 #endif /* !MESSAGE_H_ */

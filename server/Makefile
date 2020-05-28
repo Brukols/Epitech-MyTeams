@@ -23,6 +23,7 @@ SRCS	=	src/main.c												\
 			src/signal/sig_handler.c								\
 			src/signal/terminate.c									\
 			src/message/message_create.c							\
+			src/message/delete_message.c							\
 			src/client/create_client.c								\
 			src/client/delete_client.c								\
 			src/client/client_utils.c								\
@@ -33,13 +34,18 @@ SRCS	=	src/main.c												\
 			src/utils/send_error_already_exist.c					\
 			src/user/create_user.c									\
 			src/user/user_utils.c									\
+			src/user/delete_user.c									\
 			src/utils/get_args_command.c							\
 			src/uuid/get_uuid.c										\
 			src/team/create_team.c									\
+			src/team/delete_team.c									\
 			src/team/user_is_in_team.c								\
 			src/channel/create_channel.c							\
 			src/thread/create_thread.c								\
 			src/reply/create_reply.c								\
+			src/channel/delete_channel.c							\
+			src/thread/delete_thread.c								\
+			src/reply/delete_reply.c								\
 			src/server/commands/help/command_help.c					\
 			src/server/commands/login/command_login.c				\
 			src/server/commands/logout/command_logout.c				\

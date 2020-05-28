@@ -21,5 +21,6 @@ typedef struct
 } channel_t;
 
 channel_t *create_channel(char *name, char *description);
+void delete_channel(void *data);
 
 #endif /* !CHANNEL_H_ */

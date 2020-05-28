@@ -13,6 +13,7 @@
 #include <uuid/uuid.h>
 #include "generic_list.h"
 #include "reply.h"
+#include "user.h"
 
 typedef struct
 {
@@ -25,5 +26,6 @@ typedef struct
 } thread_t;
 
 thread_t *create_thread(char *title, char *message, user_t *user);
+void delete_thread(void *data);
 
 #endif /* !THREAD_H_ */
