@@ -142,13 +142,13 @@ If this document updates an RFC, specify the RFC in the "updates" attribute
     <section title="Overview">
 
       <t>
-        The client must be able to connect to one server, to send
-        multiple command to the server, and to receive reply
-        from server and display this information.
+        The client must be able to connect to a server, to send
+        multiple commands to it, to receive replies
+        from it and to display the information to the user.
       </t>
       <t>
-        The client must send command in a specific format describe
-        later and decode response in a human read format.
+        The client must send command in a specific format described
+        later and should display the reply in a human readable format.
       </t>
       <t>
         You can find commands and reply-codes in Commands
@@ -161,66 +161,67 @@ If this document updates an RFC, specify the RFC in the "updates" attribute
     <section title="Send">
 
       <t>
-        The client must send command to server in a particular
-        format. Each command must be send with a specific header
-        like follow:
+        The client must send commands to server in a particular
+        format. Each command must be sent with a specific header
+        as follows:
       </t>
 
       <figure>
         <artwork>
           <![CDATA[
-                   typedef struct __attribute__((packed))
-                   {
-                   unsigned char command;
-                   int message_size;
-                   } client_request_t;
+                   
+typedef struct __attribute__((packed))
+{
+    unsigned char command;
+    int message_size;
+} client_request_t;
           ]]>
         </artwork>
       </figure>
 
       <t>
-        command: An unsigned char among this list corresponding to
-        the command associate with the request. Commands allowed
+        command: An unsigned char from this list corresponding to
+        the command associated with the request. Allowed commands
         are:
       </t>
 
       <figure>
         <artwork>
           <![CDATA[
-                   enum command_code_e {
-                   UNKNOWN,
-                   HELP,
-                   LOGIN,
-                   LOGOUT,
-                   USERS,
-                   USER,
-                   SEND,
-                   MESSAGES,
-                   SUBSCRIBE,
-                   SUBSCRIBED,
-                   UNSUBSCRIBE,
-                   USE,
-                   CREATE,
-                   LIST,
-                   INFO
-                   };
+                   
+enum command_code_e {
+    UNKNOWN,
+    HELP,
+    LOGIN,
+    LOGOUT,
+    USERS,
+    USER,
+    SEND,
+    MESSAGES,
+    SUBSCRIBE,
+    SUBSCRIBED,
+    UNSUBSCRIBE,
+    USE,
+    CREATE,
+    LIST,
+    INFO
+};
           ]]>
         </artwork>
       </figure>
 
       <t>
-        message size: The total size in bytes of all arguments
+        message_size: The total size in bytes of all arguments
         of the associated command after the header.
       </t>
 
       <t>
         <list style="symbols">
           <t>
-            The client can send information in one time or in
-            multiple time.
+            The header has a fixed size (5 bytes).
           </t>
           <t>
-            The client should verify the correct number and
+            The client should verify the number and
             type of each argument of the associated command.
             There is another verification server side.
           </t>
@@ -235,9 +236,9 @@ If this document updates an RFC, specify the RFC in the "updates" attribute
     <section title="Receive">
 
       <t>
-        The client receive replies from server in a particular
-        format. Each reply is preceded by a header in a format
-        like below:
+        The client receives replies from the server in a particular
+        format. Each reply is preceded by a request header in a specific format
+        as shown below:
       </t>
 
       <figure>
@@ -253,54 +254,54 @@ If this document updates an RFC, specify the RFC in the "updates" attribute
       </figure>
 
       <t>
-        reply: An unsigned short among this list corresponding to
-        the reply-code associate with the response. Reply-code
-        allowed are:
+        reply: An unsigned short from this list corresponding to
+        the reply-code associated with the reply. Allowed reply codes
+        are:
       </t>
 
       <figure>
         <artwork>
-          <![CDATA[
-                   enum reply_code_e {
-                   COMMAND_OK = 200,
-                   PRINT_USER = 201,
-                   PRINT_USERS = 202,
-                   PRINT_TEAM = 210,
-                   PRINT_CHANNEL = 211,
-                   PRINT_THREAD = 212,
-                   PRINT_PRIVATE_MESSAGES = 220,
-                   PRINT_TEAMS = 230,
-                   PRINT_CHANNELS = 231,
-                   PRINT_THREADS = 232,
-                   PRINT_REPLIES = 233,
-                   PRINT_SUBSCRIBED = 240,
-                   PRINT_UNSUBSCRIBED = 241,
-                   PRINT_TEAM_CREATED = 250,
-                   PRINT_CHANNEL_CREATED = 251,
-                   PRINT_THREAD_CREATED = 252,
-                   PRINT_REPLY_CREATED = 253,
-
-EVENT_TEAM_CREATED = 311,
-EVENT_CHANNEL_CREATED = 312,
-EVENT_THREAD_CREATED = 313,
-EVENT_THREAD_MESSAGE_RECEIVED = 320,
-EVENT_PRIVATE_MESSAGE_RECEIVED = 321,
-EVENT_LOGGED_IN = 330,
-EVENT_LOGGED_OUT = 331,
-
-SYNTAX_ERROR = 500,
-SYNTAX_ERROR_ARGS = 501,
-NOT_IMPLEMENTED = 502,
-BAD_SEQUENCE = 503,
-NOT_IMPLEMENTED_ARG = 504,
-NOT_LOGGED_IN = 530,
-CLIENT_ALREADY_EXISTS = 540,
-UNKNOWN_COMMAND = 550,
-UNKNOWN_TEAM = 551,
-UNKNOWN_CHANNEL = 552,
-UNKNOWN_THREAD = 553,
-UNKNOWN_USER = 554,
-UNAUTHORIZED = 560,
+          <![CDATA[                   
+enum reply_code_e {
+    COMMAND_OK = 200,
+    PRINT_USER = 201,
+    PRINT_USERS = 202,
+    PRINT_TEAM = 210,
+    PRINT_CHANNEL = 211,
+    PRINT_THREAD = 212,
+    PRINT_PRIVATE_MESSAGES = 220,
+    PRINT_TEAMS = 230,
+    PRINT_CHANNELS = 231,
+    PRINT_THREADS = 232,
+    PRINT_REPLIES = 233,
+    PRINT_SUBSCRIBED = 240,
+    PRINT_UNSUBSCRIBED = 241,
+    PRINT_TEAM_CREATED = 250,
+    PRINT_CHANNEL_CREATED = 251,
+    PRINT_THREAD_CREATED = 252,
+    PRINT_REPLY_CREATED = 253,
+    
+    EVENT_TEAM_CREATED = 311,
+    EVENT_CHANNEL_CREATED = 312,
+    EVENT_THREAD_CREATED = 313,
+    EVENT_THREAD_MESSAGE_RECEIVED = 320,
+    EVENT_PRIVATE_MESSAGE_RECEIVED = 321,
+    EVENT_LOGGED_IN = 330,
+    EVENT_LOGGED_OUT = 331,
+    
+    SYNTAX_ERROR = 500,
+    SYNTAX_ERROR_ARGS = 501,
+    NOT_IMPLEMENTED = 502,
+    BAD_SEQUENCE = 503,
+    NOT_IMPLEMENTED_ARG = 504,
+    NOT_LOGGED_IN = 530,
+    CLIENT_ALREADY_EXISTS = 540,
+    UNKNOWN_COMMAND = 550,
+    UNKNOWN_TEAM = 551,
+    UNKNOWN_CHANNEL = 552,
+    UNKNOWN_THREAD = 553,
+    UNKNOWN_USER = 554,
+    UNAUTHORIZED = 560,
 };
           ]]>
         </artwork>
@@ -308,17 +309,16 @@ UNAUTHORIZED = 560,
 
       <t>
         message_size: The total size in bytes of all arguments
-        of the associated response after the header.
+        of the reply after the header.
       </t>
 
       <t>
         <list style="symbols">
           <t>
-            The server can send information in one time or in
-            multiple time.
+            The header has a fixed size (6 bytes).
           </t>
           <t>
-            The header is followed by the reply's arguments.
+            The header is followed by the arguments.
           </t>
         </list>
       </t>
@@ -328,17 +328,19 @@ UNAUTHORIZED = 560,
   </section>
 
   <section title="Server">
-    <!-- <t></t> -->
     <section title="Overview">
 
       <t>
         The server must be able to accept multiple clients, to send replies to a specific client, and to broadcast a message to multiple clients.
       </t>
       <t>
-	    The server must be able to keep data about users, teams, channels and threads. Clients with the right permissions must be able to access that data. The server should store the data so it can be reused after a restart.
+	    The server must be able to keep data about users, teams, channels and threads.
+        Clients with the right permissions must be able to access that data.
+        The server should store the data so it can be reused after a restart.
       </t>
       <t>
-	    Users must be able to create teams, channels, and threads. They also must be able to create replies in threads and private messages to other users. All of this information must be able to be accessed by users if they have the right permissions.
+	    Users must be able to create teams, channels, and threads. They also must be able to create replies in threads and send private messages to other users.
+        All of this information must be able to be accessed by users if they have the right permissions.
       </t>
       <t>
 	    Some events must be broadcasted to multiple connected clients, please refer to the Reply Codes and Commands sections for more information about broadcasted events.
@@ -349,14 +351,32 @@ UNAUTHORIZED = 560,
     <section title="Send">
 
       <t>
-        The server must send to the client a header to inform the
-        client about the message. In this header, at first, we have an unsigned short
-        int (2 bytes), which represents the reply code to send, these are defined later.
-        And finally, the message size in 4 bytes to tell to the client how many character
-        he must read.
+        The server must answer clients' requests with replies.
+        A reply starts with a header describing the reply (unsigned short: fisrt two bytes) and the size of the arguments (int: last four bytes).
+        The header is followed by the arguments of the reply.
       </t>
       <t>
-        After the client reads the header, he is able to know what type of message he reads, please inform you with the reply code sections to know that.
+        You may use the following structure for server replies:
+      </t>
+
+      <figure>
+        <artwork>
+          <![CDATA[
+                  
+ typedef struct __attribute__((packed))
+ {
+     unsigned short reply;
+     int message_size;
+ } server_reply_t;
+          ]]>
+        </artwork>
+      </figure>
+
+      <t>
+        reply represents the reply code. Please refer to the Reply Code section for more information.
+      </t>
+      <t>
+        messaege_size represents the size of the arguments. Arguments are detailed in the Reply Code section.
       </t>
 
     </section>
@@ -364,11 +384,30 @@ UNAUTHORIZED = 560,
     <section title="Receive">
 
       <t>
-        When a client sends a request, the server must receive a header
+        When a client sends a request, the server receives a header
         with an unsigned char (1 byte), representing the command, and an int
-        for the message size. If he hasn't receive a good size, he will not read
-        the message until you send the full message. To know what char to send
-        with a specific command, refer to the commands section later.
+        for the message size.
+      </t>
+      <t>
+        You may use the following structure for client replies:
+      </t>
+
+      <figure>
+        <artwork>
+          <![CDATA[
+                   
+typedef struct __attribute__((packed))
+{
+    unsigned char command;
+    int message_size;
+} client_request_t;
+          ]]>
+        </artwork>
+      </figure>
+
+
+      <t>
+        The server must wait for the full message to be received before processing the request.
       </t>
 
     </section>
@@ -376,9 +415,8 @@ UNAUTHORIZED = 560,
 
   <section title="Commands">
     <t>
-      Here is a list of different commands the user can write to the client
-      with his specific byte to send to the server. The byte that the client must
-      send to the server is the number before each command.
+      Here is a list of different commands the user can write to the client.
+      The byte that the client must send to the server is the number before each command.
     </t>
     <t>
       <list>
@@ -451,7 +489,7 @@ UNAUTHORIZED = 560,
         assigned to the user.</t>
       </list>
       </t>
-      <t>201: when the user ask for a user in particular (/user or /info CLI command).
+      <t>201: when a user asks for another user in particular (/user or /info CLI command).
       <list style="symbols">
         <t>user_id: (16 bytes) a character pointer
         corresponding to the UUID
@@ -463,7 +501,7 @@ UNAUTHORIZED = 560,
         connected).</t>
       </list>
       </t>
-      <t>202: when the user ask for the users list (/list CLI command), used in a loop over each team.
+      <t>202: when a user asks for the users list (/list CLI command), used in a loop over each team.
       <list style="symbols">
         <t>user_id (16 bytes): a character pointer
         corresponding to the UUID
@@ -475,7 +513,7 @@ UNAUTHORIZED = 560,
         connected).</t>
       </list>
       </t>
-      <t>210: when the user ask for a team in particular (/info CLI command).
+      <t>210: when a user asks for a team in particular (/info CLI command).
       <list style="symbols">
         <t>team_id (16 bytes): a character pointer
         corresponding to the UUID
@@ -486,7 +524,7 @@ UNAUTHORIZED = 560,
         corresponding to the team's description.</t>
       </list>
       </t>
-      <t>211: when the user ask for a channel in particular (/info CLI command).
+      <t>211: when a user asks for a channel in particular (/info CLI command).
       <list style="symbols">
         <t>channel_id (16 bytes): a character pointer
         corresponding to the UUID
@@ -497,7 +535,7 @@ UNAUTHORIZED = 560,
         corresponding to the channel's description.</t>
       </list>
       </t>
-      <t>212: when the user ask for a thread in particular (/info CLI command).
+      <t>212: when a user asks for a thread in particular (/info CLI command).
       <list style="symbols">
         <t>thread_id (16 bytes): a character pointer
         corresponding to the UUID
@@ -514,7 +552,7 @@ UNAUTHORIZED = 560,
         corresponding to the thread body.</t>
       </list>
       </t>
-      <t>220: when the user ask for a specific private discussion (/messages CLI command), used in a loop over each message
+      <t>220: when a user asks for a specific private discussion (/messages CLI command), used in a loop over each message
       <list style="symbols">
         <t>sender_id (16 bytes): a character pointer
         corresponding to the UUID
@@ -525,7 +563,7 @@ UNAUTHORIZED = 560,
         corresponding to the message.</t>
       </list>
       </t>
-      <t>230: when the user ask for a team in particular (/info CLI command)
+      <t>230: when a user asks for a team in particular (/info CLI command)
       <list style="symbols">
         <t>team_id: (16 bytes) a character pointer
         corresponding to the UUID
@@ -564,7 +602,7 @@ UNAUTHORIZED = 560,
         corresponding to the thread body.</t>
       </list>
       </t>
-      <t>233: when the user ask for a specific thread (/list CLI command), used in a loop over each reply
+      <t>233: when a user asks for a specific thread (/list CLI command), used in a loop over each reply
       <list style="symbols">
         <t>thread_id: (16 bytes) a character pointer
         corresponding to the UUID
