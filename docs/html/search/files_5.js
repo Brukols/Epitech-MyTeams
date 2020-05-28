@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['handle_5fclient_5factivities_2ec',['handle_client_activities.c',['../handle__client__activities_8c.html',1,'']]],
-  ['handle_5fio_5factivities_2ec',['handle_io_activities.c',['../handle__io__activities_8c.html',1,'']]],
-  ['handle_5fserver_5factivities_2ec',['handle_server_activities.c',['../handle__server__activities_8c.html',1,'']]],
-  ['help_2ec',['help.c',['../client_2src_2help_2help_8c.html',1,'(Global Namespace)'],['../server_2src_2help_2help_8c.html',1,'(Global Namespace)']]],
-  ['help_5fcmd_2ec',['help_cmd.c',['../help__cmd_8c.html',1,'']]]
+  ['generic_5flist_2eh',['generic_list.h',['../generic__list_8h.html',1,'']]],
+  ['get_5farg_2ec',['get_arg.c',['../get__arg_8c.html',1,'']]],
+  ['get_5fargs_5fcommand_2ec',['get_args_command.c',['../get__args__command_8c.html',1,'']]],
+  ['get_5fsize_5farray_2ec',['get_size_array.c',['../get__size__array_8c.html',1,'']]],
+  ['get_5fuuid_2ec',['get_uuid.c',['../get__uuid_8c.html',1,'']]]
 ];

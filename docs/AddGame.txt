@@ -1,0 +1,11 @@
+/*!
+  \page external_ressources External Ressources
+
+  \section rfc RFC
+  <a href="../rfc/rfc.html">See RFC</a>
+
+  \section diagrams Diagrams
+  <a href="../diagrams/activity_diagram.html">See Activity Diagram</a>\n
+  <a href="../diagrams/save_architecture.html">See Save Architecture</a>\n
+  <a href="../diagrams/server_architecture.html">See Server Architecture</a>\n
+*/
