@@ -49,6 +49,7 @@ var searchData=
   ['close',['close',['../structclient__t.html#a3e259dbd8159d6403098349fddf19cf2',1,'client_t']]],
   ['close_5fclient',['close_client',['../myteams__client_8h.html#accc5ad015eab2cf31ca39c9adfd16888',1,'close_client(client_t *info):&#160;close_client.c'],['../close__client_8c.html#accc5ad015eab2cf31ca39c9adfd16888',1,'close_client(client_t *info):&#160;close_client.c']]],
   ['close_5fclient_2ec',['close_client.c',['../close__client_8c.html',1,'']]],
+  ['cmakelists_2etxt',['CMakeLists.txt',['../_c_make_lists_8txt.html',1,'']]],
   ['code',['code',['../structreply__codes__dictionnary__t.html#ad5035e9ddbe5118f0f35c4db612d13c2',1,'reply_codes_dictionnary_t::code()'],['../structcommands__t.html#af92d9c61c2929914f4c7f2a5ecdd011d',1,'commands_t::code()']]],
   ['command_5fcode_5fe',['command_code_e',['../reply__code_8h.html#a0970b992b82ad0aa9f16af90ead94af7',1,'reply_code.h']]],
   ['command_5fcreate',['command_create',['../server_8h.html#a36cf4ac9c5eafae7e37b92ecece13cfc',1,'command_create(server_t *, client_t *, client_request_t *, char *):&#160;command_create.c'],['../command__create_8c.html#af25759b498bd6fa16ba898904061a79c',1,'command_create(server_t *server, client_t *client, client_request_t *req, char *data):&#160;command_create.c']]],

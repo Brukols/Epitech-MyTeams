@@ -99,20 +99,22 @@ $(document).ready(function(){initNavTree('thread_8h.html','');});
 <code>#include &lt;uuid/uuid.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="generic__list_8h_source.html">generic_list.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="reply_8h_source.html">reply.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="user_8h_source.html">user.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for thread.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="thread_8h__incl.png" border="0" usemap="#server_2include_2thread_8h" alt=""/></div>
 <map name="server_2include_2thread_8h" id="server_2include_2thread_8h">
-<area shape="rect"  title=" " alt="" coords="113,5,285,32"/>
-<area shape="rect"  href="reply__code_8h.html" title=" " alt="" coords="5,155,111,181"/>
-<area shape="rect"  title=" " alt="" coords="78,80,142,107"/>
-<area shape="rect"  title=" " alt="" coords="152,155,247,181"/>
-<area shape="rect"  href="generic__list_8h.html" title=" " alt="" coords="334,80,443,107"/>
-<area shape="rect"  href="reply_8h.html" title=" " alt="" coords="167,80,232,107"/>
-<area shape="rect"  title=" " alt="" coords="271,155,354,181"/>
-<area shape="rect"  title=" " alt="" coords="378,155,453,181"/>
-<area shape="rect"  title=" " alt="" coords="477,155,548,181"/>
+<area shape="rect"  title=" " alt="" coords="145,5,317,32"/>
+<area shape="rect"  href="reply__code_8h.html" title=" " alt="" coords="5,229,111,256"/>
+<area shape="rect"  title=" " alt="" coords="342,80,406,107"/>
+<area shape="rect"  title=" " alt="" coords="135,229,229,256"/>
+<area shape="rect"  href="generic__list_8h.html" title=" " alt="" coords="254,229,363,256"/>
+<area shape="rect"  href="reply_8h.html" title=" " alt="" coords="89,80,155,107"/>
+<area shape="rect"  href="user_8h.html" title=" " alt="" coords="155,155,217,181"/>
+<area shape="rect"  title=" " alt="" coords="165,304,247,331"/>
+<area shape="rect"  title=" " alt="" coords="271,304,346,331"/>
+<area shape="rect"  title=" " alt="" coords="371,304,441,331"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -120,29 +122,31 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="thread_8h__dep__incl.png" border="0" usemap="#server_2include_2thread_8hdep" alt=""/></div>
 <map name="server_2include_2thread_8hdep" id="server_2include_2thread_8hdep">
-<area shape="rect"  title=" " alt="" coords="8949,5,9121,32"/>
-<area shape="rect"  href="client_8h.html" title=" " alt="" coords="8855,87,9022,114"/>
-<area shape="rect"  href="save__threads_8c.html" title=" " alt="" coords="9047,80,9215,121"/>
-<area shape="rect"  href="server_8h.html" title=" " alt="" coords="5308,177,5479,203"/>
-<area shape="rect"  href="launch__server_8c.html" title=" " alt="" coords="8267,348,8445,389"/>
-<area shape="rect"  href="new__connection_8c.html" title=" " alt="" coords="8467,259,8629,300"/>
-<area shape="rect"  href="read__data__client_8c.html" title=" " alt="" coords="8654,259,8818,300"/>
-<area shape="rect"  href="translate__select_8c.html" title=" " alt="" coords="8842,259,9035,300"/>
-<area shape="rect"  href="write__data__client_8c.html" title=" " alt="" coords="9060,259,9228,300"/>
-<area shape="rect"  href="client__utils_8c.html" title=" " alt="" coords="9303,169,9470,211"/>
-<area shape="rect"  href="saving_8h.html" title=" " alt="" coords="8269,266,8443,293"/>
-<area shape="rect"  href="utils_8h.html" title=" " alt="" coords="6141,266,6299,293"/>
-<area shape="rect"  href="translate__data__client_8c.html" title=" " alt="" coords="6182,348,6375,389"/>
-<area shape="rect"  href="create__channel_8c.html" title=" " alt="" coords="6375,259,6516,300"/>
-<area shape="rect"  href="create__client_8c.html" title=" " alt="" coords="6540,259,6711,300"/>
-<area shape="rect"  href="delete__client_8c.html" title=" " alt="" coords="6735,259,6905,300"/>
-<area shape="rect"  href="server_2src_2help_2help_8c.html" title=" " alt="" coords="6930,266,7091,293"/>
-<area shape="rect"  href="load__utils_8c.html" title=" " alt="" coords="7115,259,7266,300"/>
-<area shape="rect"  href="load__channel_8c.html" title=" " alt="" coords="7291,259,7453,300"/>
-<area shape="rect"  href="load__team__data_8c.html" title=" " alt="" coords="7528,259,7691,300"/>
-<area shape="rect"  href="load__teams_8c.html" title=" " alt="" coords="7715,259,7877,300"/>
-<area shape="rect"  href="load__thread_8c.html" title=" " alt="" coords="7901,259,8064,300"/>
-<area shape="rect"  href="load__users_8c.html" title=" " alt="" coords="8088,259,8245,300"/>
+<area shape="rect"  title=" " alt="" coords="8747,5,8919,32"/>
+<area shape="rect"  href="client_8h.html" title=" " alt="" coords="8482,87,8649,114"/>
+<area shape="rect"  href="delete__channel_8c.html" title=" " alt="" coords="8673,80,8815,121"/>
+<area shape="rect"  href="save__threads_8c.html" title=" " alt="" coords="8839,80,9007,121"/>
+<area shape="rect"  href="delete__thread_8c.html" title=" " alt="" coords="9031,80,9209,121"/>
+<area shape="rect"  href="server_8h.html" title=" " alt="" coords="5104,177,5275,203"/>
+<area shape="rect"  href="launch__server_8c.html" title=" " alt="" coords="7893,348,8072,389"/>
+<area shape="rect"  href="new__connection_8c.html" title=" " alt="" coords="8093,259,8256,300"/>
+<area shape="rect"  href="read__data__client_8c.html" title=" " alt="" coords="8281,259,8445,300"/>
+<area shape="rect"  href="translate__select_8c.html" title=" " alt="" coords="8469,259,8662,300"/>
+<area shape="rect"  href="write__data__client_8c.html" title=" " alt="" coords="8687,259,8855,300"/>
+<area shape="rect"  href="client__utils_8c.html" title=" " alt="" coords="8930,169,9097,211"/>
+<area shape="rect"  href="saving_8h.html" title=" " alt="" coords="7896,266,8069,293"/>
+<area shape="rect"  href="utils_8h.html" title=" " alt="" coords="5767,266,5926,293"/>
+<area shape="rect"  href="translate__data__client_8c.html" title=" " alt="" coords="5809,348,6002,389"/>
+<area shape="rect"  href="create__channel_8c.html" title=" " alt="" coords="6001,259,6143,300"/>
+<area shape="rect"  href="create__client_8c.html" title=" " alt="" coords="6167,259,6337,300"/>
+<area shape="rect"  href="delete__client_8c.html" title=" " alt="" coords="6361,259,6532,300"/>
+<area shape="rect"  href="server_2src_2help_2help_8c.html" title=" " alt="" coords="6557,266,6718,293"/>
+<area shape="rect"  href="load__utils_8c.html" title=" " alt="" coords="6742,259,6893,300"/>
+<area shape="rect"  href="load__channel_8c.html" title=" " alt="" coords="6917,259,7080,300"/>
+<area shape="rect"  href="load__team__data_8c.html" title=" " alt="" coords="7155,259,7317,300"/>
+<area shape="rect"  href="load__teams_8c.html" title=" " alt="" coords="7341,259,7504,300"/>
+<area shape="rect"  href="load__thread_8c.html" title=" " alt="" coords="7528,259,7691,300"/>
+<area shape="rect"  href="load__users_8c.html" title=" " alt="" coords="7715,259,7872,300"/>
 <area shape="rect"  href="read__user__data_8c.html" title=" " alt="" coords="5,259,163,300"/>
 <area shape="rect"  href="server_2src_2main_8c.html" title=" " alt="" coords="187,266,322,293"/>
 <area shape="rect"  href="my__teams_8c.html" title=" " alt="" coords="347,266,517,293"/>
@@ -168,8 +172,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="rect"  href="delete__server_8c.html" title=" " alt="" coords="5209,259,5385,300"/>
 <area shape="rect"  href="init__server_8c.html" title=" " alt="" coords="5410,259,5566,300"/>
 <area shape="rect"  href="sig__handler_8c.html" title=" " alt="" coords="5591,259,5743,300"/>
-<area shape="rect"  href="create__team_8c.html" title=" " alt="" coords="5767,259,5937,300"/>
-<area shape="rect"  href="user__is__in__team_8c.html" title=" " alt="" coords="5961,259,6117,300"/>
 </map>
 </div>
 </div>
@@ -184,6 +186,8 @@ Data Structures</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ad2ace5fbf2343cb11e813cf536bc6cb3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structthread__t.html">thread_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thread_8h.html#ad2ace5fbf2343cb11e813cf536bc6cb3">create_thread</a> (char *title, char *message, <a class="el" href="structuser__t.html">user_t</a> *user)</td></tr>
 <tr class="separator:ad2ace5fbf2343cb11e813cf536bc6cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92064c75a548ef7b16d5ecc6499fb691"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thread_8h.html#a92064c75a548ef7b16d5ecc6499fb691">delete_thread</a> (void *data)</td></tr>
+<tr class="separator:a92064c75a548ef7b16d5ecc6499fb691"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ad2ace5fbf2343cb11e813cf536bc6cb3"></a>
@@ -219,6 +223,37 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="create__thread_8c_source.html#l00010">10</a> of file <a class="el" href="create__thread_8c_source.html">create_thread.c</a>.</p>
+
+</div>
+</div>
+<a id="a92064c75a548ef7b16d5ecc6499fb691"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92064c75a548ef7b16d5ecc6499fb691">&#9670;&nbsp;</a></span>delete_thread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_thread </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="delete__thread_8c_source.html#l00010">10</a> of file <a class="el" href="delete__thread_8c_source.html">delete_thread.c</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="thread_8h_a92064c75a548ef7b16d5ecc6499fb691_cgraph.png" border="0" usemap="#thread_8h_a92064c75a548ef7b16d5ecc6499fb691_cgraph" alt=""/></div>
+<map name="thread_8h_a92064c75a548ef7b16d5ecc6499fb691_cgraph" id="thread_8h_a92064c75a548ef7b16d5ecc6499fb691_cgraph">
+<area shape="rect"  title=" " alt="" coords="5,31,117,57"/>
+<area shape="rect"  href="generic__list_8h.html#a792826457888e73ab9af825a61cb6d02" title=" " alt="" coords="176,5,257,32"/>
+<area shape="rect"  href="reply_8h.html#a858b5106f68d684772ad23e2cefd308e" title=" " alt="" coords="165,56,268,83"/>
+<area shape="rect"  href="generic__list_8h.html#a9cd278ce09dfb96ade718aa563da38b2" title=" " alt="" coords="316,5,445,32"/>
+</map>
+</div>
 
 </div>
 </div>

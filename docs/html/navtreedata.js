@@ -24,6 +24,10 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "My Teams", "index.html", [
+    [ "External Ressources", "external_ressources.html", [
+      [ "RFC", "external_ressources.html#rfc", null ],
+      [ "Diagrams", "external_ressources.html#diagrams", null ]
+    ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
@@ -50,10 +54,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"globals_func_g.html",
-"myteams__client_8h.html#abbd8da4dc070a3418fa6239d445a0233",
-"saving__utils_8h.html#a4d8103511c5cf00149d81a8f00f4b328",
-"user__cmd_8c.html"
+"get__size__array_8c_source.html",
+"myteams__client_8h.html#a7fa617685fe8b2541d118e82c2092328",
+"save__server_8c.html#a1697c89dde04f27f9f58049526030b68",
+"test__smart__buffer_8c_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
