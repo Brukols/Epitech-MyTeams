@@ -106,16 +106,8 @@ If this document updates an RFC, specify the RFC in the "updates" attribute
     <!--You can echo the abstract in the Introduction, providing citations here,
         but you should provide more than just the abstract. -->
 
-    <t>This memo defines a portion of the Management Information Base (MIB)
-    for use with network management protocols. In particular it defines
-    objects for managing the [TEMPLATE TODO].</t>
-
-    <t><cref>[TEMPLATE TODO]: describe what functionality will be managed using this MIB
-    module. Include citations for protocol specifications, architectures, related MIB modules, and protocol-specific
-    management requirements. Provide an overview of why a MIB module is appropriate for this protocol,  whether there is a
-    particular aspect of the protocol to be managed, and how the module is expected to be used to
-    achieve particular goals. Highlight anything 'different' about the module. For example,
-    a read-only MIB module.</cref></t>
+    <t>This memo defines how to use network management protocols in the My
+      Teams project.</t>
 
   </section>
 
