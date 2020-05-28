@@ -57,8 +57,7 @@ client_t *actual_client)
             continue;
         if (client == actual_client)
             ret = add_print_reply_created(client, reply);
-        else
-            ret = add_event_thread_message_received(client, reply, \
+        ret = add_event_thread_message_received(client, reply, \
 actual_client);
         if (ret < 0)
             return (FAILURE);
