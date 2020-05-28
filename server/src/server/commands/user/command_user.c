@@ -37,7 +37,8 @@ char *data)
     list_t user;
 
     if (req->message_size != 16)
-        return (send_reply(client, SYNTAX_ERROR_ARGS, "[SERVER] Wrong syntax"));
+        return (send_reply(client, SYNTAX_ERROR_ARGS, \
+"[SERVER] Wrong syntax"));
     user = list_get_first_node_with_value(server->users, uuid, &is_user_equal);
     if (!user)
         return (send_unknown(client, UNKNOWN_USER, (unsigned char *)data));
