@@ -406,62 +406,313 @@ typedef struct __attribute__((packed))
   </section>
 
   <section title="Commands">
-    <t>
-      Here is a list of different commands the user can write to the client.
-      The byte that the client must send to the server is the number before each command.
-    </t>
-    <t>
-      <list>
-        <t>1 - /help: Show help</t>
-        <t>2 - /login ["username"]: set the username used by client</t>
-        <t>3 - /logout: disconnect the client from the server</t>
-        <t>4 - /users: get the list of all users that exist on the domain</t>
-        <t>5 - /user ["user_uuid"]: get information about a user</t>
-        <t>6 - /send ["user_uuid"] ["message_body"]: send a message to a user</t>
-        <t>7 - /messages ["user_uuid"]: list all messages exchange with an user</t>
-        <t>8 - /subscribe ["team_uuid"]: subscribe to the event of a team and its sub directories (enable 
-        reception of all events from a team)
-        </t>
-        <t>9 - /subscribed ?["team_uuid"]: list all subscribed teams or list all users subscribed to a team</t>
-        <t>10 - /unsubscribe ["team_uuid"]: unsubscribe from a team</t>
-        <t>11 - /use ?["team_uuid"] ?["channel_uuid"] ?["thread_uuid"]: use specify a context team/channel/thread</t>
-        <t>12 - /create: based on what is being used create the sub resource</t>
-        <t><list>
-          <t>When the context is not defined (/use):</t>
-          <t> - /create ["team_name"] ["team_description"]: create a new team</t>
-          <t>When team_uuid is defined (/use "team_uuid"):</t>
-          <t> - /create ["channel_name"] ["channel_description"]: create a new channel</t>
-          <t>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):</t>
-          <t> - /create ["thread_title"] ["thread_message"]: create a new thread</t>
-          <t>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid"):</t>
-          <t> - /create ["comment_body"]: create a new reply</t>
-        </list></t>
-        <t></t>
-        <t>13 - /list: based on what is being used list all the sub resources</t>
-        <t><list>
-          <t>When the context is not defined (/use):</t>
-          <t> - /list: list all existing teams</t>
-          <t>When team_uuid is defined (/use "team_uuid"):</t>
-          <t> - /list: list all existing channels</t>
-          <t>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):</t>
-          <t> - /list: list all existing threads</t>
-          <t>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid"):</t>
-          <t> - /list: list all existing replies</t>
-        </list></t>
-        <t></t>
-        <t>14 - /info: based on what is being used list the current</t>
-        <t><list>
-          <t>When the context is not defined (/use):</t>
-          <t> - /info: display currently logged user infos</t>
-          <t>When team_uuid is defined (/use "team_uuid"):</t>
-          <t> - /info: display currently selected team infos</t>
-          <t>When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):</t>
-          <t> - /info: display currently selected channel infos</t>
-          <t>When team_uuid, channel_uuid and thread_uuid are defined (/use "team_uuid" "channel_uuid" "thread_uuid"):</t>
-          <t> - /info: display currently selected thread infos</t>
-        </list></t>
-      </list>
-    </t>
+
+    <section title="Help">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+- {Header (client_request_t)};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="Login">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+- {Header (client_request_t)} + {username : 32 bytes};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="Logout">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+- {Header (client_request_t)};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="Users">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+- {Header (client_request_t)};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="User">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+- {Header (client_request_t)} + {User_uuid : 16 bytes};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="Send">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+- {Header (client_request_t)} + {Recipient_uuid : 16 bytes} + {Message : 512 bytes};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="Messages">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+- {Header (client_request_t)} + {Recipient_uuid : 16 bytes};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="Subscribe">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+- {Header (client_request_t)} + {User_uuid : 16 bytes};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="Subscribed">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+- {Header (client_request_t)};
+- {Header (client_request_t)} + {Team_uuid : 16 bytes};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="Unsubscribe">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+- {Header (client_request_t)} + {Team_uuid : 16 bytes};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="Use">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+- {Header (client_request_t)};
+- {Header (client_request_t)} + {Team_uuid : 16 bytes};
+- {Header (client_request_t)} + {Team_uuid : 16 bytes} + {Channel_uuid : 16 bytes};
+- {Header (client_request_t)} + {Team_uuid : 16 bytes} + {Channel_uuid : 16 bytes}
+   + {Thread_uuid : 16 bytes};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="Create">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+When the context is not defined (/use):
+- {Header (client_request_t)} + {Team_name : 32 bytes}
+   + {Team_description : 255 bytes};
+
+When team_uuid is defined (/use "team_uuid"):
+- {Header (client_request_t)} + {Channel_name : 32 bytes}
+   + {Channel_description : 255 bytes};
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+- {Header (client_request_t)} + {Thread_title : 32 bytes}
+   + {Thread_message : 512 bytes};
+
+When team_uuid, channel_uuid and thread_uuid are defined
+(/use "team_uuid" "channel_uuid" "thread_uuid"):
+- {Header (client_request_t)} + {Comment_body : 512 bytes};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="List">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+When the context is not defined (/use):
+- {Header (client_request_t)};
+
+When team_uuid is defined (/use "team_uuid"):
+- {Header (client_request_t)};
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+- {Header (client_request_t)};
+
+When team_uuid, channel_uuid and thread_uuid are defined
+(/use "team_uuid" "channel_uuid" "thread_uuid"):
+- {Header (client_request_t)};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
+
+    <section title="Info">
+      <figure>
+        <artwork>
+          <![CDATA[
+Send
+
+When the context is not defined (/use):
+- {Header (client_request_t)};
+
+When team_uuid is defined (/use "team_uuid"):
+- {Header (client_request_t)};
+
+When team_uuid and channel_uuid are defined (/use "team_id" "channel_uuid"):
+- {Header (client_request_t)};
+
+When team_uuid, channel_uuid and thread_uuid are defined
+(/use "team_uuid" "channel_uuid" "thread_uuid"):
+- {Header (client_request_t)};
+            ]]>
+        </artwork>
+      </figure>
+      <figure>
+        <artwork>
+          <![CDATA[
+Receive
+            ]]>
+        </artwork>
+      </figure>
+    </section>
 
   </section>
 
